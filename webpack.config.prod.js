@@ -5,7 +5,7 @@ module.exports = {
   mode: 'production',
   entry: './client/index.jsx',
   output: {
-    path: path.resolve(__dirname),
+    path: '/',
     filename: 'bundle.js',
     publicPath: '/timelockr-client/',
   },
