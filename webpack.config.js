@@ -28,7 +28,7 @@ module.exports = {
   plugins: [
     new Dotenv({ systemvars: true }),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
-    new webpack.EnvironmentPlugin({ API_HOST: process.env.API_HOST }),
+    new webpack.EnvironmentPlugin({ API_HOST: 'http://localhost:3000' }),
   ],
   devServer: { contentBase: './dist' },
   resolve: {
@@ -42,16 +42,4 @@ module.exports = {
   },
 };
 
-/*
-ADD BACK?
-      { test: /\.css$/, use: ['style-loader', 'css-loader/locals'] },
-POSSIBLY NEEDED:
-  const CopyWebpackPlugin = require('copy-webpack-plugin');
-  ...
-  new CopyWebpackPlugin([{ from: './static/favicon.ico' }]),
-NOTES:
-  - dotenv-webpack is a dependency but I assume also required for development mode.
-  - So it is included in both prod and dev configurations.
-  - "module.loaders is now module.rules"
-  - Code not adopted in the dev config was because dev works fine already...
-*/
+

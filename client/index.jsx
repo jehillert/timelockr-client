@@ -1,9 +1,8 @@
-import '@babel/polyfill';
+// import '@babel/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/main/App';
-// import 'typeface-roboto';
-//     "typeface-roboto": "0.0.54" package.json
+import * as serviceWorker from './serviceWorker';
 
 require('dotenv').config();
 
@@ -12,3 +11,9 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
+
+
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
+serviceWorker.unregister();

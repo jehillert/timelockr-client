@@ -18,9 +18,9 @@
   },
   "scripts": {
     "dev-server": "nodemon --ignore node_modules --inspect server",
-    "start": "webpack-dev-server --hot --mode development",
+    "start": "webpack-dev-server --hot --mode development --port 8080",
     "build": "webpack --config webpack.config.prod.js",
-    "deploy": "gh-pages -d dist",
+    "deploy": "gh-pages -d /",
     "deploysh": "./deploy.sh",
     "lint:js": "eslint . --ignore-path .eslintignore",
     "lint:css": "stylelint client/common/**/*.css"
@@ -40,6 +40,7 @@
     "@material-ui/system": "^3.0.0-alpha.2",
     "@rehooks/window-size": "^1.0.2",
     "ajv": "^6.10.0",
+    "aws-amplify": "^1.1.29",
     "axios": "^0.18.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-styled-components": "^1.10.0",
@@ -55,7 +56,6 @@
     "email-validator": "^2.0.4",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
-    "gh-pages": "^2.0.1",
     "jquery": "^3.4.0",
     "less": "^3.9.0",
     "material-ui-pickers": "^2.2.4",
