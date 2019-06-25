@@ -23,7 +23,7 @@
     "deploy": "gh-pages -d /",
     "deploysh": "./deploy.sh",
     "lint:js": "eslint . --ignore-path .eslintignore",
-    "lint:css": "stylelint client/common/**/*.css"
+    "lint:css": "stylelint src/common/**/*.css"
   },
   "dependencies": {
     "@babel/cli": "^7.4.4",

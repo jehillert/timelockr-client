@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 require('dotenv').config();
 
 if (process.env.NODE_ENV !== 'production') {
-  localStorage.setItem('debug', 'client:*');
+  localStorage.setItem('debug', 'src:*');
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));

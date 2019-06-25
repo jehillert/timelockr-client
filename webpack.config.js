@@ -4,10 +4,10 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
-  entry: './client/index.jsx',
+  entry: './src/index.jsx',
   target: 'web',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'build'),
     publicPath: '/',
     filename: 'bundle.js',
   },
@@ -30,14 +30,14 @@ module.exports = {
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
     new webpack.EnvironmentPlugin({ API_HOST: 'http://localhost:3000' }),
   ],
-  devServer: { contentBase: './dist' },
+  devServer: { contentBase: './build' },
   resolve: {
     extensions: ['.js', '.jsx', '.css'],
     alias: {
-      components: path.resolve(__dirname, 'client/indexes/components.jsx'),
-      contexts: path.resolve(__dirname, 'client/indexes/contexts.jsx'),
-      theme: path.resolve(__dirname, 'client/indexes/theme.jsx'),
-      utilities: path.resolve(__dirname, 'client/indexes/utilities.jsx'),
+      components: path.resolve(__dirname, 'src/indexes/components.jsx'),
+      contexts: path.resolve(__dirname, 'src/indexes/contexts.jsx'),
+      theme: path.resolve(__dirname, 'src/indexes/theme.jsx'),
+      utilities: path.resolve(__dirname, 'src/indexes/utilities.jsx'),
     },
   },
 };

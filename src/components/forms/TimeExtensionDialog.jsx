@@ -16,7 +16,7 @@ import {
 } from 'components';
 import { extendReleaseDate } from 'utilities';
 
-const debug = Debug('client:components:time-extension-dialog');
+const debug = Debug('src:components:time-extension-dialog');
 
 const S = {};
 

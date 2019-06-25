@@ -22,7 +22,7 @@ import {
 import { withStyles } from '@material-ui/core/styles';
 
 const bgOrange = chalk.hex('#000000').bgHex('#38A53C');
-const debug = Debug('client:components:entry-form-dialog');
+const debug = Debug('src:components:entry-form-dialog');
 
 const S = {};
 

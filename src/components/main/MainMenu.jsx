@@ -15,7 +15,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import styled from 'styled-components';
 import Promise from 'bluebird';
 
-const debug = Debug('client:components:main-menu');
+const debug = Debug('src:components:main-menu');
 
 const S = {};
 

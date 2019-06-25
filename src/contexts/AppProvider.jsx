@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { AppContext } from 'contexts';
 import { getEntries } from 'utilities';
 
-const debug = Debug('client:contexts:app-provider');
+const debug = Debug('src:contexts:app-provider');
 
 class AppProvider extends React.Component {
   constructor(props) {

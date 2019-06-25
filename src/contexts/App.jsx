@@ -15,8 +15,8 @@ import { AppProvider, withAppContext } from 'contexts';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import MomentUtils from '@date-io/moment';
 
-const debug = Debug('client:components:app');
-debug('Client Status: %o', 'DEVELOPMENT MODE - Debugging enabled...');
+const debug = Debug('src:components:app');
+debug('App Status: %o', 'DEVELOPMENT MODE - Debugging enabled...');
 
 class App extends React.Component {
   render() {

@@ -20,7 +20,7 @@ import styled from 'styled-components';
 import { deleteEntry } from 'utilities';
 import { TimeExtensionDialog } from 'components';
 
-const debug = Debug('client:components:locked-entry-card-menu');
+const debug = Debug('src:components:locked-entry-card-menu');
 
 const S = {};
 
