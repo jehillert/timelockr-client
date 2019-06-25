@@ -19,7 +19,7 @@
   "scripts": {
     "dev-server": "nodemon --ignore node_modules --inspect server",
     "start": "webpack-dev-server --hot --mode development --port 8080",
-    "build": "webpack --config webpack.config.prod.js",
+    "build": "webpack",
     "deploy": "gh-pages -d /",
     "deploysh": "./deploy.sh",
     "lint:js": "eslint . --ignore-path .eslintignore",
