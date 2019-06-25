@@ -20,8 +20,6 @@
     "dev-server": "nodemon --ignore node_modules --inspect server",
     "start": "webpack-dev-server --hot --mode development --port 8080",
     "build": "webpack",
-    "deploy": "gh-pages -d /",
-    "deploysh": "./deploy.sh",
     "lint:js": "eslint . --ignore-path .eslintignore",
     "lint:css": "stylelint src/common/**/*.css"
   },
@@ -53,6 +51,7 @@
     "cors": "^2.8.5",
     "date-fns": "^2.0.0-alpha.27",
     "debug": "^4.1.1",
+    "dotenv": "^8.0.0",
     "email-validator": "^2.0.4",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
