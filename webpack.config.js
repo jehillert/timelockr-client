@@ -1,13 +1,15 @@
+// AWS CONFIGURATION
 const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
+  mode: 'production',
   devtool: 'cheap-module-eval-source-map',
   entry: './src/index.jsx',
   target: 'web',
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: __dirname,
     publicPath: '/',
     filename: 'bundle.js',
   },
