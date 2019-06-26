@@ -1,4 +1,4 @@
 Demo:
   https://aws.d1h9qvgcstctmu.amplifyapp.com/
 
-This application showcases all of my 'full-stack' skills at the moment.
+This application is representative of what I know about React and front-end development in general.
