@@ -29,7 +29,6 @@ coverage
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 node_modules/
-build/
 dist/
 
 # node-waf configuration
