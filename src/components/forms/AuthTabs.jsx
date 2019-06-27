@@ -88,10 +88,10 @@ const AuthTabs = (props) => {
       </S.TabList>
 
       <S.TabPanel>
-        <AuthForm handleSubmit={handleSignin} />
+        <AuthForm handleSubmit={handleSignin} autocompletePasswordType='current-password' />
       </S.TabPanel>
       <S.TabPanel>
-        <AuthForm handleSubmit={handleAddUser} />
+        <AuthForm handleSubmit={handleAddUser} autocompletePasswordType='new-password' />
       </S.TabPanel>
     </S.Tabs>
   );

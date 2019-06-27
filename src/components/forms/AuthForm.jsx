@@ -42,8 +42,8 @@ class AuthForm extends React.Component {
     super(props);
     console.log(chalk.hex('#000000').bgHex('#38A53C')(process.env.API_HOST));
     this.state = {
-      username: 'Kraig0@yahoo.com',
-      password: 'x_wB4TKRvV9dVRm',
+      username: process.env.DUMMY_USER,
+      password: process.env.DUMMY_PASSWORD,
       // username: '',
       // password: '',
       notAnEmailAddressError: false,
@@ -67,8 +67,8 @@ class AuthForm extends React.Component {
     event.preventDefault();
     return handleSubmitAsync(username, password)
       .then(state => this.setState({
-        username: 'Kraig0@yahoo.com',
-        password: 'x_wB4TKRvV9dVRm',
+        username: process.env.DUMMY_USER,
+        password: process.env.DUMMY_PASSWORD,
         // username: '',
         // password: '',
         notAnEmailAddressError: false,

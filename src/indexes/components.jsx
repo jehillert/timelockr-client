@@ -9,7 +9,7 @@ export { default as CircularProgress } from '../components/misc/CircularProgress
 export { default as CountdownTimer } from '../components/time/CountdownTimer';
 export { default as ClipboardPopover } from '../components/misc/ClipboardPopover';
 export { default as ConfirmDialog } from '../components/misc/ConfirmDialog';
-export { default as DatedProgressBar } from '../components/time/DatedProgressBar';
+export { default as LinearProgressWithDates } from '../components/time/LinearProgressWithDates';
 export { default as DatePicker } from '../components/time/DatePicker';
 export { default as EntryFormDialog } from '../components/forms/EntryFormDialog';
 export { default as EntryFormDialogButton } from '../components/forms/EntryFormDialogButton';
