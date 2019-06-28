@@ -75,3 +75,6 @@ LinearProgressWithDates.propTypes = {
 };
 
 export default LinearProgressWithDates;
+{/* <Box>
+  <S.LinearProgress variant='danger' now={fraction * 100} />
+</Box> */}
