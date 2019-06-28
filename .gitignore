@@ -29,7 +29,6 @@ coverage
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 node_modules/
-build/
 dist/
 
 # node-waf configuration
@@ -66,6 +65,7 @@ Notes/
 .bit/
 .DS_Store
 .env
+.prj
 .favorites.json
 *.code-workspace
 *.sublime-project

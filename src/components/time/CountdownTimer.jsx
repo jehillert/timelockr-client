@@ -73,7 +73,6 @@ function CountdownTimer(props) {
     }
 
     setTimeRemaining(tr);
-    console.log(tr);
   };
 
   const incrementTime = () => {

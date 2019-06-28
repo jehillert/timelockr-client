@@ -12,8 +12,4 @@ if (process.env.NODE_ENV !== 'production') {
 
 ReactDOM.render(<App />, document.getElementById('app'));
 
-
-
-ReactDOM.render(<App />, document.getElementById('root'));
-
 serviceWorker.unregister();
