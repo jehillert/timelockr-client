@@ -56,11 +56,8 @@ const LinearProgressWithDates = (props) => {
         <span>Release</span>
       </S.Box>
       <Box>
-        <S.LinearProgress variant='danger' now={fraction * 100} />
-      </Box>
-      <div className={classes.root}>
         <LinearProgress color='secondary' variant='determinate' value={completed} />
-      </div>
+      </Box>
       <S.Box>
         <span>{moment(creationDate).format('MMM DD, YYYY')}</span>
         <span>{moment(releaseDate).format('MMM DD, YYYY')}</span>
