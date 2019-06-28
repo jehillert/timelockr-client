@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { Fragment, useRef, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
@@ -12,7 +12,8 @@ import {
   StyledMuiCardHeader,
 } from 'components';
 import { withSnackbar } from 'notistack';
-import { CopyToClipboard, deleteEntry, ErrorBoundary } from 'utilities';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { deleteEntry, ErrorBoundary } from 'utilities';
 
 const S = {};
 
@@ -22,22 +23,12 @@ S.IconButton = styled(IconButton)`
   }
 `;
 
-/*
-! ADD 'MASONRY' LAYOUT !
-  check this one out first:
-    https://www.npmjs.com/package/react-masonry-css
-  then these:
-    https://www.npmjs.com/package/react-masonry-component
-    https://www.npmjs.com/package/react-native-masonry-list
-    https://www.npmjs.com/package/react-masonry-layout
-*/
-
 const ReleasedEntryCard = (props) => {
-  const [copied, updateCopied] = useState(false);
   const [anchorEl, updateAnchorEl] = useState(null);
 
   const { entry, refresh, wrapper } = props;
-  const { entryId, content, description } = entry;
+  const { content, description } = entry;
+  const { entryId } = entry;
   const { shouldRenderCard } = wrapper;
 
   const handleCloseButtonClick = () => (
@@ -45,24 +36,23 @@ const ReleasedEntryCard = (props) => {
       .then(() => refresh())
   );
 
-  const handleCardClick = (event) => {
+  const handleCopyClick = (event) => {
     updateAnchorEl(event.currentTarget);
-    return updateCopied(false);
+    setTimeout(() => {
+      updateAnchorEl(null);
+    }, 600);
   };
 
   return (
     <ErrorBoundary>
       {shouldRenderCard && (
         <>
-          {anchorEl && (
+          {Boolean(anchorEl) && (
             <ClipboardPopover
-              trigger={copied}
-              anchorEl={anchorEl}
-            />
+              anchorEl={anchorEl} />
           )}
           <CopyToClipboard
             text={`DESCRIPTION:\n\t${description}\n\nCONTENT:\n\t${content}`}
-            onCopy={() => updateCopied(true)}
           >
             <StyledMuiCard id={entryId} className='styled-mui-card'>
               <StyledMuiCardHeader
@@ -76,8 +66,8 @@ const ReleasedEntryCard = (props) => {
                 )}
                 title={description}
               />
-              <StyledMuiCardContent onClick={handleCardClick}>
-                <Typography>
+              <StyledMuiCardContent onClick={handleCopyClick}>
+                <Typography css='white-space: pre-line;'>
                   {content}
                 </Typography>
               </StyledMuiCardContent>

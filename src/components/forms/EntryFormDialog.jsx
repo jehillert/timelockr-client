@@ -98,15 +98,17 @@ class EntryFormDialog extends React.Component {
     } = this.props;
 
     const creationDate = moment().format('YYYY-MM-DD HH:mm');
-
     const formattedTime = moment(selectedTime).utc().format('HH:mm').toString();
     const formattedDate = moment(selectedDate).utc().format('YYYY-MM-DD').toString();
     const releaseDate = `${formattedDate} ${formattedTime}-00`;
+
     debug(
       bgOrange(formattedTime),
       bgOrange(formattedDate),
       bgOrange(releaseDate),
     );
+
+
     const newEntry = {
       userId,
       creationDate,

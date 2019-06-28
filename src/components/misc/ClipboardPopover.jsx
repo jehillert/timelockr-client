@@ -1,7 +1,4 @@
-/* eslint-disable react/jsx-indent */
-/* eslint-disable react/forbid-prop-types */
-// eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Popover from '@material-ui/core/Popover';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
@@ -15,15 +12,14 @@ const styles = theme => ({
 });
 
 function ClipboardPopover(props) {
-  const [open, setOpen] = useState(false);
-  const { anchorEl, classes, trigger } = props;
+  const { anchorEl, classes } = props;
+  const open = Boolean(anchorEl);
+
+  const intervalStopper = setInterval(() => console.log('I am still here', 600));
 
   useEffect(() => {
-    setOpen(true);
-    setTimeout(() => {
-      setOpen((false));
-    }, 600);
-  }, [trigger]);
+    return () => clearInterval(intervalStopper);
+  }, []);
 
   return (
     <Box>
@@ -46,10 +42,13 @@ function ClipboardPopover(props) {
   );
 }
 
+ClipboardPopover.Defaultprops = {
+  anchorEl: null,
+}
+
 ClipboardPopover.propTypes = {
+  anchorEl: PropTypes.instanceOf(Element),
   classes: PropTypes.object.isRequired,
-  trigger: PropTypes.bool.isRequired,
-  anchorEl: PropTypes.instanceOf(Element).isRequired,
 };
 
 export default withStyles(styles)(ClipboardPopover);
