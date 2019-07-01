@@ -6,7 +6,6 @@ import { addUser, getEntries, verifyUser } from 'utilities';
 import { defaultTheme, GlobalStyle } from 'theme';
 import { hot } from 'react-hot-loader/root';
 import { MuiPickersUtilsProvider } from 'material-ui-pickers';
-import { SnackbarProvider } from 'notistack';
 import { ThemeProvider } from 'styled-components';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import MomentUtils from '@date-io/moment';
@@ -76,38 +75,36 @@ class App extends React.Component {
 
     return (
       <>
-        <SnackbarProvider maxSnack={3}>
-          <CssBaseline />
-          <GlobalStyle />
-          <Router>
-            <MuiPickersUtilsProvider utils={MomentUtils}>
-              <Route
-                exact
-                path='/'
-                render={() => (
-                  showMain ? (
+        <CssBaseline />
+        <GlobalStyle />
+        <Router>
+          <MuiPickersUtilsProvider utils={MomentUtils}>
+            <Route
+              exact
+              path='/'
+              render={() => (
+                showMain ? (
+                  <ThemeProvider theme={defaultTheme}>
+                    <Main
+                      entries={entries}
+                      userId={userId}
+                      username={username}
+                      refresh={this.refresh}
+                    />
+                  </ThemeProvider>
+                ) : (
                     <ThemeProvider theme={defaultTheme}>
-                      <Main
-                        entries={entries}
-                        userId={userId}
-                        username={username}
-                        refresh={this.refresh}
+                      <AuthModal
+                        handleSignin={this.handleSignin}
+                        handleAddUser={this.handleAddUser}
+                        isAuthorized={isAuthorized}
                       />
                     </ThemeProvider>
-                  ) : (
-                      <ThemeProvider theme={defaultTheme}>
-                        <AuthModal
-                          handleSignin={this.handleSignin}
-                          handleAddUser={this.handleAddUser}
-                          isAuthorized={isAuthorized}
-                        />
-                      </ThemeProvider>
-                    )
-                )}
-              />
-            </MuiPickersUtilsProvider>
-          </Router>
-        </SnackbarProvider>
+                  )
+              )}
+            />
+          </MuiPickersUtilsProvider>
+        </Router>
       </>
     );
   }

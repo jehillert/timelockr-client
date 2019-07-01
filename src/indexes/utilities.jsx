@@ -5,3 +5,4 @@ export { extendReleaseDate } from '../utilities/ClientRequests';
 export { getEntries } from '../utilities/ClientRequests';
 export { verifyUser } from '../utilities/ClientRequests';
 export { default as ErrorBoundary } from '../utilities/ErrorBoundary';
+export { default as openPopup } from '../utilities/openPopup';

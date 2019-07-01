@@ -5,16 +5,16 @@ const GlobalStyle = createGlobalStyle`
     background-color: white;
     color: #839496;
     font-family: [
-      -apple-system,
+      '-apple-system',
       BlinkMacSystemFont,
-      "Segoe UI",
+      'Segoe UI',
       Roboto,
-      "Helvetica Neue",
+      'Helvetica Neue',
       Arial,
       sans-serif,
-      "Apple Color Emoji",
-      "Segoe UI Emoji",
-      "Segoe UI Symbol",
+      'Apple Color Emoji',
+      'Segoe UI Emoji',
+      'Segoe UI Symbol',
     ];
   }
 

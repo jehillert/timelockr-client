@@ -1,15 +1,3 @@
-// RERENDER INDIVUAL CARDS NOW.  NOT THE WHOLE STACK EVERY TIME
-
-
-
-
-
-
-
-
-
-
-
 /* eslint-disable react/jsx-indent */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -22,6 +10,7 @@ import {
   MainMenu,
   RightSide,
 } from 'components';
+import { openPopup } from 'utilities';
 
 const S = {};
 
@@ -54,6 +43,13 @@ S.EntryFormDialogButton = styled(props => <EntryFormDialogButton {...props} />)`
 `;
 
 const Main = (props) => {
+  // const popup = window.open(url, windowName, options);
+  const consolePopup = openPopup(
+    process.env.SERVER_CONSOLE_URL,
+    'TimeLockrServerDemoPopupWindow',
+    500,
+    415,
+  );
   const { entries, refresh } = props;
   return (
     <Box className='grid-desktop'>

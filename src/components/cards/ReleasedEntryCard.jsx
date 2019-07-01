@@ -11,7 +11,6 @@ import {
   StyledMuiCardContent,
   StyledMuiCardHeader,
 } from 'components';
-import { withSnackbar } from 'notistack';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { deleteEntry, ErrorBoundary } from 'utilities';
 
@@ -37,12 +36,20 @@ const ReleasedEntryCard = (props) => {
   );
 
   const handleCopyClick = (event) => {
-    updateAnchorEl(event.currentTarget);
-    setTimeout(() => {
-      updateAnchorEl(null);
-    }, 600);
+    if (event.target.nodeName !== 'svg' && event.target.nodeName !== 'BUTTON') {
+      updateAnchorEl(event.currentTarget);
+      const timeoutID = setTimeout(() => {
+        updateAnchorEl(null);
+        return clearTimeout(timeoutID);
+      }, 600);
+    }
   };
 
+  /*
+    ! FIX BUG: onClick={handleCopyClick} is find
+    ! in the card body but causes a memory leak when
+    ! it is in the head
+  */
   return (
     <ErrorBoundary>
       {shouldRenderCard && (
@@ -56,6 +63,7 @@ const ReleasedEntryCard = (props) => {
           >
             <StyledMuiCard id={entryId} className='styled-mui-card'>
               <StyledMuiCardHeader
+                onClick={handleCopyClick}
                 action={(
                   <S.IconButton
                     className='s-icon-button'
@@ -89,4 +97,4 @@ ReleasedEntryCard.propTypes = {
   wrapper: PropTypes.objectOf(PropTypes.bool).isRequired,
 };
 
-export default withSnackbar(ReleasedEntryCard);
+export default ReleasedEntryCard;
