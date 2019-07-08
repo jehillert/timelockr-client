@@ -3,7 +3,7 @@ import * as Debug from 'debug';
 import React from 'react';
 import { AuthModal, Main } from 'components';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { addUser, getEntries, verifyUser } from 'utilities';
+import { addUser, getEntries, openPopup, verifyUser } from 'utilities';
 import { defaultTheme, GlobalStyle } from 'theme';
 import { hot } from 'react-hot-loader/root';
 import { MuiPickersUtilsProvider } from 'material-ui-pickers';
@@ -71,6 +71,13 @@ class App extends React.Component {
     .then((response) => {
       debug(response.data);
     })
+
+    consolePopup = openPopup(
+      process.env.SERVER_CONSOLE_URL,
+      'TimeLockrServerDemoPopupWindow',
+      500,
+      415,
+    );
 
   render() {
     const {

@@ -46,7 +46,6 @@ S.EntryFormDialogButton = styled(props => <EntryFormDialogButton {...props} />)`
 `;
 
 const Main = (props) => {
-  // const popup = window.open(url, windowName, options);
   const {
     entries,
     hasAuth,

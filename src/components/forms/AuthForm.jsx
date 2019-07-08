@@ -40,8 +40,8 @@ class AuthForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: process.env.DEMO_USER,
-      password: process.env.DEMO_PASSWORD,
+      username: process.env.DEMO_USER || 'guest@timelockr-demo.com',
+      password: process.env.DEMO_PASSWORD || 'password',
       // username: '',
       // password: '',
       notAnEmailAddressError: false,
