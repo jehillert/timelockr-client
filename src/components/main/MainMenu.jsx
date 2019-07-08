@@ -1,142 +1,150 @@
-import React, { Fragment, useEffect, useState } from 'react';
-// import PropTypes from 'prop-types';
 import * as Debug from 'debug';
-// import chalk from 'chalk';
+import React, { useEffect, useState } from 'react';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import CloseIcon from '@material-ui/icons/Close';
+import PersonIcon from '@material-ui/icons/Person';
+import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import IconButton from '@material-ui/core/IconButton';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import PersonIcon from '@material-ui/icons/Person';
-import SettingsIcon from '@material-ui/icons/Settings';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Paper from '@material-ui/core/Paper';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Promise from 'bluebird';
+import { ErrorBoundary, deleteUser } from 'utilities';
+import { ConfirmDialog } from 'components';
 
 const debug = Debug('src:components:main-menu');
 
 const S = {};
 
 S.IconButton = styled(IconButton)`
-  .s-icon-button {
-    color: ${props => props.theme.secondaryColor};
-    margin-top: -5px;
-    height: 2.25rem;
-    width: 2.25rem
-    hover: {
-      background-color: red;
-    }
-  }
-`;
-
-S.ListItemIcon = styled(ListItemIcon)`
   &.s-icon-button {
-    color: red;
+    padding: 11px 5px 11px 5px;
   }
 `;
 
-S.MenuItem = styled(MenuItem)`
-  &.s-menu-item {
-    color: red;
-  }
-`;
+const MainMenu = (props) => {
+  const { revokeAuth, username } = props;
 
-S.ListItemText = styled(ListItemText)`
-  &.s-list-item-text {
-    color: red;
-  }
-`;
-
-function MainMenu(props) {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [selection, setSelection] = useState('');
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState('');
+  const [dialogHasConfirmed, setConfirm] = useState(false);
+  const [shouldRenderConfirmDialog, setShouldRenderConfirmDialog] = useState(false);
 
   useEffect(() => {
-    debug(selection);
-  }, [selection]);
+    debug(`
+      open:     ${open}
+      entryId:  ${username}
+      selected: ${selected}
+    `);
 
-  const handleClick = event => setAnchorEl(event.currentTarget);
+    if (selected === 'delete') {
+      setShouldRenderConfirmDialog(true);
+    }
 
-  const handleClose = () => setAnchorEl(null);
+    if (selected === 'logout') {
+      revokeAuth();
+    }
 
-  const handleSelect = (event) => {
-    handleClose();
-    setSelection(event.currentTarget.dataset.value);
+    return () => {
+      setOpen(false);
+      setAnchorEl(null);
+      setSelected('');
+    };
+  }, [open, username, selected, revokeAuth]);
+
+  useEffect(() => {
+    if (dialogHasConfirmed) {
+      deleteUser(username);
+    }
+
+    return () => {
+      setOpen(false);
+      setAnchorEl(null);
+      setSelected('');
+    };
+  });
+
+  const handleMenuButtonClick = (event) => {
+    setAnchorEl(event.currentTarget);
+    setOpen(true);
   };
 
-  return (
-    <ClickAwayListener onClickAway={handleClose}>
-      <>
-        <S.IconButton
-          aria-owns={anchorEl ? 'main-menu' : undefined}
-          aria-haspopup='true'
-          onClick={handleClick}
-        >
-          <MenuIcon fontSize='large' className='s-icon-button' />
-        </S.IconButton>
-        <Menu
-          id='main-menu'
-          anchorEl={anchorEl}
-          disableAutoFocusItem
-          open={Boolean(anchorEl)}
-        >
-          <S.MenuItem
-            className='s-menu-item'
-            data-value='account'
-            onClick={handleSelect}
-          >
-            <S.ListItemIcon
-              className='s-icon-button'
-            >
-              <PersonIcon />
-            </S.ListItemIcon>
-            <S.ListItemText
-              className='s-list-item-text'
-              inset
-              primary='Account'
-            />
-          </S.MenuItem>
-          <S.MenuItem
-            className='s-menu-item'
-            data-value='logout'
-            onClick={handleSelect}
-          >
-            <S.ListItemIcon
-              className='s-icon-button'
-            >
-              <MeetingRoomIcon />
-            </S.ListItemIcon>
-            <S.ListItemText
-              className='s-list-item-text'
-              inset
-              primary='Logout'
-            />
-          </S.MenuItem>
-          <S.MenuItem
-            className='s-menu-item'
-            data-value='settings'
-            onClick={handleSelect}
-          >
-            <S.ListItemIcon
-              className='s-icon-button'
-            >
-              <SettingsIcon />
-            </S.ListItemIcon>
-            <S.ListItemText
-              className='s-list-item-text'
-              inset
-              primary='Settings'
-            />
-          </S.MenuItem>
-        </Menu>
-      </>
-    </ClickAwayListener>
-  );
-}
+  const handleConfirmDialog = (isConfirmed) => {
+    setConfirm(isConfirmed);
+    setShouldRenderConfirmDialog(false);
+  };
 
-// MainMenu.propTypes = {
-// };
+    return (
+      <>
+        {shouldRenderConfirmDialog
+          && (
+            <ConfirmDialog
+              handleConfirmDialog={handleConfirmDialog}
+              open={shouldRenderConfirmDialog}
+              variant='deleteAccount'
+            />
+          )
+        }
+        <S.IconButton
+          aria-label='More'
+          aria-owns={open ? 'main-menu' : undefined}
+          aria-haspopup='true'
+          className='s-icon-button'
+          onClick={handleMenuButtonClick}
+        >
+          <MoreVertIcon />
+        </S.IconButton>
+        {open
+          && (
+            <ClickAwayListener onClickAway={() => setSelected('noSelection')}>
+              <Paper>
+                <ErrorBoundary>
+                  <Menu
+                    id='main-menu'
+                    anchorEl={anchorEl}
+                    open={open}
+                  >
+                    <ErrorBoundary>
+                      <MenuItem data-value='delete' onClick={() => setSelected('delete')}>
+                        <ListItemIcon>
+                          <PersonIcon />
+                        </ListItemIcon>
+                        <ListItemText inset primary='Delete Account' />
+                      </MenuItem>
+                    </ErrorBoundary>
+                    <ErrorBoundary>
+                      <MenuItem data-value='logout' onClick={() => setSelected('logout')}>
+                        <ListItemIcon>
+                          <MeetingRoomIcon />
+                        </ListItemIcon>
+                        <ListItemText inset primary='Logout' />
+                      </MenuItem>
+                    </ErrorBoundary>
+                    <ErrorBoundary>
+                      <MenuItem data-value='close' onClick={() => setSelected('noSelection')}>
+                        <ListItemIcon>
+                          <CloseIcon />
+                        </ListItemIcon>
+                        <ListItemText inset primary='Exit' />
+                      </MenuItem>
+                    </ErrorBoundary>
+                  </Menu>
+                </ErrorBoundary>
+              </Paper>
+            </ClickAwayListener>
+        )}
+      </>
+  );
+};
+
+MainMenu.propTypes = {
+  revokeAuth: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
+};
 
 export default MainMenu;

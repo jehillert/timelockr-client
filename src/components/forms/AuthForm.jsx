@@ -40,8 +40,8 @@ class AuthForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: process.env.DUMMY_USER,
-      password: process.env.DUMMY_PASSWORD,
+      username: process.env.DEMO_USER,
+      password: process.env.DEMO_PASSWORD,
       // username: '',
       // password: '',
       notAnEmailAddressError: false,
@@ -65,8 +65,8 @@ class AuthForm extends React.Component {
     event.preventDefault();
     return handleSubmitAsync(username, password)
       .then(state => this.setState({
-        username: process.env.DUMMY_USER,
-        password: process.env.DUMMY_PASSWORD,
+        username: process.env.DEMO_USER,
+        password: process.env.DEMO_PASSWORD,
         // username: '',
         // password: '',
         notAnEmailAddressError: false,

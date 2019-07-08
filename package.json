@@ -17,11 +17,13 @@
     "url": "https://github.com/jehillert/timelockr-client.git"
   },
   "scripts": {
+    "start-client": "cd scripts && ./start-client.sh",
     "dev-server": "nodemon --ignore node_modules --inspect server",
     "start": "webpack-dev-server --hot --mode development --port 8080",
     "build": "webpack",
     "lint:js": "eslint . --ignore-path .eslintignore",
-    "lint:css": "stylelint src/common/**/*.css"
+    "lint:css": "stylelint src/common/**/*.css",
+    "run-terminal": "cd scripts && ./run-terminal.sh"
   },
   "dependencies": {
     "@babel/cli": "^7.4.4",

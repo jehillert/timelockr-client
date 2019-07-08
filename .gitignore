@@ -84,3 +84,7 @@ config.js
 # see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
 bower_components
 jspm_packages/
+scripts/
+.scripts/
+*.xml
+*.iml

@@ -1,3 +1,4 @@
+import Debug from 'debug';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -10,7 +11,9 @@ import {
   LockedEntryCard,
   ReleasedEntryCard,
 } from 'components';
-// import useWindowSize from '@rehooks/window-size';
+import { ErrorBoundary } from 'utilities';
+
+const debug = Debug('src:components:app:card-area-tabs');
 
 const S = {};
 
@@ -49,42 +52,51 @@ function CardAreaTabs(props) {
   const handleChange = (event, v) => setValue(v);
   const handleChangeIndex = index => setValue(index);
 
+  debug('LOCKED.jsx:\n%O', entries.locked);
+  debug('RELEASED:\n%O', entries.released);
+
   return (
     <S.Div gridArea={gridArea}>
-      <S.Tabs
-        value={value}
-        onChange={handleChange}
-        indicatorColor='primary'
-        textColor='primary'
-        variant='fullWidth'
-      >
-        <Tab label='Unlocked' />
-        <Tab label='Locked' />
-      </S.Tabs>
+      <ErrorBoundary>
+        <S.Tabs
+          value={value}
+          onChange={handleChange}
+          indicatorColor='primary'
+          textColor='primary'
+          variant='fullWidth'
+        >
+          <Tab label='Unlocked' />
+          <Tab label='Locked' />
+        </S.Tabs>
+      </ErrorBoundary>
       <SwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={value}
         onChangeIndex={handleChangeIndex}
       >
-        <S.VerticallyScrollableArea>
-          <CardArea
-            mt={2}
-            id='card-area-released'
-            Card={ReleasedEntryCard}
-            delayIncrement={100}
-            entries={entries.released}
-            refresh={refresh}
-          />
-        </S.VerticallyScrollableArea>
-        <S.VerticallyScrollableArea>
-          <CardArea
-            id='card-area-locked'
-            Card={LockedEntryCard}
-            delayIncrement={100}
-            entries={entries.locked}
-            refresh={refresh}
-          />
-        </S.VerticallyScrollableArea>
+        <ErrorBoundary>
+          <S.VerticallyScrollableArea>
+            <CardArea
+              mt={2}
+              id='card-area-released'
+              Card={ReleasedEntryCard}
+              delayIncrement={100}
+              entries={entries.released}
+              refresh={refresh}
+            />
+          </S.VerticallyScrollableArea>
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <S.VerticallyScrollableArea>
+            <CardArea
+              id='card-area-locked'
+              Card={LockedEntryCard}
+              delayIncrement={100}
+              entries={entries.locked}
+              refresh={refresh}
+            />
+          </S.VerticallyScrollableArea>
+        </ErrorBoundary>
       </SwipeableViews>
     </S.Div>
   );

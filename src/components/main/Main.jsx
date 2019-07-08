@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-indent */
+import * as Debug from 'debug';
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -10,7 +11,9 @@ import {
   MainMenu,
   RightSide,
 } from 'components';
-import { openPopup } from 'utilities';
+import { ErrorBoundary } from 'utilities';
+
+const debug = Debug('src:components:app:main');
 
 const S = {};
 
@@ -44,28 +47,40 @@ S.EntryFormDialogButton = styled(props => <EntryFormDialogButton {...props} />)`
 
 const Main = (props) => {
   // const popup = window.open(url, windowName, options);
-  const consolePopup = openPopup(
-    process.env.SERVER_CONSOLE_URL,
-    'TimeLockrServerDemoPopupWindow',
-    500,
-    415,
-  );
-  const { entries, refresh } = props;
+  const {
+    entries,
+    hasAuth,
+    refresh,
+    revokeAuth,
+    username,
+  } = props;
+
+  debug('LOCKED.jsx:\n%O', entries.locked);
+  debug('RELEASED:\n%O', entries.released);
+
   return (
     <Box className='grid-desktop'>
       <LeftSide gridArea='leftSide' title='TimeLockr' />
         <S.Middle>
-          <S.AppBar gridArea='appBar'>
-            <S.AppBarContainer>
-              <MainMenu />
-            </S.AppBarContainer>
-          </S.AppBar>
-          <CardAreaTabs
-            id='card-area-tabs'
-            gridArea='cardArea'
-            entries={entries}
-            refresh={refresh}
-          />
+          <ErrorBoundary>
+            <S.AppBar gridArea='appBar'>
+              <S.AppBarContainer>
+                <MainMenu
+                  hasAuth={hasAuth}
+                  revokeAuth={revokeAuth}
+                  username={username}
+                />
+              </S.AppBarContainer>
+            </S.AppBar>
+          </ErrorBoundary>
+          <ErrorBoundary>
+            <CardAreaTabs
+              id='card-area-tabs'
+              gridArea='cardArea'
+              entries={entries}
+              refresh={refresh}
+            />
+          </ErrorBoundary>
         </S.Middle>
       <RightSide gridArea='rightSide'>
           <S.EntryFormDialogButton {...props} />
@@ -83,6 +98,8 @@ Main.propTypes = {
     locked: PropTypes.array,
     released: PropTypes.array,
   }),
+  hasAuth: PropTypes.bool.isRequired,
+  revokeAuth: PropTypes.func.isRequired,
   refresh: PropTypes.func.isRequired,
   userId: PropTypes.number.isRequired,
   username: PropTypes.string.isRequired,

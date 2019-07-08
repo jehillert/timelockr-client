@@ -1,3 +1,4 @@
+import Debug from 'debug';
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -6,6 +7,9 @@ import {
   CardWrapper,
   Header,
 } from 'components';
+import { ErrorBoundary } from 'utilities';
+
+const debug = Debug('src:components:app:card-area-tabs:card-area-tab');
 
 const S = {};
 
@@ -28,6 +32,9 @@ const CardArea = (props) => {
     title,
   } = props;
 
+  debug('LOCKED.jsx:\n%O', entries.locked);
+  debug('RELEASED:\n%O', entries.released);
+
   const hasChildren = !!entries.length;
 
   const [showEntries, updateShowEntries] = useState(false);
@@ -37,7 +44,7 @@ const CardArea = (props) => {
   }, []);
 
   return (
-    <S.CardArea id={id} >
+    <S.CardArea id={id}>
       {title && <Header text={title} level='3' mx={2} />}
       {(hasChildren && showEntries) && (
         entries.map((entry, index) => (
@@ -45,12 +52,14 @@ const CardArea = (props) => {
             key={entry.entryId.toString()}
             delay={index * delayIncrement}
             render={wrapper => (
-              <Card
-                key={entry.entryId.toString()}
-                wrapper={wrapper}
-                entry={entry}
-                refresh={refresh}
-              />
+              <ErrorBoundary>
+                <Card
+                  key={entry.entryId.toString()}
+                  wrapper={wrapper}
+                  entry={entry}
+                  refresh={refresh}
+                />
+              </ErrorBoundary>
             )}
           />
         ))

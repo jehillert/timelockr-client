@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React, { useEffect } from 'react';
 import Popover from '@material-ui/core/Popover';
 import PropTypes from 'prop-types';
@@ -15,11 +16,9 @@ function ClipboardPopover(props) {
   const { anchorEl, classes } = props;
   const open = Boolean(anchorEl);
 
-  const intervalStopper = setInterval(() => console.log('I am still here', 600));
+  const intervalStopper = setInterval(() => console.log('Entry copied', 600));
 
-  useEffect(() => {
-    return () => clearInterval(intervalStopper);
-  }, []);
+  useEffect(() => () => clearInterval(intervalStopper), [intervalStopper]);
 
   return (
     <Box>
@@ -42,9 +41,9 @@ function ClipboardPopover(props) {
   );
 }
 
-ClipboardPopover.Defaultprops = {
+ClipboardPopover.defaultProps = {
   anchorEl: null,
-}
+};
 
 ClipboardPopover.propTypes = {
   anchorEl: PropTypes.instanceOf(Element),

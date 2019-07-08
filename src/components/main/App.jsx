@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import * as Debug from 'debug';
 import React from 'react';
 import { AuthModal, Main } from 'components';
@@ -20,7 +21,7 @@ class App extends React.Component {
       userId: 0,
       username: '',
       entries: {},
-      isAuthorized: false,
+      hasAuth: false,
       showMain: false,
     };
   }
@@ -43,6 +44,10 @@ class App extends React.Component {
     this.getEntries()
   );
 
+  revokeAuth = () => (
+    this.setState(state => ({ hasAuth: false }))
+  )
+
   handleSignin = (user, pass) => {
     debug('signing in');
     return verifyUser(user, pass) // non-zero value indicates authenticated
@@ -50,7 +55,7 @@ class App extends React.Component {
         this.setState(state => ({
           userId: result.userId,
           username: user,
-          isAuthorized: result.isAuthorized,
+          hasAuth: result.hasAuth,
         }));
       })
       .then(() => this.getEntries())
@@ -67,7 +72,7 @@ class App extends React.Component {
   render() {
     const {
       entries,
-      isAuthorized,
+      hasAuth,
       showMain,
       userId,
       username,
@@ -87,19 +92,21 @@ class App extends React.Component {
                   <ThemeProvider theme={defaultTheme}>
                     <Main
                       entries={entries}
+                      hasAuth={hasAuth}
+                      refresh={this.refresh}
+                      revokeAuth={this.revokeAuth}
                       userId={userId}
                       username={username}
-                      refresh={this.refresh}
                     />
                   </ThemeProvider>
                 ) : (
-                    <ThemeProvider theme={defaultTheme}>
-                      <AuthModal
-                        handleSignin={this.handleSignin}
-                        handleAddUser={this.handleAddUser}
-                        isAuthorized={isAuthorized}
-                      />
-                    </ThemeProvider>
+                  <ThemeProvider theme={defaultTheme}>
+                    <AuthModal
+                      handleSignin={this.handleSignin}
+                      handleAddUser={this.handleAddUser}
+                      hasAuth={hasAuth}
+                    />
+                  </ThemeProvider>
                   )
               )}
             />

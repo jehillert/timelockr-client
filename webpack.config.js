@@ -5,7 +5,7 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'production',
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval-source-map',
   entry: './src/index.jsx',
   output: {
     path: __dirname,

@@ -58,6 +58,13 @@ export const addUser = (user, pass) => axios.post(`${urlBase}/signup`, {
       return debug(err);
     });
 
+export const deleteUser = user => axios.post(`${urlBase}/signup`, {
+    username: user,
+  })
+    .then(response => response)
+    .then(res => debug(res.data))
+    .catch(err => debug(err));
+
 export const verifyUser = (user, pass) => axios.post(`${urlBase}/signin`, {
     username: user,
     password: pass,
@@ -67,7 +74,7 @@ export const verifyUser = (user, pass) => axios.post(`${urlBase}/signin`, {
     debug(`User authenticated.\nuserId: ${result.data.userId}`);
     const authData = {
       userId: result.data.userId,
-      isAuthorized: true,
+      hasAuth: true,
     };
     return authData;
   })

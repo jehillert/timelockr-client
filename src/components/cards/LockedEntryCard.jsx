@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  CircularProgressBar,
+  // CircularProgressBar,
   CountdownTimer,
   StyledMuiCard,
   StyledMuiCardHeader,

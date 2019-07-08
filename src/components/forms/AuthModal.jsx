@@ -27,10 +27,10 @@ class AuthModal extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { isAuthorized } = this.props;
+    const { hasAuth } = this.props;
 
-    if (isAuthorized !== prevProps.isAuthorized) {
-      if (isAuthorized < 2) {
+    if (hasAuth !== prevProps.hasAuth) {
+      if (hasAuth < 2) {
         this.handleOpen();
       } else {
         this.handleClose();
@@ -56,7 +56,7 @@ class AuthModal extends React.Component {
       classes,
       handleAddUser,
       handleSignin,
-      isAuthorized,
+      hasAuth,
     } = this.props;
 
     return (
@@ -74,7 +74,7 @@ class AuthModal extends React.Component {
           <AuthTabs
             handleSignin={handleSignin}
             handleAddUser={handleAddUser}
-            isAuthorized={isAuthorized}
+            hasAuth={hasAuth}
             setTitle={this.setTitle}
           />
         </div>
@@ -87,7 +87,7 @@ AuthModal.propTypes = {
   classes: PropTypes.object.isRequired,
   handleAddUser: PropTypes.func.isRequired,
   handleSignin: PropTypes.func.isRequired,
-  isAuthorized: PropTypes.bool.isRequired,
+  hasAuth: PropTypes.bool.isRequired,
 };
 
 export default withStyles(styles)(AuthModal);

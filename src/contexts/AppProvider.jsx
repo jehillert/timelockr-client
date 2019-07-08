@@ -14,11 +14,10 @@ class AppProvider extends React.Component {
     this.state = {
       userId: 0,
       username: '',
-      isAuthorized: false,
+      hasAuth: false,
       entries: {},
       locked: [],
       released: [],
-      showMain: false,
     };
 
     this.refresh = this.refresh.bind(this);
