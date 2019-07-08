@@ -64,7 +64,7 @@ notes/
 Notes/
 .bit/
 .DS_Store
-.env
+# .env
 .prj
 .favorites.json
 *.code-workspace
