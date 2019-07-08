@@ -73,7 +73,7 @@ class App extends React.Component {
     })
 
     consolePopup = openPopup(
-      process.env.SERVER_CONSOLE_URL,
+      process.env.SERVER_CONSOLE_URL || 'https://timelockr-server-demo.herokuapp.com',
       'TimeLockrServerDemoPopupWindow',
       500,
       415,
