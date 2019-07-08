@@ -52,8 +52,8 @@ function CardAreaTabs(props) {
   const handleChange = (event, v) => setValue(v);
   const handleChangeIndex = index => setValue(index);
 
-  debug('LOCKED.jsx:\n%O', entries.locked);
-  debug('RELEASED:\n%O', entries.released);
+  // debug('LOCKED.jsx:\n%O', entries.locked);
+  // debug('RELEASED:\n%O', entries.released);
 
   return (
     <S.Div gridArea={gridArea}>

@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 require('dotenv').config();
 
 if (process.env.NODE_ENV !== 'production') {
+  // localStorage.setItem('debug', 'src:components:app');
   localStorage.setItem('debug', 'src:*');
 }
 

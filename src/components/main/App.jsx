@@ -12,7 +12,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import MomentUtils from '@date-io/moment';
 
 const debug = Debug('src:components:app');
-debug('App Status: %o', 'DEVELOPMENT MODE - Debugging enabled...');
 
 class App extends React.Component {
   constructor(props) {
@@ -45,14 +44,18 @@ class App extends React.Component {
   );
 
   revokeAuth = () => (
-    this.setState(state => ({ hasAuth: false }))
+    this.setState(state => ({
+      hasAuth: false,
+      showMain: false,
+      entries: {},
+    }))
   )
 
-  handleSignin = (user, pass) => {
-    debug('signing in');
-    return verifyUser(user, pass) // non-zero value indicates authenticated
+  handleSignin = (user, pass) => (
+    verifyUser(user, pass)
       .then((result) => {
-        this.setState(state => ({
+        debug(result);
+        return this.setState(state => ({
           userId: result.userId,
           username: user,
           hasAuth: result.hasAuth,
@@ -60,9 +63,9 @@ class App extends React.Component {
       })
       .then(() => this.getEntries())
       .then(() => {
-        this.setState(state => ({ showMain: true }));
-      });
-  }
+        this.setState(state => ({ showMain: this.state.hasAuth }));
+      })
+  )
 
   handleAddUser = (username, password) => addUser(username, password)
     .then((response) => {

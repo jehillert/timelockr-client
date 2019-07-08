@@ -39,12 +39,12 @@ function LockedEntryCardMenu(props) {
   const [shouldRenderDialog, setShouldRenderDialog] = useState(false);
 
   useEffect(() => {
-    debug(`
-      entryId:  ${entryId}
-      selected: ${selected}
-      open:     ${open}
-      anchorEl: ${anchorEl}
-    `);
+    // debug(`
+    //   entryId:  ${entryId}
+    //   selected: ${selected}
+    //   open:     ${open}
+    //   anchorEl: ${anchorEl}
+    // `);
 
     if (selected === 'extend') {
       setShouldRenderDialog(sRD => !sRD);

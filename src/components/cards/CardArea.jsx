@@ -9,7 +9,7 @@ import {
 } from 'components';
 import { ErrorBoundary } from 'utilities';
 
-const debug = Debug('src:components:app:card-area-tabs:card-area-tab');
+const debug = Debug('src:components:app:card-area-tabs:card-area');
 
 const S = {};
 
@@ -31,9 +31,6 @@ const CardArea = (props) => {
     refresh,
     title,
   } = props;
-
-  debug('LOCKED.jsx:\n%O', entries.locked);
-  debug('RELEASED:\n%O', entries.released);
 
   const hasChildren = !!entries.length;
 

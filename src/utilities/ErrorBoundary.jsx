@@ -1,5 +1,8 @@
+// import * as Debug from 'debug';
 import React from 'react';
 import PropTypes from 'prop-types';
+
+// const debug = Debug('src:error-boundary');
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -41,10 +44,12 @@ class ErrorBoundary extends React.Component {
 
 ErrorBoundary.defaultProps = {
   children: null,
+  surroundProps: null,
 };
 
 ErrorBoundary.propTypes = {
   children: PropTypes.node,
+  surroundProps: PropTypes.object
 };
 
 export default ErrorBoundary;

@@ -28,113 +28,114 @@ S.IconButton = styled(IconButton)`
 
 const MainMenu = (props) => {
   const { revokeAuth, username } = props;
-
   const [anchorEl, setAnchorEl] = useState(null);
-  const [open, setOpen] = useState(false);
+  const [isMenu, setMenuState] = useState(false);
   const [selected, setSelected] = useState('');
-  const [dialogHasConfirmed, setConfirm] = useState(false);
-  const [shouldRenderConfirmDialog, setShouldRenderConfirmDialog] = useState(false);
+  const [isConfirmed, setConfirm] = useState(false);
+  const [isDialog, setDialogState] = useState(false);
 
   useEffect(() => {
-    debug(`
-      open:     ${open}
-      entryId:  ${username}
-      selected: ${selected}
-    `);
+    debug(`selected: ${selected}`);
 
     if (selected === 'delete') {
-      setShouldRenderConfirmDialog(true);
+      setDialogState(val => !val);
     }
 
     if (selected === 'logout') {
+      debug('logging out');
       revokeAuth();
     }
 
     return () => {
-      setOpen(false);
+      setMenuState(false);
       setAnchorEl(null);
       setSelected('');
     };
-  }, [open, username, selected, revokeAuth]);
+  }, [selected, revokeAuth]);
 
-  useEffect(() => {
-    if (dialogHasConfirmed) {
-      deleteUser(username);
-    }
-
-    return () => {
-      setOpen(false);
-      setAnchorEl(null);
-      setSelected('');
-    };
-  });
+  // useEffect(() => {
+  //   if (isConfirmed) {
+  //     deleteUser(username);
+  //   }
+  // }, [isDialog]);
 
   const handleMenuButtonClick = (event) => {
+    debug(`
+      event:     ${event.currentTarget}
+      isMenu: ${isMenu}
+    `);
     setAnchorEl(event.currentTarget);
-    setOpen(true);
+    setMenuState(true);
   };
 
-  const handleConfirmDialog = (isConfirmed) => {
-    setConfirm(isConfirmed);
-    setShouldRenderConfirmDialog(false);
-  };
+  // const handleConfirmDialog = (isConfirmed) => {
+  //   setConfirm(isConfirmed);
+  //   if (isConfirmed) {
+  //     deleteUser(username);
+  //   }
+  // };
+
+  const confirmDialog = (isConfirmed) => {
+    setDialogState(false);
+    if (isConfirmed) {
+      deleteUser(username);
+    }
+  }
 
     return (
       <>
-        {shouldRenderConfirmDialog
+        {isDialog
           && (
             <ConfirmDialog
-              handleConfirmDialog={handleConfirmDialog}
-              open={shouldRenderConfirmDialog}
+              confirmDialog={confirmDialog}
+              open={isDialog}
               variant='deleteAccount'
             />
           )
         }
         <S.IconButton
           aria-label='More'
-          aria-owns={open ? 'main-menu' : undefined}
+          aria-owns={isMenu ? 'main-menu' : undefined}
           aria-haspopup='true'
           className='s-icon-button'
           onClick={handleMenuButtonClick}
         >
           <MoreVertIcon />
         </S.IconButton>
-        {open
+        {isMenu
           && (
             <ClickAwayListener onClickAway={() => setSelected('noSelection')}>
               <Paper>
-                <ErrorBoundary>
-                  <Menu
-                    id='main-menu'
-                    anchorEl={anchorEl}
-                    open={open}
-                  >
-                    <ErrorBoundary>
-                      <MenuItem data-value='delete' onClick={() => setSelected('delete')}>
-                        <ListItemIcon>
-                          <PersonIcon />
-                        </ListItemIcon>
-                        <ListItemText inset primary='Delete Account' />
-                      </MenuItem>
-                    </ErrorBoundary>
-                    <ErrorBoundary>
-                      <MenuItem data-value='logout' onClick={() => setSelected('logout')}>
-                        <ListItemIcon>
-                          <MeetingRoomIcon />
-                        </ListItemIcon>
-                        <ListItemText inset primary='Logout' />
-                      </MenuItem>
-                    </ErrorBoundary>
-                    <ErrorBoundary>
-                      <MenuItem data-value='close' onClick={() => setSelected('noSelection')}>
-                        <ListItemIcon>
-                          <CloseIcon />
-                        </ListItemIcon>
-                        <ListItemText inset primary='Exit' />
-                      </MenuItem>
-                    </ErrorBoundary>
-                  </Menu>
-                </ErrorBoundary>
+                <Menu
+                  id='main-menu'
+                  anchorEl={anchorEl}
+                  open={isMenu}
+                >
+                  <ErrorBoundary>
+                    <MenuItem data-value='delete' onClick={() => setSelected('delete')}>
+                      <ListItemIcon>
+                        <PersonIcon />
+                      </ListItemIcon>
+                      <ListItemText inset primary='Delete Account' />
+                    </MenuItem>
+                  </ErrorBoundary>
+                  <ErrorBoundary>
+                    <MenuItem data-value='logout' onClick={() => setSelected('logout')}>
+                      <ListItemIcon>
+                        <MeetingRoomIcon />
+                      </ListItemIcon>
+                      <ListItemText inset primary='Logout' />
+                    </MenuItem>
+                  </ErrorBoundary>
+                  <ErrorBoundary>
+                    <MenuItem data-value='close' onClick={() => setSelected('noSelection')}>
+                      <ListItemIcon>
+                        <CloseIcon />
+                      </ListItemIcon>
+                      <ListItemText inset primary='Exit' />
+                    </MenuItem>
+                  </ErrorBoundary>
+                </Menu>
               </Paper>
             </ClickAwayListener>
         )}

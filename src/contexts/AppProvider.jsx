@@ -35,8 +35,8 @@ class AppProvider extends React.Component {
         const { entries } = results;
         const { locked, released } = entries;
 
-        debug('LOCKED:\n%O', locked);
-        debug('RELEASED:\n%O', released);
+        // debug('LOCKED:\n%O', locked);
+        // debug('RELEASED:\n%O', released);
 
         this.setState(state => ({
           entries,

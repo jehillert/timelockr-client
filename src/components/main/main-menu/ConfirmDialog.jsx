@@ -36,11 +36,11 @@ function ConfirmDialog(props) {
   }
 
   const handleCancelClick = () => {
-    handleConfirmDialog(false);
+    confirmDialog(false);
   };
 
   const handleConfirmClick = () => {
-    handleConfirmDialog(true);
+    confirmDialog(true);
   };
 
   return (
@@ -86,7 +86,7 @@ ConfirmDialog.defaultProps = {
 
 ConfirmDialog.propTypes = {
   buttonLabel: PropTypes.string,
-  handleConfirmDialog: PropTypes.func.isRequired,
+  confirmDialog: PropTypes.func.isRequired,
   message: PropTypes.string,
   open: PropTypes.bool.isRequired,
   title: PropTypes.string,

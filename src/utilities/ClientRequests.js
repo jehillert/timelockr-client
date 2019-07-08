@@ -1,11 +1,8 @@
-// https://flaviocopes.com/axios/ || https://www.npmjs.com/package/axios
 import * as Debug from 'debug';
 
 const axios = require('axios');
-
 const debug = Debug('src:client-requests');
 const urlBase = `${process.env.API_HOST || 'http://localhost:3000'}/api/db`;
-console.log(urlBase);
 
 // ENTRY REQUESTS
 export const deleteEntry = entryId => axios.delete(`${urlBase}/entries`, { data: { entryId } })

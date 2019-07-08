@@ -66,7 +66,6 @@ const Main = (props) => {
             <S.AppBar gridArea='appBar'>
               <S.AppBarContainer>
                 <MainMenu
-                  hasAuth={hasAuth}
                   revokeAuth={revokeAuth}
                   username={username}
                 />

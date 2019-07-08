@@ -30,10 +30,10 @@ class AuthModal extends React.Component {
     const { hasAuth } = this.props;
 
     if (hasAuth !== prevProps.hasAuth) {
-      if (hasAuth < 2) {
-        this.handleOpen();
-      } else {
+      if (hasAuth) {
         this.handleClose();
+      } else {
+        this.handleOpen();
       }
     }
   }
