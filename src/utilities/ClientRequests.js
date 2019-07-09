@@ -2,7 +2,7 @@ import * as Debug from 'debug';
 
 const axios = require('axios');
 const debug = Debug('src:client-requests');
-const urlBase = `${process.env.API_HOST || 'https://timelockr-server-demo.herokuapp.com'}/api/db`;
+const urlBase = `${process.env.API_HOST}/api/db`;
 
 // ENTRY REQUESTS
 export const deleteEntry = entryId => axios.delete(`${urlBase}/entries`, { data: { entryId } })
