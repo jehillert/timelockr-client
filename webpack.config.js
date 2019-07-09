@@ -29,7 +29,7 @@ module.exports = {
   plugins: [
     new Dotenv({ systemvars: true }),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
-    new webpack.EnvironmentPlugin({ API_HOST: 'http://localhost:3000' }),
+    new webpack.EnvironmentPlugin({ API_HOST: '//localhost:3000' }),
   ],
   devServer: { contentBase: './build' },
   resolve: {
