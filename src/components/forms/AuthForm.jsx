@@ -10,6 +10,7 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import * as EmailValidator from 'email-validator';
 import { Box, FormButton } from 'components';
+import { demoUser, demoPassword } from 'config';
 import { withStyles } from '@material-ui/core/styles';
 import Promise from 'bluebird';
 
@@ -40,8 +41,8 @@ class AuthForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: process.env.DEMO_USER || 'guest@timelockr-demo.com',
-      password: process.env.DEMO_PASSWORD || 'password',
+      username: demoUser,
+      password: demoPassword,
       // username: '',
       // password: '',
       notAnEmailAddressError: false,
@@ -65,8 +66,8 @@ class AuthForm extends React.Component {
     event.preventDefault();
     return handleSubmitAsync(username, password)
       .then(state => this.setState({
-        username: process.env.DEMO_USER,
-        password: process.env.DEMO_PASSWORD,
+        username: demoUser,
+        password: demoPassword,
         // username: '',
         // password: '',
         notAnEmailAddressError: false,

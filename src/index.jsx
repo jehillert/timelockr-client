@@ -2,12 +2,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/main/App';
+import { nodeEnv } from 'config';
 import * as serviceWorker from './serviceWorker';
 
-require('dotenv').config();
-
-if (process.env.NODE_ENV !== 'production') {
-  // localStorage.setItem('debug', 'src:components:app');
+if (nodeEnv !== 'production') {
   localStorage.setItem('debug', 'src:*');
 }
 

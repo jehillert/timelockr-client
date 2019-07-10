@@ -1,8 +1,10 @@
 import * as Debug from 'debug';
+import axios from 'axios';
+import { hostUrl } from 'config';
 
-const axios = require('axios');
 const debug = Debug('src:client-requests');
-const urlBase = `${process.env.API_HOST}/api/db`;
+
+const urlBase = `${hostUrl}/api/db`;
 
 // ENTRY REQUESTS
 export const deleteEntry = entryId => axios.delete(`${urlBase}/entries`, { data: { entryId } })

@@ -2,10 +2,11 @@
 const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   mode: 'production',
-  devtool: 'eval-source-map',
+  devtool: 'inline-source-map',
   entry: './src/index.jsx',
   output: {
     path: __dirname,
@@ -26,16 +27,19 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
   },
+  optimization: {
+    minimizer: [new TerserPlugin()],
+  },
   plugins: [
-    new Dotenv({ systemvars: true }),
+    new Dotenv(),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
-    new webpack.EnvironmentPlugin({ API_HOST: '//localhost:3000' }),
   ],
   devServer: { contentBase: './build' },
   resolve: {
     extensions: ['.js', '.jsx', '.css'],
     alias: {
       components: path.resolve(__dirname, 'src/indexes/components.jsx'),
+      config: path.resolve(__dirname, 'config.js'),
       contexts: path.resolve(__dirname, 'src/indexes/contexts.jsx'),
       theme: path.resolve(__dirname, 'src/indexes/theme.jsx'),
       utilities: path.resolve(__dirname, 'src/indexes/utilities.jsx'),
@@ -43,4 +47,5 @@ module.exports = {
   },
 };
 
-
+// webpack.EnvironmentPlugin not needed because Dotenv plugin is installed.
+// devtool: 'eval-source-map',

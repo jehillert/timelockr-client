@@ -73,7 +73,8 @@ Notes/
 *.notes
 bookmarks.json
 launch.json
-config.js
+# config.js commented out because .env file is being used
+# config.js
 
 # next.js build output
 .next

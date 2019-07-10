@@ -7,9 +7,11 @@ import { addUser, getEntries, openPopup, verifyUser } from 'utilities';
 import { defaultTheme, GlobalStyle } from 'theme';
 import { hot } from 'react-hot-loader/root';
 import { MuiPickersUtilsProvider } from 'material-ui-pickers';
+import { serverConsoleUrl } from 'config';
 import { ThemeProvider } from 'styled-components';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import MomentUtils from '@date-io/moment';
+
 
 const debug = Debug('src:components:app');
 
@@ -73,7 +75,7 @@ class App extends React.Component {
     })
 
   consolePopup = openPopup(
-    process.env.SERVER_CONSOLE_URL,
+    serverConsoleUrl,
     'TimeLockrServerDemoPopupWindow',
     500,
     415,
