@@ -14,7 +14,8 @@ S.Button = styled(Button)`
   padding: 6px 12px;
   border: 1px solid;
   line-height: 1.5;
-  background-color: ${props => props.theme.buttonBgColor1};
+  color: ${props => props.theme.textColor1};
+  background-color: ${props => props.theme.bgColor1};
   border-color: ${props => props.theme.buttonBorderColor1};
 
   font-family: [

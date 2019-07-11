@@ -16,7 +16,7 @@ S.Tabs = styled(Tabs)`
 `;
 
 S.TabList = styled(TabList)`
-  border-bottom: 1px solid ${props => props.theme.primaryColor};
+  border-bottom: 1px solid ${props => props.theme.bgColor2};
   margin: 0 0 10px;
   padding: 0;
   text-align: center;
@@ -39,13 +39,13 @@ S.Tab = styled(Tab)`
     border-top: 1px solid #C7CACD;
     border-bottom: 1px solid ${props => props.theme.backgroundColor};
     background-color: ${props => props.theme.backgroundColor};
-    color: ${props => props.theme.primaryColor};
+    color: ${props => props.theme.bgColor2};
   }
 
   :not(.react-tabs__tab--selected) {
-    border-top: 1px solid ${props => props.theme.primaryColor};
-    border-bottom: 1px solid ${props => props.theme.primaryColor};
-    background-color: ${props => props.theme.primaryColor};
+    border-top: 1px solid ${props => props.theme.bgColor1};
+    border-bottom: 1px solid ${props => props.theme.bgColor1};
+    background-color: ${props => props.theme.bgColor1};
   }
 
   :not(.react-tabs__tab--selected):hover {
