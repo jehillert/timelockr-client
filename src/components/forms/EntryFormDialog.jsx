@@ -27,11 +27,48 @@ const debug = Debug('src:components:entry-form-dialog');
 const S = {};
 
 S.Dialog = styled(Dialog)`
+  &.s-dialog {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    margin-top: 4rem;
+    align-self: flex-end;
+    justify-content: center;
+    border-radius: ${props => props.theme.dialogRadius};
+  }
+`;
+
+S.DialogTitle = styled(DialogTitle)`
+  color: ${props => props.theme.secondaryColor};
+  background: ${props => props.theme.headerFooterColor};
+`;
+
+S.DialogContent = styled(DialogContent)``;
+
+S.DialogActions = styled(DialogActions)`
+  color: ${props => props.theme.secondaryColor};
+  background: ${props => props.theme.headerFooterColor};
+`;
+
+S.TextField = styled(TextField)`
+`;
+
+// S.DatePicker = styled(DatePicker)`
+//   width: 2rem;
+// `;
+
+// S.TimePicker = styled(TimePicker)`
+//   width: 2rem;
+// `;
+
+S.TimeBox = styled(Box)`
   display: flex;
-  flex-direction: row;
-  margin-top: 4rem;
-  align-self: flex-end;
-  justify-content: center;
+  flex: nowrap;
+  justify-content: space-between;
+  & .s-time-picker {
+    margin: .75rem;
+    width: 2rem;
+  }
 `;
 
 const styles = theme => ({
@@ -108,7 +145,6 @@ class EntryFormDialog extends React.Component {
       bgOrange(releaseDate),
     );
 
-
     const newEntry = {
       userId,
       creationDate,
@@ -134,7 +170,7 @@ class EntryFormDialog extends React.Component {
       selectedTime,
     } = this.state;
     return (
-      <Box>
+      <>
         <Fab
           onClick={this.handleClickOpen}
           size='small'
@@ -151,9 +187,9 @@ class EntryFormDialog extends React.Component {
           onClose={this.handleClose}
           width='26rem'
         >
-          <DialogTitle id='form-dialog-title'>New Entry</DialogTitle>
-          <DialogContent>
-            <TextField
+          <S.DialogTitle id='form-dialog-title'>New Entry</S.DialogTitle>
+          <S.DialogContent>
+            <S.TextField
               id='description'
               autoComplete='off'
               css='margin: 8;'
@@ -166,7 +202,7 @@ class EntryFormDialog extends React.Component {
               onChange={this.handleChange}
               value={description}
             />
-            <TextField
+            <S.TextField
               id='content'
               autoComplete='off'
               fullWidth
@@ -181,20 +217,22 @@ class EntryFormDialog extends React.Component {
               onChange={this.handleChange}
               value={content}
             />
-            <Box flexWrap='nowrap'>
+            <S.TimeBox flexWrap='nowrap'>
               <>
                 <DatePicker
+                  className='s-time-picker'
                   handleDateChange={this.handleDateChange}
                   selectedDate={selectedDate}
                 />
                 <TimePicker
+                  className='s-time-picker'
                   handleTimeChange={this.handleTimeChange}
                   selectedTime={selectedTime}
                 />
               </>
-            </Box>
-          </DialogContent>
-          <DialogActions>
+            </S.TimeBox>
+          </S.DialogContent>
+          <S.DialogActions>
             <FormButton
               type='button'
               handleSubmit={this.handleClose}
@@ -209,9 +247,9 @@ class EntryFormDialog extends React.Component {
             >
               Submit
             </FormButton>
-          </DialogActions>
+          </S.DialogActions>
         </S.Dialog>
-      </Box>
+      </>
     );
   }
 }

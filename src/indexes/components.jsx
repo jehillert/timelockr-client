@@ -1,3 +1,4 @@
+export { default as App } from '../components/App';
 export { default as AuthForm } from '../components/forms/AuthForm';
 export { default as AuthModal } from '../components/forms/AuthModal';
 export { default as AuthTabs } from '../components/forms/AuthTabs';
@@ -28,3 +29,4 @@ export { StyledMuiCardContent } from '../components/cards/StyledMuiCardParts';
 export { StyledMuiCardHeader } from '../components/cards/StyledMuiCardParts';
 export { default as TimeExtensionDialog } from '../components/forms/TimeExtensionDialog';
 export { default as TimePicker } from '../components/time/TimePicker';
+export { default as AppWrapper } from '../components/AppWrapper';

@@ -34,7 +34,9 @@ class CardWrapper extends React.Component {
       show,
       shouldRenderCard,
     } = this.state;
+
     const { render } = this.props;
+
     return (
       <Box mx={1.5} my={1.5}>
         {shouldRenderCard

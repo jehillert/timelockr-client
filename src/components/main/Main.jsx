@@ -23,7 +23,7 @@ S.Middle = styled(Box)`
 `;
 
 S.AppBar = styled.div`
-  background-color: #A18664;
+  background-color: ${props => props.theme.headerFooterColor};
   justify-items: flex-end;
   height: 3rem;
   box-shadow: ${props => props.theme.boxShadow};

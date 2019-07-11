@@ -1,8 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
-import {
-  EntryFormDialog,
-} from 'components';
+import { EntryFormDialog } from 'components';
+import { ErrorBoundary } from 'utilities';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
@@ -19,13 +18,16 @@ function EntryFormDialogButton(props) {
     userId,
     username,
   } = props;
+
   return (
     <>
-      <EntryFormDialog
-        refresh={refresh}
-        userId={userId}
-        username={username}
-      />
+      <ErrorBoundary>
+        <EntryFormDialog
+          refresh={refresh}
+          userId={userId}
+          username={username}
+        />
+      </ErrorBoundary>
     </>
   );
 }

@@ -3,15 +3,11 @@ import * as Debug from 'debug';
 import React from 'react';
 import { AuthModal, Main } from 'components';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { addUser, getEntries, openPopup, verifyUser } from 'utilities';
+import { addUser, getEntries, verifyUser } from 'utilities';
 import { defaultTheme, GlobalStyle } from 'theme';
-import { hot } from 'react-hot-loader/root';
 import { MuiPickersUtilsProvider } from 'material-ui-pickers';
 import { serverConsoleUrl } from 'config';
-import { ThemeProvider } from 'styled-components';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import MomentUtils from '@date-io/moment';
-
 
 const debug = Debug('src:components:app');
 
@@ -65,7 +61,7 @@ class App extends React.Component {
       })
       .then(() => this.getEntries())
       .then(() => {
-        this.setState(state => ({ showMain: this.state.hasAuth }));
+        this.setState(state => ({ showMain: state.hasAuth }));
       })
   )
 
@@ -73,13 +69,6 @@ class App extends React.Component {
     .then((response) => {
       debug(response.data);
     })
-
-  consolePopup = openPopup(
-    serverConsoleUrl,
-    'TimeLockrServerDemoPopupWindow',
-    500,
-    415,
-  );
 
   render() {
     const {
@@ -92,43 +81,33 @@ class App extends React.Component {
 
     return (
       <>
-        <CssBaseline />
-        <GlobalStyle />
         <Router>
-          <MuiPickersUtilsProvider utils={MomentUtils}>
-            <Route
-              exact
-              path='/'
-              render={() => (
-                showMain ? (
-                  <ThemeProvider theme={defaultTheme}>
-                    <Main
-                      entries={entries}
-                      hasAuth={hasAuth}
-                      refresh={this.refresh}
-                      revokeAuth={this.revokeAuth}
-                      userId={userId}
-                      username={username}
-                    />
-                  </ThemeProvider>
-                ) : (
-                  <ThemeProvider theme={defaultTheme}>
-                    <AuthModal
-                      handleSignin={this.handleSignin}
-                      handleAddUser={this.handleAddUser}
-                      hasAuth={hasAuth}
-                    />
-                  </ThemeProvider>
-                  )
-              )}
-            />
-          </MuiPickersUtilsProvider>
+          <Route
+            exact
+            path='/'
+            render={() => (
+              showMain ? (
+                <Main
+                  entries={entries}
+                  hasAuth={hasAuth}
+                  refresh={this.refresh}
+                  revokeAuth={this.revokeAuth}
+                  userId={userId}
+                  username={username}
+                />
+              ) : (
+                <AuthModal
+                  handleSignin={this.handleSignin}
+                  handleAddUser={this.handleAddUser}
+                  hasAuth={hasAuth}
+                />
+                )
+            )}
+          />
         </Router>
       </>
     );
   }
 }
 
-export default hot(App);
-// export default hot(module)(App);
-// export default App;
+export default App;

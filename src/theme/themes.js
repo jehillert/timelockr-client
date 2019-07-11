@@ -13,6 +13,7 @@ const defaultTheme = {
   backgroundColor: 'white',
   backgroundHoverColor: '#D93646',
   backgroundBorderHoverColor: '#D93646',
+  headerFooterColor: '#A18664',
   primaryColor: '#6A6A6A',
   secondaryColor: '#202020',
   textColor1: 'white',
@@ -28,7 +29,7 @@ const defaultTheme = {
   // radius
   cardRadius: '0rem',
   backgroundBorderRadius: '0rem',
-  modalBorderRadius: '0rem',
+  dialogRadius: '0rem',
   tabBorderRadius: '0rem',
   // shadow
   boxShadow: '0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)',
