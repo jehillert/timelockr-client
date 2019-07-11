@@ -32,6 +32,7 @@ S.Dialog = styled(Dialog)`
     flex-direction: row;
     margin: 0;
     margin-top: 4rem;
+    padding: 1rem;
     align-self: flex-end;
     justify-content: center;
     border-radius: ${props => props.theme.dialogRadius};
@@ -43,7 +44,9 @@ S.DialogTitle = styled(DialogTitle)`
   background: ${props => props.theme.headerFooterColor};
 `;
 
-S.DialogContent = styled(DialogContent)``;
+S.DialogContent = styled(DialogContent)`
+  margin: 0.75rem;
+`;
 
 S.DialogActions = styled(DialogActions)`
   color: ${props => props.theme.secondaryColor};
@@ -61,11 +64,20 @@ S.TextField = styled(TextField)`
 //   width: 2rem;
 // `;
 
-S.TimeBox = styled(Box)`
+S.TimeFieldContainer = styled(Box)`
   display: flex;
   flex: nowrap;
   justify-content: space-between;
   & .s-time-picker {
+    margin: .75rem;
+    width: 2rem;
+  }
+`;
+
+S.TextFieldContainer = styled(Box)`
+  & .s-time-picker {
+    dislplay: flex;
+    justify-content: center;
     margin: .75rem;
     width: 2rem;
   }
@@ -77,10 +89,6 @@ const styles = theme => ({
   },
   fab: {
     margin: theme.spacing(),
-  },
-  textField: {
-    marginLeft: theme.spacing(),
-    marginRight: theme.spacing(),
   },
 });
 
@@ -189,35 +197,34 @@ class EntryFormDialog extends React.Component {
         >
           <S.DialogTitle id='form-dialog-title'>New Entry</S.DialogTitle>
           <S.DialogContent>
-            <S.TextField
-              id='description'
-              autoComplete='off'
-              css='margin: 8;'
-              fullWidth
-              label='Enter a description.'
-              margin='dense'
-              placeholder='(555) 555-5555'
-              variant='outlined'
-              className={classNames(classes.dense, classes.textField)}
-              onChange={this.handleChange}
-              value={description}
-            />
-            <S.TextField
-              id='content'
-              autoComplete='off'
-              fullWidth
-              label='Enter something to lock away.'
-              margin='dense'
-              multiline
-              placeholder={'Ex-girlfriend\'s phone number'}
-              rows='4'
-              rowsMax='10'
-              variant='outlined'
-              className={classNames(classes.dense, classes.textField)}
-              onChange={this.handleChange}
-              value={content}
-            />
-            <S.TimeBox flexWrap='nowrap'>
+            <S.TextFieldContainer>
+              <S.TextField
+                id='description'
+                autoComplete='off'
+                css='margin: 8;'
+                fullWidth
+                label='Enter a description.'
+                placeholder='(555) 555-5555'
+                variant='outlined'
+                onChange={this.handleChange}
+                value={description}
+              />
+              <S.TextField
+                id='content'
+                autoComplete='off'
+                fullWidth
+                label='Enter something to lock away.'
+                multiline
+                placeholder={'Ex-girlfriend\'s phone number'}
+                rows='4'
+                rowsMax='10'
+                variant='outlined'
+                onChange={this.handleChange}
+                value={content}
+              />
+            </S.TextFieldContainer>
+
+            <S.TimeFieldContainer flexWrap='nowrap'>
               <>
                 <DatePicker
                   className='s-time-picker'
@@ -230,7 +237,7 @@ class EntryFormDialog extends React.Component {
                   selectedTime={selectedTime}
                 />
               </>
-            </S.TimeBox>
+            </S.TimeFieldContainer>
           </S.DialogContent>
           <S.DialogActions>
             <FormButton

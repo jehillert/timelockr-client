@@ -16,6 +16,8 @@ const defaultTheme = {
   headerFooterColor: '#A18664',
   primaryColor: '#6A6A6A',
   secondaryColor: '#202020',
+  buttonBgColor1: '#202020',
+  buttonBorderColor1: '#202020',
   textColor1: 'white',
   textColor2: '#9D9D9D',
   // dimensions
