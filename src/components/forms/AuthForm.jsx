@@ -26,8 +26,8 @@ S.Form = styled.form`
 
 const styles = theme => ({
   textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
+    marginLeft: theme.spacing(),
+    marginRight: theme.spacing(),
   },
   dense: {
     marginTop: 16,

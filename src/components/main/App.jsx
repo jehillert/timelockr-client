@@ -74,12 +74,12 @@ class App extends React.Component {
       debug(response.data);
     })
 
-  consolePopup = openPopup(
-    serverConsoleUrl,
-    'TimeLockrServerDemoPopupWindow',
-    500,
-    415,
-  );
+  // consolePopup = openPopup(
+  //   serverConsoleUrl,
+  //   'TimeLockrServerDemoPopupWindow',
+  //   500,
+  //   415,
+  // );
 
   render() {
     const {

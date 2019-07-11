@@ -9,7 +9,7 @@ const styles = theme => ({
   paper: {
     marginTop: '4rem',
     margin: 'auto',
-    width: theme.spacing.unit * 60,
+    width: theme.spacing(60),
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     outline: 'none',

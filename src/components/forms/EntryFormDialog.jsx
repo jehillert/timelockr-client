@@ -39,11 +39,11 @@ const styles = theme => ({
     marginTop: 16,
   },
   fab: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing(),
   },
   textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
+    marginLeft: theme.spacing(),
+    marginRight: theme.spacing(),
   },
 });
 

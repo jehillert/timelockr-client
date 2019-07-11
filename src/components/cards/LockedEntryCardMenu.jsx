@@ -4,7 +4,6 @@
 */
 import * as Debug from 'debug';
 import React, { useEffect, useState } from 'react';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import CloseIcon from '@material-ui/icons/Close';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
@@ -17,6 +16,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Zoom from '@material-ui/core/Zoom';
 import { deleteEntry } from 'utilities';
 import { TimeExtensionDialog } from 'components';
 
@@ -39,12 +39,11 @@ function LockedEntryCardMenu(props) {
   const [shouldRenderDialog, setShouldRenderDialog] = useState(false);
 
   useEffect(() => {
-    // debug(`
-    //   entryId:  ${entryId}
-    //   selected: ${selected}
-    //   open:     ${open}
-    //   anchorEl: ${anchorEl}
-    // `);
+    debug(`
+      selected: ${selected}
+      open:     ${open}
+      anchorEl: ${anchorEl}
+    `);
 
     if (selected === 'extend') {
       setShouldRenderDialog(sRD => !sRD);
@@ -98,34 +97,28 @@ function LockedEntryCardMenu(props) {
       </S.IconButton>
       {open
         && (
-          <ClickAwayListener onClickAway={() => setSelected('noSelection')}>
-            <Paper>
-              <Menu
-                id='right-card-menu'
-                anchorEl={anchorEl}
-                open={open}
-              >
-                <MenuItem data-value='extend' onClick={() => setSelected('extend')}>
-                  <ListItemIcon>
-                    <HourglassEmptyIcon />
-                  </ListItemIcon>
-                  <ListItemText inset primary='Extend Time' />
-                </MenuItem>
-                <MenuItem data-value='delete' onClick={() => setSelected('delete')}>
-                  <ListItemIcon>
-                    <DeleteOutlineIcon />
-                  </ListItemIcon>
-                  <ListItemText inset primary='Delete Entry' />
-                </MenuItem>
-                <MenuItem data-value='close' onClick={() => setSelected('noSelection')}>
-                  <ListItemIcon>
-                    <CloseIcon />
-                  </ListItemIcon>
-                  <ListItemText inset primary='Exit' />
-                </MenuItem>
-              </Menu>
-            </Paper>
-          </ClickAwayListener>
+          <Paper>
+            <Menu
+              id='right-card-menu'
+              anchorEl={anchorEl}
+              open={open}
+              onClose={() => setSelected('exitActionSelected')}
+              TransitionComponent={Zoom}
+            >
+              <MenuItem data-value='extend' dense onClick={() => setSelected('extend')}>
+                <ListItemIcon><HourglassEmptyIcon /></ListItemIcon>
+                <ListItemText primary='Extend Time' />
+              </MenuItem>
+              <MenuItem data-value='delete' dense onClick={() => setSelected('delete')}>
+                <ListItemIcon><DeleteOutlineIcon /></ListItemIcon>
+                <ListItemText primary='Delete Entry' />
+              </MenuItem>
+              <MenuItem data-value='close' dense onClick={() => setSelected('noSelection')}>
+                <ListItemIcon><CloseIcon /></ListItemIcon>
+                <ListItemText primary='Exit' />
+              </MenuItem>
+            </Menu>
+          </Paper>
         )}
     </>
   );

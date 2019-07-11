@@ -7,7 +7,6 @@ import {
   CardWrapper,
   Header,
 } from 'components';
-import { ErrorBoundary } from 'utilities';
 
 const debug = Debug('src:components:app:card-area-tabs:card-area');
 
@@ -49,14 +48,12 @@ const CardArea = (props) => {
             key={entry.entryId.toString()}
             delay={index * delayIncrement}
             render={wrapper => (
-              <ErrorBoundary>
                 <Card
                   key={entry.entryId.toString()}
                   wrapper={wrapper}
                   entry={entry}
                   refresh={refresh}
                 />
-              </ErrorBoundary>
             )}
           />
         ))

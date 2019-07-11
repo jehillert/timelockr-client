@@ -1,10 +1,10 @@
 import * as Debug from 'debug';
 import React, { useEffect, useState } from 'react';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import CloseIcon from '@material-ui/icons/Close';
 import PersonIcon from '@material-ui/icons/Person';
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import IconButton from '@material-ui/core/IconButton';
+import Zoom from '@material-ui/core/Zoom';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Menu from '@material-ui/core/Menu';
@@ -29,10 +29,9 @@ S.IconButton = styled(IconButton)`
 const MainMenu = (props) => {
   const { revokeAuth, username } = props;
   const [anchorEl, setAnchorEl] = useState(null);
-  const [isMenu, setMenuState] = useState(false);
+  const [menuShouldRender, setMenuState] = useState(false);
   const [selected, setSelected] = useState('');
-  const [isConfirmed, setConfirm] = useState(false);
-  const [isDialog, setDialogState] = useState(false);
+  const [dialogShouldRender, setDialogState] = useState(false);
 
   useEffect(() => {
     debug(`selected: ${selected}`);
@@ -53,91 +52,78 @@ const MainMenu = (props) => {
     };
   }, [selected, revokeAuth]);
 
-  // useEffect(() => {
-  //   if (isConfirmed) {
-  //     deleteUser(username);
-  //   }
-  // }, [isDialog]);
-
   const handleMenuButtonClick = (event) => {
     debug(`
-      event:     ${event.currentTarget}
-      isMenu: ${isMenu}
+      event: ${event.currentTarget}
+      menuShouldRender: ${menuShouldRender}
     `);
     setAnchorEl(event.currentTarget);
     setMenuState(true);
   };
-
-  // const handleConfirmDialog = (isConfirmed) => {
-  //   setConfirm(isConfirmed);
-  //   if (isConfirmed) {
-  //     deleteUser(username);
-  //   }
-  // };
 
   const confirmDialog = (isConfirmed) => {
     setDialogState(false);
     if (isConfirmed) {
       deleteUser(username);
     }
-  }
+  };
 
     return (
       <>
-        {isDialog
+        {dialogShouldRender
           && (
             <ConfirmDialog
               confirmDialog={confirmDialog}
-              open={isDialog}
+              open={dialogShouldRender}
               variant='deleteAccount'
             />
           )
         }
         <S.IconButton
           aria-label='More'
-          aria-owns={isMenu ? 'main-menu' : undefined}
+          aria-owns={menuShouldRender ? 'main-menu' : undefined}
           aria-haspopup='true'
           className='s-icon-button'
           onClick={handleMenuButtonClick}
         >
           <MoreVertIcon />
         </S.IconButton>
-        {isMenu
+        {menuShouldRender
           && (
-            <ClickAwayListener onClickAway={() => setSelected('noSelection')}>
-              <Paper>
-                <Menu
-                  id='main-menu'
-                  anchorEl={anchorEl}
-                  open={isMenu}
-                >
-                  <ErrorBoundary>
-                    <MenuItem data-value='delete' onClick={() => setSelected('delete')}>
-                      <ListItemIcon>
-                        <PersonIcon />
-                      </ListItemIcon>
-                      <ListItemText inset primary='Delete Account' />
-                    </MenuItem>
-                  </ErrorBoundary>
-                  <ErrorBoundary>
-                    <MenuItem data-value='logout' onClick={() => setSelected('logout')}>
-                      <ListItemIcon>
-                        <MeetingRoomIcon />
-                      </ListItemIcon>
-                      <ListItemText inset primary='Logout' />
-                    </MenuItem>
-                  </ErrorBoundary>
-                  <ErrorBoundary>
-                    <MenuItem data-value='close' onClick={() => setSelected('noSelection')}>
-                      <ListItemIcon>
-                        <CloseIcon />
-                      </ListItemIcon>
-                      <ListItemText inset primary='Exit' />
-                    </MenuItem>
-                  </ErrorBoundary>
-                </Menu>
-              </Paper>
-            </ClickAwayListener>
+            <Paper>
+              <Menu
+                id='main-menu'
+                anchorEl={anchorEl}
+                open={menuShouldRender}
+                onClose={() => setSelected('exitActionSelected')}
+                TransitionComponent={Zoom}
+              >
+                <ErrorBoundary>
+                  <MenuItem data-value='delete' dense onClick={() => setSelected('delete')}>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary='Delete Account' />
+                  </MenuItem>
+                </ErrorBoundary>
+                <ErrorBoundary>
+                  <MenuItem data-value='logout' dense onClick={() => setSelected('logout')}>
+                    <ListItemIcon>
+                      <MeetingRoomIcon />
+                    </ListItemIcon>
+                    <ListItemText primary='Logout' />
+                  </MenuItem>
+                </ErrorBoundary>
+                <ErrorBoundary>
+                  <MenuItem data-value='close' dense onClick={() => setSelected('noSelection')}>
+                    <ListItemIcon>
+                      <CloseIcon />
+                    </ListItemIcon>
+                    <ListItemText primary='Exit' />
+                  </MenuItem>
+                </ErrorBoundary>
+              </Menu>
+            </Paper>
         )}
       </>
   );

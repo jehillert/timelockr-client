@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 const styles = theme => ({
   fab: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing(),
   },
 });
 

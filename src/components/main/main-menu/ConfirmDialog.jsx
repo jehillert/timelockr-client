@@ -11,6 +11,7 @@ import { FormButton } from 'components';
 function ConfirmDialog(props) {
   const {
     buttonLabel,
+    confirmDialog,
     handleConfirmDialog,
     message,
     open,
@@ -45,9 +46,7 @@ function ConfirmDialog(props) {
 
   return (
     <div>
-      <Dialog
-        open={open}
-      >
+      <Dialog open={open}>
         <DialogTitle>
           {ttl || title}
         </DialogTitle>
@@ -59,14 +58,14 @@ function ConfirmDialog(props) {
         <DialogActions>
           <FormButton
             type='button'
-            handleClick={handleCancelClick}
+            handleSubmit={handleCancelClick}
             color='primary'
           >
             Cancel
           </FormButton>
           <FormButton
             type='submit'
-            handleClick={handleConfirmClick}
+            handleSubmit={handleConfirmClick}
             color='primary'
           >
             {bttnlbl || buttonLabel}

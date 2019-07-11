@@ -6,6 +6,9 @@ import { Box } from 'components';
 const S = {};
 
 S.LeftSide = styled.div`
+  @media (max-width: 704px) {
+      display: none;
+  }
   background-color: ${props => props.theme.secondaryColor};
   box-shadow: ${props => props.theme.rightBoxShadow};
   color: ${props => props.theme.textColor2};

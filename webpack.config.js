@@ -49,3 +49,9 @@ module.exports = {
 
 // webpack.EnvironmentPlugin not needed because Dotenv plugin is installed.
 // devtool: 'eval-source-map',
+
+/*
+  PLUGIN DESCRIPTIONS
+    NpmInstallWebpackPlugin: Automatically instal & save dependencies.
+*/
+
