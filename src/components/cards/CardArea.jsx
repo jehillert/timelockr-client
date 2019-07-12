@@ -19,6 +19,7 @@ S.CardArea = styled(Box)`
   margin: auto;
   margin-top: 1rem;
   max-width: ${props => props.theme.cardAreaWidth};
+  align-self: stretch;
 `;
 
 const CardArea = (props) => {
