@@ -12,10 +12,12 @@ const debug = Debug('src:components:app:card-area-tabs:card-area');
 
 const S = {};
 
+// padding at bottom lets cards slide up past bottom edge of last card
 S.CardArea = styled(Box)`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  padding-bottom: 100vh;
   margin: auto;
   margin-top: 1rem;
   max-width: ${props => props.theme.cardAreaWidth};

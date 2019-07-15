@@ -9,6 +9,7 @@ import { Box } from 'components';
 class CardWrapper extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       shouldRenderCard: false,
       show: false,

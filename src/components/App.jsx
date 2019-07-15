@@ -6,8 +6,9 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { addUser, getEntries, verifyUser } from 'utilities';
 import { defaultTheme, GlobalStyle } from 'theme';
 import { MuiPickersUtilsProvider } from 'material-ui-pickers';
-import { serverConsoleUrl } from 'config';
 import MomentUtils from '@date-io/moment';
+import { serverConsoleUrl } from 'config';
+import { closeConsole, openConsole } from './AppConsole';
 
 const debug = Debug('src:components:app');
 
@@ -35,6 +36,21 @@ class App extends React.Component {
       .then((results) => {
         this.setState((state, props) => ({ entries: results.entries }));
       });
+  }
+
+  componentDidMount() {
+    this.setState({
+      AppConsole: openConsole(
+        serverConsoleUrl,
+        'TimeLockrServerDemoPopupWindow',
+        500,
+        415,
+      ),
+    });
+  }
+
+  componentWillUnmount() {
+    closeConsole();
   }
 
   refresh = () => (

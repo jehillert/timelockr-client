@@ -13,13 +13,13 @@ import TextField from '@material-ui/core/TextField';
 import moment from 'moment';
 import styled from 'styled-components';
 import { createEntry } from 'utilities';
+import { withStyles } from '@material-ui/core/styles';
 import {
   Box,
   DatePicker,
   FormButton,
   TimePicker,
 } from 'components';
-import { withStyles } from '@material-ui/core/styles';
 
 const bgOrange = chalk.hex('#000000').bgHex('#38A53C');
 const debug = Debug('src:components:entry-form-dialog');
@@ -169,7 +169,6 @@ class EntryFormDialog extends React.Component {
   handleTimeChange = time => this.setState({ selectedTime: time });
 
   render() {
-    const { classes } = this.props;
     const {
       content,
       description,
@@ -184,7 +183,6 @@ class EntryFormDialog extends React.Component {
           size='small'
           color='primary'
           aria-label='New Entry'
-          className={classes.fab}
         >
           <AddIcon />
         </Fab>
@@ -262,7 +260,6 @@ class EntryFormDialog extends React.Component {
 }
 
 EntryFormDialog.propTypes = {
-  classes: PropTypes.object.isRequired,
   refresh: PropTypes.func.isRequired,
   userId: PropTypes.number.isRequired,
 };

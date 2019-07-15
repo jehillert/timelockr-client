@@ -6,7 +6,7 @@ import { Box } from 'components';
 const S = {};
 
 S.LeftSide = styled.div`
-  @media (max-width: 704px) {
+  @media (max-width: 46rem) {
       display: none;
   }
   background-color: ${props => props.theme.secondaryColor};
@@ -21,12 +21,18 @@ S.LeftSide = styled.div`
   z-index: 2;
 `;
 
+S.Title = styled.h2`
+  @media (max-width: 66rem) {
+    display: none;
+  }
+`;
+
 const LeftSide = (props) => {
   const { children, gridArea, title } = props;
   return (
     <S.LeftSide gridArea={gridArea}>
       {title && (
-        <h2>{title}</h2>
+        <S.Title>{title}</S.Title>
       )}
       {children}
     </S.LeftSide>

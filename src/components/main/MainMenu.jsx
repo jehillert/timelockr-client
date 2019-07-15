@@ -13,7 +13,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { ErrorBoundary, deleteUser } from 'utilities';
+import { ErrorBoundary, deleteUser, logout } from 'utilities';
 import { ConfirmDialog } from 'components';
 
 const debug = Debug('src:components:main-menu');
@@ -41,8 +41,7 @@ const MainMenu = (props) => {
     }
 
     if (selected === 'logout') {
-      debug('logging out');
-      revokeAuth();
+      logout().then(() => revokeAuth());
     }
 
     return () => {
@@ -68,64 +67,64 @@ const MainMenu = (props) => {
     }
   };
 
-    return (
-      <>
-        {dialogShouldRender
-          && (
-            <ConfirmDialog
-              confirmDialog={confirmDialog}
-              open={dialogShouldRender}
-              variant='deleteAccount'
-            />
-          )
-        }
-        <S.IconButton
-          aria-label='More'
-          aria-owns={menuShouldRender ? 'main-menu' : undefined}
-          aria-haspopup='true'
-          className='s-icon-button'
-          onClick={handleMenuButtonClick}
-        >
-          <MoreVertIcon />
-        </S.IconButton>
-        {menuShouldRender
-          && (
-            <Paper>
-              <Menu
-                id='main-menu'
-                anchorEl={anchorEl}
-                open={menuShouldRender}
-                onClose={() => setSelected('exitActionSelected')}
-                TransitionComponent={Zoom}
-              >
-                <ErrorBoundary>
-                  <MenuItem data-value='delete' dense onClick={() => setSelected('delete')}>
-                    <ListItemIcon>
-                      <PersonIcon />
-                    </ListItemIcon>
-                    <ListItemText primary='Delete Account' />
-                  </MenuItem>
-                </ErrorBoundary>
-                <ErrorBoundary>
-                  <MenuItem data-value='logout' dense onClick={() => setSelected('logout')}>
-                    <ListItemIcon>
-                      <MeetingRoomIcon />
-                    </ListItemIcon>
-                    <ListItemText primary='Logout' />
-                  </MenuItem>
-                </ErrorBoundary>
-                <ErrorBoundary>
-                  <MenuItem data-value='close' dense onClick={() => setSelected('noSelection')}>
-                    <ListItemIcon>
-                      <CloseIcon />
-                    </ListItemIcon>
-                    <ListItemText primary='Exit' />
-                  </MenuItem>
-                </ErrorBoundary>
-              </Menu>
-            </Paper>
-        )}
-      </>
+  return (
+    <>
+      {dialogShouldRender
+        && (
+          <ConfirmDialog
+            confirmDialog={confirmDialog}
+            open={dialogShouldRender}
+            variant='deleteAccount'
+          />
+        )
+      }
+      <S.IconButton
+        aria-label='More'
+        aria-owns={menuShouldRender ? 'main-menu' : undefined}
+        aria-haspopup='true'
+        className='s-icon-button'
+        onClick={handleMenuButtonClick}
+      >
+        <MoreVertIcon />
+      </S.IconButton>
+      {menuShouldRender
+        && (
+          <Paper>
+            <Menu
+              id='main-menu'
+              anchorEl={anchorEl}
+              open={menuShouldRender}
+              onClose={() => setSelected('exitActionSelected')}
+              TransitionComponent={Zoom}
+            >
+              <ErrorBoundary>
+                <MenuItem data-value='delete' dense onClick={() => setSelected('delete')}>
+                  <ListItemIcon>
+                    <PersonIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='Delete Account' />
+                </MenuItem>
+              </ErrorBoundary>
+              <ErrorBoundary>
+                <MenuItem data-value='logout' dense onClick={() => setSelected('logout')}>
+                  <ListItemIcon>
+                    <MeetingRoomIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='Logout' />
+                </MenuItem>
+              </ErrorBoundary>
+              <ErrorBoundary>
+                <MenuItem data-value='close' dense onClick={() => setSelected('noSelection')}>
+                  <ListItemIcon>
+                    <CloseIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='Exit' />
+                </MenuItem>
+              </ErrorBoundary>
+            </Menu>
+          </Paper>
+      )}
+    </>
   );
 };
 

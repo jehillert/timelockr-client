@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const S = {};
 
 S.RightSide = styled(Box)`
-  @media (max-width: 704px) {
+  @media (max-width: 46rem) {
       display: none;
   }
   background-color: ${props => props.theme.secondaryColor};
@@ -18,11 +18,20 @@ S.RightSide = styled(Box)`
   z-index: 2;
 `;
 
+S.ButtonBox = styled(Box)`
+  @media (max-width: 51rem) {
+    display: none;
+  }
+  padding: ${props => props.theme.sp};
+`;
+
 const RightSide = (props) => {
   const { children, gridArea } = props;
   return (
-    <S.RightSide gridArea={gridArea}>
-      {children}
+    <S.RightSide className='s-right-side' gridArea={gridArea}>
+      <S.ButtonBox>
+        {children}
+      </S.ButtonBox>
     </S.RightSide>
   );
 };

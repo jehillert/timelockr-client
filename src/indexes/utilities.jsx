@@ -4,6 +4,7 @@ export {
   deleteEntry,
   extendReleaseDate,
   getEntries,
+  logout,
   verifyUser,
   deleteUser
 } from '../utilities/ClientRequests';

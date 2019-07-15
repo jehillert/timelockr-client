@@ -64,6 +64,10 @@ export const deleteUser = user => axios.post(`${urlBase}/signup`, {
     .then(res => debug(res.data))
     .catch(err => debug(err));
 
+export const logout = () => axios.get(`${urlBase}/logout`)
+  .then(res => debug(res.data))
+  .catch(err => debug(err));
+
 export const verifyUser = (user, pass) => axios.post(`${urlBase}/signin`, {
     username: user,
     password: pass,

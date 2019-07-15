@@ -5,22 +5,19 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {
   EntryFormDialogButton,
+  EntryFormDialog,
   Box,
   CardAreaTabs,
   LeftSide,
   MainMenu,
   RightSide,
 } from 'components';
-import { ErrorBoundary } from 'utilities';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
 const debug = Debug('src:components:app:main');
 
 const S = {};
-
-S.Middle = styled(Box)`
-  grid-column: 2;
-  width: 44rem;
-`;
 
 S.AppBar = styled.div`
   background-color: ${props => props.theme.headerFooterColor};
@@ -38,6 +35,28 @@ S.AppBarContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   padding: 0 0.25rem 0 1rem;
+`;
+
+S.FabBox = styled.div`
+  @media (min-width: 51rem) {
+    display: none;
+  }
+`;
+
+S.CardArea = styled.div`
+  grid-area: ${props => props.gridArea};
+`;
+
+S.Fab = styled(Fab)`
+  position: fixed;
+  bottom: 50px;
+  left: 50%;
+  margin-left: 16.5rem;
+`;
+
+S.Middle = styled(Box)`
+  grid-column: 2;
+  width: 44rem;
 `;
 
 S.EntryFormDialogButton = styled(props => <EntryFormDialogButton {...props} />)`
@@ -61,30 +80,43 @@ const Main = (props) => {
     <Box className='grid-desktop'>
       <LeftSide gridArea='leftSide' title='TimeLockr' />
         <S.Middle>
-          <ErrorBoundary>
-            <S.AppBar gridArea='appBar'>
-              <S.AppBarContainer>
-                <MainMenu
-                  revokeAuth={revokeAuth}
-                  username={username}
-                />
-              </S.AppBarContainer>
-            </S.AppBar>
-          </ErrorBoundary>
-          <ErrorBoundary>
+          <S.AppBar gridArea='appBar'>
+            <S.AppBarContainer>
+              <MainMenu
+                revokeAuth={revokeAuth}
+                username={username}
+              />
+            </S.AppBarContainer>
+          </S.AppBar>
+          <S.CardArea gridArea='cardArea'>
             <CardAreaTabs
               id='card-area-tabs'
-              gridArea='cardArea'
               entries={entries}
               refresh={refresh}
             />
-          </ErrorBoundary>
+            <S.FabBox>
+              <S.Fab
+                size='medium'
+                color='secondary'
+              >
+                <AddIcon />
+              </S.Fab>
+            </S.FabBox>
+          </S.CardArea>
         </S.Middle>
       <RightSide gridArea='rightSide'>
-          <S.EntryFormDialogButton {...props} />
+        <S.EntryFormDialogButton {...props} />
       </RightSide>
     </Box>
   );
+};
+
+S.AppBar.propTypes = {
+  gridArea: PropTypes.string.isRequired,
+};
+
+S.CardArea.propTypes = {
+  gridArea: PropTypes.string.isRequired,
 };
 
 Main.defaultProps = {

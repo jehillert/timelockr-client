@@ -14,12 +14,7 @@ import {
 import { ErrorBoundary } from 'utilities';
 
 const debug = Debug('src:components:app:card-area-tabs');
-
 const S = {};
-
-S.Div = styled.div`
-  grid-area: ${props => props.gridArea};
-`;
 
 S.VerticallyScrollableArea = styled.div`
   height: 89.9vh;
@@ -42,7 +37,6 @@ function CardAreaTabs(props) {
   // const windowSize = useWindowSize();
   const {
     entries,
-    gridArea,
     refresh,
     theme,
   } = props;
@@ -56,7 +50,7 @@ function CardAreaTabs(props) {
   // debug('RELEASED:\n%O', entries.released);
 
   return (
-    <S.Div gridArea={gridArea}>
+    <>
       <ErrorBoundary>
         <S.Tabs
           value={value}
@@ -98,7 +92,7 @@ function CardAreaTabs(props) {
           </S.VerticallyScrollableArea>
         </ErrorBoundary>
       </SwipeableViews>
-    </S.Div>
+    </>
   );
 }
 
@@ -109,14 +103,9 @@ CardAreaTabs.propTypes = {
     locked: PropTypes.array,
     released: PropTypes.array,
   }).isRequired,
-  gridArea: PropTypes.string.isRequired,
   refresh: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   theme: PropTypes.object.isRequired,
-};
-
-S.Div.propTypes = {
-  gridArea: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(CardAreaTabs);
