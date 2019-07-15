@@ -13,7 +13,6 @@ export { default as ConfirmDialog } from '../components/main/main-menu/ConfirmDi
 export { default as LinearProgressWithDates } from '../components/time/LinearProgressWithDates';
 export { default as DatePicker } from '../components/time/DatePicker';
 export { default as EntryFormDialog } from '../components/forms/EntryFormDialog';
-export { default as EntryFormDialogButton } from '../components/forms/EntryFormDialogButton';
 export { default as FormButton } from '../components/misc/FormButton';
 export { default as Header } from '../components/misc/Header';
 export { default as IncrementInput } from '../components/misc/IncrementInput';
@@ -21,7 +20,7 @@ export { default as LeftSide } from '../components/sides/LeftSide';
 export { default as LockedEntryCard } from '../components/cards/LockedEntryCard';
 export { default as LockedEntryCardMenu } from '../components/cards/LockedEntryCardMenu';
 export { default as Main } from '../components/main/Main';
-export { default as MainMenu } from '../components/main/MainMenu';
+export { default as MainMenu } from '../components/main/main-menu/MainMenu';
 export { default as ReleasedEntryCard } from '../components/cards/ReleasedEntryCard';
 export { default as RightSide } from '../components/sides/RightSide';
 export { StyledMuiCard } from '../components/cards/StyledMuiCardParts';

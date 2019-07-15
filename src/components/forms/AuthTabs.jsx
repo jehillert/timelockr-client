@@ -37,8 +37,8 @@ S.Tab = styled(Tab)`
 
   &.react-tabs__tab--selected {
     border-top: 1px solid #C7CACD;
-    border-bottom: 1px solid ${props => props.theme.backgroundColor};
-    background-color: ${props => props.theme.backgroundColor};
+    border-bottom: 1px solid ${props => props.theme.lightColor};
+    background-color: ${props => props.theme.lightColor};
     color: ${props => props.theme.bgColor2};
   }
 

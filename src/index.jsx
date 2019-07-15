@@ -6,7 +6,7 @@ import { nodeEnv } from 'config';
 import * as serviceWorker from './serviceWorker';
 
 if (nodeEnv !== 'production') {
-  localStorage.setItem('debug', 'src:*');
+  localStorage.setItem('debug', '-*');
 }
 
 const HotApp = (

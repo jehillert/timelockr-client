@@ -117,7 +117,7 @@ class App extends React.Component {
                   handleAddUser={this.handleAddUser}
                   hasAuth={hasAuth}
                 />
-                )
+              )
             )}
           />
         </Router>

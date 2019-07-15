@@ -16,7 +16,7 @@ S.Button = styled(Button)`
   line-height: 1.5;
   color: ${props => props.theme.textColor1};
   background-color: ${props => props.theme.bgColor1};
-  border-color: ${props => props.theme.buttonBorderColor1};
+  border-color: ${props => props.theme.borderColor1};
 
   font-family: [
     '-apple-system',
@@ -31,9 +31,10 @@ S.Button = styled(Button)`
     'Segoe UI Symbol',
   ];
 
-  hover: {
-    background-color: #D93646;
-    border-color: #D93646;
+  :hover {
+    background-color: ${props => props.theme.hoverColor};
+    border-color: ${props => props.theme.hoverColor};
+    color: ${props => props.theme.hoverFontColor};
   }
 
   active: {

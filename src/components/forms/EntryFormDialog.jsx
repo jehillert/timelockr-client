@@ -2,13 +2,11 @@ import * as Debug from 'debug';
 import chalk from 'chalk';
 import React from 'react';
 import PropTypes from 'prop-types';
-import AddIcon from '@material-ui/icons/Add';
 import classNames from 'classnames';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Fab from '@material-ui/core/Fab';
 import TextField from '@material-ui/core/TextField';
 import moment from 'moment';
 import styled from 'styled-components';
@@ -100,7 +98,6 @@ class EntryFormDialog extends React.Component {
       content: '',
       selectedDate: new Date(),
       selectedTime: new Date(),
-      open: false,
     };
   }
 
@@ -108,20 +105,18 @@ class EntryFormDialog extends React.Component {
     this.setState({ [e.target.id]: e.target.value })
   )
 
-  handleClickOpen = () => {
-    this.setState({
-      description: '',
-      content: '',
-      selectedDate: new Date(),
-      selectedTime: new Date(),
-    });
-
-    this.setState({ open: true });
+  handleClose = () => {
+    const { closeDialog } = this.props;
+    this.setState(
+      {
+        description: '',
+        content: '',
+        selectedDate: new Date(),
+        selectedTime: new Date(),
+      },
+      () => closeDialog()
+    );
   }
-
-  handleClose = () => (
-    this.setState({ open: false })
-  )
 
   handleDateChange = date => (
     this.setState({ selectedDate: date })
@@ -169,23 +164,15 @@ class EntryFormDialog extends React.Component {
   handleTimeChange = time => this.setState({ selectedTime: time });
 
   render() {
+    const { open } = this.props;
     const {
       content,
       description,
-      open,
       selectedDate,
       selectedTime,
     } = this.state;
     return (
       <>
-        <Fab
-          onClick={this.handleClickOpen}
-          size='small'
-          color='primary'
-          aria-label='New Entry'
-        >
-          <AddIcon />
-        </Fab>
         <S.Dialog
           aria-labelledby='form-dialog-title'
           className='s-dialog'
@@ -260,8 +247,11 @@ class EntryFormDialog extends React.Component {
 }
 
 EntryFormDialog.propTypes = {
+  closeDialog: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
   refresh: PropTypes.func.isRequired,
   userId: PropTypes.number.isRequired,
+  username: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(EntryFormDialog);

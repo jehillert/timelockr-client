@@ -1,10 +1,10 @@
-/* eslint-disable react/jsx-indent */
 import * as Debug from 'debug';
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
 import styled from 'styled-components';
 import {
-  EntryFormDialogButton,
   EntryFormDialog,
   Box,
   CardAreaTabs,
@@ -12,8 +12,6 @@ import {
   MainMenu,
   RightSide,
 } from 'components';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
 
 const debug = Debug('src:components:app:main');
 
@@ -37,8 +35,15 @@ S.AppBarContainer = styled.div`
   padding: 0 0.25rem 0 1rem;
 `;
 
-S.FabBox = styled.div`
+S.InsideFabBox = styled.div`
   @media (min-width: 51rem) {
+    display: none;
+  }
+`;
+
+S.OutsideFabBox = styled.div`
+  margin-top: 1rem;
+  @media (max-width: 51rem) {
     display: none;
   }
 `;
@@ -47,7 +52,15 @@ S.CardArea = styled.div`
   grid-area: ${props => props.gridArea};
 `;
 
-S.Fab = styled(Fab)`
+S.OutsideFab = styled(Fab)`
+  background-color: ${props => props.theme.accentColor};
+  color: ${props => props.theme.lightColor};
+  :hover {
+    background-color: ${props => props.theme.hoverColor};
+  }
+`;
+
+S.InsideFab = styled(S.OutsideFab)`
   position: fixed;
   bottom: 50px;
   left: 50%;
@@ -59,55 +72,89 @@ S.Middle = styled(Box)`
   width: 44rem;
 `;
 
-S.EntryFormDialogButton = styled(props => <EntryFormDialogButton {...props} />)`
-  display: grid;
-  margin-top: 1rem;
-`;
-
 const Main = (props) => {
+
   const {
     entries,
     hasAuth,
     refresh,
     revokeAuth,
+    userId,
     username,
   } = props;
+
+  const [dialogShouldRender, setDialogState] = useState(false);
+
+  // Clicking FAB opens 'EntryFormDialog'
+  const handleClick = () => setDialogState(true);
+
+  // Callback for closing 'EntryFormDialog'
+  const closeDialog = () => setDialogState(false);
+
+  const OutsideFab = (
+    <S.OutsideFab
+      aria-label='Add'
+      size='medium'
+      onClick={handleClick}
+    >
+      <AddIcon />
+    </S.OutsideFab>
+  );
+
+  const InsideFab = (
+    <S.InsideFab
+      aria-label='Add'
+      color='secondary'
+      size='medium'
+      onClick={handleClick}
+    >
+      <AddIcon />
+    </S.InsideFab>
+  );
 
   debug('LOCKED.jsx:\n%O', entries.locked);
   debug('RELEASED:\n%O', entries.released);
 
   return (
-    <Box className='grid-desktop'>
-      <LeftSide gridArea='leftSide' title='TimeLockr' />
-        <S.Middle>
-          <S.AppBar gridArea='appBar'>
-            <S.AppBarContainer>
-              <MainMenu
-                revokeAuth={revokeAuth}
-                username={username}
+    <>
+      {dialogShouldRender && (
+        <EntryFormDialog
+          closeDialog={closeDialog}
+          open={dialogShouldRender}
+          refresh={refresh}
+          userId={userId}
+          username={username}
+        />
+      )}
+      <Box className='grid-desktop'>
+        <LeftSide gridArea='leftSide' title='TimeLockr' />
+          <S.Middle>
+            <S.AppBar gridArea='appBar'>
+              <S.AppBarContainer>
+                <MainMenu
+                  revokeAuth={revokeAuth}
+                  username={username}
+                />
+              </S.AppBarContainer>
+            </S.AppBar>
+            <S.CardArea gridArea='cardArea'>
+              <CardAreaTabs
+                id='card-area-tabs'
+                entries={entries}
+                refresh={refresh}
               />
-            </S.AppBarContainer>
-          </S.AppBar>
-          <S.CardArea gridArea='cardArea'>
-            <CardAreaTabs
-              id='card-area-tabs'
-              entries={entries}
-              refresh={refresh}
-            />
-            <S.FabBox>
-              <S.Fab
-                size='medium'
-                color='secondary'
-              >
-                <AddIcon />
-              </S.Fab>
-            </S.FabBox>
-          </S.CardArea>
-        </S.Middle>
-      <RightSide gridArea='rightSide'>
-        <S.EntryFormDialogButton {...props} />
-      </RightSide>
-    </Box>
+              <S.InsideFabBox>
+                {InsideFab}
+              </S.InsideFabBox>
+            </S.CardArea>
+          </S.Middle>
+        <RightSide gridArea='rightSide'>
+          <S.OutsideFabBox>
+            {OutsideFab}
+          </S.OutsideFabBox>
+        </RightSide>
+      </Box>
+    </>
   );
 };
 

@@ -1,15 +1,16 @@
 const defaultTheme = {
   // COLORS
-  accentColor: '#D93646',
-  backgroundColor: 'white',
-  backgroundHoverColor: '#D93646',
+  accentColor: '#B81205',
   backgroundBorderHoverColor: '#D93646',
-  headerFooterColor: '#A18664',
-  primaryColor: '#6A6A6A',
-  secondaryColor: '#202020',
+  lightColor: 'white',
+  backgroundHoverColor: '#D93646',
   bgColor1: '#202020',
   bgColor2: '#6A6A6A',
-  buttonBorderColor1: '#202020',
+  borderColor1: '#202020',
+  headerFooterColor: '#A18664',
+  hoverColor: '#D93646',
+  hoverFontColor: 'white',
+  secondaryColor: '#202020',
   textColor1: 'white',
   textColor2: '#9D9D9D',
   // DIMENSIONS - Cards
