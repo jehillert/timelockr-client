@@ -1,4 +1,11 @@
 const defaultTheme = {
+  // BREAK POINTS: [1] title ==> [2] button ==> [3] 2 columns ==> [4] single column)
+  bp1: '66rem',
+  bp2: 'rem',
+  bp3: '46rem',
+  bp4: 'rem',
+  bp5: 'rem',
+
   // COLORS
   accentColor: '#B81205',
   backgroundBorderHoverColor: '#D93646',

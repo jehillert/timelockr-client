@@ -3,7 +3,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import MomentUtils from '@date-io/moment';
 import PropTypes from 'prop-types';
 import { defaultTheme, GlobalStyle } from 'theme';
-import { hot } from 'react-hot-loader/root';
 import { MuiPickersUtilsProvider } from 'material-ui-pickers';
 import { serverConsoleUrl } from 'config';
 import { StylesProvider } from '@material-ui/styles';
@@ -34,7 +33,7 @@ class AppWrapper extends React.Component {
   }
 
   render() {
-    const { render } = this.props;
+    const { children } = this.props;
 
     return (
       <>
@@ -43,7 +42,7 @@ class AppWrapper extends React.Component {
         <StylesProvider injectFirst>
           <ThemeProvider theme={defaultTheme}>
             <MuiPickersUtilsProvider utils={MomentUtils}>
-              {render(this.state)}
+              {children}
             </MuiPickersUtilsProvider>
           </ThemeProvider>
         </StylesProvider>
@@ -52,8 +51,13 @@ class AppWrapper extends React.Component {
   }
 }
 
-AppWrapper.propTypes = {
-  render: PropTypes.func.isRequired,
+AppWrapper.defaultProps = {
+  children: null,
 };
 
-export default hot(AppWrapper);
+AppWrapper.propTypes = {
+  children: PropTypes.node,
+};
+
+export default AppWrapper;
+

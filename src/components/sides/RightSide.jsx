@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const S = {};
 
 S.RightSide = styled(Box)`
-  @media (max-width: 46rem) {
+  @media (max-width: ${props => props.theme.bp3};) {
       display: none;
   }
   background-color: ${props => props.theme.secondaryColor};

@@ -6,7 +6,7 @@ import { Box } from 'components';
 const S = {};
 
 S.LeftSide = styled.div`
-  @media (max-width: 46rem) {
+  @media (max-width: ${props => props.theme.bp3}) {
       display: none;
   }
   background-color: ${props => props.theme.secondaryColor};
@@ -16,13 +16,13 @@ S.LeftSide = styled.div`
   grid-area: ${props => props.gridArea};
   justify-content: flex-end;
   overflow: visible;
-  padding-right: 1rem;
-  padding-top: 1rem;
-  z-index: 2;
+  padding-right: ${props => props.theme.sp} * 2;
+  padding-top: ${props => props.theme.sp} * 2;
+  z-index: 4;
 `;
 
 S.Title = styled.h2`
-  @media (max-width: 66rem) {
+  @media (max-width: ${props => props.theme.bp1}) {
     display: none;
   }
 `;

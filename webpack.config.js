@@ -16,7 +16,7 @@ module.exports = {
   module: {
     rules: [
       { test: /\.(js|jsx)$/, use: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.jsx?$/, include: /node_modules/, use: ['react-hot-loader/webpack'] },
+      { test: /\.(js|jsx)$/, include: /node_modules/, use: ['react-hot-loader/webpack'] },
       { test: /\.less$/, use: ['style-loader', 'css-loader/locals', 'less-loader'] },
       { test: /\.png$/, use: [{ loader: 'url-loader', options: { mimetype: 'image/png' } }] },
     ],

@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 import * as Debug from 'debug';
-import React from 'react';
-import { AuthModal, Main } from 'components';
+import { hot } from 'react-hot-loader/root';
+import { setConfig } from 'react-hot-loader';
+import * as React from 'react';
+import { AppWrapper, AuthModal, Main } from 'components';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { addUser, getEntries, verifyUser } from 'utilities';
 import { defaultTheme, GlobalStyle } from 'theme';
@@ -38,20 +40,7 @@ class App extends React.Component {
       });
   }
 
-  componentDidMount() {
-    this.setState({
-      AppConsole: openConsole(
-        serverConsoleUrl,
-        'TimeLockrServerDemoPopupWindow',
-        500,
-        415,
-      ),
-    });
-  }
-
-  componentWillUnmount() {
-    closeConsole();
-  }
+  // TimeLockr Console code is placed in AppWrapper
 
   refresh = () => (
     this.getEntries()
@@ -97,33 +86,40 @@ class App extends React.Component {
 
     return (
       <>
-        <Router>
-          <Route
-            exact
-            path='/'
-            render={() => (
-              showMain ? (
-                <Main
-                  entries={entries}
-                  hasAuth={hasAuth}
-                  refresh={this.refresh}
-                  revokeAuth={this.revokeAuth}
-                  userId={userId}
-                  username={username}
-                />
-              ) : (
-                <AuthModal
-                  handleSignin={this.handleSignin}
-                  handleAddUser={this.handleAddUser}
-                  hasAuth={hasAuth}
-                />
-              )
-            )}
-          />
-        </Router>
+        <AppWrapper>
+          <Router>
+            <Route
+              exact
+              path='/'
+              render={() => (
+                showMain ? (
+                  <Main
+                    entries={entries}
+                    hasAuth={hasAuth}
+                    refresh={this.refresh}
+                    revokeAuth={this.revokeAuth}
+                    userId={userId}
+                    username={username}
+                  />
+                ) : (
+                  <AuthModal
+                    handleSignin={this.handleSignin}
+                    handleAddUser={this.handleAddUser}
+                    hasAuth={hasAuth}
+                  />
+                )
+              )}
+            />
+          </Router>
+        </AppWrapper>
       </>
     );
   }
 }
 
-export default App;
+setConfig({
+  logLevel: 'debug',
+  hotHooks: true,
+});
+
+export default hot(App);
