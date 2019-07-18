@@ -6,6 +6,7 @@ import styled from 'styled-components';
 const S = {};
 
 S.RightSide = styled(Box)`
+  z-index: 999;
   @media (max-width: ${props => props.theme.bp3};) {
       display: none;
   }
@@ -15,10 +16,8 @@ S.RightSide = styled(Box)`
   display: flex;
   grid-area: ${props => props.gridArea};
   overflow: visible;
-  z-index: 2;
-  padding: ${props => props.theme.sp};
+  padding: ${props => props.theme.sp()};
 `;
-
 
 const RightSide = (props) => {
   const { children, gridArea } = props;

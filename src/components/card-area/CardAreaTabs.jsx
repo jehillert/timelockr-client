@@ -31,6 +31,15 @@ S.Tabs = styled(Tabs)`
   box-shadow: ${props => props.theme.boxShadow};
 `;
 
+S.Tab = styled(Tab)`
+  @media (min-width: ${props => props.theme.bp3}) {
+    width: 25%;
+  }
+  @media (max-width: ${props => props.theme.bp3}) {
+    width: 50%;
+  }
+`;
+
 const styles = theme => ({});
 
 function CardAreaTabs(props) {
@@ -59,8 +68,8 @@ function CardAreaTabs(props) {
           textColor='primary'
           variant='fullWidth'
         >
-          <Tab label='Unlocked' />
-          <Tab label='Locked' />
+          <S.Tab label='Unlocked' />
+          <S.Tab label='Locked' />
         </S.Tabs>
       </ErrorBoundary>
       <SwipeableViews

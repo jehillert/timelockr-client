@@ -103,7 +103,10 @@ class AuthForm extends React.Component {
     } = this.state;
 
     return (
-      <S.Form autoComplete='off'>
+      <S.Form
+        autoComplete='off'
+        fullScreen
+      >
         <TextField
           id='outlined-email-as-username-input'
           label='Email'

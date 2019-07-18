@@ -6,6 +6,7 @@ import { Box } from 'components';
 const S = {};
 
 S.LeftSide = styled.div`
+  z-index: 999;
   @media (max-width: ${props => props.theme.bp3}) {
       display: none;
   }
@@ -16,9 +17,8 @@ S.LeftSide = styled.div`
   grid-area: ${props => props.gridArea};
   justify-content: flex-end;
   overflow: visible;
-  padding-right: ${props => props.theme.sp} * 2;
-  padding-top: ${props => props.theme.sp} * 2;
-  z-index: 4;
+  padding-right: ${props => props.theme.sp()};
+  padding-top: ${props => props.theme.sp(2)};
 `;
 
 S.Title = styled.h2`

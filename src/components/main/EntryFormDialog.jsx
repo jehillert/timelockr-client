@@ -74,7 +74,7 @@ S.TimeFieldContainer = styled(Box)`
 
 S.TextFieldContainer = styled(Box)`
   & .s-time-picker {
-    dislplay: flex;
+    display: flex;
     justify-content: center;
     margin: .75rem;
     width: 2rem;
@@ -114,7 +114,7 @@ class EntryFormDialog extends React.Component {
         selectedDate: new Date(),
         selectedTime: new Date(),
       },
-      () => closeDialog()
+      () => closeDialog(),
     );
   }
 
@@ -251,7 +251,6 @@ EntryFormDialog.propTypes = {
   open: PropTypes.bool.isRequired,
   refresh: PropTypes.func.isRequired,
   userId: PropTypes.number.isRequired,
-  username: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(EntryFormDialog);

@@ -16,6 +16,9 @@ S.Tabs = styled(Tabs)`
 `;
 
 S.TabList = styled(TabList)`
+  @media (min-width: ${props => props.theme.bp3}) {
+    width: 100%;
+  }
   border-bottom: 1px solid ${props => props.theme.bgColor2};
   margin: 0 0 10px;
   padding: 0;

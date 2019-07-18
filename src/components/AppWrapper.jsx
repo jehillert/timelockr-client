@@ -3,7 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import MomentUtils from '@date-io/moment';
 import PropTypes from 'prop-types';
 import { defaultTheme, GlobalStyle } from 'theme';
-import { MuiPickersUtilsProvider } from 'material-ui-pickers';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { serverConsoleUrl } from 'config';
 import { StylesProvider } from '@material-ui/styles';
 import { ThemeProvider } from 'styled-components';
@@ -29,7 +29,7 @@ class AppWrapper extends React.Component {
   }
 
   componentWillUnmount() {
-    closeConsole();
+    this.state.AppConsole.close();
   }
 
   render() {

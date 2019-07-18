@@ -2,8 +2,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from '@material-ui/core/Modal';
+import styled from 'styled-components';
 import { withStyles } from '@material-ui/core/styles';
 import { AuthTabs, Box } from 'components';
+
+const S = {};
+
+S.Modal = styled(Modal)`
+  @media (min-width: ${props => props.theme.bp3}) {
+    width = 100%;
+  }
+`;
 
 const styles = theme => ({
   paper: {

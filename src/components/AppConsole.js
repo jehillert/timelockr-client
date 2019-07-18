@@ -22,6 +22,7 @@ const openConsole = (url, windowName, height = 500, width = 415) => {
     popupWindow.close();
   };
 
+
   return popupWindow;
 };
 

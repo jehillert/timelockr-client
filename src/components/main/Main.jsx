@@ -36,7 +36,7 @@ S.AppBarContainer = styled.div`
 `;
 
 S.InsideFabBox = styled.div`
-  @media (min-width: 51rem) {
+  @media (min-width: ${props => props.theme.bp2}) {
     display: none;
   }
 `;

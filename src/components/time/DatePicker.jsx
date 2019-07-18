@@ -1,31 +1,70 @@
 import React from 'react';
-import { InlineDatePicker } from 'material-ui-pickers';
+import { DatePicker, KeyboardDatePicker } from '@material-ui/pickers';
+import CalendarToday from '@material-ui/icons/CalendarToday';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import Moment from 'moment';
 
-const DatePicker = (props) => {
+const S = {};
+
+S.MobilePickerContainer = styled.div`
+  @media (hover: hover) and (pointer: fine) {
+    display: none;
+  }
+`;
+
+S.DesktopPickerContainer = styled.div`
+  @media (hover: none) and (pointer: coarse) {
+    display: none;
+  }
+`;
+
+S.DatePicker = styled(DatePicker)`
+
+`;
+
+S.KeyboardDatePicker = styled(KeyboardDatePicker)`
+
+`;
+
+const EntryFormDatePicker = (props) => {
   const { selectedDate, handleDateChange } = props;
   return (
-    <InlineDatePicker
-      keyboard
-      disablePast
-      variant='outlined'
-      label='Release Date'
-      format='MM/DD/YYYY'
-      mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
-      value={selectedDate}
-      onChange={handleDateChange}
-    />
+    <>
+      <S.MobilePickerContainer>
+        <S.DatePicker
+          autoOk
+          label="Clearable"
+          clearable={true}
+          disableFuture
+          value={selectedDate}
+          onChange={handleDateChange}
+        />
+      </S.MobilePickerContainer>
+      <S.DesktopPickerContainer>
+        <S.KeyboardDatePicker
+          autoOk
+          disablePast
+          clearable={true}
+          inputVariant='outlined'
+          label='Release Date'
+          format='MM/DD/YYYY'
+          value={selectedDate}
+          InputAdornmentProps={{ position: 'start' }}
+          onChange={handleDateChange}
+        />
+      </S.DesktopPickerContainer>
+    </>
   );
 };
+          // keyboardIcon={<CalendarToday />}
 
-
-DatePicker.propTypes = {
+EntryFormDatePicker.propTypes = {
   selectedDate: PropTypes.oneOfType([
     PropTypes.instanceOf(Date),
-    PropTypes.instanceOf(Moment),
+    // PropTypes.instanceOf(Moment),
   ]).isRequired,
   handleDateChange: PropTypes.func.isRequired,
 };
 
-export default DatePicker;
+export default EntryFormDatePicker;
