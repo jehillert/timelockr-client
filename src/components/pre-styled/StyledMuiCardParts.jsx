@@ -24,9 +24,9 @@ const StyledMuiCardContent = styled(CardContent)`
 const StyledMuiCardHeader = styled(({ ...other }) => (
   <CardHeader classes={{ action: 'action' }} {...other} />
 ))`
-  background-color: ${props => props.theme.secondaryColor};
+  background-color: ${props => props.theme.bgColor1};
   span {
-    color: ${props => props.theme.textColor2};
+    color: ${props => props.theme.fgColor1};
     font-size: 1rem;
   }
   & .action {

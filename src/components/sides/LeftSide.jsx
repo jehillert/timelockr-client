@@ -10,15 +10,15 @@ S.LeftSide = styled.div`
   @media (max-width: ${props => props.theme.bp3}) {
       display: none;
   }
-  background-color: ${props => props.theme.secondaryColor};
+  background-color: ${props => props.theme.darkColor};
   box-shadow: ${props => props.theme.rightBoxShadow};
   color: ${props => props.theme.textColor2};
   display: flex;
   grid-area: ${props => props.gridArea};
   justify-content: flex-end;
   overflow: visible;
-  padding-right: ${props => props.theme.sp()};
-  padding-top: ${props => props.theme.sp(2)};
+  padding-right: ${props => props.theme.m()};
+  padding-top: ${props => props.theme.m(2)};
 `;
 
 S.Title = styled.h2`

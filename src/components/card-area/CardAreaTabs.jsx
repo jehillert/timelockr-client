@@ -14,6 +14,7 @@ import {
 import { ErrorBoundary } from 'utilities';
 
 const debug = Debug('src:components:app:card-area-tabs');
+const styles = theme => ({});
 const S = {};
 
 S.VerticallyScrollableArea = styled.div`
@@ -29,6 +30,16 @@ S.Tabs = styled(Tabs)`
   margin-left: 1.5rem;
   background-color: white;
   box-shadow: ${props => props.theme.boxShadow};
+  .MuiTab-wrapper {
+    color: ${props => props.theme.darkColor};
+  }
+  .Mui-selected .MuiTab-wrapper {
+    color: ${props => props.theme.primary};
+  }
+  .MuiTabs-indicator {
+    width: 100%;
+    background-color: ${props => props.theme.primary};
+  }
 `;
 
 S.Tab = styled(Tab)`
@@ -40,7 +51,6 @@ S.Tab = styled(Tab)`
   }
 `;
 
-const styles = theme => ({});
 
 function CardAreaTabs(props) {
   // const windowSize = useWindowSize();
@@ -64,8 +74,6 @@ function CardAreaTabs(props) {
         <S.Tabs
           value={value}
           onChange={handleChange}
-          indicatorColor='primary'
-          textColor='primary'
           variant='fullWidth'
         >
           <S.Tab label='Unlocked' />

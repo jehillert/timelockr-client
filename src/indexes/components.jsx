@@ -24,8 +24,19 @@ export { default as Main } from '../components/main/Main';
 export { default as MainMenu } from '../components/main/main-menu/MainMenu';
 export { default as ReleasedEntryCard } from '../components/cards/ReleasedEntryCard';
 export { default as RightSide } from '../components/sides/RightSide';
-export { StyledMuiCard } from '../components/cards/StyledMuiCardParts';
-export { StyledMuiCardContent } from '../components/cards/StyledMuiCardParts';
-export { StyledMuiCardHeader } from '../components/cards/StyledMuiCardParts';
 export { default as TimeExtensionDialog } from '../components/time/TimeExtensionDialog';
 export { default as TimePicker } from '../components/time/TimePicker';
+export {
+  StyledMuiCard,
+  StyledMuiCardContent,
+  StyledMuiCardHeader,
+} from '../components/pre-styled/StyledMuiCardParts';
+export {
+  StyledMuiDialog,
+  StyledMuiDialogTitle,
+  StyledMuiDialogContent,
+  StyledMuiTextFieldContainer,
+  StyledMuiTextField,
+  StyledMuiDateFieldContainer,
+  StyledMuiDialogActions,
+} from '../components/pre-styled/StyledMuiDialogParts'

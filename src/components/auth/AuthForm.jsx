@@ -14,28 +14,42 @@ import { demoUser, demoPassword } from 'config';
 import { withStyles } from '@material-ui/core/styles';
 import Promise from 'bluebird';
 
+const styles = {};
+
 const S = {};
+
 S.Form = styled.form`
   display: flex;
   flex-direction: column;
-  padding-top: 3rem;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 1.5rem;
 `;
 
-const styles = theme => ({
-  textField: {
-    marginLeft: theme.spacing(),
-    marginRight: theme.spacing(),
-  },
-  dense: {
-    marginTop: 16,
-  },
-  onRight: {
-    alignSelf: 'flex-end',
-  },
-});
+S.TextField = styled(TextField)`
+  margin-left: ${props => props.theme.m(2)};
+  margin-right: ${props => props.theme.m(2)};
+  margin-top: ${props => props.theme.m(1)};
+  margin-bottom: ${props => props.theme.m(1)};
+`;
+
+S.ButtonBox = styled(props => <Box {...props} />)`
+  align-self: flex-end;
+  margin-right: ${props => props.theme.m(1)}
+`;
+
+// const styles = theme => ({
+//   textField: {
+//     marginLeft: theme.spacing(),
+//     marginRight: theme.spacing(),
+//   },
+//   dense: {
+//     marginTop: 16,
+//   },
+//   onRight: {
+//     alignSelf: 'flex-end',
+//   },
+// });
 
 class AuthForm extends React.Component {
   constructor(props) {
@@ -107,11 +121,10 @@ class AuthForm extends React.Component {
         autoComplete='off'
         fullScreen
       >
-        <TextField
+        <S.TextField
           id='outlined-email-as-username-input'
           label='Email'
           autoComplete='email'
-          className={classNames(classes.dense, classes.margin, classes.textField)}
           error={notAnEmailAddressError}
           margin='dense'
           name='username'
@@ -120,11 +133,10 @@ class AuthForm extends React.Component {
           value={username}
           variant='outlined'
         />
-        <TextField
+        <S.TextField
           id='outlined-adornment-password'
           label='Password'
           autoComplete={autocompletePasswordType}
-          className={classNames(classes.dense, classes.margin, classes.textField)}
           error={passwordError}
           margin='dense'
           onChange={this.handleChange('password')}
@@ -144,16 +156,14 @@ class AuthForm extends React.Component {
             ),
           }}
         />
-        <Box
-          className={classNames(classes.dense, classes.textField, classes.onRight)}
-        >
+        <S.ButtonBox>
           <FormButton
             type='submit'
             handleSubmit={this.handleSubmit}
           >
             Submit
           </FormButton>
-        </Box>
+        </S.ButtonBox>
       </S.Form>
     );
   }

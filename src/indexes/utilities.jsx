@@ -6,7 +6,12 @@ export {
   getEntries,
   logout,
   verifyUser,
-  deleteUser
-} from '../utilities/ClientRequests';
+  deleteUser,
+} from '../components/utilities/ClientRequests';
 
-export { default as ErrorBoundary } from '../utilities/ErrorBoundary';
+export {
+  RenderIfMobile,
+  RenderIfDesktop,
+} from '../components/utilities/MediaContainers';
+
+export { default as ErrorBoundary } from '../components/utilities/ErrorBoundary';

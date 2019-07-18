@@ -1,18 +1,17 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-func-assign */
 import * as Debug from 'debug';
-// import chalk from 'chalk';
 import React, { useState, useEffect } from 'react';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import styled from 'styled-components';
 import {
   FormButton,
   IncrementInput,
+  StyledMuiDialog,
+  StyledMuiDialogTitle,
+  StyledMuiDialogContent,
+  StyledMuiDialogActions,
 } from 'components';
 import { extendReleaseDate } from 'utilities';
 
@@ -86,20 +85,19 @@ function TimeExtensionDialog(props) {
   const handleCancelClick = () => handleOpen();
 
   return (
-    <Dialog
+    <StyledMuiDialog
       aria-labelledby='extend-dialog-title'
-      width='26rem'
       open={open}
     >
-      <DialogTitle id='form-dialog-title'>
+      <StyledMuiDialogTitle id='form-dialog-title'>
         Extend Time
-      </DialogTitle>
-      <DialogContent>
+      </StyledMuiDialogTitle>
+      <StyledMuiDialogContent>
         <S.Form noValidate autoComplete='off'>
           {arrayOfInputs}
         </S.Form>
-      </DialogContent>
-      <DialogActions>
+      </StyledMuiDialogContent>
+      <StyledMuiDialogActions>
         <FormButton
           type='button'
           handleSubmit={handleCancelClick}
@@ -114,8 +112,8 @@ function TimeExtensionDialog(props) {
         >
           Extend
         </FormButton>
-      </DialogActions>
-    </Dialog>
+      </StyledMuiDialogActions>
+    </StyledMuiDialog>
   );
 }
 

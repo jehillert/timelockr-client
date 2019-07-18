@@ -21,9 +21,11 @@ const debug = Debug('src:components:main-menu');
 const S = {};
 
 S.IconButton = styled(IconButton)`
-  &.s-icon-button {
-    padding: 11px 5px 11px 5px;
-  }
+  padding: 11px 5px 11px 5px;
+`;
+
+S.MoreVertIcon = styled(MoreVertIcon)`
+  color: ${props => props.theme.lightColor}
 `;
 
 const MainMenu = (props) => {
@@ -85,7 +87,7 @@ const MainMenu = (props) => {
         className='s-icon-button'
         onClick={handleMenuButtonClick}
       >
-        <MoreVertIcon />
+        <S.MoreVertIcon />
       </S.IconButton>
       {menuShouldRender
         && (

@@ -1,4 +1,17 @@
 const defaultTheme = {
+
+  primary: {
+    light: '#7986cb',
+    main: '#3f51b5',
+    dark: '#303f9f',
+    contrastText: '#fff',
+  },
+  secondary: {
+    light: '#ff4081',
+    main: '#f50057',
+    dark: '#c51162',
+    contrastText: '#fff',
+  },
   // BREAK POINTS: [1] title ==> [2] button ==> [3] 2 columns ==> [4] single column)
   bp1: '66rem',
   bp2: '51rem',
@@ -7,21 +20,31 @@ const defaultTheme = {
   bp5: 'rem',
   // COLORS
   accentColor: '#B81205',
-  backgroundBorderHoverColor: '#D93646',
   lightColor: 'white',
-  backgroundHoverColor: '#D93646',
-  bgColor1: '#202020',
-  bgColor2: '#6A6A6A',
-  borderColor1: '#202020',
-  headerFooterColor: '#A18664',
+  darkColor: '#222324',
   hoverColor: '#D93646',
+  backgroundHoverColor: '#D93646',
+  backgroundBorderHoverColor: '#D93646',
+  primary: '#37474f',
+  fgColor1: '#FFFFFF',
+  fgColor2: '#455a64',
+  fgColor3: '#222324',
+  bgColor1: '#607d8b',
+  bgColor2: '#455a64',
+  bgColor3: '#222324',
+  borderColor1: '#607d8b',
+  borderColor2: '#455a64',
+  borderColor3: '#222324',
   hoverFontColor: 'white',
-  secondaryColor: '#202020',
   textColor1: 'white',
   textColor2: '#9D9D9D',
-  // DIMENSIONS - Cards
+  // DIMENSIONS - Cards, Modals, Dialogs
   cardWidth: '19rem',
   cardAreaWidth: '41rem',
+  dialogWidth: '26rem',
+  modalWidth: '26rem',
+  // FONT SIZE
+  fontSizeDialogTitle: '2rem',
   // MARGINS - Card Columns
   insideFacingMargin: '0.25rem',
   outsideFacingMargin: '0.25rem',
@@ -33,9 +56,14 @@ const defaultTheme = {
   dialogRadius: '0rem',
   tabBorderRadius: '0rem',
   // SPACING
-  sp: (factor = 1) => {
-    const spacing = 0.5 * factor;
-    return `${spacing}rem`
+  m: (factor = 1) => {
+    const margin = 0.5 * factor;
+    return `${margin}rem`
+  },
+  // PADDING
+  p: (factor = 1) => {
+    const padding = 0.5 * factor;
+    return `${padding}rem`
   },
   // SHADOW
   boxShadow: '0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)',
@@ -45,6 +73,12 @@ const defaultTheme = {
 
 export default defaultTheme;
 /*
+DETERMINING DEVICE:
+  mouse, touch pad           ==>    "@media (hover: hover) and (pointer: fine) {}"
+  smartphones, touchscreens  ==>    "@media (hover: none) and (pointer: coarse) {}"
+  stylus-based screens       ==>    "@media (hover: none) and (pointer: fine) {}"
+  Wii controller/MS Kinect   ==>    "@media (hover: hover) and (pointer: coarse) {}"
+
 
             MATERIAL-UI DEFAULT THEME
                  (partial list)

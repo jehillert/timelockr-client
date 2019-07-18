@@ -12,6 +12,7 @@ import { AuthForm } from 'components';
 const S = {};
 
 S.Tabs = styled(Tabs)`
+  color: ${props => props.theme.bgColor3}
   -webkit-tap-highlight-color: transparent;
 `;
 
@@ -19,7 +20,7 @@ S.TabList = styled(TabList)`
   @media (min-width: ${props => props.theme.bp3}) {
     width: 100%;
   }
-  border-bottom: 1px solid ${props => props.theme.bgColor2};
+  border-bottom: 1px solid ${props => props.theme.fgColor2};
   margin: 0 0 10px;
   padding: 0;
   text-align: center;
@@ -35,20 +36,20 @@ S.Tab = styled(Tab)`
   padding: 12px 0px;
   cursor: pointer;
   width: 50%;
-  color: ${props => props.theme.textColor1};
+  color: ${props => props.theme.fgColor1};
   border-radius: ${props => props.theme.tabBorderRadius};
 
   &.react-tabs__tab--selected {
-    border-top: 1px solid #C7CACD;
+    border-top: 1px solid ${props => props.theme.bgColor2};
     border-bottom: 1px solid ${props => props.theme.lightColor};
     background-color: ${props => props.theme.lightColor};
-    color: ${props => props.theme.bgColor2};
+    color: ${props => props.theme.fgColor2};
   }
 
   :not(.react-tabs__tab--selected) {
-    border-top: 1px solid ${props => props.theme.bgColor1};
-    border-bottom: 1px solid ${props => props.theme.bgColor1};
-    background-color: ${props => props.theme.bgColor1};
+    border-top: 1px solid ${props => props.theme.bgColor2};
+    border-bottom: 1px solid ${props => props.theme.bgColor2};
+    background-color: ${props => props.theme.bgColor2};
   }
 
   :not(.react-tabs__tab--selected):hover {

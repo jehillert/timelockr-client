@@ -18,12 +18,12 @@ const debug = Debug('src:components:app:main');
 const S = {};
 
 S.AppBar = styled.div`
-  background-color: ${props => props.theme.headerFooterColor};
+  background-color: ${props => props.theme.primary};
   justify-items: flex-end;
   height: 3rem;
   box-shadow: ${props => props.theme.boxShadow};
   grid-area: ${props => props.gridArea};
-  width: ${props => props.cardAreaWidth};
+  max-width: ${props => props.cardAreaWidth};
   margin-left: 1.5rem;
   margin-right: 1.5rem;
 `;
@@ -69,7 +69,7 @@ S.InsideFab = styled(S.OutsideFab)`
 
 S.Middle = styled(Box)`
   grid-column: 2;
-  width: 44rem;
+  max-width: 44rem;
 `;
 
 const Main = (props) => {
