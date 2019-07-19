@@ -8,10 +8,11 @@ export {
   verifyUser,
   deleteUser,
 } from '../components/utilities/ClientRequests';
-
 export {
   RenderIfMobile,
   RenderIfDesktop,
-} from '../components/utilities/MediaContainers';
-
+  isMobile,
+  isDesktop,
+} from '../components/utilities/MediaQueries';
 export { default as ErrorBoundary } from '../components/utilities/ErrorBoundary';
+export { default as MatchMediaHOC } from '../components/utilities/MatchMediaHOC';

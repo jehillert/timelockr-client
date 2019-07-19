@@ -8,6 +8,7 @@ import { serverConsoleUrl } from 'config';
 import { StylesProvider } from '@material-ui/styles';
 import { ThemeProvider } from 'styled-components';
 import { closeConsole, openConsole } from './AppConsole';
+import { isDesktop, isMobile } from 'utilities';
 
 class AppWrapper extends React.Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class AppWrapper extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
+    isDesktop && this.setState({
       AppConsole: openConsole(
         serverConsoleUrl,
         'TimeLockrServerDemoPopupWindow',
