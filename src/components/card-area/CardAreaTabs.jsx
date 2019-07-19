@@ -23,6 +23,7 @@ S.VerticallyScrollableArea = styled.div`
   ::-webkit-scrollbar {
       display: none;
     }
+  -webkit-overflow-scrolling: touch;
 `;
 
 S.Tabs = styled(Tabs)`
