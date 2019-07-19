@@ -8,7 +8,7 @@ import {
   Header,
 } from 'components';
 
-const debug = Debug('src:components:app:card-area-tabs:card-area');
+// const debug = Debug('src:components:app:card-area-tabs:card-area');
 
 const S = {};
 
@@ -51,12 +51,12 @@ const CardArea = (props) => {
             key={entry.entryId.toString()}
             delay={index * delayIncrement}
             render={wrapper => (
-                <Card
-                  key={entry.entryId.toString()}
-                  wrapper={wrapper}
-                  entry={entry}
-                  refresh={refresh}
-                />
+              <Card
+                key={entry.entryId.toString()}
+                wrapper={wrapper}
+                entry={entry}
+                refresh={refresh}
+              />
             )}
           />
         ))

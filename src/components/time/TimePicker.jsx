@@ -41,7 +41,7 @@ const EntryFormTimePicker = (props) => {
         <RenderIfDesktop>
           <KeyboardTimePicker
             ampm
-            format="H:MM A"
+            mask="_:__ _M"
             label='Release Time:'
             value={selectedTime}
             onChange={handleTimeChange}

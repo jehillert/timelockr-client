@@ -3,8 +3,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Grow from '@material-ui/core/Grow';
-import styled from 'styled-components';
 import { Box } from 'components';
+
+/*
+  ! think memory leak is because "this.timer" should be a state value.
+*/
 
 class CardWrapper extends React.Component {
   constructor(props) {

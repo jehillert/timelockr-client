@@ -7,8 +7,6 @@ import { AppWrapper, AuthModal, Main } from 'components';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { addUser, getEntries, verifyUser } from 'utilities';
 import { defaultTheme, GlobalStyle } from 'theme';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import MomentUtils from '@date-io/moment';
 import { serverConsoleUrl } from 'config';
 import { closeConsole, openConsole } from './AppConsole';
 

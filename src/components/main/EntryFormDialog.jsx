@@ -1,5 +1,4 @@
 import * as Debug from 'debug';
-import chalk from 'chalk';
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -19,7 +18,6 @@ import {
   StyledMuiDialogActions,
 } from 'components';
 
-const bgOrange = chalk.hex('#000000').bgHex('#38A53C');
 const debug = Debug('src:components:entry-form-dialog');
 
 const S = {};
@@ -78,17 +76,21 @@ class EntryFormDialog extends React.Component {
       refresh,
       userId,
     } = this.props;
-
     const creationDate = moment().format('YYYY-MM-DD HH:mm');
     const formattedTime = moment(selectedTime).utc().format('HH:mm').toString();
     const formattedDate = moment(selectedDate).utc().format('YYYY-MM-DD').toString();
     const releaseDate = `${formattedDate} ${formattedTime}-00`;
 
-    debug(
-      bgOrange(formattedTime),
-      bgOrange(formattedDate),
-      bgOrange(releaseDate),
-    );
+    /*console.log(
+      '%c JavaScript!!',
+      'font-weight: bold;
+       font-size: 50px;
+       color: red;');*/
+
+    debug(`selectedTime: %c${selectedTime}`, 'color:orange; background-color:black');
+    debug(`formattedTime: %c${formattedTime}`, 'color:orange; background-color:black');
+    debug(`formattedDate: %c${formattedDate}`, 'color:orange; background-color:black');
+    debug(`releaseDate: %c${releaseDate}`, 'color:orange; background-color:black');
 
     const newEntry = {
       userId,

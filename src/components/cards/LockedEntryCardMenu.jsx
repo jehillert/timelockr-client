@@ -115,7 +115,7 @@ function LockedEntryCardMenu(props) {
               </MenuItem>
               <MenuItem data-value='close' dense onClick={() => setSelected('noSelection')}>
                 <ListItemIcon><CloseIcon /></ListItemIcon>
-                <ListItemText primary='Exit' />
+                <ListItemText primary='Close Menu' />
               </MenuItem>
             </Menu>
           </Paper>

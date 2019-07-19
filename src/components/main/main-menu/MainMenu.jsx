@@ -120,7 +120,7 @@ const MainMenu = (props) => {
                   <ListItemIcon>
                     <CloseIcon />
                   </ListItemIcon>
-                  <ListItemText primary='Exit' />
+                  <ListItemText primary='Close Menu' />
                 </MenuItem>
               </ErrorBoundary>
             </Menu>

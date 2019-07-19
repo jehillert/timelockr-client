@@ -7,13 +7,8 @@ import { nodeEnv } from 'config';
 import * as serviceWorker from './serviceWorker';
 
 if (nodeEnv !== 'production') {
-  localStorage.setItem('debug', '-*');
+  localStorage.setItem('debug', 'src:components:entry-form-dialog');
 }
-
-// const root = document.createElement('div');
-// document.body.appendChild(root);
-
-// render(root);
 
 ReactDOM.render(<App />, document.getElementById('app'));
 
