@@ -39,4 +39,4 @@ export {
   StyledMuiTextField,
   StyledMuiDateFieldContainer,
   StyledMuiDialogActions,
-} from '../components/pre-styled/StyledMuiDialogParts'
+} from '../components/pre-styled/StyledMuiDialogParts';
