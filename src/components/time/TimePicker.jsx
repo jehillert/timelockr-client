@@ -32,7 +32,7 @@ const EntryFormTimePicker = (props) => {
         <RenderIfMobile>
           <TimePicker
             ampm
-            mask="_:__ _M"
+            mask="__:__ _M"
             label='Release Time:'
             value={selectedTime}
             onChange={handleTimeChange}
@@ -41,7 +41,7 @@ const EntryFormTimePicker = (props) => {
         <RenderIfDesktop>
           <KeyboardTimePicker
             ampm
-            mask="_:__ _M"
+            mask="__:__ _M"
             label='Release Time:'
             value={selectedTime}
             onChange={handleTimeChange}

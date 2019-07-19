@@ -65,6 +65,13 @@ class EntryFormDialog extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
+    let releaseDate
+
+    const {
+      refresh,
+      userId,
+    } = this.props;
+
     const {
       content,
       description,
@@ -72,25 +79,24 @@ class EntryFormDialog extends React.Component {
       selectedTime,
     } = this.state;
 
-    const {
-      refresh,
-      userId,
-    } = this.props;
-    const creationDate = moment().format('YYYY-MM-DD HH:mm');
-    const formattedTime = moment(selectedTime).utc().format('HH:mm').toString();
-    const formattedDate = moment(selectedDate).utc().format('YYYY-MM-DD').toString();
-    const releaseDate = `${formattedDate} ${formattedTime}-00`;
-
-    /*console.log(
-      '%c JavaScript!!',
-      'font-weight: bold;
-       font-size: 50px;
-       color: red;');*/
-
     debug(`selectedTime: %c${selectedTime}`, 'color:orange; background-color:black');
-    debug(`formattedTime: %c${formattedTime}`, 'color:orange; background-color:black');
-    debug(`formattedDate: %c${formattedDate}`, 'color:orange; background-color:black');
-    debug(`releaseDate: %c${releaseDate}`, 'color:orange; background-color:black');
+    debug(`selectedDate: %c${selectedDate}`, 'color:orange; background-color:black');
+
+    if (moment(selectedTime).isAfter(moment(selectedDate))) {
+      releaseDate = `${moment(selectedTime).utc().format('YYYY-MM-DD HH:mm').toString()}-00`;
+
+      debug(`releaseDate: %c${releaseDate}`, 'color:orange; background-color:black');
+    } else {
+      const formattedDate = moment(selectedDate).utc().format('YYYY-MM-DD').toString();
+      const formattedTime = moment(selectedTime).utc().format('HH:mm').toString();
+      releaseDate = `${formattedDate} ${formattedTime}-00`;
+
+      debug(`formattedTime: %c${formattedTime}`, 'color:orange; background-color:black');
+      debug(`formattedDate: %c${formattedDate}`, 'color:orange; background-color:black');
+      debug(`releaseDate: %c${releaseDate}`, 'color:orange; background-color:black');
+    }
+
+    const creationDate = moment().format('YYYY-MM-DD HH:mm');
 
     const newEntry = {
       userId,
