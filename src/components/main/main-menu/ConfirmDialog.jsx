@@ -36,14 +36,6 @@ function ConfirmDialog(props) {
       break;
   }
 
-  const handleCancelClick = () => {
-    confirmDialog(false);
-  };
-
-  const handleConfirmClick = () => {
-    confirmDialog(true);
-  };
-
   return (
     <div>
       <Dialog open={open}>
@@ -58,14 +50,14 @@ function ConfirmDialog(props) {
         <DialogActions>
           <FormButton
             type='button'
-            handleSubmit={handleCancelClick}
+            handleSubmit={confirmDialog(false)}
             color='primary'
           >
             Cancel
           </FormButton>
           <FormButton
             type='submit'
-            handleSubmit={handleConfirmClick}
+            handleSubmit={confirmDialog(true)}
             color='primary'
           >
             {bttnlbl || buttonLabel}

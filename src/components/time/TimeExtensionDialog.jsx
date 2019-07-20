@@ -39,7 +39,7 @@ function TimeExtensionDialog(props) {
   // declare props
   const {
     entryId,
-    handleOpen,
+    handleClosingClick,
     open,
     refresh,
     releaseDate,
@@ -68,7 +68,7 @@ function TimeExtensionDialog(props) {
     `);
 
     return extendReleaseDate(entryId, newReleaseDate.format('YYYY-MM-DD HH:mm').toString())
-      .then(() => handleOpen(false))
+      .then(() => handleClosingClick(false))
       .then(() => refresh());
   };
 
@@ -82,12 +82,11 @@ function TimeExtensionDialog(props) {
     />
   ));
 
-  const handleCancelClick = () => handleOpen();
-
   return (
     <StyledMuiDialog
       aria-labelledby='extend-dialog-title'
       open={open}
+      onClose={handleClosingClick}
     >
       <StyledMuiDialogTitle id='form-dialog-title'>
         Extend Time
@@ -100,7 +99,7 @@ function TimeExtensionDialog(props) {
       <StyledMuiDialogActions>
         <FormButton
           type='button'
-          handleSubmit={handleCancelClick}
+          handleSubmit={handleClosingClick}
           color='primary'
         >
           Cancel
@@ -119,7 +118,7 @@ function TimeExtensionDialog(props) {
 
 TimeExtensionDialog.propTypes = {
   open: PropTypes.bool.isRequired,
-  handleOpen: PropTypes.func.isRequired,
+  handleClosingClick: PropTypes.func.isRequired,
   entryId: PropTypes.number.isRequired,
   refresh: PropTypes.func.isRequired,
   releaseDate: PropTypes.string.isRequired,

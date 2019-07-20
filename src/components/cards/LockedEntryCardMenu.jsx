@@ -81,7 +81,7 @@ function LockedEntryCardMenu(props) {
             entryId={entryId}
             releaseDate={releaseDate}
             refresh={refresh}
-            handleOpen={handleShouldRenderDialog}
+            handleClosingClick={handleShouldRenderDialog}
             open={shouldRenderDialog}
           />
         )

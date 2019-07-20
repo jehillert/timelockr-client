@@ -65,8 +65,6 @@ class EntryFormDialog extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    let releaseDate
-
     const {
       refresh,
       userId,
@@ -81,22 +79,23 @@ class EntryFormDialog extends React.Component {
 
     debug(`selectedTime: %c${selectedTime}`, 'color:orange; background-color:black');
     debug(`selectedDate: %c${selectedDate}`, 'color:orange; background-color:black');
-
-    if (moment(selectedTime).isAfter(moment(selectedDate))) {
-      releaseDate = `${moment(selectedTime).utc().format('YYYY-MM-DD HH:mm').toString()}-00`;
-
-      debug(`releaseDate: %c${releaseDate}`, 'color:orange; background-color:black');
-    } else {
-      const formattedDate = moment(selectedDate).utc().format('YYYY-MM-DD').toString();
-      const formattedTime = moment(selectedTime).utc().format('HH:mm').toString();
-      releaseDate = `${formattedDate} ${formattedTime}-00`;
-
-      debug(`formattedTime: %c${formattedTime}`, 'color:orange; background-color:black');
-      debug(`formattedDate: %c${formattedDate}`, 'color:orange; background-color:black');
-      debug(`releaseDate: %c${releaseDate}`, 'color:orange; background-color:black');
-    }
-
     const creationDate = moment().format('YYYY-MM-DD HH:mm');
+
+    // Combine hours, minutes, seconds of selectedTime
+    // with month, day, year of selectedDate
+    const sD = moment(selectedDate);
+    const sT = moment(selectedTime);
+
+    const releaseDateLocal = sD.set({
+      'hour': sT.get('hour'),
+      'minute': sT.get('minute'),
+      'second': sT.get('second'),
+    });
+
+    // Format releaseDate to UTC string
+    const releaseDate = `${releaseDateLocal.utc().format('YYYY-MM-DD HH:mm').toString()}-00`;
+
+    debug(`releaseDate: %c${releaseDate}`, 'color:orange; background-color:black');
 
     const newEntry = {
       userId,
@@ -115,12 +114,14 @@ class EntryFormDialog extends React.Component {
 
   render() {
     const { open } = this.props;
+
     const {
       content,
       description,
       selectedDate,
       selectedTime,
     } = this.state;
+
     return (
       <>
         <StyledMuiDialog
@@ -161,6 +162,7 @@ class EntryFormDialog extends React.Component {
                 />
                 <S.TimePicker
                   handleTimeChange={this.handleTimeChange}
+                  selectedDate={selectedDate}
                   selectedTime={selectedTime}
                 />
               </>

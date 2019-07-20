@@ -1,67 +1,125 @@
-import React from 'react';
+// DO NOT USE MOMENT FOR YOUR TIME CALCULATIONS
+// THESE GUYS PROVIDE LOTS OF USEFUL FUNCTIONS
+// https://material-ui-pickers.dev/guides/formats
+import React, { useEffect, useState } from 'react';
+import FormHelperText from '@material-ui/core/FormHelperText';
 import AccessTime from '@material-ui/icons/AccessTime';
 import PropTypes from 'prop-types';
-import Moment from 'moment';
+import moment from 'moment';
 import blueGrey from '@material-ui/core/colors/blueGrey';
-import { createMuiTheme } from "@material-ui/core";
-import { ThemeProvider } from "@material-ui/styles";
+import styled from 'styled-components';
+import { createMuiTheme } from '@material-ui/core';
+import { ThemeProvider } from '@material-ui/styles';
 import {
-  RenderIfMobile,
-  RenderIfDesktop,
-} from 'utilities';
+  isMobile,
+  isDesktop,
+} from 'utilities'
 import {
   KeyboardTimePicker,
   TimePicker,
 } from '@material-ui/pickers';
 
-/*
-! prevent negative time
-*/
-
-const defaultMaterialTheme = createMuiTheme({
-  palette: {
-    primary: blueGrey,
-  },
-});
 
 const EntryFormTimePicker = (props) => {
-  const { selectedTime, handleTimeChange } = props;
+  const {
+    selectedTime,
+    selectedDate,
+    handleTimeChange
+  } = props;
+
+  const [helperText, setHelperText] = useState('');
+  const [isError, setErrorStatus] = useState(false);
+
+  useEffect(() => {
+    const now = moment();
+    const selectedDateIsToday = moment(selectedDate).isSame(new Date(), 'day');
+    const selectedTimeIsEarlier = moment(selectedTime).isBefore(now, 'minute');
+    if (selectedDateIsToday && selectedTimeIsEarlier) {
+      setErrorStatus(true);
+      setHelperText('Selected time is in the past.');
+    } else {
+      setErrorStatus(false);
+      setHelperText('');
+    }
+  }, [selectedDate, selectedTime, helperText])
+
+  const defaultMaterialTheme = createMuiTheme({
+    palette: {
+      primary: blueGrey,
+    },
+  });
+
   return (
     <>
       <ThemeProvider theme={defaultMaterialTheme}>
-        <RenderIfMobile>
+        {isMobile && (
           <TimePicker
             ampm
-            mask="__:__ _M"
+            mask='__:__ _M'
+            error={isError}
+            helperText={helperText}
+            minDate={new Date()}
             label='Release Time:'
             value={selectedTime}
             onChange={handleTimeChange}
-          />
-        </RenderIfMobile>
-        <RenderIfDesktop>
+          />)}
+        {isDesktop && (
           <KeyboardTimePicker
             ampm
-            mask="__:__ _M"
+            error={isError}
+            mask='__:__ _M'
+            helperText={helperText}
             label='Release Time:'
             value={selectedTime}
             onChange={handleTimeChange}
             InputAdornmentProps={{ position: 'start' }}
             keyboardIcon={<AccessTime />}
-          />
-        </RenderIfDesktop>
+          />)}
       </ThemeProvider>
     </>
   );
 };
 
+EntryFormTimePicker.defaultProps = {
+  selectedTime: new Date(),
+  selectedDate: new Date(),
+}
+
 EntryFormTimePicker.propTypes = {
+  handleTimeChange: PropTypes.func.isRequired,
   selectedTime: PropTypes.oneOfType([
     PropTypes.instanceOf(Date),
-    PropTypes.instanceOf(Moment),
-  ]).isRequired,
-  handleTimeChange: PropTypes.func.isRequired,
+    PropTypes.instanceOf(moment),
+  ]),
+  selectedDate: PropTypes.oneOfType([
+    PropTypes.instanceOf(Date),
+    PropTypes.instanceOf(moment),
+  ]),
 };
 
 export default EntryFormTimePicker;
 
-// mask={[/\d/, /\d/, ':', /\d/, /\d/, ' ', /a|p/i, 'M']}
+
+/*
+import React, { useEffect, useState } from 'react';
+import FormHelperText from '@material-ui/core/FormHelperText';
+
+const [shouldWarn, setWarnState] = useState(false);
+const warning = 'Selected time has already passed.';
+
+useEffect(() => {
+  const now = moment();
+  const selectedDateIsToday = selectedDate.isSame(new Date(), 'day');
+  const selectedTimeIsEarlier = moment(selectedTime).isBefore(now);
+
+  if (selectedDateIsToday && selectedTimeIsEarlier) {
+    setWarnState(true);
+  }
+}, [selectedDate, selectedTime, shouldWarn])
+
+{shouldWarn && (
+  <FormHelperText error={true}>
+    {warning}
+  </FormHelperText>
+)}
+*/
