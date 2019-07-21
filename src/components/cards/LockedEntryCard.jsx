@@ -8,12 +8,6 @@ import {
   StyledMuiCardContent,
   LockedEntryCardMenu,
 } from 'components';
-/*
-! provide user a way to control mode
-  1 - 'TIMER ONLY'
-  2 - 'TIMER PLUS PROGRESS'
-  3 - 'RELEASE-DATE OVERLAY'
-*/
 
 const LockedEntryCard = (props) => {
   const { entry, refresh, wrapper } = props;
@@ -22,23 +16,11 @@ const LockedEntryCard = (props) => {
   const [displayMode, setDisplayMode] = useState(1);
 
   const Timer = (
-    <CountdownTimer refresh={refresh} releaseDate={entry.releaseDate} />
+    <CountdownTimer
+      creationDate={entry.creationDate}
+      refresh={refresh}
+      releaseDate={entry.releaseDate} />
   );
-
-  // const [frctn, setFraction] = useState(fraction);
-  // const handleChangeEvent = (event) => {
-  //   setFraction(event.target.value);
-  // }
-  // const TimerAndCircProgress = () => (
-  //   <CircularProgress
-  //     strokeWidth='10'
-  //     sqSize='200'
-  //     percentage={fraction}
-  //     releaseDate={entry.releaseDate}
-  //     referenceDate={entry.creationDate}
-  //   />
-  //   <CountdownTimer refresh={refresh} releaseDate={entry.releaseDate} />
-  // );
 
   return (
     <>
@@ -51,6 +33,7 @@ const LockedEntryCard = (props) => {
                   entryId={entry.entryId}
                   refresh={refresh}
                   releaseDate={entry.releaseDate}
+                  creationDate={entry.creationDate}
                 />
               )}
               title={entry.description}

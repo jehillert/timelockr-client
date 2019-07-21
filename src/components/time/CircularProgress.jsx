@@ -33,7 +33,7 @@ const CircularProgress = (props) => {
   const dashArray = radius * Math.PI * 2;
   // Scale 100% coverage overlay with the actual percent
   const dashOffset = dashArray - dashArray * percentage / 100;
-
+console.log('percentage:', percentage);
   return (
     <svg
         width={sqSize}
@@ -75,7 +75,7 @@ CircularProgress.defaultProps = {
   strokeWidth: 10
 };
 
-CircularProgress.PropTypes = {
+CircularProgress.propTypes = {
   percentage: PropTypes.number,
   sqSize: PropTypes.number,
   strokeWidth: PropTypes.number,
