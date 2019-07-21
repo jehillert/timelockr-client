@@ -2,14 +2,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  // CircularProgressBar,
   CountdownTimer,
   StyledMuiCard,
   StyledMuiCardHeader,
   StyledMuiCardContent,
   LockedEntryCardMenu,
 } from 'components';
-
 /*
 ! provide user a way to control mode
   1 - 'TIMER ONLY'
@@ -23,24 +21,23 @@ const LockedEntryCard = (props) => {
 
   const [displayMode, setDisplayMode] = useState(1);
 
-
-  const renderTimer = (
-    <CountdownTimer refresh={refresh} futureDate={entry.releaseDate} />
+  const Timer = (
+    <CountdownTimer refresh={refresh} releaseDate={entry.releaseDate} />
   );
 
   // const [frctn, setFraction] = useState(fraction);
   // const handleChangeEvent = (event) => {
   //   setFraction(event.target.value);
   // }
-  // const renderTimerAndCircProgress = () => (
-  //   <CircularProgressBar
+  // const TimerAndCircProgress = () => (
+  //   <CircularProgress
   //     strokeWidth='10'
   //     sqSize='200'
   //     percentage={fraction}
-  //     futureDate={entry.releaseDate}
+  //     releaseDate={entry.releaseDate}
   //     referenceDate={entry.creationDate}
   //   />
-  //   <CountdownTimer refresh={refresh} futureDate={entry.releaseDate} />
+  //   <CountdownTimer refresh={refresh} releaseDate={entry.releaseDate} />
   // );
 
   return (
@@ -59,8 +56,8 @@ const LockedEntryCard = (props) => {
               title={entry.description}
             />
             <StyledMuiCardContent>
-              {(displayMode === 1) && renderTimer}
-              {(displayMode === 2) && renderTimerAndCircProgress}
+              {(displayMode === 1) && Timer}
+              {(displayMode === 2) && TimerAndCircProgress}
             </StyledMuiCardContent>
           </StyledMuiCard>
         )

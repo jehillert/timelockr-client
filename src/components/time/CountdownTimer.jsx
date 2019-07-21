@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import momentDurationFormatSetup from 'moment-duration-format';
 import styled from 'styled-components';
+import { usePrevious } from 'utilities';
+import { CircularProgress } from 'components';
 
 momentDurationFormatSetup(moment);
 
@@ -33,22 +35,18 @@ S.CountdownText = styled.div`
 `;
 
 /*
-! change console.log to debug()
-*/
-
-/*
-I think the problem is you need to watch "futureDate" for changes
-or instread of subtracting seconds from a duration,
+I think the problem is you need to watch "releaseDate" for changes
+or instead of subtracting seconds from a duration,
 your state is a "time passed since initialization", and you subtract
-"time passed since initialization" from futureDate
+"time passed since initialization" from releaseDate
 
 or useeffect
 */
 
 function CountdownTimer(props) {
-  const { futureDate, refresh } = props;
+  const { releaseDate, refresh } = props;
   const now = moment();
-  const later = moment(futureDate);
+  const later = moment(releaseDate);
 
   const [duration, setDuration] = useState(moment.duration(later.diff(now)));
   const [open, setOpen] = useState(false);
@@ -75,14 +73,20 @@ function CountdownTimer(props) {
     setTimeRemaining(tr);
   };
 
-  const incrementTime = () => {
-    if (duration.asHours() <= 24) {
-      setDuration(() => duration.subtract(1, 'seconds'));
-    } else if (duration.asDays() <= 30) {
-      setDuration(() => duration.subtract(60, 'seconds'));
+  const incrementTime = (extension) => {
+    if (extension) {
+      // triggers after call to extendReleaseDate()
+      console.log('extension', extension)
+      setDuration(() => duration.add(extension, 'seconds'));
+    } else {
+      // triggers according to setIntervals
+      if (duration.asHours() <= 24) {
+        setDuration(() => duration.subtract(1, 'seconds'));
+      } else if (duration.asDays() <= 30) {
+        setDuration(() => duration.subtract(60, 'seconds'));
+      }
     }
 
-    setFraction(duration.asSeconds());
     formatDisplayTime();
   };
 
@@ -106,6 +110,17 @@ function CountdownTimer(props) {
     };
   }, []);
 
+
+  useEffect(() => {
+    const n = moment();
+    const l = moment(releaseDate);
+    const newDuration = moment.duration(l.diff(n))
+    const extension = newDuration.asSeconds() - duration.asSeconds();
+    if (extension > 1) {
+      incrementTime(extension);
+    }
+  }, [releaseDate]);
+
   return (
     <S.CountdownContainer>
       {open && (
@@ -120,7 +135,7 @@ function CountdownTimer(props) {
 }
 
 CountdownTimer.propTypes = {
-  futureDate: PropTypes.string.isRequired,
+  releaseDate: PropTypes.string.isRequired,
   refresh: PropTypes.func.isRequired,
 };
 

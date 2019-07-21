@@ -7,7 +7,7 @@ export { default as Box } from '../components/misc/Box';
 export { default as CardArea } from '../components/card-area/CardArea';
 export { default as CardAreaTabs } from '../components/card-area/CardAreaTabs';
 export { default as CardWrapper } from '../components/cards/CardWrapper';
-export { default as CircularProgress } from '../components/misc/CircularProgress';
+export { default as CircularProgress } from '../components/time/CircularProgress';
 export { default as CountdownTimer } from '../components/time/CountdownTimer';
 export { default as ClipboardPopover } from '../components/misc/ClipboardPopover';
 export { default as ConfirmDialog } from '../components/main/main-menu/ConfirmDialog';

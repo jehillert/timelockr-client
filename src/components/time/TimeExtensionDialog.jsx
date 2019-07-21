@@ -34,7 +34,7 @@ function TimeExtensionDialog(props) {
     minutes: 0,
   });
 
-  useEffect(() => debug(`${duration.months}---------------------------`));
+  // useEffect(() => debug(`${duration.months}---------------------------`));
 
   // declare props
   const {
@@ -62,12 +62,10 @@ function TimeExtensionDialog(props) {
     const newReleaseDate = moment(releaseDate).add(mDuration);
 
     // .format('YYYY-MM-DD HH:mm');
-    debug(`
-      releaseDate:    ${moment(releaseDate).format('YYYY-MM-DD HH:mm')}
-      newReleaseDate: ${newReleaseDate.format('YYYY-MM-DD HH:mm')}
-    `);
+    debug(`releaseDate:       %c${moment(releaseDate).format('YYYY-MM-DD HH:mm')}`, 'color:orange; background-color:black');
+    debug(`newReleaseDate:    %c${newReleaseDate.format('YYYY-MM-DD HH:mm')}`, 'color:orange; background-color:black');
 
-    return extendReleaseDate(entryId, newReleaseDate.format('YYYY-MM-DD HH:mm').toString())
+    return extendReleaseDate(entryId, `${newReleaseDate.utc().format('YYYY-MM-DD HH:mm').toString()}-00`)
       .then(() => handleClosingClick(false))
       .then(() => refresh());
   };

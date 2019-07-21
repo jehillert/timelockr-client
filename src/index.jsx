@@ -3,11 +3,11 @@ import React from 'react';
 // import { render } from 'react-dom';
 import ReactDOM from 'react-dom';
 import { App } from 'components';
-import { nodeEnv } from 'config';
+import { debug, nodeEnv } from 'config';
 import * as serviceWorker from './serviceWorker';
 
 if (nodeEnv !== 'production') {
-  localStorage.setItem('debug', 'src:components:entry-form-dialog');
+  localStorage.setItem('debug', `${debug}`);
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));

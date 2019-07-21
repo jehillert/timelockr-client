@@ -22,7 +22,7 @@ S.CircleText = styled.div`
   fill: red;
 `;
 
-const CircularProgressBar = (props) => {
+const CircularProgress = (props) => {
   const { percentage, sqSize, strokeWidth } = props;
   // sqSize: Size of the enclosing square
   // SVG centers the stroke width on the radius, subtract out so circle fits in square
@@ -69,17 +69,17 @@ const CircularProgressBar = (props) => {
   );
 }
 
-CircularProgressBar.defaultProps = {
+CircularProgress.defaultProps = {
   sqSize: 200,
   percentage: 25,
   strokeWidth: 10
 };
 
-CircularProgressBar.PropTypes = {
+CircularProgress.PropTypes = {
   percentage: PropTypes.number,
   sqSize: PropTypes.number,
   strokeWidth: PropTypes.number,
 };
 
-export default CircularProgressBar;
+export default CircularProgress;
 

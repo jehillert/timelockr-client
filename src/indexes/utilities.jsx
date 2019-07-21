@@ -7,12 +7,15 @@ export {
   logout,
   verifyUser,
   deleteUser,
-} from '../components/utilities/ClientRequests';
+} from '../utilities/ClientRequests';
 export {
   RenderIfMobile,
   RenderIfDesktop,
   isMobile,
   isDesktop,
-} from '../components/utilities/MediaQueries';
-export { default as ErrorBoundary } from '../components/utilities/ErrorBoundary';
-export { default as MatchMediaHOC } from '../components/utilities/MatchMediaHOC';
+} from '../utilities/MediaQueries';
+export {
+  usePrevious,
+} from '../utilities/CustomHooks';
+export { default as ErrorBoundary } from '../utilities/ErrorBoundary';
+export { default as MatchMediaHOC } from '../utilities/MatchMediaHOC';
