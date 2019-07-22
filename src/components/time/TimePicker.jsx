@@ -11,11 +11,6 @@ import styled from 'styled-components';
 import { createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import {
-  isMobile,
-  isDesktop,
-} from 'utilities'
-import {
-  KeyboardTimePicker,
   TimePicker,
 } from '@material-ui/pickers';
 
@@ -52,29 +47,16 @@ const EntryFormTimePicker = (props) => {
   return (
     <>
       <ThemeProvider theme={defaultMaterialTheme}>
-        {isMobile && (
-          <TimePicker
-            ampm
-            mask='__:__ _M'
-            error={isError}
-            helperText={helperText}
-            minDate={new Date()}
-            label='Release Time:'
-            value={selectedTime}
-            onChange={handleTimeChange}
-          />)}
-        {isDesktop && (
-          <KeyboardTimePicker
-            ampm
-            error={isError}
-            mask='__:__ _M'
-            helperText={helperText}
-            label='Release Time:'
-            value={selectedTime}
-            onChange={handleTimeChange}
-            InputAdornmentProps={{ position: 'start' }}
-            keyboardIcon={<AccessTime />}
-          />)}
+        <TimePicker
+          ampm
+          mask='__:__ _M'
+          error={isError}
+          helperText={helperText}
+          minDate={new Date()}
+          label='Release Time:'
+          value={selectedTime}
+          onChange={handleTimeChange}
+        />
       </ThemeProvider>
     </>
   );

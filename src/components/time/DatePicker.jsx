@@ -11,10 +11,6 @@ import {
   DatePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
-import {
-  isMobile,
-  isDesktop,
-} from 'utilities'
 
 const defaultMaterialTheme = createMuiTheme({
   palette: {
@@ -27,28 +23,15 @@ const EntryFormDatePicker = (props) => {
   return (
     <>
       <ThemeProvider theme={defaultMaterialTheme}>
-        {isMobile && (
-          <DatePicker
-            autoOk
-            disablePast
-            format='MMMM DD, YYYY'
-            label='Release Date:'
-            minDateMessage='Selected date is in the past'
-            value={selectedDate}
-            onChange={handleDateChange}
-          />)}
-        {isDesktop && (
-          <KeyboardDatePicker
-            autoOk
-            disablePast
-            format='MM/DD/YYYY'
-            label='Release Date:'
-            value={selectedDate}
-            minDateMessage='Selected date is in the past'
-            KeyboardButtonProps={{ margin: 'none' }}
-            InputAdornmentProps={{ position: 'start' }}
-            onChange={handleDateChange}
-          />)}
+        <DatePicker
+          autoOk
+          disablePast
+          format='MMMM DD, YYYY'
+          label='Release Date:'
+          minDateMessage='Selected date is in the past'
+          value={selectedDate}
+          onChange={handleDateChange}
+        />
       </ThemeProvider>
       </>
   );
