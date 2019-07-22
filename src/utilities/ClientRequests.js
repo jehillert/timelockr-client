@@ -86,10 +86,11 @@ export const verifyUser = (user, pass) => axios.post(`${urlBase}/signin`, {
     password: pass,
   })
   .then((result) => {
-    debug(result);
     debug(`User authenticated.\nuserId: ${result.data.userId}`);
+    let data = JSON.parse(result.config.data);
     const authData = {
       userId: result.data.userId,
+      username: data.username,
       hasAuth: true,
     };
     return authData;

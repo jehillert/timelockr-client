@@ -54,7 +54,6 @@ function LockedEntryCardMenu(props) {
         .then(() => refresh());
     }
 
-    // "the function passed to useEffect may return a clean-up function"
     return () => {
       setOpen(false);
       setAnchorEl(null);
