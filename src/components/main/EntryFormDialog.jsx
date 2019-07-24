@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import moment from 'moment';
 import styled from 'styled-components';
-import { createEntry } from 'utilities';
+import {
+  createEntry,
+  ErrorBoundary,
+} from 'utilities';
 import {
   DatePicker,
   FormButton,
@@ -156,15 +159,19 @@ class EntryFormDialog extends React.Component {
             </StyledMuiTextFieldContainer>
             <StyledMuiDateFieldContainer>
               <>
-                <S.DatePicker
-                  handleDateChange={this.handleDateChange}
-                  selectedDate={selectedDate}
-                />
-                <S.TimePicker
-                  handleTimeChange={this.handleTimeChange}
-                  selectedDate={selectedDate}
-                  selectedTime={selectedTime}
-                />
+                <ErrorBoundary>
+                  <S.DatePicker
+                    handleDateChange={this.handleDateChange}
+                    selectedDate={selectedDate}
+                  />
+                </ErrorBoundary>
+                <ErrorBoundary>
+                  <S.TimePicker
+                    handleTimeChange={this.handleTimeChange}
+                    selectedDate={selectedDate}
+                    selectedTime={selectedTime}
+                  />
+                </ErrorBoundary>
               </>
             </StyledMuiDateFieldContainer>
           </StyledMuiDialogContent>
