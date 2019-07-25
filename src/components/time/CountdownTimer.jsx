@@ -4,8 +4,7 @@ import moment from 'moment';
 import momentDurationFormatSetup from 'moment-duration-format';
 import styled from 'styled-components';
 import { usePrevious } from 'utilities';
-import { CircularProgress } from 'components';
-import Promise from 'bluebird';
+// import { CircularProgress } from 'components';
 
 momentDurationFormatSetup(moment);
 
@@ -36,16 +35,17 @@ S.CountdownText = styled.div`
 `;
 
 function CountdownTimer(props) {
-  const { creationDate, releaseDate, refresh } = props;
-  const before = moment(creationDate);
+  const { releaseDate, refresh } = props;
+  // const { creationDate, releaseDate, refresh } = props;
+  // const before = moment(creationDate);
   const now = moment();
   const later = moment(releaseDate);
-  const timeBase = moment.duration(later.diff(before));
+  // const timeBase = moment.duration(later.diff(before));
 
   const intervalRef = useRef();
 
   const [open, setOpen] = useState(false);
-  const [fraction, setFraction] = useState(null);
+  // const [fraction, setFraction] = useState(null);
   const [timeRemaining, setTimeRemaining] = useState('');
 
   const [duration, setDuration] = useState(moment.duration(later.diff(now)));
@@ -68,7 +68,7 @@ function CountdownTimer(props) {
       tr = duration.format('hh:mm:ss', { trim: false });
     }
 
-    setTimeRemaining(tr);
+    return setTimeRemaining(tr);
   };
 
   const incrementTime = () => {
@@ -77,8 +77,6 @@ function CountdownTimer(props) {
   };
 
   useEffect(() => {
-    let timer = 0;
-
     if (prevSeconds !== moment.duration(later.diff(now)).asSeconds()) {
       const seconds = moment.duration(later.diff(now)).asSeconds();
       const extension = seconds - duration.asSeconds();
@@ -117,7 +115,7 @@ function CountdownTimer(props) {
 //          />
 
 CountdownTimer.propTypes = {
-  creationDate: PropTypes.string.isRequired,
+  // creationDate: PropTypes.string.isRequired,
   releaseDate: PropTypes.string.isRequired,
   refresh: PropTypes.func.isRequired,
 };

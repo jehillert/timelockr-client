@@ -29,7 +29,8 @@ S.LinearProgress = styled(LinearProgress)`
 const LinearProgressWithDates = (props) => {
   // const classes = useStyles();
   const { entry } = props;
-  const { creationDate, fraction, releaseDate } = entry;
+  const { creationDate, releaseDate } = entry;
+  // const { creationDate, fraction, releaseDate } = entry;
   const [completed, setCompleted] = React.useState(0);
 
   React.useEffect(() => {

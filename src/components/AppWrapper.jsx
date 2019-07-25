@@ -7,8 +7,8 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { serverConsoleUrl } from 'config';
 import { StylesProvider } from '@material-ui/styles';
 import { ThemeProvider } from 'styled-components';
-import { closeConsole, openConsole } from './AppConsole';
-import { isDesktop, isMobile } from 'utilities';
+import { isDesktop } from 'utilities';
+import openConsole from './AppConsole';
 
 class AppWrapper extends React.Component {
   constructor(props) {
@@ -19,18 +19,21 @@ class AppWrapper extends React.Component {
   }
 
   componentDidMount() {
-    isDesktop && this.setState({
-      AppConsole: openConsole(
-        serverConsoleUrl,
-        'TimeLockrServerDemoPopupWindow',
-        500,
-        415,
-      ),
-    });
+    if (isDesktop) {
+      this.setState({
+        AppConsole: openConsole(
+          serverConsoleUrl,
+          'TimeLockrServerDemoPopupWindow',
+          500,
+          415,
+        ),
+      });
+    }
   }
 
   componentWillUnmount() {
-    this.state.AppConsole.close();
+    const { AppConsole } = this.state;
+    AppConsole.close();
   }
 
   render() {
@@ -61,4 +64,3 @@ AppWrapper.propTypes = {
 };
 
 export default AppWrapper;
-

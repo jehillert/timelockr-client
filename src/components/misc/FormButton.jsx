@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -58,8 +57,14 @@ function FormButton(props) {
   );
 }
 
+FormButton.defaultProps = {
+  children: null,
+};
+
 FormButton.propTypes = {
+  children: PropTypes.node,
   handleSubmit: PropTypes.func.isRequired,
 };
+
 
 export default FormButton;

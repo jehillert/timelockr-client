@@ -1,12 +1,3 @@
-/*
-import {
-  RenderIfMobile,
-  RenderIfDesktop,
-  isMobile,
-  isDesktop,
-} from 'utilities'
-*/
-import React from 'react';
 import styled from 'styled-components';
 
 export const RenderIfMobile = styled.div`
@@ -14,6 +5,7 @@ export const RenderIfMobile = styled.div`
     display: none;
   }
 `;
+
 export const RenderIfDesktop = styled.div`
   @media (hover: none) and (pointer: coarse) {
     display: none;

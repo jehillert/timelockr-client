@@ -2,18 +2,16 @@
 // THESE GUYS PROVIDE LOTS OF USEFUL FUNCTIONS
 // https://material-ui-pickers.dev/guides/formats
 import React, { useEffect, useState } from 'react';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import AccessTime from '@material-ui/icons/AccessTime';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import blueGrey from '@material-ui/core/colors/blueGrey';
-import styled from 'styled-components';
 import { createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import {
   isMobile,
   isDesktop,
-} from 'utilities'
+} from 'utilities';
 import {
   KeyboardTimePicker,
   TimePicker,
@@ -24,7 +22,7 @@ const EntryFormTimePicker = (props) => {
   const {
     selectedTime,
     selectedDate,
-    handleTimeChange
+    handleTimeChange,
   } = props;
 
   const [helperText, setHelperText] = useState('');
@@ -41,7 +39,7 @@ const EntryFormTimePicker = (props) => {
       setErrorStatus(false);
       setHelperText('');
     }
-  }, [selectedDate, selectedTime, helperText])
+  }, [selectedDate, selectedTime, helperText]);
 
   const defaultMaterialTheme = createMuiTheme({
     palette: {
@@ -52,29 +50,33 @@ const EntryFormTimePicker = (props) => {
   return (
     <>
       <ThemeProvider theme={defaultMaterialTheme}>
-        {isMobile && (
-          <TimePicker
-            ampm
-            mask='__:__ _M'
-            error={isError}
-            helperText={helperText}
-            minDate={new Date()}
-            label='Release Time:'
-            value={selectedTime}
-            onChange={handleTimeChange}
-          />)}
-        {isDesktop && (
-          <KeyboardTimePicker
-            ampm
-            error={isError}
-            mask='__:__ _M'
-            helperText={helperText}
-            label='Release Time:'
-            value={selectedTime}
-            onChange={handleTimeChange}
-            InputAdornmentProps={{ position: 'start' }}
-            keyboardIcon={<AccessTime />}
-          />)}
+        {isMobile
+          && (
+            <TimePicker
+              ampm
+              mask='__:__ _M'
+              error={isError}
+              helperText={helperText}
+              minDate={new Date()}
+              label='Release Time:'
+              value={selectedTime}
+              onChange={handleTimeChange}
+            />
+          )}
+        {isDesktop
+          && (
+            <KeyboardTimePicker
+              ampm
+              error={isError}
+              mask='__:__ _M'
+              helperText={helperText}
+              label='Release Time:'
+              value={selectedTime}
+              onChange={handleTimeChange}
+              InputAdornmentProps={{ position: 'start' }}
+              keyboardIcon={<AccessTime />}
+            />
+          )}
       </ThemeProvider>
     </>
   );
@@ -83,7 +85,7 @@ const EntryFormTimePicker = (props) => {
 EntryFormTimePicker.defaultProps = {
   selectedTime: new Date(),
   selectedDate: new Date(),
-}
+};
 
 EntryFormTimePicker.propTypes = {
   handleTimeChange: PropTypes.func.isRequired,
@@ -98,28 +100,3 @@ EntryFormTimePicker.propTypes = {
 };
 
 export default EntryFormTimePicker;
-
-
-/*
-import React, { useEffect, useState } from 'react';
-import FormHelperText from '@material-ui/core/FormHelperText';
-
-const [shouldWarn, setWarnState] = useState(false);
-const warning = 'Selected time has already passed.';
-
-useEffect(() => {
-  const now = moment();
-  const selectedDateIsToday = selectedDate.isSame(new Date(), 'day');
-  const selectedTimeIsEarlier = moment(selectedTime).isBefore(now);
-
-  if (selectedDateIsToday && selectedTimeIsEarlier) {
-    setWarnState(true);
-  }
-}, [selectedDate, selectedTime, shouldWarn])
-
-{shouldWarn && (
-  <FormHelperText error={true}>
-    {warning}
-  </FormHelperText>
-)}
-*/

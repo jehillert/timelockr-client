@@ -13,13 +13,12 @@ const LockedEntryCard = (props) => {
   const { entry, refresh, wrapper } = props;
   const { shouldRenderCard } = wrapper;
 
-  const [displayMode, setDisplayMode] = useState(1);
-
   const Timer = (
     <CountdownTimer
       creationDate={entry.creationDate}
       refresh={refresh}
-      releaseDate={entry.releaseDate} />
+      releaseDate={entry.releaseDate}
+    />
   );
 
   return (
@@ -39,8 +38,7 @@ const LockedEntryCard = (props) => {
               title={entry.description}
             />
             <StyledMuiCardContent>
-              {(displayMode === 1) && Timer}
-              {(displayMode === 2) && TimerAndCircProgress}
+              {Timer}
             </StyledMuiCardContent>
           </StyledMuiCard>
         )
@@ -51,6 +49,7 @@ const LockedEntryCard = (props) => {
 
 LockedEntryCard.propTypes = {
   entry: PropTypes.shape({
+    description: PropTypes.string,
     entryId: PropTypes.number,
     label: PropTypes.string,
     todaysDate: PropTypes.string,

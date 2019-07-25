@@ -12,7 +12,6 @@ function ConfirmDialog(props) {
   const {
     buttonLabel,
     confirmDialog,
-    handleConfirmDialog,
     message,
     open,
     title,

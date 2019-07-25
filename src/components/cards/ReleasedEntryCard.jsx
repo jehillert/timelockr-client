@@ -56,7 +56,8 @@ const ReleasedEntryCard = (props) => {
         <>
           {Boolean(anchorEl) && (
             <ClipboardPopover
-              anchorEl={anchorEl} />
+              anchorEl={anchorEl}
+            />
           )}
           <CopyToClipboard
             text={`DESCRIPTION:\n\t${description}\n\nCONTENT:\n\t${content}`}

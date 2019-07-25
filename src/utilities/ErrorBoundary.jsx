@@ -44,12 +44,10 @@ class ErrorBoundary extends React.Component {
 
 ErrorBoundary.defaultProps = {
   children: null,
-  surroundProps: null,
 };
 
 ErrorBoundary.propTypes = {
   children: PropTypes.node,
-  surroundProps: PropTypes.object
 };
 
 export default ErrorBoundary;

@@ -3,7 +3,6 @@ import { AppContext } from 'contexts';
 
 export function withAppContext(Component) {
   return function WrapperComponent(props) {
-
     return (
       <AppContext.Consumer>
         {(state, getEntries, setUserProp) => (

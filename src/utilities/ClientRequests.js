@@ -42,8 +42,8 @@ export const extendReleaseDate = (entryId, releaseDate) => axios
   .put(`${urlBase}/entries`, {
     data: { entryId, releaseDate },
   })
-    .then(response => {
-      let data = JSON.parse(response.config.data);
+    .then((response) => {
+      const data = JSON.parse(response.config.data);
       debug(data);
       return data;
     })
@@ -87,7 +87,7 @@ export const verifyUser = (user, pass) => axios.post(`${urlBase}/signin`, {
   })
   .then((result) => {
     debug(`User authenticated.\nuserId: ${result.data.userId}`);
-    let data = JSON.parse(result.config.data);
+    const data = JSON.parse(result.config.data);
     const authData = {
       userId: result.data.userId,
       username: data.username,
@@ -114,7 +114,9 @@ RESPONSE OBJECTS:
           "config": {
             "url": "http://timelockr-server-demo.herokuapp.com/api/db/entries",
             "method": "put",
-            "data": "{\"data\":{\"entryId\":1549,\"releaseDate\":\"2019-07-21 16:11-00\"}}", <<< THIS JSON NEEDS TO BE PARSED
+            JSON NEEDS 2BE PARSED >>>
+            "data": "{\"data\":{\"entryId\":1549,\"releaseDate\":\"2019-07-21 16:11-00\"}}",
+            <<< JSON NEEDS 2BE PARSED
             "headers": {
               "Accept": "application/json, text/plain, **",
               "Content-Type": "application/json;charset=utf-8"

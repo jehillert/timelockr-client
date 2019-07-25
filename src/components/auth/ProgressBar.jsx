@@ -13,7 +13,7 @@ const ColorLinearProgress = withStyles({
   },
 })(LinearProgress);
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -24,7 +24,6 @@ const useStyles = makeStyles(theme => ({
 export default function ProgressBar(props) {
   const { loading } = props;
   const classes = useStyles();
-  const [query, setQuery] = React.useState('idle');
 
   return (
     <div className={classes.placeholder}>
@@ -35,12 +34,12 @@ export default function ProgressBar(props) {
         }}
         unmountOnExit
       >
-       <ColorLinearProgress />
+        <ColorLinearProgress />
       </Fade>
     </div>
   );
 }
 
 ProgressBar.propTypes = {
-  loading:PropTypes.bool.isRequired,
-}
+  loading: PropTypes.bool.isRequired,
+};

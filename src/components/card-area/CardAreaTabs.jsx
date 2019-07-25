@@ -1,4 +1,4 @@
-import Debug from 'debug';
+// import Debug from 'debug';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -13,7 +13,7 @@ import {
 } from 'components';
 import { ErrorBoundary } from 'utilities';
 
-const debug = Debug('src:components:app:card-area-tabs');
+// const debug = Debug('src:components:app:card-area-tabs');
 const styles = theme => ({});
 const S = {};
 
@@ -118,8 +118,6 @@ function CardAreaTabs(props) {
 }
 
 CardAreaTabs.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  classes: PropTypes.object.isRequired,
   entries: PropTypes.shape({
     locked: PropTypes.array,
     released: PropTypes.array,

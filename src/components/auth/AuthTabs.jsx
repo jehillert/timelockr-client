@@ -86,7 +86,7 @@ const AuthTabs = (props) => {
   }, [tabIndex, setTitle]);
 
   return (
-    <S.Tabs selectedIndex={tabIndex} onSelect={tabIndex => setTab(tabIndex)}>
+    <S.Tabs selectedIndex={tabIndex} onSelect={t => setTab(t)}>
       <S.TabList>
         <S.Tab>Sign In</S.Tab>
         <S.Tab>Sign Up</S.Tab>

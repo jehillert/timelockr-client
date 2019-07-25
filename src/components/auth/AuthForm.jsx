@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import classNames from 'classnames';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -10,7 +9,7 @@ import TextField from '@material-ui/core/TextField';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import * as EmailValidator from 'email-validator';
-import { Box, FormButton, ProgressBar } from 'components';
+import { FormButton, ProgressBar } from 'components';
 import { demoUser, demoPassword } from 'config';
 import { withStyles } from '@material-ui/core/styles';
 import Promise from 'bluebird';
@@ -38,7 +37,7 @@ S.TextField = styled(TextField)`
   .MuiOutlinedInput-root {
     padding: ${props => props.theme.p(0.75)}
              ${props => props.theme.p(0.70)}
-             ${props => props.theme.p(.75)}
+             ${props => props.theme.p(0.75)}
              ${props => props.theme.p(0.75)};
   }
 `;
@@ -64,8 +63,6 @@ class AuthForm extends React.Component {
     this.state = {
       username: demoUser,
       password: demoPassword,
-      // username: '',
-      // password: '',
       notAnEmailAddressError: false,
       loading: false,
       passwordError: false,
@@ -75,7 +72,7 @@ class AuthForm extends React.Component {
 
   handleFormSubmit = (event) => {
     const { handleSubmit } = this.props;
-    const { username, password, loading } = this.state;
+    const { username, password } = this.state;
     const handleSubmitAsync = Promise.promisify(handleSubmit);
 
     if (!EmailValidator.validate(username) || password === '') {
@@ -89,19 +86,17 @@ class AuthForm extends React.Component {
     event.preventDefault();
 
     return handleSubmitAsync(username, password)
-      .then(state => this.setState({
-        username: demoUser,
-        password: demoPassword,
-        // username: '',
-        // password: '',
-        notAnEmailAddressError: false,
-        passwordError: false,
-        showPassword: false,
-      }));
+    .then(() => this.setState({
+      username: demoUser,
+      password: demoPassword,
+      notAnEmailAddressError: false,
+      passwordError: false,
+      showPassword: false,
+    }));
   }
-  // To hand the ProgressBar
   // const setTimeoutAsync = Promise.promisify(setTimeout);
   // setTimeoutAsync(() => console.log('waiting'), 2000 ).then(() => {
+  // Hang the ProgressBar:
   // });
 
   handleChange = prop => (event) => {
@@ -121,7 +116,7 @@ class AuthForm extends React.Component {
   );
 
   render() {
-    const { autocompletePasswordType, classes } = this.props;
+    const { autocompletePasswordType } = this.props;
     const {
       username,
       notAnEmailAddressError,
@@ -188,7 +183,6 @@ class AuthForm extends React.Component {
 }
 
 AuthForm.propTypes = {
-  classes: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   autocompletePasswordType: PropTypes.string.isRequired,
 };

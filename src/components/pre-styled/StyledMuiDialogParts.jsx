@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -11,7 +10,6 @@ const StyledMuiDialog = styled(Dialog)`
   display: flex;
   justify-content: center;
   border-radius: ${props => props.theme.dialogRadius};
-  width=${props => props.theme.dialogWidth};
 `;
 
 const StyledMuiDialogTitle = styled(DialogTitle)`
@@ -63,4 +61,4 @@ export {
   StyledMuiTextField,
   StyledMuiDateFieldContainer,
   StyledMuiDialogActions,
-}
+};

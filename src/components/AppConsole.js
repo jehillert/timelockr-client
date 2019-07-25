@@ -18,17 +18,11 @@ const openConsole = (url, windowName, height = 500, width = 415) => {
 
   const popupWindow = window.open(url, windowName, options);
 
-  window.onbeforeunload = function() {
+  window.onbeforeunload = function closeWithParent() {
     popupWindow.close();
   };
-
 
   return popupWindow;
 };
 
-const closeConsole = () => {
-  this.close();
-  return {};
-};
-
-export { openConsole, closeConsole };
+export default openConsole;

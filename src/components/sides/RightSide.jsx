@@ -23,7 +23,7 @@ const RightSide = (props) => {
   const { children, gridArea } = props;
   return (
     <S.RightSide gridArea={gridArea}>
-        {children}
+      {children}
     </S.RightSide>
   );
 };

@@ -73,10 +73,8 @@ S.Middle = styled(Box)`
 `;
 
 const Main = (props) => {
-
   const {
     entries,
-    hasAuth,
     refresh,
     revokeAuth,
     userId,
@@ -128,26 +126,26 @@ const Main = (props) => {
       )}
       <Box className='grid-desktop'>
         <LeftSide gridArea='leftSide' title='TimeLockr' />
-          <S.Middle>
-            <S.AppBar gridArea='appBar'>
-              <S.AppBarContainer>
-                <MainMenu
-                  revokeAuth={revokeAuth}
-                  username={username}
-                />
-              </S.AppBarContainer>
-            </S.AppBar>
-            <S.CardArea gridArea='cardArea'>
-              <CardAreaTabs
-                id='card-area-tabs'
-                entries={entries}
-                refresh={refresh}
+        <S.Middle>
+          <S.AppBar gridArea='appBar'>
+            <S.AppBarContainer>
+              <MainMenu
+                revokeAuth={revokeAuth}
+                username={username}
               />
-              <S.InsideFabBox>
-                {InsideFab}
-              </S.InsideFabBox>
-            </S.CardArea>
-          </S.Middle>
+            </S.AppBarContainer>
+          </S.AppBar>
+          <S.CardArea gridArea='cardArea'>
+            <CardAreaTabs
+              id='card-area-tabs'
+              entries={entries}
+              refresh={refresh}
+            />
+            <S.InsideFabBox>
+              {InsideFab}
+            </S.InsideFabBox>
+          </S.CardArea>
+        </S.Middle>
         <RightSide gridArea='rightSide'>
           <S.OutsideFabBox>
             {OutsideFab}
@@ -175,7 +173,6 @@ Main.propTypes = {
     locked: PropTypes.array,
     released: PropTypes.array,
   }),
-  hasAuth: PropTypes.bool.isRequired,
   revokeAuth: PropTypes.func.isRequired,
   refresh: PropTypes.func.isRequired,
   userId: PropTypes.number.isRequired,

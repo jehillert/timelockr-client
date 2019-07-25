@@ -17,11 +17,9 @@ S.ModalTitle = styled.h2`
 
 S.Modal = styled(Modal)`
   @media (min-width: ${props => props.theme.bp3}) {
-    width = 100%;
+    width: 100%;
   }
-  & {
-    color: ${props => props.theme.fgColor2};
-  }
+  color: ${props => props.theme.fgColor2};
 `;
 
 const styles = theme => ({
@@ -111,4 +109,3 @@ AuthModal.propTypes = {
 };
 
 export default withStyles(styles)(AuthModal);
-

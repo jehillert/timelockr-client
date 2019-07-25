@@ -14,8 +14,5 @@ export {
   isMobile,
   isDesktop,
 } from '../utilities/MediaQueries';
-export {
-  usePrevious,
-} from '../utilities/CustomHooks';
+export { default as usePrevious } from '../utilities/CustomHooks';
 export { default as ErrorBoundary } from '../utilities/ErrorBoundary';
-export { default as MatchMediaHOC } from '../utilities/MatchMediaHOC';

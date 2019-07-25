@@ -1,6 +1,5 @@
 // import '@babel/polyfill';
 import React from 'react';
-// import { render } from 'react-dom';
 import ReactDOM from 'react-dom';
 import { App } from 'components';
 import { debug, nodeEnv } from 'config';

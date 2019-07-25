@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unused-state */
-import * as Debug from 'debug';
+// import * as Debug from 'debug';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AppContext } from 'contexts';
 import { getEntries } from 'utilities';
 
-const debug = Debug('src:contexts:app-provider');
+// const debug = Debug('src:contexts:app-provider');
 
 class AppProvider extends React.Component {
   constructor(props) {
@@ -38,16 +38,16 @@ class AppProvider extends React.Component {
         // debug('LOCKED:\n%O', locked);
         // debug('RELEASED:\n%O', released);
 
-        this.setState(state => ({
+        this.setState({
           entries,
           locked,
           released,
-        }));
+        });
       });
   }
 
   setUserProp = (key, value) => {
-    this.setState(state => ({ [key]: value }));
+    this.setState({ [key]: value });
   }
 
   render() {

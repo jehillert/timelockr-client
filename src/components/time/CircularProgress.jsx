@@ -36,43 +36,47 @@ const CircularProgress = (props) => {
 console.log('percentage:', percentage);
   return (
     <svg
-        width={sqSize}
-        height={sqSize}
-        viewBox={viewBox}>
-        <circle
-          className='circle-background'
-          cx={sqSize / 2}
-          cy={sqSize / 2}
-          r={radius}
-          strokeWidth={`${strokeWidth}px`} />
-        <circle
-          className='circle-progress'
-          cx={props.sqSize / 2}
-          cy={props.sqSize / 2}
-          r={radius}
-          strokeWidth={`${strokeWidth}px`}
-          // Start progress marker at 12 O'Clock
-          transform={`rotate(-90 ${sqSize / 2} ${sqSize / 2})`}
-          style={{
-            strokeDasharray: dashArray,
-            strokeDashoffset: dashOffset
-          }} />
-        <div
-          className='circle-text'
-          x='50%'
-          y='50%'
-          dy='.3em'
-          textAnchor='middle'>
-          {`${percentage}%`}
-        </div>
+      width={sqSize}
+      height={sqSize}
+      viewBox={viewBox}
+    >
+      <circle
+        className='circle-background'
+        cx={sqSize / 2}
+        cy={sqSize / 2}
+        r={radius}
+        strokeWidth={`${strokeWidth}px`}
+      />
+      <circle
+        className='circle-progress'
+        cx={sqSize / 2}
+        cy={sqSize / 2}
+        r={radius}
+        strokeWidth={`${strokeWidth}px`}
+        // Start progress marker at 12 O'Clock
+        transform={`rotate(-90 ${sqSize / 2} ${sqSize / 2})`}
+        style={{
+          strokeDasharray: dashArray,
+          strokeDashoffset: dashOffset,
+        }}
+      />
+      <div
+        className='circle-text'
+        x='50%'
+        y='50%'
+        dy='.3em'
+        textAnchor='middle'
+      >
+        {`${percentage}%`}
+      </div>
     </svg>
   );
-}
+};
 
 CircularProgress.defaultProps = {
   sqSize: 200,
   percentage: 25,
-  strokeWidth: 10
+  strokeWidth: 10,
 };
 
 CircularProgress.propTypes = {
@@ -82,4 +86,3 @@ CircularProgress.propTypes = {
 };
 
 export default CircularProgress;
-

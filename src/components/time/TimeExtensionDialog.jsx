@@ -1,7 +1,8 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-func-assign */
 import * as Debug from 'debug';
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import styled from 'styled-components';

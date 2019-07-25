@@ -1,7 +1,6 @@
 import * as Debug from 'debug';
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import moment from 'moment';
 import styled from 'styled-components';
 import {
@@ -90,9 +89,9 @@ class EntryFormDialog extends React.Component {
     const sT = moment(selectedTime);
 
     const releaseDateLocal = sD.set({
-      'hour': sT.get('hour'),
-      'minute': sT.get('minute'),
-      'second': sT.get('second'),
+      hour: sT.get('hour'),
+      minute: sT.get('minute'),
+      second: sT.get('second'),
     });
 
     // Format releaseDate to UTC string
