@@ -1,17 +1,17 @@
 const defaultTheme = {
 
-  primary: {
-    light: '#7986cb',
-    main: '#3f51b5',
-    dark: '#303f9f',
-    contrastText: '#fff',
-  },
-  secondary: {
-    light: '#ff4081',
-    main: '#f50057',
-    dark: '#c51162',
-    contrastText: '#fff',
-  },
+  // primary: {
+  //   light: '#7986cb',
+  //   main: '#3f51b5',
+  //   dark: '#303f9f',
+  //   contrastText: '#fff',
+  // },
+  // secondary: {
+  //   light: '#ff4081',
+  //   main: '#f50057',
+  //   dark: '#c51162',
+  //   contrastText: '#fff',
+  // },
   // BREAK POINTS: [1] title ==> [2] button ==> [3] 2 columns ==> [4] single column)
   bp1: '66rem',
   bp2: '51rem',
@@ -73,6 +73,9 @@ const defaultTheme = {
 
 export default defaultTheme;
 /*
+STYLED-COMPONENTS WORK-AROUND;
+  const StyledCComponent = styled(props => <CComponent {...props} />)``
+
 DETERMINING DEVICE:
   mouse, touch pad           ==>    "@media (hover: hover) and (pointer: fine) {}"
   smartphones, touchscreens  ==>    "@media (hover: none) and (pointer: coarse) {}"

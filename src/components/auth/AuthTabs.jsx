@@ -12,7 +12,7 @@ import { AuthForm } from 'components';
 const S = {};
 
 S.Tabs = styled(Tabs)`
-  color: ${props => props.theme.bgColor3}
+  color: ${props => props.theme.bgColor3};
   -webkit-tap-highlight-color: transparent;
 `;
 
@@ -27,6 +27,7 @@ S.TabList = styled(TabList)`
 `;
 
 S.Tab = styled(Tab)`
+  font-size: 18px;
   display: inline-block;
   border: 1px solid transparent;
   border-bottom: none;

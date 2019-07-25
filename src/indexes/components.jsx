@@ -22,6 +22,7 @@ export { default as LockedEntryCard } from '../components/cards/LockedEntryCard'
 export { default as LockedEntryCardMenu } from '../components/cards/LockedEntryCardMenu';
 export { default as Main } from '../components/main/Main';
 export { default as MainMenu } from '../components/main/main-menu/MainMenu';
+export { default as ProgressBar } from '../components/auth/ProgressBar';
 export { default as ReleasedEntryCard } from '../components/cards/ReleasedEntryCard';
 export { default as RightSide } from '../components/sides/RightSide';
 export { default as TimeExtensionDialog } from '../components/time/TimeExtensionDialog';

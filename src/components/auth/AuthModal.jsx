@@ -10,7 +10,7 @@ const S = {};
 
 S.Modal = styled(Modal)`
   @media (min-width: ${props => props.theme.bp3}) {
-    width = 100%;
+    width: 100%;
   }
 `;
 
@@ -18,7 +18,7 @@ const styles = theme => ({
   paper: {
     marginTop: '4rem',
     margin: 'auto',
-    width: theme.spacing(60),
+    width: theme.spacing(55),
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     outline: 'none',
@@ -77,7 +77,7 @@ class AuthModal extends React.Component {
         onClose={this.handleClose}
       >
         <div className={classes.paper}>
-          <Box pl={3} pt={2} pb={1}>
+          <Box pl={4} pt={4} pb={2}>
             <h2>{title}</h2>
           </Box>
           <AuthTabs

@@ -5,11 +5,12 @@ import styled from 'styled-components';
 import classNames from 'classnames';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import FormGroup from '@material-ui/core/FormGroup';
 import TextField from '@material-ui/core/TextField';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import * as EmailValidator from 'email-validator';
-import { Box, FormButton } from 'components';
+import { Box, FormButton, ProgressBar } from 'components';
 import { demoUser, demoPassword } from 'config';
 import { withStyles } from '@material-ui/core/styles';
 import Promise from 'bluebird';
@@ -21,35 +22,41 @@ const S = {};
 S.Form = styled.form`
   display: flex;
   flex-direction: column;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-bottom: 1.5rem;
+  padding: ${props => props.theme.p(2)}
+           ${props => props.theme.p(2)};
 `;
 
 S.TextField = styled(TextField)`
-  margin-left: ${props => props.theme.m(2)};
-  margin-right: ${props => props.theme.m(2)};
-  margin-top: ${props => props.theme.m(1)};
-  margin-bottom: ${props => props.theme.m(1)};
+  margin: ${props => props.theme.m(1)}
+          ${props => props.theme.m(2)}
+          ${props => props.theme.m(1)}
+          ${props => props.theme.m(2)};
+  padding-right: ${props => props.theme.p(0)};
+  .MuiIconButton-root {
+    padding: ${props => props.theme.p(0.75)};
+  }
+  .MuiOutlinedInput-root {
+    padding: ${props => props.theme.p(0.75)}
+             ${props => props.theme.p(0.70)}
+             ${props => props.theme.p(.75)}
+             ${props => props.theme.p(0.75)};
+  }
 `;
 
-S.ButtonBox = styled(props => <Box {...props} />)`
+S.ButtonBox = styled(FormGroup)`
   align-self: flex-end;
-  margin-right: ${props => props.theme.m(1)}
+  margin-top: ${props => props.theme.m(1)};
+  margin-right: ${props => props.theme.p(1)};
 `;
 
-// const styles = theme => ({
-//   textField: {
-//     marginLeft: theme.spacing(),
-//     marginRight: theme.spacing(),
-//   },
-//   dense: {
-//     marginTop: 16,
-//   },
-//   onRight: {
-//     alignSelf: 'flex-end',
-//   },
-// });
+S.ProgressBarBox = styled(FormGroup)`
+  width: auto;
+  height: 4px;
+  margin-top: ${props => props.theme.m(2)};
+  margin-bottom: ${props => props.theme.m(0)};
+  margin-left: ${props => props.theme.m(-2)};
+  margin-right: ${props => props.theme.m(-2)};
+`;
 
 class AuthForm extends React.Component {
   constructor(props) {
@@ -60,14 +67,15 @@ class AuthForm extends React.Component {
       // username: '',
       // password: '',
       notAnEmailAddressError: false,
+      loading: false,
       passwordError: false,
       showPassword: false,
     };
   }
 
-  handleSubmit = (event) => {
+  handleFormSubmit = (event) => {
     const { handleSubmit } = this.props;
-    const { username, password } = this.state;
+    const { username, password, loading } = this.state;
     const handleSubmitAsync = Promise.promisify(handleSubmit);
 
     if (!EmailValidator.validate(username) || password === '') {
@@ -77,7 +85,9 @@ class AuthForm extends React.Component {
       });
     }
 
+    this.setState({ loading: true });
     event.preventDefault();
+
     return handleSubmitAsync(username, password)
       .then(state => this.setState({
         username: demoUser,
@@ -89,6 +99,10 @@ class AuthForm extends React.Component {
         showPassword: false,
       }));
   }
+  // To hand the ProgressBar
+  // const setTimeoutAsync = Promise.promisify(setTimeout);
+  // setTimeoutAsync(() => console.log('waiting'), 2000 ).then(() => {
+  // });
 
   handleChange = prop => (event) => {
     const { notAnEmailAddressError, passwordError } = this.state;
@@ -111,6 +125,7 @@ class AuthForm extends React.Component {
     const {
       username,
       notAnEmailAddressError,
+      loading,
       password,
       passwordError,
       showPassword,
@@ -159,11 +174,14 @@ class AuthForm extends React.Component {
         <S.ButtonBox>
           <FormButton
             type='submit'
-            handleSubmit={this.handleSubmit}
+            handleSubmit={this.handleFormSubmit}
           >
             Submit
           </FormButton>
         </S.ButtonBox>
+        <S.ProgressBarBox>
+          <ProgressBar loading={loading} />
+        </S.ProgressBarBox>
       </S.Form>
     );
   }
