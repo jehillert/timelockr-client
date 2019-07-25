@@ -69,7 +69,7 @@ S.InsideFab = styled(S.OutsideFab)`
 
 S.Middle = styled(Box)`
   grid-column: 2;
-  max-width: 44rem;
+  width: 44rem;
 `;
 
 const Main = (props) => {

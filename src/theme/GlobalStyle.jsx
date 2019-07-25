@@ -6,6 +6,14 @@ const GlobalStyle = createGlobalStyle`
     overflow-x:hidden
   }
 
+  button:hover {
+    outline:none;
+  }
+
+  button:focus {
+    outline:none;
+  }
+
   * {
     box-sizing: border-box;
     padding: 0;

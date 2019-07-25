@@ -35,6 +35,7 @@ S.Button = styled(Button)`
     background-color: ${props => props.theme.hoverColor};
     border-color: ${props => props.theme.hoverColor};
     color: ${props => props.theme.hoverFontColor};
+    box-shadow: ${props => props.theme.boxShadow};
   }
 
   active: {
@@ -42,11 +43,8 @@ S.Button = styled(Button)`
     background-color: #0062cc;
     border-color: #005cbf;
   }
-
-  &:focus: {
-    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.5);
-  }
 `;
+    // box-shadow: 0 0 0 0.2rem rgba(0,123,255,.5);
 
 function FormButton(props) {
   const { children, handleSubmit } = props;
@@ -54,7 +52,6 @@ function FormButton(props) {
     <S.Button
       onClick={handleSubmit}
       variant='contained'
-      disableRipple
     >
       {children}
     </S.Button>
@@ -66,8 +63,3 @@ FormButton.propTypes = {
 };
 
 export default FormButton;
-
-// export default FormButton;
-//const FormButton = (props) => (
-//  <S.Button onClick={props.handleSubmit}>{props.children}</S.Button>
-//);

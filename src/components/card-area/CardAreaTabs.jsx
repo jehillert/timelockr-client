@@ -41,6 +41,9 @@ S.Tabs = styled(Tabs)`
     width: 100%;
     background-color: ${props => props.theme.primary};
   }
+  span {
+    outline: none;
+  }
 `;
 
 S.Tab = styled(Tab)`
