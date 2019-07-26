@@ -13,6 +13,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { demoUser } from 'config';
 import { ErrorBoundary, deleteUser, logout } from 'utilities';
 import { ConfirmDialog } from 'components';
 
@@ -31,9 +32,16 @@ S.MoreVertIcon = styled(MoreVertIcon)`
 const MainMenu = (props) => {
   const { revokeAuth, username } = props;
   const [anchorEl, setAnchorEl] = useState(null);
+  const [isDisabled, setDisabled] = useState(false);
   const [menuShouldRender, setMenuState] = useState(false);
   const [selected, setSelected] = useState('');
   const [dialogShouldRender, setDialogState] = useState(false);
+
+  useEffect(() => {
+    if (username === demoUser) {
+      setDisabled(true);
+    }
+  }, []);
 
   useEffect(() => {
     debug(`selected: ${selected}`);
@@ -100,7 +108,7 @@ const MainMenu = (props) => {
               TransitionComponent={Zoom}
             >
               <ErrorBoundary>
-                <MenuItem data-value='delete' dense onClick={() => setSelected('delete')}>
+                <MenuItem data-value='delete' dense disabled={isDisabled} onClick={() => setSelected('delete')}>
                   <ListItemIcon>
                     <PersonIcon />
                   </ListItemIcon>
