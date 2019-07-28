@@ -42,6 +42,7 @@ const CardArea = (props) => {
     updateShowEntries(true);
   }, []);
 
+            // delayBeforeRender={index * delayIncrement}
   return (
     <S.CardArea id={id}>
       {title && <Header text={title} level='3' mx={2} />}
@@ -49,7 +50,8 @@ const CardArea = (props) => {
         entries.map((entry, index) => (
           <CardWrapper
             key={entry.entryId.toString()}
-            delay={index * delayIncrement}
+            index={index}
+            refresh={refresh}
             render={wrapper => (
               <Card
                 key={entry.entryId.toString()}

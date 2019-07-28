@@ -25,14 +25,14 @@ S.IconButton = styled(IconButton)`
 const ReleasedEntryCard = (props) => {
   const [anchorEl, updateAnchorEl] = useState(null);
 
-  const { entry, refresh, wrapper } = props;
+  const { entry, wrapper } = props;
   const { content, description } = entry;
   const { entryId } = entry;
-  const { shouldRenderCard } = wrapper;
+  const { deleteCard } = wrapper;
 
   const handleCloseButtonClick = () => (
     deleteEntry(entry.entryId)
-      .then(() => refresh())
+      .then(() => deleteCard())
   );
 
   const handleCopyClick = (event) => {
@@ -52,38 +52,36 @@ const ReleasedEntryCard = (props) => {
   */
   return (
     <ErrorBoundary>
-      {shouldRenderCard && (
-        <>
-          {Boolean(anchorEl) && (
-            <ClipboardPopover
-              anchorEl={anchorEl}
+      <>
+        {Boolean(anchorEl) && (
+          <ClipboardPopover
+            anchorEl={anchorEl}
+          />
+        )}
+        <CopyToClipboard
+          text={`${description}\n${'─'.repeat(description.length)}\n${content}`}
+        >
+          <StyledMuiCard id={entryId} className='styled-mui-card'>
+            <StyledMuiCardHeader
+              onClick={handleCopyClick}
+              action={(
+                <S.IconButton
+                  className='s-icon-button'
+                  onClick={handleCloseButtonClick}
+                >
+                  <CloseIcon />
+                </S.IconButton>
+              )}
+              title={description}
             />
-          )}
-          <CopyToClipboard
-            text={`${description}\n${'─'.repeat(description.length)}\n${content}`}
-          >
-            <StyledMuiCard id={entryId} className='styled-mui-card'>
-              <StyledMuiCardHeader
-                onClick={handleCopyClick}
-                action={(
-                  <S.IconButton
-                    className='s-icon-button'
-                    onClick={handleCloseButtonClick}
-                  >
-                    <CloseIcon />
-                  </S.IconButton>
-                )}
-                title={description}
-              />
-              <StyledMuiCardContent onClick={handleCopyClick}>
-                <Typography css='white-space: pre-line;'>
-                  {content}
-                </Typography>
-              </StyledMuiCardContent>
-            </StyledMuiCard>
-          </CopyToClipboard>
-        </>
-      )}
+            <StyledMuiCardContent onClick={handleCopyClick}>
+              <Typography css='white-space: pre-line;'>
+                {content}
+              </Typography>
+            </StyledMuiCardContent>
+          </StyledMuiCard>
+        </CopyToClipboard>
+      </>
     </ErrorBoundary>
   );
 };
@@ -94,8 +92,7 @@ ReleasedEntryCard.propTypes = {
     description: PropTypes.string,
     content: PropTypes.string,
   }).isRequired,
-  refresh: PropTypes.func.isRequired,
-  wrapper: PropTypes.objectOf(PropTypes.bool).isRequired,
+  wrapper: PropTypes.objectOf(PropTypes.func).isRequired,
 };
 
 export default ReleasedEntryCard;

@@ -31,7 +31,12 @@ S.IconButton = styled(IconButton)`
 `;
 
 function LockedEntryCardMenu(props) {
-  const { entryId, releaseDate, refresh } = props;
+  const {
+    deleteCard,
+    entryId,
+    releaseDate,
+    refresh
+  } = props;
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
@@ -51,7 +56,7 @@ function LockedEntryCardMenu(props) {
 
     if (selected === 'delete') {
       deleteEntry(entryId)
-        .then(() => refresh());
+        .then(() => deleteCard());
     }
 
     return () => {
@@ -124,6 +129,7 @@ function LockedEntryCardMenu(props) {
 }
 
 LockedEntryCardMenu.propTypes = {
+  deleteCard: PropTypes.func.isRequired,
   entryId: PropTypes.number.isRequired,
   releaseDate: PropTypes.string.isRequired,
   refresh: PropTypes.func.isRequired,

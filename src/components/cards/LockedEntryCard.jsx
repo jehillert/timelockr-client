@@ -11,7 +11,7 @@ import {
 
 const LockedEntryCard = (props) => {
   const { entry, refresh, wrapper } = props;
-  const { shouldRenderCard } = wrapper;
+  const { deleteCard } = wrapper;
 
   const Timer = (
     <CountdownTimer
@@ -23,26 +23,23 @@ const LockedEntryCard = (props) => {
 
   return (
     <>
-      {shouldRenderCard
-        && (
-          <StyledMuiCard id={entry.entryId} className='styled-mui-card'>
-            <StyledMuiCardHeader
-              action={(
-                <LockedEntryCardMenu
-                  entryId={entry.entryId}
-                  refresh={refresh}
-                  releaseDate={entry.releaseDate}
-                  creationDate={entry.creationDate}
-                />
-              )}
-              title={entry.description}
+      <StyledMuiCard id={entry.entryId} className='styled-mui-card'>
+        <StyledMuiCardHeader
+          action={(
+            <LockedEntryCardMenu
+              deleteCard={deleteCard}
+              entryId={entry.entryId}
+              refresh={refresh}
+              releaseDate={entry.releaseDate}
+              creationDate={entry.creationDate}
             />
-            <StyledMuiCardContent>
-              {Timer}
-            </StyledMuiCardContent>
-          </StyledMuiCard>
-        )
-      }
+          )}
+          title={entry.description}
+        />
+        <StyledMuiCardContent>
+          {Timer}
+        </StyledMuiCardContent>
+      </StyledMuiCard>
     </>
   );
 };
@@ -58,7 +55,7 @@ LockedEntryCard.propTypes = {
     fraction: PropTypes.number,
   }).isRequired,
   refresh: PropTypes.func.isRequired,
-  wrapper: PropTypes.objectOf(PropTypes.bool).isRequired,
+  wrapper: PropTypes.objectOf(PropTypes.func).isRequired,
 };
 
 export default LockedEntryCard;
