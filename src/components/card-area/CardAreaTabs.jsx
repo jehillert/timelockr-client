@@ -95,7 +95,6 @@ function CardAreaTabs(props) {
               mt={2}
               id='card-area-released'
               Card={ReleasedEntryCard}
-              delayIncrement={100}
               entries={entries.released}
               refresh={refresh}
             />
@@ -106,7 +105,6 @@ function CardAreaTabs(props) {
             <CardArea
               id='card-area-locked'
               Card={LockedEntryCard}
-              delayIncrement={100}
               entries={entries.locked}
               refresh={refresh}
             />

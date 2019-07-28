@@ -1,6 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/jsx-indent */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Grow from '@material-ui/core/Grow';
 import { Box } from 'components';
@@ -9,56 +9,40 @@ import { Box } from 'components';
   ! think memory leak is because "this.timer" should be a state value.
 */
 
-class CardWrapper extends React.Component {
-  constructor(props) {
-    super(props);
+function CardWrapper(props) {
+  const { delay, render } = props;
 
-    this.state = {
-      shouldRenderCard: false,
-      show: false,
-    };
-  }
+  const [shouldRenderCard, setCardRenderState] = useState(false);
+  const [show, setShowState] = useState(false);
 
-  componentDidMount() {
-    const { delay } = this.props;
-    this.timer = setTimeout(() => {
-      this.setState({
-        shouldRenderCard: true,
-        show: true,
-      });
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCardRenderState(true);
+      setShowState(true);
     }, delay);
-  }
 
-  componentWillUnmount() {
-    clearTimeout(this.timer);
-  }
+    return () => clearTimeout(timer);
+  }, []);
 
-  render() {
-    const {
-      show,
-      shouldRenderCard,
-    } = this.state;
-
-    const { render } = this.props;
-
-    return (
-      <Box mx={1.5} my={1.5}>
-        {shouldRenderCard
-          && (
-            <Grow
-              in={show}
-              {...(show ? { timeout: 300 } : {})}
-            >
-            <div>
-              {render(this.state)}
-            </div>
-            </Grow>
-          )}
-      </Box>
-    );
-  }
+  return (
+    <Box mx={1.5} my={1.5}>
+      {shouldRenderCard
+        && (
+          <Grow
+            in={show}
+            {...(show ? { timeout: 300 } : {})}
+          >
+          <div>
+            {render({
+              shouldRenderCard,
+              show
+            })}
+          </div>
+          </Grow>
+        )}
+    </Box>
+  );
 }
-
 
 CardWrapper.defaultProps = {
   delay: 0,
