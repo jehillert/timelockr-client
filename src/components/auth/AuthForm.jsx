@@ -1,4 +1,5 @@
 /* eslint-disable react/forbid-prop-types */
+import * as Debug from 'debug';
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -15,6 +16,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Promise from 'bluebird';
 
 const styles = {};
+const debug = Debug('src:components:auth-form');
 
 const S = {};
 
@@ -59,6 +61,7 @@ S.ProgressBarBox = styled(FormGroup)`
 
 class AuthForm extends React.Component {
   constructor(props) {
+    debug('[AuthForm] rendered');
     super(props);
     this.state = {
       username: demoUser,

@@ -42,7 +42,11 @@ const CardArea = (props) => {
     updateShowEntries(true);
   }, []);
 
-            // delayBeforeRender={index * delayIncrement}
+
+  /*
+    To grow columns one at a time instead of left-right-left-right,
+    You can map the evens, then the odds.
+  */
   return (
     <S.CardArea id={id}>
       {title && <Header text={title} level='3' mx={2} />}

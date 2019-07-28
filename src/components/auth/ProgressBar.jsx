@@ -1,8 +1,11 @@
+import * as Debug from 'debug';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Fade from '@material-ui/core/Fade';
+
+const debug = Debug('src:components:progress-bar');
 
 const ColorLinearProgress = withStyles({
   colorPrimary: {
@@ -22,6 +25,8 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function ProgressBar(props) {
+  debug('[Progress-Bar] rendered');
+
   const { loading } = props;
   const classes = useStyles();
 

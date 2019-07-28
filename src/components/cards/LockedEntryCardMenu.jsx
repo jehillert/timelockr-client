@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /*
   ! NEXT TIME THERE ARE TWO THINGS THAT OPEN, GIVE THEM DISTINCT NAMES.  VERY DISTINCT NAMES
 */
@@ -31,6 +30,8 @@ S.IconButton = styled(IconButton)`
 `;
 
 function LockedEntryCardMenu(props) {
+  debug('[LockedEntryCardMenu]rendered');
+
   const {
     deleteCard,
     entryId,
@@ -41,15 +42,10 @@ function LockedEntryCardMenu(props) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState('');
+  const [shouldRenderMenu, setShouldRenderMenu] = useState(true);
   const [shouldRenderDialog, setShouldRenderDialog] = useState(false);
 
   useEffect(() => {
-    debug(`
-      selected: ${selected}
-      open:     ${open}
-      anchorEl: ${anchorEl}
-    `);
-
     if (selected === 'extend') {
       setShouldRenderDialog(sRD => !sRD);
     }
@@ -60,16 +56,17 @@ function LockedEntryCardMenu(props) {
     }
 
     return () => {
-      setOpen(false);
-      setAnchorEl(null);
-      setSelected('');
+      setOpen(() => false);
+      setAnchorEl(() => null);
+      setSelected(() => '');
     };
-  }, [entryId, refresh, selected]);
+  }, [entryId, selected]);
 
   useEffect(() => setShouldRenderDialog(false), [releaseDate]);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+    setShouldRenderMenu(true);
     setOpen(true);
   };
 
@@ -99,15 +96,15 @@ function LockedEntryCardMenu(props) {
       >
         <MoreVertIcon />
       </S.IconButton>
-      {open
+      {shouldRenderMenu
         && (
           <Paper>
             <Menu
               id='right-card-menu'
               anchorEl={anchorEl}
               open={open}
-              onClose={() => setSelected('exitActionSelected')}
-              TransitionComponent={Zoom}
+              onClose={() => setSelected('ClosedMenuWithoutSelection')}
+              onExited={() => setShouldRenderMenu(false)}
             >
               <MenuItem data-value='extend' dense onClick={() => setSelected('extend')}>
                 <ListItemIcon><HourglassEmptyIcon /></ListItemIcon>

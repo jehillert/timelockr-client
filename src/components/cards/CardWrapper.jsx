@@ -1,15 +1,16 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/jsx-indent */
+import * as Debug from 'debug';
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Grow from '@material-ui/core/Grow';
 import { Box } from 'components';
 
-/*
-  ! think memory leak is because "this.timer" should be a state value.
-*/
+const debug = Debug('src:components:card-wrapper');
 
 function CardWrapper(props) {
+  debug('[CardWrapper] rendered');
+
   const {
     animationDuration,
     delayBetween,
@@ -28,7 +29,6 @@ function CardWrapper(props) {
     const timer = setTimeout(() => {
       setShowState((should) => !should);
     }, delayBeforeShow);
-      // setCardRenderState((should) => !should);
   }, []);
 
   const deleteCard = () => {

@@ -1,3 +1,4 @@
+import * as Debug from 'debug';
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -9,6 +10,7 @@ import {
 import styled from 'styled-components';
 import { AuthForm } from 'components';
 
+const debug = Debug('src:components:auth-tabs');
 const S = {};
 
 S.Tabs = styled(Tabs)`
@@ -69,6 +71,8 @@ S.TabPanel = styled(TabPanel)`
 `;
 
 const AuthTabs = (props) => {
+  debug('[AuthTabs] rendered');
+
   const {
     handleSignin,
     handleAddUser,

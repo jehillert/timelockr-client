@@ -1,4 +1,5 @@
 // eslint-disable-next-line no-unused-vars
+import * as Debug from 'debug';
 import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import CloseIcon from '@material-ui/icons/Close';
@@ -14,6 +15,7 @@ import {
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { deleteEntry, ErrorBoundary } from 'utilities';
 
+const debug = Debug('src:components:released-entry-card');
 const S = {};
 
 S.IconButton = styled(IconButton)`
@@ -23,8 +25,9 @@ S.IconButton = styled(IconButton)`
 `;
 
 const ReleasedEntryCard = (props) => {
-  const [anchorEl, updateAnchorEl] = useState(null);
+  debug('[ReleasedEntryCArd] rendered');
 
+  const [anchorEl, updateAnchorEl] = useState(null);
   const { entry, wrapper } = props;
   const { content, description } = entry;
   const { entryId } = entry;

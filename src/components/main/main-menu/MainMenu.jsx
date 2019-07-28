@@ -17,6 +17,10 @@ import { demoUser } from 'config';
 import { ErrorBoundary, deleteUser, logout } from 'utilities';
 import { ConfirmDialog } from 'components';
 
+/*
+  ! Fix fade animation for 'Delete Account dialog'
+*/
+
 const debug = Debug('src:components:main-menu');
 
 const S = {};
@@ -30,12 +34,15 @@ S.MoreVertIcon = styled(MoreVertIcon)`
 `;
 
 const MainMenu = (props) => {
+  debug('[MainMenu] rendered');
+
   const { revokeAuth, username } = props;
   const [anchorEl, setAnchorEl] = useState(null);
-  const [isDisabled, setDisabled] = useState(false);
-  const [menuShouldRender, setMenuState] = useState(false);
   const [selected, setSelected] = useState('');
-  const [dialogShouldRender, setDialogState] = useState(false);
+  const [isDisabled, setDisabled] = useState(false);
+  const [dialogShouldRender, setDialogShouldRender] = useState(false);
+  const [menuShouldRender, setMenuShouldRender] = useState(false);
+  const [menuShouldOpen, setMenuShouldOpen] = useState(false)
 
   useEffect(() => {
     if (username === demoUser) {
@@ -47,7 +54,7 @@ const MainMenu = (props) => {
     debug(`selected: ${selected}`);
 
     if (selected === 'delete') {
-      setDialogState(val => !val);
+      setDialogShouldRender(val => !val);
     }
 
     if (selected === 'logout') {
@@ -55,7 +62,7 @@ const MainMenu = (props) => {
     }
 
     return () => {
-      setMenuState(false);
+      setMenuShouldOpen(false);
       setAnchorEl(null);
       setSelected('');
     };
@@ -67,11 +74,12 @@ const MainMenu = (props) => {
       menuShouldRender: ${menuShouldRender}
     `);
     setAnchorEl(event.currentTarget);
-    setMenuState(true);
+    setMenuShouldRender(true);
+    setMenuShouldOpen(true);
   };
 
   const confirmDialog = (isConfirmed) => {
-    setDialogState(false);
+    setDialogShouldRender(false);
     if (isConfirmed) {
       deleteUser(username);
     }
@@ -103,9 +111,9 @@ const MainMenu = (props) => {
             <Menu
               id='main-menu'
               anchorEl={anchorEl}
-              open={menuShouldRender}
+              open={menuShouldOpen}
               onClose={() => setSelected('exitActionSelected')}
-              TransitionComponent={Zoom}
+              onExited={() => setMenuShouldRender(false)}
             >
               <ErrorBoundary>
                 <MenuItem data-value='delete' dense disabled={isDisabled} onClick={() => setSelected('delete')}>

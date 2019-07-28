@@ -1,4 +1,5 @@
 /* eslint-disable react/forbid-prop-types */
+import * as Debug from 'debug';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from '@material-ui/core/Modal';
@@ -6,6 +7,7 @@ import styled from 'styled-components';
 import { withStyles } from '@material-ui/core/styles';
 import { AuthTabs, Box } from 'components';
 
+const debug = Debug('src:components:auth-modal');
 const S = {};
 
 S.Modal = styled(Modal)`
@@ -27,6 +29,7 @@ const styles = theme => ({
 
 class AuthModal extends React.Component {
   constructor(props) {
+    debug('[AuthModal] rendered');
     super(props);
 
     this.state = {

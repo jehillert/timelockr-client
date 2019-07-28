@@ -1,4 +1,5 @@
 /* eslint-disable default-case */
+import * as Debug from 'debug';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Dialog from '@material-ui/core/Dialog';
@@ -8,7 +9,11 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { FormButton } from 'components';
 
+const debug = Debug('src:components:confirm-dialog');
+
 function ConfirmDialog(props) {
+  debug('[ConfirmDialog] rendered');
+
   const {
     buttonLabel,
     confirmDialog,
