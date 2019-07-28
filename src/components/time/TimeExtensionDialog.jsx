@@ -1,7 +1,6 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-func-assign */
 import * as Debug from 'debug';
-// import React, { useState, useEffect } from 'react';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
@@ -26,7 +25,9 @@ S.Form = styled.form`
 `;
 
 function TimeExtensionDialog(props) {
-  // set state variables/handlers
+  debug('[TimeExtensionDialog] rendered');
+
+  const [open, setOpen] = useState(true);
   const [duration, setDurationValue] = useState({
     months: 0,
     weeks: 0,
@@ -35,13 +36,9 @@ function TimeExtensionDialog(props) {
     minutes: 0,
   });
 
-  // useEffect(() => debug(`${duration.months}---------------------------`));
-
-  // declare props
   const {
     entryId,
-    handleClosingClick,
-    open,
+    unmount,
     refresh,
     releaseDate,
   } = props;
@@ -62,12 +59,11 @@ function TimeExtensionDialog(props) {
     const mDuration = moment.duration(duration);
     const newReleaseDate = moment(releaseDate).add(mDuration);
 
-    // .format('YYYY-MM-DD HH:mm');
     debug(`releaseDate:       %c${moment(releaseDate).format('YYYY-MM-DD HH:mm')}`, 'color:orange; background-color:black');
     debug(`newReleaseDate:    %c${newReleaseDate.format('YYYY-MM-DD HH:mm')}`, 'color:orange; background-color:black');
 
     return extendReleaseDate(entryId, `${newReleaseDate.utc().format('YYYY-MM-DD HH:mm').toString()}-00`)
-      .then(() => handleClosingClick(false))
+      .then(() => setOpen(false))
       .then(() => refresh());
   };
 
@@ -85,7 +81,8 @@ function TimeExtensionDialog(props) {
     <StyledMuiDialog
       aria-labelledby='extend-dialog-title'
       open={open}
-      onClose={handleClosingClick}
+      onClose={() => setOpen(false)}
+      onExited={unmount}
     >
       <StyledMuiDialogTitle id='form-dialog-title'>
         Extend Time
@@ -98,7 +95,7 @@ function TimeExtensionDialog(props) {
       <StyledMuiDialogActions>
         <FormButton
           type='button'
-          handleSubmit={handleClosingClick}
+          handleSubmit={() => setOpen(false)}
           color='primary'
         >
           Cancel
@@ -116,8 +113,7 @@ function TimeExtensionDialog(props) {
 }
 
 TimeExtensionDialog.propTypes = {
-  open: PropTypes.bool.isRequired,
-  handleClosingClick: PropTypes.func.isRequired,
+  unmount: PropTypes.func.isRequired,
   entryId: PropTypes.number.isRequired,
   refresh: PropTypes.func.isRequired,
   releaseDate: PropTypes.string.isRequired,

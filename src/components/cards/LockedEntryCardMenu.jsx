@@ -70,7 +70,7 @@ function LockedEntryCardMenu(props) {
     setOpen(true);
   };
 
-  const handleShouldRenderDialog = () => {
+  const unmountDialog = () => {
     setShouldRenderDialog(false);
   };
 
@@ -82,8 +82,7 @@ function LockedEntryCardMenu(props) {
             entryId={entryId}
             releaseDate={releaseDate}
             refresh={refresh}
-            handleClosingClick={handleShouldRenderDialog}
-            open={shouldRenderDialog}
+            unmount={unmountDialog}
           />
         )
       }

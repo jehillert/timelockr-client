@@ -72,7 +72,9 @@ S.Middle = styled(Box)`
   width: 44rem;
 `;
 
-const Main = (props) => {
+function Main(props) {
+  debug('[Main] rendered');
+
   const {
     entries,
     refresh,
@@ -118,7 +120,6 @@ const Main = (props) => {
       {dialogShouldRender && (
         <EntryFormDialog
           closeDialog={closeDialog}
-          open={dialogShouldRender}
           refresh={refresh}
           userId={userId}
           username={username}

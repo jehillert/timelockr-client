@@ -38,6 +38,7 @@ class EntryFormDialog extends React.Component {
     this.state = {
       description: '',
       content: '',
+      open: true,
       selectedDate: new Date(),
       selectedTime: new Date(),
     };
@@ -53,10 +54,10 @@ class EntryFormDialog extends React.Component {
       {
         description: '',
         content: '',
+        open: false,
         selectedDate: new Date(),
         selectedTime: new Date(),
       },
-      () => closeDialog(),
     );
   }
 
@@ -115,11 +116,12 @@ class EntryFormDialog extends React.Component {
   handleTimeChange = time => this.setState({ selectedTime: time });
 
   render() {
-    const { open } = this.props;
+    const { closeDialog } = this.props;
 
     const {
       content,
       description,
+      open,
       selectedDate,
       selectedTime,
     } = this.state;
@@ -128,6 +130,7 @@ class EntryFormDialog extends React.Component {
       <>
         <StyledMuiDialog
           aria-labelledby='form-dialog-title'
+          onExited={() => closeDialog()}
           open={open}
           onClose={this.handleClose}
         >
@@ -198,7 +201,6 @@ class EntryFormDialog extends React.Component {
 
 EntryFormDialog.propTypes = {
   closeDialog: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
   refresh: PropTypes.func.isRequired,
   userId: PropTypes.number.isRequired,
 };
