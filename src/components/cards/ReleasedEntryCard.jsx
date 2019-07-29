@@ -62,7 +62,7 @@ const ReleasedEntryCard = (props) => {
           />
         )}
         <CopyToClipboard
-          text={`${description}\n${'─'.repeat(description.length)}\n${content}`}
+          text={`${description}\n${'-'.repeat(description.length)}\n${content}`}
         >
           <StyledMuiCard id={entryId} className='styled-mui-card'>
             <StyledMuiCardHeader
