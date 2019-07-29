@@ -4,7 +4,6 @@ import CloseIcon from '@material-ui/icons/Close';
 import PersonIcon from '@material-ui/icons/Person';
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import IconButton from '@material-ui/core/IconButton';
-import Zoom from '@material-ui/core/Zoom';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Menu from '@material-ui/core/Menu';
@@ -42,13 +41,13 @@ const MainMenu = (props) => {
   const [isDisabled, setDisabled] = useState(false);
   const [dialogShouldRender, setDialogShouldRender] = useState(false);
   const [menuShouldRender, setMenuShouldRender] = useState(false);
-  const [menuShouldOpen, setMenuShouldOpen] = useState(false)
+  const [menuShouldOpen, setMenuShouldOpen] = useState(false);
 
   useEffect(() => {
     if (username === demoUser) {
       setDisabled(true);
     }
-  }, []);
+  }, [username]);
 
   useEffect(() => {
     debug(`selected: ${selected}`);

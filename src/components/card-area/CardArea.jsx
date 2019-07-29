@@ -28,7 +28,6 @@ const CardArea = (props) => {
   const {
     id,
     Card,
-    delayIncrement,
     entries,
     refresh,
     title,
@@ -61,6 +60,7 @@ const CardArea = (props) => {
                 key={entry.entryId.toString()}
                 wrapper={wrapper}
                 entry={entry}
+                index={index}
                 refresh={refresh}
               />
             )}
@@ -72,7 +72,6 @@ const CardArea = (props) => {
 };
 
 CardArea.defaultProps = {
-  delayIncrement: 100,
   id: 'card-area',
   title: '',
 };
@@ -80,7 +79,6 @@ CardArea.defaultProps = {
 CardArea.propTypes = {
   id: PropTypes.string,
   Card: PropTypes.elementType.isRequired,
-  delayIncrement: PropTypes.number,
   entries: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
   title: PropTypes.string,
   refresh: PropTypes.func.isRequired,

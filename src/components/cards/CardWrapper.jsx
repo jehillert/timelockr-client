@@ -19,29 +19,31 @@ function CardWrapper(props) {
     render,
   } = props;
 
-  const delayBeforeShow = index * delayBetween;
+  const showDelay = index * delayBetween;
 
   const [shouldRenderCard, setCardRenderState] = useState(true);
   const [show, setShowState] = useState(false);
 
-  // Waits for period 'delayBeforeShow' before rendering
+  // Waits for period 'showDelay' before rendering
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowState((should) => !should);
-    }, delayBeforeShow);
-  }, []);
+    setTimeout(() => {
+      setShowState(() => true);
+    }, showDelay);
+  }, [showDelay]);
 
   const deleteCard = () => {
-    setShowState(false)
+    setShowState(false);
     setTimeout(() => {
       refresh();
+      setCardRenderState(false);
     }, animationDuration);
   };
 
   return (
-    <Box mx={1.5} my={1.5}>
+    <>
       {shouldRenderCard
         && (
+        <Box mx={1.5} my={1.5}>
           <Grow
             in={show}
             {...(show ? { timeout: animationDuration } : {})}
@@ -50,21 +52,21 @@ function CardWrapper(props) {
             {render({ deleteCard })}
           </div>
           </Grow>
-        )}
-    </Box>
+        </Box>
+      )}
+    </>
   );
 }
 
 CardWrapper.defaultProps = {
   animationDuration: 700,
-  delayBeforeShow: 0,
   delayBetween: 150,
 };
 
 CardWrapper.propTypes = {
   animationDuration: PropTypes.number,
   delayBetween: PropTypes.number,
-  index: PropTypes.number,
+  index: PropTypes.number.isRequired,
   refresh: PropTypes.func.isRequired,
   render: PropTypes.func.isRequired,
 };

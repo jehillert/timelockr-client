@@ -15,7 +15,6 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Zoom from '@material-ui/core/Zoom';
 import { deleteEntry } from 'utilities';
 import { TimeExtensionDialog } from 'components';
 
@@ -36,7 +35,7 @@ function LockedEntryCardMenu(props) {
     deleteCard,
     entryId,
     releaseDate,
-    refresh
+    refresh,
   } = props;
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -60,7 +59,7 @@ function LockedEntryCardMenu(props) {
       setAnchorEl(() => null);
       setSelected(() => '');
     };
-  }, [entryId, selected]);
+  }, [deleteCard, entryId, selected]);
 
   useEffect(() => setShouldRenderDialog(false), [releaseDate]);
 

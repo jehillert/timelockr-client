@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import * as Debug from 'debug';
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
