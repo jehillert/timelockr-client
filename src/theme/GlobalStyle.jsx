@@ -37,14 +37,17 @@ const GlobalStyle = createGlobalStyle`
 
   @media (max-width: ${props => props.theme.bp4}) {
     .primary-container {
-      width: ${props => props.theme.cardAreaWidth};
-      margin-left: auto;
-      margin-right: auto;
+      display: grid;
+      grid-column-gap: 0;
+      width: 100vw;
+      height: 100vh;
+      grid-template-areas:
+        "appBar"
+        "cardArea";
+      grid-template-columns: auto;
+      grid-template-rows: auto 1fr;
     }
   }
-
-
-
 
 `;
 export default GlobalStyle;
