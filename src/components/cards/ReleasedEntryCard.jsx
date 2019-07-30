@@ -61,10 +61,8 @@ const ReleasedEntryCard = (props) => {
             anchorEl={anchorEl}
           />
         )}
-        <CopyToClipboard
-          text={`${description}\n${'-'.repeat(description.length)}\n${content}`}
-        >
-          <StyledMuiCard id={entryId} className='styled-mui-card'>
+        <StyledMuiCard id={entryId} className='styled-mui-card'>
+          <CopyToClipboard text={description}>
             <StyledMuiCardHeader
               onClick={handleCopyClick}
               action={(
@@ -77,13 +75,15 @@ const ReleasedEntryCard = (props) => {
               )}
               title={description}
             />
-            <StyledMuiCardContent onClick={handleCopyClick}>
-              <Typography css='white-space: pre-line;'>
-                {content}
-              </Typography>
-            </StyledMuiCardContent>
-          </StyledMuiCard>
         </CopyToClipboard>
+        <CopyToClipboard text={content}>
+          <StyledMuiCardContent onClick={handleCopyClick}>
+            <Typography css='white-space: pre-line;'>
+              {content}
+            </Typography>
+            </StyledMuiCardContent>
+          </CopyToClipboard>
+        </StyledMuiCard>
       </>
     </ErrorBoundary>
   );
