@@ -2,7 +2,7 @@ const defaultTheme = {
   // APP BREAK POINTS
   bp1: '66rem', // 1056px --> Hides 'TimeLockr'
   bp2: '51rem', // 816px  --> Relocates (+) button
-  bp3: '46rem', // 736px  --> Hides side panels
+  bp3: '44rem', // 736px  --> Hides side panels
   bp4: '44rem', // 704px  --> Main, AppBar, TabBar, CardAreaTabs, and CardArea --> width becomes 100%
   bp5: '41rem', // 656px  -->
   // AUTH BREAK POINTS

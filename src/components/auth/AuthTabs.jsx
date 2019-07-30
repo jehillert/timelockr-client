@@ -19,13 +19,15 @@ S.Tabs = styled(Tabs)`
 `;
 
 S.TabList = styled(TabList)`
-  @media (max-width: ${props => props.theme.abp1}) {
-    width: 100vw;
-  }
   margin: 0 0 10px;
   padding: 0;
   text-align: center;
   border: none;
+
+  // SMALL MOBILE
+  @media (max-width: ${props => props.theme.abp1}) and (hover: none) and (pointer: coarse) {
+    width: 100vw;
+  }
 `;
 
 S.Tab = styled(Tab)`

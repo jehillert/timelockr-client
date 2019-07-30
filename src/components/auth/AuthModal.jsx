@@ -14,31 +14,37 @@ S.ModalContentContainer = styled.div`
   background-color: ${props => props.theme.lightColor};
   box-shadow: ${props => props.theme.boxShadow};
 
-  // MOBILE
-  @media (max-width: ${props => props.theme.abp1}) {
-    width: 100vw;
-    height: 100vh;
-  }
-
-  // DESKTOP
+  //DESKTOPS & TABLETS
   @media (min-width: ${props => props.theme.abp1}) {
     margin: auto;
     margin-top: 4rem;
     width: ${props => props.theme.modalWidth};
-    outline: none;
   }
+  @media (max-width: ${props => props.theme.abp1}) {
+    margin: auto;
+    margin-top: 4rem;
+    width: ${props => props.theme.modalWidth};
+  }
+
+  //MOBILE
+  @media (max-width: ${props => props.theme.abp1}) and (hover: none) and (pointer: coarse) {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+
 `;
 
 S.AuthHeading = styled.div`
-  // ALL DEVICES
+  //ALL DEVICES
   box-shadow: ${props => props.theme.insetBoxShadowBottom};
-  padding: ${props => props.theme.p(5)};
-  padding-bottom: ${props => props.theme.p(2)};
+  padding: ${props => props.theme.p(3)};
+  padding-top: ${props => props.theme.p(5)};
 
-  // MOBILE
-  @media (min-width: ${props => props.theme.abp1}) {
-    padding: ${props => props.theme.p(7)};
-    padding-bottom: ${props => props.theme.p(4)};
+  //MOBILE
+  @media (max-width: ${props => props.theme.abp1}) and (hover: none) and (pointer: coarse) {
+    padding-top: ${props => props.theme.p(7)};
+    padding-bottom: ${props => props.theme.p(3)};
   }
 `;
 

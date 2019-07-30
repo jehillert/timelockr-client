@@ -27,8 +27,6 @@ S.VerticallyScrollableArea = styled.div`
 `;
 
 S.Tabs = styled(Tabs)`
-  margin-right: 1.5rem;
-  margin-left: 1.5rem;
   background-color: white;
   box-shadow: ${props => props.theme.boxShadow};
   .MuiTab-wrapper {

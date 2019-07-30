@@ -44,7 +44,6 @@ S.TextField = styled(TextField)`
     padding: ${props => props.theme.p(0.75)}
     padding-right: ${props => props.theme.p(0.70)}
   }
-
 `;
 
 S.ButtonBox = styled(FormGroup)`
@@ -54,9 +53,6 @@ S.ButtonBox = styled(FormGroup)`
 `;
 
 S.ProgressBarBox = styled(FormGroup)`
-  @media (max-width: ${props => props.theme.abp1}) {
-    // not preventing anything
-  }
   width: auto;
   height: 4px;
   margin-top: ${props => props.theme.m(2)};
@@ -94,8 +90,9 @@ class AuthForm extends React.Component {
     this.setState({ loading: true });
     event.preventDefault();
 
-  const setTimeoutAsync = Promise.promisify(setTimeout);
-  setTimeoutAsync(() => console.log('waiting'), 2000 ).then(() => {
+  // Hang the ProgressBar:
+  // const setTimeoutAsync = Promise.promisify(setTimeout);
+  // setTimeoutAsync(() => console.log('waiting'), 2000 ).then(() => {
     return handleSubmitAsync(username, password)
     .then(() => this.setState({
       username: demoUser,
@@ -104,9 +101,8 @@ class AuthForm extends React.Component {
       passwordError: false,
       showPassword: false,
     }));
-  });
+  // });
   }
-  // Hang the ProgressBar:
 
   handleChange = prop => (event) => {
     const { notAnEmailAddressError, passwordError } = this.state;

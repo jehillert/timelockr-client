@@ -16,7 +16,8 @@ S.RightSide = styled(Box)`
   display: flex;
   grid-area: ${props => props.gridArea};
   overflow: visible;
-  padding: ${props => props.theme.m()};
+  padding: ${props => props.theme.p(2)};
+  padding-top: ${props => props.theme.p(2.8)};
 `;
 
 const RightSide = (props) => {

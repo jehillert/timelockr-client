@@ -24,8 +24,16 @@ S.AppBar = styled.div`
   box-shadow: ${props => props.theme.boxShadow};
   grid-area: ${props => props.gridArea};
   max-width: ${props => props.cardAreaWidth};
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
+  //TOO SMALL FOR MARGINS
+  @media (max-width: ${props => props.theme.bp4}){
+    margin-right: none;
+    margin-left: none;
+  }
+  //LARGE ENOUGH FOR MARGINS
+  @media (min-width: ${props => props.theme.bp4}) {
+    margin-left: ${props => props.theme.p(3)};
+    margin-right: ${props => props.theme.p(3)};
+  }
 `;
 
 S.AppBarContainer = styled.div`
@@ -42,7 +50,6 @@ S.InsideFabBox = styled.div`
 `;
 
 S.OutsideFabBox = styled.div`
-  margin-top: 1rem;
   @media (max-width: 51rem) {
     display: none;
   }
@@ -50,6 +57,16 @@ S.OutsideFabBox = styled.div`
 
 S.CardArea = styled.div`
   grid-area: ${props => props.gridArea};
+  //TOO SMALL FOR MARGINS
+  @media (max-width: ${props => props.theme.bp4}){
+    padding-right: none;
+    padding-left: none;
+  }
+  //LARGE ENOUGH FOR MARGINS
+  @media (min-width: ${props => props.theme.bp4}) {
+    padding-left: ${props => props.theme.p(3)};
+    padding-right: ${props => props.theme.p(3)};
+  }
 `;
 
 S.OutsideFab = styled(Fab)`
