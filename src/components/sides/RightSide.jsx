@@ -11,7 +11,7 @@ S.RightSide = styled(Box)`
       display: none;
   }
   background-color: ${props => props.theme.darkColor};
-  box-shadow: ${props => props.theme.leftBoxShadow};
+  box-shadow: ${props => props.theme.boxShadowLeft};
   color: #AEAEAA;
   display: flex;
   grid-area: ${props => props.gridArea};

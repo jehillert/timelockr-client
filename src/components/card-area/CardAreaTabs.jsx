@@ -47,9 +47,6 @@ S.Tabs = styled(Tabs)`
 `;
 
 S.Tab = styled(Tab)`
-  @media (min-width: ${props => props.theme.bp3}) {
-    width: 25%;
-  }
   @media (max-width: ${props => props.theme.bp3}) {
     width: 50%;
   }

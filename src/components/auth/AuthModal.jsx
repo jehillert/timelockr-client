@@ -4,28 +4,43 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from '@material-ui/core/Modal';
 import styled from 'styled-components';
-import { withStyles } from '@material-ui/core/styles';
 import { AuthTabs, Box } from 'components';
 
 const debug = Debug('src:components:auth-modal');
 const S = {};
 
-S.Modal = styled(Modal)`
-  @media (min-width: ${props => props.theme.bp3}) {
-    width: 100%;
+S.ModalContentContainer = styled.div`
+  //ALL DEVICES
+  background-color: ${props => props.theme.lightColor};
+  box-shadow: ${props => props.theme.boxShadow};
+
+  // MOBILE
+  @media (max-width: ${props => props.theme.abp1}) {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  // DESKTOP
+  @media (min-width: ${props => props.theme.abp1}) {
+    margin: auto;
+    margin-top: 4rem;
+    width: ${props => props.theme.modalWidth};
+    outline: none;
   }
 `;
 
-const styles = theme => ({
-  paper: {
-    marginTop: '4rem',
-    margin: 'auto',
-    width: theme.spacing(55),
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    outline: 'none',
-  },
-});
+S.AuthHeading = styled.div`
+  // ALL DEVICES
+  box-shadow: ${props => props.theme.insetBoxShadowBottom};
+  padding: ${props => props.theme.p(5)};
+  padding-bottom: ${props => props.theme.p(2)};
+
+  // MOBILE
+  @media (min-width: ${props => props.theme.abp1}) {
+    padding: ${props => props.theme.p(7)};
+    padding-bottom: ${props => props.theme.p(4)};
+  }
+`;
 
 class AuthModal extends React.Component {
   constructor(props) {
@@ -65,7 +80,6 @@ class AuthModal extends React.Component {
   render() {
     const { open, title } = this.state;
     const {
-      classes,
       handleAddUser,
       handleSignin,
       hasAuth,
@@ -79,27 +93,26 @@ class AuthModal extends React.Component {
         open={open}
         onClose={this.handleClose}
       >
-        <div className={classes.paper}>
-          <Box pl={4} pt={4} pb={2}>
-            <h2>{title}</h2>
-          </Box>
-          <AuthTabs
-            handleSignin={handleSignin}
-            handleAddUser={handleAddUser}
-            hasAuth={hasAuth}
-            setTitle={this.setTitle}
-          />
-        </div>
+      <S.ModalContentContainer>
+        <S.AuthHeading>
+          <h1>{title}</h1>
+        </S.AuthHeading>
+        <AuthTabs
+          handleSignin={handleSignin}
+          handleAddUser={handleAddUser}
+          hasAuth={hasAuth}
+          setTitle={this.setTitle}
+        />
+      </S.ModalContentContainer>
       </Modal>
     );
   }
 }
 
 AuthModal.propTypes = {
-  classes: PropTypes.object.isRequired,
   handleAddUser: PropTypes.func.isRequired,
   handleSignin: PropTypes.func.isRequired,
   hasAuth: PropTypes.bool.isRequired,
 };
 
-export default withStyles(styles)(AuthModal);
+export default AuthModal;

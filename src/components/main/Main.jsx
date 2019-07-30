@@ -125,7 +125,7 @@ function Main(props) {
           username={username}
         />
       )}
-      <Box className='grid-desktop'>
+      <Box className='primary-container'>
         <LeftSide gridArea='leftSide' title='TimeLockr' />
         <S.Middle>
           <S.AppBar gridArea='appBar'>

@@ -19,21 +19,19 @@ S.Tabs = styled(Tabs)`
 `;
 
 S.TabList = styled(TabList)`
-  @media (min-width: ${props => props.theme.bp3}) {
-    width: 100%;
+  @media (max-width: ${props => props.theme.abp1}) {
+    width: 100vw;
   }
-  border-bottom: 1px solid ${props => props.theme.fgColor2};
   margin: 0 0 10px;
   padding: 0;
   text-align: center;
+  border: none;
 `;
 
 S.Tab = styled(Tab)`
   font-size: 18px;
   display: inline-block;
-  border: 1px solid transparent;
-  border-bottom: none;
-  bottom: -1px;
+  border: none;
   position: relative;
   list-style: none;
   padding: 12px 0px;
@@ -43,15 +41,11 @@ S.Tab = styled(Tab)`
   border-radius: ${props => props.theme.tabBorderRadius};
 
   &.react-tabs__tab--selected {
-    border-top: 1px solid ${props => props.theme.bgColor2};
-    border-bottom: 1px solid ${props => props.theme.lightColor};
     background-color: ${props => props.theme.lightColor};
     color: ${props => props.theme.fgColor2};
   }
 
   :not(.react-tabs__tab--selected) {
-    border-top: 1px solid ${props => props.theme.bgColor2};
-    border-bottom: 1px solid ${props => props.theme.bgColor2};
     background-color: ${props => props.theme.bgColor2};
   }
 
@@ -62,6 +56,7 @@ S.Tab = styled(Tab)`
 `;
 
 S.TabPanel = styled(TabPanel)`
+  border: none;
   &.react-tabs__tab-panel {
     display: none;
   }

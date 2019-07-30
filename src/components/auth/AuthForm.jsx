@@ -1,4 +1,10 @@
 /* eslint-disable react/forbid-prop-types */
+//// DESKTOP
+//@media (max-width: ${props => props.theme.abp1}) {
+//}
+//// MOBILE
+//@media (min-width: ${props => props.theme.abp1}) {
+//}
 import * as Debug from 'debug';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -28,9 +34,7 @@ S.Form = styled.form`
 `;
 
 S.TextField = styled(TextField)`
-  margin: ${props => props.theme.m(1)}
-          ${props => props.theme.m(2)}
-          ${props => props.theme.m(1)}
+  margin: ${props => props.theme.m(1.2)}
           ${props => props.theme.m(2)};
   padding-right: ${props => props.theme.p(0)};
   .MuiIconButton-root {
@@ -38,10 +42,9 @@ S.TextField = styled(TextField)`
   }
   .MuiOutlinedInput-root {
     padding: ${props => props.theme.p(0.75)}
-             ${props => props.theme.p(0.70)}
-             ${props => props.theme.p(0.75)}
-             ${props => props.theme.p(0.75)};
+    padding-right: ${props => props.theme.p(0.70)}
   }
+
 `;
 
 S.ButtonBox = styled(FormGroup)`
@@ -51,6 +54,9 @@ S.ButtonBox = styled(FormGroup)`
 `;
 
 S.ProgressBarBox = styled(FormGroup)`
+  @media (max-width: ${props => props.theme.abp1}) {
+    // not preventing anything
+  }
   width: auto;
   height: 4px;
   margin-top: ${props => props.theme.m(2)};
@@ -88,6 +94,8 @@ class AuthForm extends React.Component {
     this.setState({ loading: true });
     event.preventDefault();
 
+  const setTimeoutAsync = Promise.promisify(setTimeout);
+  setTimeoutAsync(() => console.log('waiting'), 2000 ).then(() => {
     return handleSubmitAsync(username, password)
     .then(() => this.setState({
       username: demoUser,
@@ -96,11 +104,9 @@ class AuthForm extends React.Component {
       passwordError: false,
       showPassword: false,
     }));
+  });
   }
-  // const setTimeoutAsync = Promise.promisify(setTimeout);
-  // setTimeoutAsync(() => console.log('waiting'), 2000 ).then(() => {
   // Hang the ProgressBar:
-  // });
 
   handleChange = prop => (event) => {
     const { notAnEmailAddressError, passwordError } = this.state;
@@ -139,7 +145,6 @@ class AuthForm extends React.Component {
           label='Email'
           autoComplete='email'
           error={notAnEmailAddressError}
-          margin='dense'
           name='username'
           onChange={this.handleChange('username')}
           type='username'
@@ -151,7 +156,6 @@ class AuthForm extends React.Component {
           label='Password'
           autoComplete={autocompletePasswordType}
           error={passwordError}
-          margin='dense'
           onChange={this.handleChange('password')}
           type={showPassword ? 'text' : 'password'}
           value={password}

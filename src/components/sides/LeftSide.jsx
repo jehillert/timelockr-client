@@ -10,7 +10,7 @@ S.LeftSide = styled.div`
       display: none;
   }
   background-color: ${props => props.theme.darkColor};
-  box-shadow: ${props => props.theme.rightBoxShadow};
+  box-shadow: ${props => props.theme.boxShadowRight};
   color: ${props => props.theme.textColor2};
   display: flex;
   grid-area: ${props => props.gridArea};

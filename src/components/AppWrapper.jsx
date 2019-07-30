@@ -42,14 +42,14 @@ class AppWrapper extends React.Component {
     return (
       <>
         <CssBaseline />
-        <GlobalStyle />
-        <StylesProvider injectFirst>
-          <ThemeProvider theme={defaultTheme}>
+        <ThemeProvider theme={defaultTheme}>
+          <StylesProvider injectFirst>
+            <GlobalStyle />
             <MuiPickersUtilsProvider utils={MomentUtils}>
               {children}
             </MuiPickersUtilsProvider>
-          </ThemeProvider>
-        </StylesProvider>
+          </StylesProvider>
+        </ThemeProvider>
       </>
     );
   }

@@ -1,23 +1,13 @@
 const defaultTheme = {
-
-  // primary: {
-  //   light: '#7986cb',
-  //   main: '#3f51b5',
-  //   dark: '#303f9f',
-  //   contrastText: '#fff',
-  // },
-  // secondary: {
-  //   light: '#ff4081',
-  //   main: '#f50057',
-  //   dark: '#c51162',
-  //   contrastText: '#fff',
-  // },
-  // BREAK POINTS: [1] title ==> [2] button ==> [3] 2 columns ==> [4] single column)
-  bp1: '66rem',
-  bp2: '51rem',
-  bp3: '46rem',
-  bp4: 'rem',
-  bp5: 'rem',
+  // APP BREAK POINTS
+  bp1: '66rem', // 1056px --> Hides 'TimeLockr'
+  bp2: '51rem', // 816px  --> Relocates (+) button
+  bp3: '46rem', // 736px  --> Hides side panels
+  bp4: '44rem', // 704px  --> Main, AppBar, TabBar, CardAreaTabs, and CardArea --> width becomes 100%
+  bp5: '41rem', // 656px  -->
+  // AUTH BREAK POINTS
+  abp1: '32rem', // 500px --> Default L/R margin around Auth Modal
+  abp2: '27.50rem', // 440px --> Auth Modal Width
   // COLORS
   accentColor: '#B81205',
   lightColor: 'white',
@@ -42,7 +32,7 @@ const defaultTheme = {
   cardWidth: '19rem',
   cardAreaWidth: '41rem',
   dialogWidth: '26rem',
-  modalWidth: '26rem',
+  modalWidth: '27.5rem',
   // FONT SIZE
   fontSizeDialogTitle: '2rem',
   // MARGINS - Card Columns
@@ -66,15 +56,20 @@ const defaultTheme = {
     return `${padding}rem`
   },
   // SHADOW
+  insetBoxShadowBottom: 'inset 0 -10px 10px -10px grey;',
   boxShadow: '0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)',
-  rightBoxShadow: '8px 0px 7px -1px rgba(0,0,0,0.63)',
-  leftBoxShadow: '-8px 0px 7px -1px rgba(0,0,0,0.63)',
+  boxShadowTop: '0px -3px 4px -1px rgba(0, 0, 0, 0.2), 0px -5px 5px 0px rgba(0, 0, 0, 0.14), 0px -1px 10px 0px rgba(0, 0, 0, 0.12);',
+  boxShadowRight: '8px 0px 7px -1px rgba(0,0,0,0.63)',
+  boxShadowLeft: '-8px 0px 7px -1px rgba(0,0,0,0.63)',
 };
 
 export default defaultTheme;
 /*
+════════════════════════════════════════════════
+                    NOTES
+════════════════════════════════════════════════
 STYLED-COMPONENTS WORK-AROUND;
-  const StyledCComponent = styled(props => <CComponent {...props} />)``
+  S.__________ = styled(props => <__________ {...props} />)`
 
 DETERMINING DEVICE:
   mouse, touch pad           ==>    "@media (hover: hover) and (pointer: fine) {}"
@@ -82,11 +77,25 @@ DETERMINING DEVICE:
   stylus-based screens       ==>    "@media (hover: none) and (pointer: fine) {}"
   Wii controller/MS Kinect   ==>    "@media (hover: hover) and (pointer: coarse) {}"
 
+════════════════════════════════════════════════
+                     WIP
+════════════════════════════════════════════════
+primary: {
+  light: '#7986cb',
+  main: '#3f51b5',
+  dark: '#303f9f',
+  contrastText: '#fff',
+},
+secondary: {
+  light: '#ff4081',
+  main: '#f50057',
+  dark: '#c51162',
+  contrastText: '#fff',
+},
 
-            MATERIAL-UI DEFAULT THEME
-                 (partial list)
-
-————————————————————————————————————————————————
+════════════════════════════════════════════════
+          MATERIAL-UI DEFAULT THEME
+════════════════════════════════════════════════
 zIndex
 ————————————————————————————————————————————————
 mobileStepper: 1000
@@ -95,8 +104,6 @@ drawer: 1200
 modal: 1300
 snackbar: 1400
 tooltip: 1500
-
-
 ————————————————————————————————————————————————
 BREAKPOINTS
 ————————————————————————————————————————————————
@@ -107,17 +114,11 @@ keys: Array[5]
     3: "lg"
     4: "xl"
 values: Object
-    xs: 0
-    sm: 600
-    md: 960
-    lg: 1280
-    xl: 1920
-up: function f()
-down: function down()
-between: function d()
-only: function only()
-width: function width()
-
+    xs: 0px
+    sm: 600px
+    md: 960px
+    lg: 1280px
+    xl: 1920px
 ————————————————————————————————————————————————
 PALETTE
 ————————————————————————————————————————————————

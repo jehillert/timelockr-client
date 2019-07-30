@@ -8,6 +8,7 @@
 *.sublime-workspace
 *.tgz
 .bit/
+.directory
 .DS_Store
 .env
 .eslintcache
