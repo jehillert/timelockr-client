@@ -38,13 +38,13 @@ const GlobalStyle = createGlobalStyle`
   @media (max-width: ${props => props.theme.bp4}) {
     .primary-container {
       width: ${props => props.theme.cardAreaWidth};
-      position: absolute;
-      left: 0;
-      right: 0;
       margin-left: auto;
       margin-right: auto;
     }
   }
+
+
+
 
 `;
 export default GlobalStyle;
