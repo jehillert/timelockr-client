@@ -20,9 +20,24 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-size: 16px;
   }
+}
 
-  @media (min-width: ${props => props.theme.bp4}) {
-    .primary-container {
+  #primary-container {
+    ${props => props.theme.isMobile} {
+      :fullscreen {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* prefix for Chrome & Safari */
+      :-webkit-full-screen {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    // SIDEBARS
+    @media (min-width: ${props => props.theme.bp4}) {
       display: grid;
       grid-column-gap: 0;
       width: 100vw;
@@ -33,10 +48,8 @@ const GlobalStyle = createGlobalStyle`
       grid-template-columns: 1fr auto 1fr;
       grid-template-rows: auto 1fr;
     }
-  }
-
-  @media (max-width: ${props => props.theme.bp4}) {
-    .primary-container {
+    // NO SIDEBARS
+    @media (max-width: ${props => props.theme.bp4}) {
       display: grid;
       grid-column-gap: 0;
       width: 100vw;
@@ -47,6 +60,7 @@ const GlobalStyle = createGlobalStyle`
       grid-template-columns: auto;
       grid-template-rows: auto 1fr;
     }
+
   }
 
 `;

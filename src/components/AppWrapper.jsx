@@ -24,8 +24,8 @@ class AppWrapper extends React.Component {
         AppConsole: openConsole(
           serverConsoleUrl,
           'TimeLockrServerDemoPopupWindow',
-          500,
-          415,
+          800,
+          400,
         ),
       });
     }

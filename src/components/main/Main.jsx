@@ -142,7 +142,7 @@ function Main(props) {
           username={username}
         />
       )}
-      <Box className='primary-container'>
+      <Box id='primary-container'>
         <LeftSide gridArea='leftSide' title='TimeLockr' />
         <S.Middle>
           <S.AppBar gridArea='appBar'>

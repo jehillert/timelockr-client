@@ -1,4 +1,4 @@
-const openConsole = (url, windowName, height = 500, width = 415) => {
+const openConsole = (url, windowName, height = 800, width = 415) => {
   // const leftPosition = (screen.width) ? 0.75 * (screen.width - width) : 0;
   // const topPosition = (screen.height) ? 0.75 * (screen.height - height) : 0;
   const leftPosition = 0;

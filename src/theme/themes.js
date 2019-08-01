@@ -1,14 +1,20 @@
 const defaultTheme = {
-  // APP BREAK POINTS
+//MEDIA QUERIES
+  isMobile: '@media (hover: none) and (pointer: coarse)',
+  isDesktop: '@media (hover: hover) and (pointer: fine)',
+
+//BREAK POINTS - main screen
   bp1: '66rem', // 1056px --> Hides 'TimeLockr'
   bp2: '51rem', // 816px  --> Relocates (+) button
   bp3: '44rem', // 736px  --> Hides side panels
   bp4: '44rem', // 704px  --> Main, AppBar, TabBar, CardAreaTabs, and CardArea --> width becomes 100%
   bp5: '41rem', // 656px  -->
-  // AUTH BREAK POINTS
+
+//BREAK POINTS - auth modal
   abp1: '32rem', // 500px --> Default L/R margin around Auth Modal
   abp2: '27.50rem', // 440px --> Auth Modal Width
-  // COLORS
+
+//COLORS
   accentColor: '#B81205',
   lightColor: 'white',
   darkColor: '#222324',
@@ -28,34 +34,41 @@ const defaultTheme = {
   hoverFontColor: 'white',
   textColor1: 'white',
   textColor2: '#9D9D9D',
-  // DIMENSIONS - Cards, Modals, Dialogs
+
+//DIMENSIONS - Cards, Modals, Dialogs
   cardWidth: '19rem',
   cardAreaWidth: '41rem',
   dialogWidth: '26rem',
   modalWidth: '27.5rem',
-  // FONT SIZE
+
+//FONT SIZE
   fontSizeDialogTitle: '2rem',
-  // MARGINS - Card Columns
+
+//MARGINS - Card Columns
   insideFacingMargin: '0.25rem',
   outsideFacingMargin: '0.25rem',
   cornerButtonRightMargin: '-0.25',
   cornerButtonTopMargin: '-0.25rem',
-  // RADIUS
+
+//RADIUS
   cardRadius: '0rem',
   backgroundBorderRadius: '0rem',
   dialogRadius: '0rem',
   tabBorderRadius: '0rem',
-  // SPACING
+
+//SPACING
   m: (factor = 1) => {
     const margin = 0.5 * factor;
     return `${margin}rem`
   },
-  // PADDING
+
+//PADDING
   p: (factor = 1) => {
     const padding = 0.5 * factor;
     return `${padding}rem`
   },
-  // SHADOW
+
+//SHADOW
   insetBoxShadowBottom: 'inset 0 -10px 10px -10px grey;',
   boxShadow: '0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)',
   boxShadowTop: '0px -3px 4px -1px rgba(0, 0, 0, 0.2), 0px -5px 5px 0px rgba(0, 0, 0, 0.14), 0px -1px 10px 0px rgba(0, 0, 0, 0.12);',
