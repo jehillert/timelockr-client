@@ -11,22 +11,6 @@ if (nodeEnv !== 'production') {
   localStorage.setItem('debug', `${debug}`);
 }
 
-// LOCK SCREEN ORIENTATION
-if (isMobile) {
-var current_mode = screen.orientation;
-
-console.log(current_mode.type)
-console.log(current_mode.angle)
-
-screen.orientation.lock("portrait")
-  .then(function() {
-    alert('Locked');
-  })
-  .catch(function(error) {
-    alert(error);
-  });
-}
-
 ReactDOM.render(<App />, document.getElementById('app'));
 
 serviceWorker.unregister();

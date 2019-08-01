@@ -23,19 +23,6 @@ const GlobalStyle = createGlobalStyle`
 }
 
   #primary-container {
-    ${props => props.theme.isMobile} {
-      :fullscreen {
-        width: 100%;
-        height: 100%;
-      }
-
-      /* prefix for Chrome & Safari */
-      :-webkit-full-screen {
-        width: 100%;
-        height: 100%;
-      }
-    }
-
     // SIDEBARS
     @media (min-width: ${props => props.theme.bp4}) {
       display: grid;
@@ -48,6 +35,7 @@ const GlobalStyle = createGlobalStyle`
       grid-template-columns: 1fr auto 1fr;
       grid-template-rows: auto 1fr;
     }
+
     // NO SIDEBARS
     @media (max-width: ${props => props.theme.bp4}) {
       display: grid;
@@ -60,7 +48,6 @@ const GlobalStyle = createGlobalStyle`
       grid-template-columns: auto;
       grid-template-rows: auto 1fr;
     }
-
   }
 
 `;
