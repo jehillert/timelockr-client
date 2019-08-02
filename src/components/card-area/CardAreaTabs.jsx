@@ -18,6 +18,9 @@ const styles = theme => ({});
 const S = {};
 
 S.VerticallyScrollableArea = styled.div`
+  @media (max-width: ${props => props.theme.bp4}) {
+    width: 100vw;
+  }
   height: 89.9vh;
   overflow-y: scroll;
   ::-webkit-scrollbar {
@@ -27,6 +30,9 @@ S.VerticallyScrollableArea = styled.div`
 `;
 
 S.Tabs = styled(Tabs)`
+  @media (max-width: ${props => props.theme.bp4}) {
+    width: 100vw;
+  }
   background-color: white;
   box-shadow: ${props => props.theme.boxShadow};
   .MuiTab-wrapper {
@@ -45,8 +51,12 @@ S.Tabs = styled(Tabs)`
 `;
 
 S.Tab = styled(Tab)`
+  @media (max-width: ${props => props.theme.bp4}) {
+    width: 100vw;
+    // margins: ${props => props.theme.m(2)};
+  }
   @media (max-width: ${props => props.theme.bp3}) {
-    width: 50%;
+    //width: 50%;
   }
 `;
 

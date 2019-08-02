@@ -24,11 +24,14 @@ S.AppBar = styled.div`
   box-shadow: ${props => props.theme.boxShadow};
   grid-area: ${props => props.gridArea};
   max-width: ${props => props.cardAreaWidth};
+
   //TOO SMALL FOR MARGINS
   @media (max-width: ${props => props.theme.bp4}){
+    width: 100vw;
     margin-right: none;
     margin-left: none;
   }
+
   //LARGE ENOUGH FOR MARGINS
   @media (min-width: ${props => props.theme.bp4}) {
     margin-left: ${props => props.theme.p(3)};
@@ -37,6 +40,7 @@ S.AppBar = styled.div`
 `;
 
 S.AppBarContainer = styled.div`
+  // 📌 no
   align-items: center;
   display: flex;
   justify-content: flex-end;
@@ -80,8 +84,15 @@ S.OutsideFab = styled(Fab)`
 S.InsideFab = styled(S.OutsideFab)`
   position: fixed;
   bottom: 50px;
-  left: 50%;
-  margin-left: 16.5rem;
+  //TOO SMALL FOR MARGINS
+  @media (max-width: ${props => props.theme.bp4}){
+    right: ${props => props.theme.m(3)}
+  }
+  //LARGE ENOUGH FOR MARGINS
+  @media (min-width: ${props => props.theme.bp4}) {
+    left: 50%;
+    margin-left: 16.5rem;
+  }
 `;
 
 S.Middle = styled(Box)`
@@ -145,7 +156,7 @@ function Main(props) {
       <Box id='primary-container'>
         <LeftSide gridArea='leftSide' title='TimeLockr' />
         <S.Middle>
-          <S.AppBar gridArea='appBar'>
+          <S.AppBar gridArea='appBarArea'>
             <S.AppBarContainer>
               <MainMenu
                 revokeAuth={revokeAuth}

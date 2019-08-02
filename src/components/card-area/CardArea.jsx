@@ -12,16 +12,22 @@ import {
 
 const S = {};
 
-// padding at bottom lets cards slide up past bottom edge of last card
 S.CardArea = styled(Box)`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  // prevents anchoring cards to bottom of container
   padding-bottom: 100vh;
   margin: auto;
   margin-top: ${props => props.theme.m(2)};
   align-self: stretch;
   max-width: ${props => props.theme.cardAreaWidth};
+  @media (max-width: ${props => props.theme.bp4}) {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: ${props => props.theme.p(2)};
+  }
 `;
 
 const CardArea = (props) => {

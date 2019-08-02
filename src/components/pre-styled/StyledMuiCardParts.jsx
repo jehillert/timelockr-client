@@ -9,7 +9,11 @@ const StyledMuiCard = styled(Card)`
     z-index: 1;
     box-shadow: ${props => props.theme.boxShadow};
     border-radius: ${props => props.theme.cardRadius};
-    width: ${props => props.theme.cardWidth}
+    width: ${props => props.theme.cardWidth};
+    //MOBILE, SCREEN SMALLER THAN CARD_AREA
+    @media (max-width: ${props => props.theme.bp4}) {
+      width: calc(100vw - ${props => props.theme.p(6)});
+    }
   }
 `;
 

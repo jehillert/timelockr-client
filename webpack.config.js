@@ -5,7 +5,7 @@ const Dotenv = require('dotenv-webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-  mode: 'production',
+  // mode: 'production',
   devtool: 'inline-source-map',
   entry: './src/index.jsx',
   output: {
@@ -54,4 +54,5 @@ module.exports = {
   PLUGIN DESCRIPTIONS
     NpmInstallWebpackPlugin: Automatically instal & save dependencies.
 */
+
 
