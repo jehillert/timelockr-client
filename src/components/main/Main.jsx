@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import styled from 'styled-components';
+import { device } from 'utilities';
 import {
   EntryFormDialog,
   Box,
@@ -48,7 +49,7 @@ S.AppBarContainer = styled.div`
 `;
 
 S.InsideFabBox = styled.div`
-  @media (min-width: ${props => props.theme.bp[2]}) {
+  @media ${device.tabletLG} {
     display: none;
   }
 `;

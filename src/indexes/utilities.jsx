@@ -9,6 +9,7 @@ export {
   deleteUser,
 } from '../utilities/ClientRequests';
 export {
+  device,
   RenderIfMobile,
   RenderIfDesktop,
   isMobile,

@@ -1,10 +1,11 @@
 const bp = [
   null,
-  '66rem',  // 1  -->  1056px -->  Hides 'TimeLockr'
-  '51rem',  // 2  -->  816px  -->  Relocates (+) button
-  '44rem',  // 3  -->  736px  -->  Hides side panels
-  '44rem',  // 4  -->  704px  -->  Main, AppBar, TabBar, CardAreaTabs, and CardArea --> width becomes 100%
-  '31rem',  // 5  -->  656px
+  '66rem',  // DESKTOP    -->  1056px -->  Hides 'TimeLockr'
+  '51rem',  // TABLET_LG  -->  816px  -->  Relocates (+) button
+  '44rem',  // TABLET_SM  -->  736px  -->  Hides side panels
+  '44rem',  // TABLET_SM  -->  704px  -->  Main, AppBar, TabBar, CardAreaTabs, and CardArea --> width becomes 100%
+  '31rem',  // PHONE      -->  656px
+  '0rem',   // 6
 ];
 
 const abp = [
@@ -24,14 +25,9 @@ const p = (factor = 1) => {
 };
 
 const defaultTheme = {
-//MEDIA QUERIES
-  isMobile: '@media (hover: none) and (pointer: coarse)',
-  isDesktop: '@media (hover: hover) and (pointer: fine)',
-
 //BREAK POINTS
   bp, //main app
   abp, //auth modal
-
 //COLORS
   accentColor: '#B81205',
   lightColor: 'white',

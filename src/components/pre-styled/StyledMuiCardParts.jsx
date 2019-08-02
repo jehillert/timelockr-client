@@ -3,17 +3,26 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import styled from 'styled-components';
+import { device } from 'utilities';
 
 const StyledMuiCard = styled(Card)`
   &.styled-mui-card {
     z-index: 1;
     box-shadow: ${props => props.theme.boxShadow};
     border-radius: ${props => props.theme.cardRadius};
-    width: ${props => props.theme.cardWidth};
-    //MOBILE, SCREEN SMALLER THAN CARD_AREA
-    @media (max-width: ${props => props.theme.bp[4]}) {
+
+    @media ${device.phone} {
       width: calc(100vw - ${props => props.theme.p(6)});
     }
+
+    @media ${device.tabletSM} {
+      width: calc(50vw - ${props => props.theme.p(6)});
+    }
+
+    @media ${device.tabletLG} {
+      width: ${props => props.theme.cardWidth};
+    }
+
   }
 `;
 

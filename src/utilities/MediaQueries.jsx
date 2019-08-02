@@ -1,5 +1,36 @@
 import styled from 'styled-components';
 
+//export const size = {
+//  desktop: '66rem',
+//  tabletLG: '51rem',
+//  tabletSM: '44rem',
+//  phone: '31rem',
+//};
+
+export const size = {
+  desktopLG: '66rem',
+  desktopSM: '51rem',
+  tabletLG: '44rem',
+  tabletSM: '31rem',
+  phone: '0rem',
+};
+
+export const device = {
+  desktopLG: `(min-width: ${size.desktop})`,
+  desktopSM: `(min-width: ${size.desktop})`,
+  tabletLG: `(min-width: ${size.tabletLG})`,
+  tabletSM: `(min-width: ${size.tabletSM})`,
+  phone: `(min-width: ${size.phone})`,
+};
+
+export const isMobile = window.matchMedia(
+  '(hover: none) and (pointer: coarse)'
+).matches;
+
+export const isDesktop = window.matchMedia(
+  '(hover: hover) and (pointer: fine)'
+).matches;
+
 export const RenderIfMobile = styled.div`
   @media (hover: hover) and (pointer: fine) {
     display: none;
@@ -11,8 +42,5 @@ export const RenderIfDesktop = styled.div`
     display: none;
   }
 `;
-
-export const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-export const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
 // https://www.styled-components.com/docs/advanced#getting-the-theme-without-styled-components

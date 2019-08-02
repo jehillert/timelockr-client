@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { device } from 'utilities';
 import {
   Box,
   CardWrapper,
@@ -14,20 +15,26 @@ const S = {};
 
 S.CardArea = styled(Box)`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  // prevents anchoring cards to bottom of container
-  padding-bottom: 100vh;
-  margin: auto;
-  margin-top: ${props => props.theme.m(2)};
+  padding-bottom: 100vh;   // prevents anchoring cards to bottom of container
   align-self: stretch;
-  max-width: ${props => props.theme.cardAreaWidth};
-  @media (max-width: ${props => props.theme.bp[4]}) {
+  margin: auto;
+
+  @media ${device.phone} {
     flex-direction: column;
     align-items: center;
     flex-wrap: nowrap;
     margin-top: 0;
     padding: ${props => props.theme.p(2)};
+  }
+
+  @media ${device.tabletSM} {
+    margin-top: ${props => props.theme.m(2)};
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: ${props => props.theme.cardAreaWidth};
+    padding: ${props => props.theme.p(0)};
   }
 `;
 
