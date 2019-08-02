@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from '@material-ui/core/Modal';
 import styled from 'styled-components';
-import { AuthTabs, Box } from 'components';
+import { AuthTabs } from 'components';
 
 const debug = Debug('src:components:auth-modal');
 const S = {};
@@ -15,24 +15,23 @@ S.ModalContentContainer = styled.div`
   box-shadow: ${props => props.theme.boxShadow};
 
   //DESKTOPS & TABLETS
-  @media (min-width: ${props => props.theme.abp1}) {
+  @media (min-width: ${props => props.theme.abp[1]}) {
     margin: auto;
     margin-top: 4rem;
     width: ${props => props.theme.modalWidth};
   }
-  @media (max-width: ${props => props.theme.abp1}) {
+  @media (max-width: ${props => props.theme.abp[1]}) {
     margin: auto;
     margin-top: 4rem;
     width: ${props => props.theme.modalWidth};
   }
 
   //MOBILE
-  @media (max-width: ${props => props.theme.abp1}) and (hover: none) and (pointer: coarse) {
+  @media (max-width: ${props => props.theme.abp[2]}) and (hover: none) and (pointer: coarse) {
     margin: 0;
     width: 100vw;
     height: 100vh;
   }
-
 `;
 
 S.AuthHeading = styled.div`
@@ -42,7 +41,7 @@ S.AuthHeading = styled.div`
   padding-top: ${props => props.theme.p(5)};
 
   //MOBILE
-  @media (max-width: ${props => props.theme.abp1}) and (hover: none) and (pointer: coarse) {
+  @media (max-width: ${props => props.theme.abp[1]}) and (hover: none) and (pointer: coarse) {
     padding-top: ${props => props.theme.p(7)};
     padding-bottom: ${props => props.theme.p(3)};
   }
@@ -99,17 +98,17 @@ class AuthModal extends React.Component {
         open={open}
         onClose={this.handleClose}
       >
-      <S.ModalContentContainer>
-        <S.AuthHeading>
-          <h1>{title}</h1>
-        </S.AuthHeading>
-        <AuthTabs
-          handleSignin={handleSignin}
-          handleAddUser={handleAddUser}
-          hasAuth={hasAuth}
-          setTitle={this.setTitle}
-        />
-      </S.ModalContentContainer>
+        <S.ModalContentContainer>
+          <S.AuthHeading>
+            <h1>{title}</h1>
+          </S.AuthHeading>
+          <AuthTabs
+            handleSignin={handleSignin}
+            handleAddUser={handleAddUser}
+            hasAuth={hasAuth}
+            setTitle={this.setTitle}
+          />
+        </S.ModalContentContainer>
       </Modal>
     );
   }

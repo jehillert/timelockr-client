@@ -24,8 +24,7 @@ S.TabList = styled(TabList)`
   text-align: center;
   border: none;
 
-  // SMALL MOBILE
-  @media (max-width: ${props => props.theme.abp1}) and (hover: none) and (pointer: coarse) {
+  @media (max-width: ${props => props.theme.abp[1]}) and (hover: none) and (pointer: coarse) {
     width: 100vw;
   }
 `;

@@ -6,7 +6,7 @@ const S = {};
 
 S.LeftSide = styled.div`
   z-index: 999;
-  @media (max-width: ${props => props.theme.bp3}) {
+  @media (max-width: ${props => props.theme.bp[3]}) {
       display: none;
   }
   background-color: ${props => props.theme.darkColor};
@@ -21,7 +21,7 @@ S.LeftSide = styled.div`
 `;
 
 S.Title = styled.h2`
-  @media (max-width: ${props => props.theme.bp1}) {
+  @media (max-width: ${props => props.theme.bp[1]}) {
     display: none;
   }
 `;

@@ -22,10 +22,11 @@ S.CardArea = styled(Box)`
   margin-top: ${props => props.theme.m(2)};
   align-self: stretch;
   max-width: ${props => props.theme.cardAreaWidth};
-  @media (max-width: ${props => props.theme.bp4}) {
+  @media (max-width: ${props => props.theme.bp[4]}) {
     flex-direction: column;
     align-items: center;
     flex-wrap: nowrap;
+    margin-top: 0;
     padding: ${props => props.theme.p(2)};
   }
 `;

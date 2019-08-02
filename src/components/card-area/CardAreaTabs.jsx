@@ -18,7 +18,7 @@ const styles = theme => ({});
 const S = {};
 
 S.VerticallyScrollableArea = styled.div`
-  @media (max-width: ${props => props.theme.bp4}) {
+  @media (max-width: ${props => props.theme.bp[4]}) {
     width: 100vw;
   }
   height: 89.9vh;
@@ -30,7 +30,7 @@ S.VerticallyScrollableArea = styled.div`
 `;
 
 S.Tabs = styled(Tabs)`
-  @media (max-width: ${props => props.theme.bp4}) {
+  @media (max-width: ${props => props.theme.bp[4]}) {
     width: 100vw;
   }
   background-color: white;
@@ -51,12 +51,8 @@ S.Tabs = styled(Tabs)`
 `;
 
 S.Tab = styled(Tab)`
-  @media (max-width: ${props => props.theme.bp4}) {
+  @media (max-width: ${props => props.theme.bp[4]}) {
     width: 100vw;
-    // margins: ${props => props.theme.m(2)};
-  }
-  @media (max-width: ${props => props.theme.bp3}) {
-    //width: 50%;
   }
 `;
 

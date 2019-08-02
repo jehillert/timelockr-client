@@ -11,16 +11,15 @@ const StyledMuiCard = styled(Card)`
     border-radius: ${props => props.theme.cardRadius};
     width: ${props => props.theme.cardWidth};
     //MOBILE, SCREEN SMALLER THAN CARD_AREA
-    @media (max-width: ${props => props.theme.bp4}) {
+    @media (max-width: ${props => props.theme.bp[4]}) {
       width: calc(100vw - ${props => props.theme.p(6)});
     }
   }
 `;
 
 const StyledMuiCardContent = styled(CardContent)`
-  font-size: .8rem;
-  padding-top: .75rem;
-  padding-bottom: .75rem;
+  padding-top: ${props => props.theme.p(1.5)};
+  padding-bottom: ${props => props.theme.p(1.5)};
 `;
 
 // Overrides action attribute margins.

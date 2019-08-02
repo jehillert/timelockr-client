@@ -1,9 +1,9 @@
 /* eslint-disable react/forbid-prop-types */
 //// DESKTOP
-//@media (max-width: ${props => props.theme.abp1}) {
+//@media (max-width: ${props => props.theme.bp[1]}) {
 //}
 //// MOBILE
-//@media (min-width: ${props => props.theme.abp1}) {
+//@media (min-width: ${props => props.theme.bp[1]}) {
 //}
 import * as Debug from 'debug';
 import React from 'react';
@@ -41,8 +41,8 @@ S.TextField = styled(TextField)`
     padding: ${props => props.theme.p(0.75)};
   }
   .MuiOutlinedInput-root {
-    padding: ${props => props.theme.p(0.75)}
-    padding-right: ${props => props.theme.p(0.70)}
+    padding: ${props => props.theme.p(0.75)};
+    padding-right: ${props => props.theme.p(0.70)};
   }
 `;
 

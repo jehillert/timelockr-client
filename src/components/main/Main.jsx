@@ -26,14 +26,14 @@ S.AppBar = styled.div`
   max-width: ${props => props.cardAreaWidth};
 
   //TOO SMALL FOR MARGINS
-  @media (max-width: ${props => props.theme.bp4}){
+  @media (max-width: ${props => props.theme.bp[4]}){
     width: 100vw;
     margin-right: none;
     margin-left: none;
   }
 
   //LARGE ENOUGH FOR MARGINS
-  @media (min-width: ${props => props.theme.bp4}) {
+  @media (min-width: ${props => props.theme.bp[4]}) {
     margin-left: ${props => props.theme.p(3)};
     margin-right: ${props => props.theme.p(3)};
   }
@@ -48,7 +48,7 @@ S.AppBarContainer = styled.div`
 `;
 
 S.InsideFabBox = styled.div`
-  @media (min-width: ${props => props.theme.bp2}) {
+  @media (min-width: ${props => props.theme.bp[2]}) {
     display: none;
   }
 `;
@@ -62,12 +62,12 @@ S.OutsideFabBox = styled.div`
 S.CardArea = styled.div`
   grid-area: ${props => props.gridArea};
   //TOO SMALL FOR MARGINS
-  @media (max-width: ${props => props.theme.bp4}){
+  @media (max-width: ${props => props.theme.bp[4]}){
     padding-right: none;
     padding-left: none;
   }
   //LARGE ENOUGH FOR MARGINS
-  @media (min-width: ${props => props.theme.bp4}) {
+  @media (min-width: ${props => props.theme.bp[4]}) {
     padding-left: ${props => props.theme.p(3)};
     padding-right: ${props => props.theme.p(3)};
   }
@@ -85,11 +85,11 @@ S.InsideFab = styled(S.OutsideFab)`
   position: fixed;
   bottom: 50px;
   //TOO SMALL FOR MARGINS
-  @media (max-width: ${props => props.theme.bp4}){
-    right: ${props => props.theme.m(3)}
+  @media (max-width: ${props => props.theme.bp[4]}){
+    right: ${props => props.theme.m(4)}
   }
   //LARGE ENOUGH FOR MARGINS
-  @media (min-width: ${props => props.theme.bp4}) {
+  @media (min-width: ${props => props.theme.bp[4]}) {
     left: 50%;
     margin-left: 16.5rem;
   }
@@ -183,7 +183,7 @@ function Main(props) {
       </Box>
     </>
   );
-};
+}
 
 S.AppBar.propTypes = {
   gridArea: PropTypes.string.isRequired,

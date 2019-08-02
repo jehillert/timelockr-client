@@ -78,7 +78,7 @@ const ReleasedEntryCard = (props) => {
         </CopyToClipboard>
         <CopyToClipboard text={content}>
           <StyledMuiCardContent onClick={handleCopyClick}>
-            <Typography css='white-space: pre-line;'>
+            <Typography css='white-space: pre-line; font-size: 0.9rem;'>
               {content}
             </Typography>
             </StyledMuiCardContent>

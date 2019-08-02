@@ -24,11 +24,12 @@ const GlobalStyle = createGlobalStyle`
 
   #primary-container {
     // SIDEBARS
-    @media (min-width: ${props => props.theme.bp4}) {
-      display: grid;
-      grid-column-gap: 0;
-      width: 100vw;
-      height: 100vh;
+    display: grid;
+    grid-column-gap: 0;
+    width: 100vw;
+    height: 100vh;
+
+    @media (min-width: ${props => props.theme.bp[4]}) {
       grid-template-areas:
         "leftSide appBarArea   rightSide"
         "leftSide cardArea rightSide";
@@ -37,11 +38,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     // NO SIDEBARS
-    @media (max-width: ${props => props.theme.bp4}) {
-      display: grid;
-      grid-column-gap: 0;
-      width: 100vw;
-      height: 100vh;
+    @media (max-width: ${props => props.theme.bp[4]}) {
       grid-template-areas:
         "appBarArea"
         "cardArea";
@@ -49,8 +46,8 @@ const GlobalStyle = createGlobalStyle`
       grid-template-rows: auto 1fr;
     }
   }
-
 `;
+
 export default GlobalStyle;
 
 /*

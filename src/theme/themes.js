@@ -1,18 +1,36 @@
+const bp = [
+  null,
+  '66rem',  // 1  -->  1056px -->  Hides 'TimeLockr'
+  '51rem',  // 2  -->  816px  -->  Relocates (+) button
+  '44rem',  // 3  -->  736px  -->  Hides side panels
+  '44rem',  // 4  -->  704px  -->  Main, AppBar, TabBar, CardAreaTabs, and CardArea --> width becomes 100%
+  '31rem',  // 5  -->  656px
+];
+
+const abp = [
+  null,
+  '32rem',
+  '27.50rem',
+];
+
+const m = (factor = 1) => {
+  const margin = 0.5 * factor;
+  return `${margin}rem`
+};
+
+const p = (factor = 1) => {
+  const padding = 0.5 * factor;
+  return `${padding}rem`
+};
+
 const defaultTheme = {
 //MEDIA QUERIES
   isMobile: '@media (hover: none) and (pointer: coarse)',
   isDesktop: '@media (hover: hover) and (pointer: fine)',
 
-//BREAK POINTS - main screen
-  bp1: '66rem', // 1056px --> Hides 'TimeLockr'
-  bp2: '51rem', // 816px  --> Relocates (+) button
-  bp3: '44rem', // 736px  --> Hides side panels
-  bp4: '44rem', // 704px  --> Main, AppBar, TabBar, CardAreaTabs, and CardArea --> width becomes 100%
-  bp5: '41rem', // 656px  -->
-
-//BREAK POINTS - auth modal
-  abp1: '32rem', // 500px --> Default L/R margin around Auth Modal
-  abp2: '27.50rem', // 440px --> Auth Modal Width
+//BREAK POINTS
+  bp, //main app
+  abp, //auth modal
 
 //COLORS
   accentColor: '#B81205',
@@ -44,12 +62,6 @@ const defaultTheme = {
 //FONT SIZE
   fontSizeDialogTitle: '2rem',
 
-//MARGINS - Card Columns
-  insideFacingMargin: '0.25rem',
-  outsideFacingMargin: '0.25rem',
-  cornerButtonRightMargin: '-0.25',
-  cornerButtonTopMargin: '-0.25rem',
-
 //RADIUS
   cardRadius: '0rem',
   backgroundBorderRadius: '0rem',
@@ -57,16 +69,8 @@ const defaultTheme = {
   tabBorderRadius: '0rem',
 
 //SPACING
-  m: (factor = 1) => {
-    const margin = 0.5 * factor;
-    return `${margin}rem`
-  },
-
-//PADDING
-  p: (factor = 1) => {
-    const padding = 0.5 * factor;
-    return `${padding}rem`
-  },
+  m,
+  p,
 
 //SHADOW
   insetBoxShadowBottom: 'inset 0 -10px 10px -10px grey;',

@@ -7,7 +7,7 @@ const S = {};
 
 S.RightSide = styled(Box)`
   z-index: 999;
-  @media (max-width: ${props => props.theme.bp3}) {
+  @media (max-width: ${props => props.theme.bp[3]}) {
       display: none;
   }
   background-color: ${props => props.theme.darkColor};
