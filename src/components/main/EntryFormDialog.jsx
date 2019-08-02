@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import {
   createEntry,
   ErrorBoundary,
+  isPhone,
 } from 'utilities';
 import {
   DatePicker,
@@ -130,6 +131,7 @@ class EntryFormDialog extends React.Component {
       <>
         <StyledMuiDialog
           aria-labelledby='form-dialog-title'
+          fullScreen={isPhone}
           onExited={() => closeDialog()}
           open={open}
           onClose={this.handleClose}

@@ -12,8 +12,9 @@ export {
   device,
   RenderIfMobile,
   RenderIfDesktop,
-  isMobile,
   isDesktop,
+  isMobile,
+  isPhone,
 } from '../utilities/MediaQueries';
 export { default as usePrevious } from '../utilities/CustomHooks';
 export { default as ErrorBoundary } from '../utilities/ErrorBoundary';

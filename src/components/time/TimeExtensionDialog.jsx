@@ -13,7 +13,7 @@ import {
   StyledMuiDialogContent,
   StyledMuiDialogActions,
 } from 'components';
-import { extendReleaseDate } from 'utilities';
+import { extendReleaseDate, isPhone } from 'utilities';
 
 const debug = Debug('src:components:time-extension-dialog');
 
@@ -77,9 +77,11 @@ function TimeExtensionDialog(props) {
     />
   ));
 
+      // fullScreen={window.matchMedia('(hover: none) and (pointer: coarse)').matches}
   return (
     <StyledMuiDialog
       aria-labelledby='extend-dialog-title'
+      fullScreen={isPhone}
       open={open}
       onClose={() => setOpen(false)}
       onExited={unmount}

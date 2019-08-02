@@ -1,12 +1,5 @@
 import styled from 'styled-components';
 
-//export const size = {
-//  desktop: '66rem',
-//  tabletLG: '51rem',
-//  tabletSM: '44rem',
-//  phone: '31rem',
-//};
-
 export const size = {
   desktopLG: '66rem',
   desktopSM: '51rem',
@@ -23,12 +16,16 @@ export const device = {
   phone: `(min-width: ${size.phone})`,
 };
 
-export const isMobile = window.matchMedia(
-  '(hover: none) and (pointer: coarse)'
-).matches;
-
 export const isDesktop = window.matchMedia(
   '(hover: hover) and (pointer: fine)'
+).matches;
+
+export const isPhone = window.matchMedia(
+  '(hover: none) and (pointer: coarse) and (max-width: 31rem)'
+).matches;
+
+export const isMobile = window.matchMedia(
+  '(hover: none) and (pointer: coarse)'
 ).matches;
 
 export const RenderIfMobile = styled.div`
