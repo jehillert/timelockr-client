@@ -13,11 +13,12 @@ const StyledMuiCard = styled(Card)`
 
     @media ${device.phone} {
       width: calc(100vw - ${props => props.theme.p(6)});
+      margin-top: ${props => props.theme.m(1.5)};
+      margin-bottom: ${props => props.theme.m(1.5)};
     }
 
     @media ${device.tabletSM} {
       grid-column: auto;
-      // width: calc(40vw - 16px);
       width: 100%;
       margin: auto;
     }

@@ -30,11 +30,11 @@ S.CardArea = styled(Box)`
   @media ${device.tabletSM} {
     margin-top: ${props => props.theme.m(2)};
     display: grid;
-    grid-template-columns: repeat(auto-fill, 45%);
+    grid-template-columns: repeat(auto-fill, calc(50% - ${props => props.theme.gap(1.5)}));
     justify-content: center;
     align-items: flex-start;
     align-self: stretch;
-    grid-gap: ${props => props.theme.gap(1.5)};
+    grid-gap: ${props => props.theme.gap(2.5)};
   }
 
   @media ${device.tabletLG} {
