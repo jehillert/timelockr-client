@@ -16,13 +16,16 @@ const StyledMuiCard = styled(Card)`
     }
 
     @media ${device.tabletSM} {
-      width: calc(50vw - ${props => props.theme.p(6)});
+      grid-column: auto;
+      // width: calc(40vw - 16px);
+      width: 100%;
+      margin: auto;
     }
 
     @media ${device.tabletLG} {
       width: ${props => props.theme.cardWidth};
+      margin: ${props => props.theme.m(1.5)}
     }
-
   }
 `;
 

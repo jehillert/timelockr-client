@@ -15,9 +15,9 @@ const S = {};
 
 S.CardArea = styled(Box)`
   display: flex;
-  padding-bottom: 100vh;   // prevents anchoring cards to bottom of container
   align-self: stretch;
   margin: auto;
+  max-width: ${props => props.theme.cardAreaWidth};
 
   @media ${device.phone} {
     flex-direction: column;
@@ -29,13 +29,26 @@ S.CardArea = styled(Box)`
 
   @media ${device.tabletSM} {
     margin-top: ${props => props.theme.m(2)};
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 45%);
+    justify-content: center;
+    align-items: flex-start;
+    align-self: stretch;
+    grid-gap: ${props => props.theme.gap(1.5)};
+  }
+
+  @media ${device.tabletLG} {
+    display: flex;
+    align-items: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: center;
-    max-width: ${props => props.theme.cardAreaWidth};
-    padding: ${props => props.theme.p(0)};
+    justify-content: left;
+    padding-left: ${props => props.theme.p(0)};
+    padding-right: ${props => props.theme.p(0)};
   }
+
+  padding-bottom: 100vh;   // prevents anchoring cards to bottom of container
+
 `;
 
 const CardArea = (props) => {

@@ -43,7 +43,7 @@ function CardWrapper(props) {
     <>
       {shouldRenderCard
         && (
-        <Box mx={1.5} my={1.5}>
+        <>
           <Grow
             in={show}
             {...(show ? { timeout: animationDuration } : {})}
@@ -52,7 +52,7 @@ function CardWrapper(props) {
             {render({ deleteCard })}
           </div>
           </Grow>
-        </Box>
+        </>
       )}
     </>
   );

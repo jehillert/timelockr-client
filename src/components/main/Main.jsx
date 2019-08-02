@@ -34,14 +34,13 @@ S.AppBar = styled.div`
   }
 
   //LARGE ENOUGH FOR MARGINS
-  @media (min-width: ${props => props.theme.bp[4]}) {
+  @media (min-width: ${props => props.theme.bp[3]}) {
     margin-left: ${props => props.theme.p(3)};
     margin-right: ${props => props.theme.p(3)};
   }
 `;
 
 S.AppBarContainer = styled.div`
-  // 📌 no
   align-items: center;
   display: flex;
   justify-content: flex-end;
