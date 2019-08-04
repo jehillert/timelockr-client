@@ -9,8 +9,8 @@ export const size = {
 };
 
 export const device = {
-  desktopLG: `(min-width: ${size.desktop})`,
-  desktopSM: `(min-width: ${size.desktop})`,
+  desktopLG: `(min-width: ${size.desktopLG})`,
+  desktopSM: `(min-width: ${size.desktopSM})`,
   tabletLG: `(min-width: ${size.tabletLG})`,
   tabletSM: `(min-width: ${size.tabletSM})`,
   phone: `(min-width: ${size.phone})`,

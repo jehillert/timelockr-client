@@ -55,36 +55,34 @@ const ReleasedEntryCard = (props) => {
   */
   return (
     <ErrorBoundary>
-      <>
-        {Boolean(anchorEl) && (
-          <ClipboardPopover
-            anchorEl={anchorEl}
+      {Boolean(anchorEl) && (
+        <ClipboardPopover
+          anchorEl={anchorEl}
+        />
+      )}
+      <StyledMuiCard id={entryId} className='styled-mui-card'>
+        <CopyToClipboard text={description}>
+          <StyledMuiCardHeader
+            onClick={handleCopyClick}
+            action={(
+              <S.IconButton
+                className='s-icon-button'
+                onClick={handleCloseButtonClick}
+              >
+                <CloseIcon />
+              </S.IconButton>
+            )}
+            title={description}
           />
-        )}
-        <StyledMuiCard id={entryId} className='styled-mui-card'>
-          <CopyToClipboard text={description}>
-            <StyledMuiCardHeader
-              onClick={handleCopyClick}
-              action={(
-                <S.IconButton
-                  className='s-icon-button'
-                  onClick={handleCloseButtonClick}
-                >
-                  <CloseIcon />
-                </S.IconButton>
-              )}
-              title={description}
-            />
         </CopyToClipboard>
         <CopyToClipboard text={content}>
           <StyledMuiCardContent onClick={handleCopyClick}>
             <Typography css='white-space: pre-line; font-size: 0.9rem;'>
               {content}
             </Typography>
-            </StyledMuiCardContent>
-          </CopyToClipboard>
-        </StyledMuiCard>
-      </>
+          </StyledMuiCardContent>
+        </CopyToClipboard>
+      </StyledMuiCard>
     </ErrorBoundary>
   );
 };

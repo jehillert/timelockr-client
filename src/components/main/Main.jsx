@@ -48,14 +48,20 @@ S.AppBarContainer = styled.div`
 `;
 
 S.InsideFabBox = styled.div`
-  @media ${device.tabletLG} {
+  @media ${device.phone} {
+    display: flex;
+  }
+  @media ${device.desktopSM} {
     display: none;
   }
 `;
 
 S.OutsideFabBox = styled.div`
-  @media (max-width: 51rem) {
+  @media ${device.phone} {
     display: none;
+  }
+  @media ${device.desktopSM} {
+    display: flex;
   }
 `;
 

@@ -1,14 +1,20 @@
 /* eslint-disable no-unused-vars */
-import * as Debug from 'debug';
 import { hot } from 'react-hot-loader/root';
 import { setConfig } from 'react-hot-loader';
 import * as React from 'react';
 import { AppWrapper, AuthModal, Main } from 'components';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { addUser, getEntries, verifyUser } from 'utilities';
+import {
+  addUser,
+  ErrorBoundary,
+  getEntries,
+  verifyUser,
+} from 'utilities';
 import { defaultTheme, GlobalStyle } from 'theme';
 import { serverConsoleUrl } from 'config';
 import { closeConsole, openConsole } from './AppConsole';
+import './config';
+import * as Debug from 'debug';
 
 const debug = Debug('src:components:app');
 
@@ -91,20 +97,24 @@ class App extends React.Component {
               path='/'
               render={() => (
                 showMain ? (
-                  <Main
-                    entries={entries}
-                    hasAuth={hasAuth}
-                    refresh={this.refresh}
-                    revokeAuth={this.revokeAuth}
-                    userId={userId}
-                    username={username}
-                  />
+                  <ErrorBoundary>
+                    <Main
+                      entries={entries}
+                      hasAuth={hasAuth}
+                      refresh={this.refresh}
+                      revokeAuth={this.revokeAuth}
+                      userId={userId}
+                      username={username}
+                    />
+                  </ErrorBoundary>
                 ) : (
-                  <AuthModal
-                    handleSignin={this.handleSignin}
-                    handleAddUser={this.handleAddUser}
-                    hasAuth={hasAuth}
-                  />
+                  <ErrorBoundary>
+                    <AuthModal
+                      handleSignin={this.handleSignin}
+                      handleAddUser={this.handleAddUser}
+                      hasAuth={hasAuth}
+                    />
+                  </ErrorBoundary>
                 )
               )}
             />
@@ -114,10 +124,5 @@ class App extends React.Component {
     );
   }
 }
-
-setConfig({
-  logLevel: 'debug',
-  hotHooks: true,
-});
 
 export default hot(App);

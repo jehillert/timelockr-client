@@ -17,8 +17,6 @@
     "url": "https://github.com/jehillert/timelockr-client.git"
   },
   "scripts": {
-    "start-client": "cd scripts && ./start-client.sh",
-    "dev-server": "nodemon --ignore node_modules --inspect server",
     "start": "webpack-dev-server --hot --mode development --port 8080 --content-base ./build",
     "build": "webpack",
     "lint:js": "eslint . --ignore-path .eslintignore",
@@ -39,7 +37,6 @@
     "@material-ui/pickers": "^3.2.1",
     "@material-ui/styles": "^4.2.1",
     "@material-ui/system": "^4.3.1",
-    "@rehooks/window-size": "^1.0.2",
     "ajv": "^6.10.2",
     "aws-amplify": "^1.1.32",
     "axios": "^0.19.0",

@@ -4,9 +4,8 @@ const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 
-module.exports = {
-  // mode: 'production',
-  devtool: 'inline-source-map',
+const config = {
+  mode: process.env.NODE_ENV,
   entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -47,10 +46,22 @@ module.exports = {
   },
 };
 
-// webpack.EnvironmentPlugin not needed because Dotenv plugin is installed.
-// devtool: 'eval-source-map',
+module.exports = (env, argv) => {
+  console.log(argv.mode);
+  if (argv.mode === 'development') {
+    config.devtool = 'inline-source-map';
+  }
+
+  if (argv.mode === 'production') {
+    config.devtool = 'none';
+  }
+
+  return config;
+};
 
 /*
+  NOTES
+    webpack.EnvironmentPlugin not needed because Dotenv plugin is installed.
   PLUGIN DESCRIPTIONS
     NpmInstallWebpackPlugin: Automatically instal & save dependencies.
 */
