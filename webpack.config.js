@@ -5,8 +5,8 @@ const Dotenv = require('dotenv-webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 
 const config = {
-  mode: process.env.NODE_ENV,
-  entry: './src/index.jsx',
+  mode: 'development',
+  entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/',
@@ -14,8 +14,10 @@ const config = {
   },
   module: {
     rules: [
-      { test: /\.(js|jsx)$/, use: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.(js|jsx)$/, include: /node_modules/, use: ['react-hot-loader/webpack'] },
+      // { test: /\.(js|jsx)$/, use: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.(ts|tsx|js|jsx)$/, use: 'awesome-typescript-loader', exclude: /node_modules/ },
+      { test: /\.(ts|tsx|js|jsx)$/, include: /node_modules/, use: ['react-hot-loader/webpack'] },
+      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
       { test: /\.less$/, use: ['style-loader', 'css-loader/locals', 'less-loader'] },
       { test: /\.png$/, use: [{ loader: 'url-loader', options: { mimetype: 'image/png' } }] },
     ],
@@ -35,21 +37,20 @@ const config = {
   ],
   devServer: { contentBase: './build' },
   resolve: {
-    extensions: ['.js', '.jsx', '.css'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.css'],
     alias: {
-      components: path.resolve(__dirname, 'src/indexes/components.jsx'),
-      config: path.resolve(__dirname, 'config.js'),
-      contexts: path.resolve(__dirname, 'src/indexes/contexts.jsx'),
-      theme: path.resolve(__dirname, 'src/indexes/theme.jsx'),
-      utilities: path.resolve(__dirname, 'src/indexes/utilities.jsx'),
+      components: path.resolve(__dirname, 'src/indexes/components.ts'),
+      config: path.resolve(__dirname, 'config.ts'),
+      contexts: path.resolve(__dirname, 'src/indexes/contexts.ts'),
+      theme: path.resolve(__dirname, 'src/indexes/theme.ts'),
+      utilities: path.resolve(__dirname, 'src/indexes/utilities.ts'),
     },
   },
 };
 
 module.exports = (env, argv) => {
-  console.log(argv.mode);
   if (argv.mode === 'development') {
-    config.devtool = 'inline-source-map';
+    config.devtool = 'source-map';
   }
 
   if (argv.mode === 'production') {

@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "module": "es6",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "skipLibCheck": true,
+    "target": "es5",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "components": [ "./src/indexes/components" ],
+      "utilities": [ "./src/indexes/utilities" ],
+      "contexts": [ "./src/indexes/contexts" ],
+      "theme": [ "./src/indexes/theme" ]
+    }
+  },
+  "include": [
+    "./src/**/*",
+    "./src/"
+  ]
+}

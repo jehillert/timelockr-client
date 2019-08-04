@@ -1,13 +1,9 @@
 {
-    "parser": "babel-eslint",
     "env": {
         "browser": true,
         "es6": true,
         "node": true
     },
-    "extends": [
-        "airbnb"
-    ],
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
@@ -19,10 +15,6 @@
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
-    "plugins": [
-        "react",
-        "react-hooks"
-    ],
     "settings": {
       "import/resolver": "webpack"
     },
@@ -33,8 +25,6 @@
         2,
         "prefer-single"
       ],
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn",
       "react/jsx-quotes": 0,
       "template-curly-spacing": "off"
     }
