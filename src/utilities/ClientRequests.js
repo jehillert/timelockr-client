@@ -112,7 +112,7 @@ RESPONSE OBJECTS:
             "content-type": "text/plain; charset=utf-8"
           },
           "config": {
-            "url": "http://timelockr-server-demo.herokuapp.com/api/db/entries",
+            "url": "http://timelockr-server.herokuapp.com/api/db/entries",
             "method": "put",
             JSON NEEDS 2BE PARSED >>>
             "data": "{\"data\":{\"entryId\":1549,\"releaseDate\":\"2019-07-21 16:11-00\"}}",
@@ -137,7 +137,7 @@ RESPONSE OBJECTS:
 
       CONFIG:
       {
-        "url": "http://timelockr-server-demo.herokuapp.com/api/db/entries",
+        "url": "http://timelockr-server.herokuapp.com/api/db/entries",
         "method": "put",
         "data": "{\"data\":{\"entryId\":1549,\"releaseDate\":\"2019-07-21 16:09-00\"}}",
         "headers": {
@@ -168,7 +168,7 @@ RESPONSE OBJECTS:
           "content-type": "application/json; charset=utf-8"
         },
         "config": {
-          "url": "http://timelockr-server-demo.herokuapp.com/api/db/signin",
+          "url": "http://timelockr-server.herokuapp.com/api/db/signin",
           "method": "post",
           "data": "{\"username\":\"guest@timelockr-demo.com\",\"password\":\"password\"}",
           "headers": {
