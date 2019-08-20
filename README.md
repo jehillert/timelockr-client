@@ -1,3 +1,7 @@
+************************
+This app will be updated later this evening with scripts and environment variables for running locally.
+************************
+
 # TimeLockr-Client
 
 This application allows users to "lock away" information from themselves for a specified period of time, the main objective being to relieve users of the burden of impulse control in circumstances where impulse control is difficult to maintain. A demo is available [here](https://timelockr.hillert.dev).<br>
