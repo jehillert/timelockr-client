@@ -53,4 +53,5 @@ The backend for TimeLockr, TimeLockr-Server-Demo, is maintained as a [separate p
 [1] The demo is currently configured to expose information passed into TimeLockr via a separate console (Timelockr-Server-Demo). Moreover, data stored in the application's database is not backed up and the database is likely to be erased from time to time. <b>As such, users are strongly encouraged not to enter sensitive or personal information into the demo.</b>
 <br><br>
 [2] TimeLockr's server is hosted on a free Heroku account, and sleeps when not in use. <b>If the demo does not immediately respond, please allow 10-15 seconds for the server to load.</b>
-[3] <b>The foregoing examples are provided solely for illustrating function.</b> The developer does not suggest, endorse, or advocate using the app for any of the purposes described therein. <br><br>
+<br><br>
+[3] <b>The foregoing examples are provided solely for illustrating function.</b> The developer does not suggest, endorse, or advocate using the app for any of the purposes described therein.
