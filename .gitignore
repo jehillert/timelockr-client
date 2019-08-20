@@ -43,7 +43,7 @@ notes/
 Notes/
 npm-debug.log*
 pids
-scripts/
+# scripts/
 typings/
 yarn-debug.log*
 yarn-error.log*

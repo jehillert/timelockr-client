@@ -1,10 +1,33 @@
-************************
-This app will be updated later this evening with scripts and environment variables for running locally.
-************************
-
 # TimeLockr-Client
 
-This application allows users to "lock away" information from themselves for a specified period of time, the main objective being to relieve users of the burden of impulse control in circumstances where impulse control is difficult to maintain. A demo is available [here](https://timelockr.hillert.dev).<br>
+## Live Demo
+
+  A live demo of TimeLockr is hosted by Amazon AWS, and can be accessed [here](https://timelockr.hillert.dev). The backend of the application, TimeLockr-Server, and the [console popup](http://timelockr-server.herokuapp.com/) that appears when viewing the demo on a desktop, are hosted by Heroku.
+
+## Local Installation
+
+These instructions detail how to install, run and view TimeLockr-Client locally without installing the backend, TimeLockr-Server, which requires having Postgress installed and can be somewhat time-consuming to setup.  The environment variables in *.env.example* divert client API calls to a version of the back-end hosted on Heroku.
+
+**To install**, open a terminal and type:
+  ```console
+  foo@bar:~$ git clone https://github.com/jehillert/timelockr-client.git
+  foo@bar:~$ cd timelockr-client
+  foo@bar:~$ mv env.example .env
+  foo@bar:~$ npm install
+  ```
+
+**To run**, open a terminal and type:
+  ```console
+  foo@bar:~$ cd path/to/timelockr-client
+  foo@bar:~$ npm start
+  ```
+
+**To View**, open a web browser to [localhost:8080](http://localhost:8080/).
+
+
+## About
+
+TimeLockr allows users to "lock away" information from themselves for a specified period of time, the main objective being to relieve users of the burden of impulse control in circumstances where impulse control is difficult to maintain. <br>
 
 ### Functionality
 The fictional use cases that follow are provided to illustrate the functionality of TimeLockr:<sup>__1__</sup>
