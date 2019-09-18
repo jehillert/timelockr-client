@@ -121,4 +121,4 @@ TimeExtensionDialog.propTypes = {
   releaseDate: PropTypes.string.isRequired,
 };
 
-export default TimeExtensionDialog;
+export default React.memo(TimeExtensionDialog);

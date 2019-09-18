@@ -75,4 +75,4 @@ LinearProgressWithDates.propTypes = {
   entry: PropTypes.object.isRequired,
 };
 
-export default LinearProgressWithDates;
+export default React.memo(LinearProgressWithDates);

@@ -32,7 +32,7 @@ const EntryFormDatePicker = (props) => {
             <DatePicker
               autoOk
               disablePast
-              format='MMMM DD, YYYY'
+              format='MM/DD/YYYY'
               label='Release Date:'
               minDateMessage='Selected date is in the past'
               value={selectedDate}
@@ -70,4 +70,4 @@ EntryFormDatePicker.propTypes = {
   ]),
 };
 
-export default EntryFormDatePicker;
+export default React.memo(EntryFormDatePicker);

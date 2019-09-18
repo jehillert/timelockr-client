@@ -85,4 +85,4 @@ CircularProgress.propTypes = {
   strokeWidth: PropTypes.number,
 };
 
-export default CircularProgress;
+export default React.memo(CircularProgress);

@@ -99,4 +99,4 @@ EntryFormTimePicker.propTypes = {
   ]),
 };
 
-export default EntryFormTimePicker;
+export default React.memo(EntryFormTimePicker);

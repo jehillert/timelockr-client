@@ -17,3 +17,6 @@ clientRequests:
 
 TIMER
 - the timer start counting from when the time form is pulled up, not from the time the submit button is hit.
+
+LOCKED ENTRY CARDS
+- if the title is too long, and just one word, that word pushes the menu out of sight and out of the card
