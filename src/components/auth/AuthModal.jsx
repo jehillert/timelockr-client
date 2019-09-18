@@ -47,7 +47,7 @@ S.AuthHeading = styled.div`
   }
 `;
 
-class AuthModal extends React.Component {
+class AuthModal extends React.PureComponent {
   constructor(props) {
     debug('[AuthModal] rendered');
     super(props);

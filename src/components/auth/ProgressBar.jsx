@@ -24,7 +24,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function ProgressBar(props) {
+function ProgressBar(props) {
   debug('[Progress-Bar] rendered');
 
   const { loading } = props;
@@ -48,3 +48,5 @@ export default function ProgressBar(props) {
 ProgressBar.propTypes = {
   loading: PropTypes.bool.isRequired,
 };
+
+export default React.memo(ProgressBar);

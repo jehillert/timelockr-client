@@ -130,4 +130,4 @@ LockedEntryCardMenu.propTypes = {
   refresh: PropTypes.func.isRequired,
 };
 
-export default LockedEntryCardMenu;
+export default React.memo(LockedEntryCardMenu);

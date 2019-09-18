@@ -33,7 +33,7 @@ S.TimePicker = styled(props => <TimePicker {...props} />)`
   width: auto;
 `;
 
-class EntryFormDialog extends React.Component {
+class EntryFormDialog extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {

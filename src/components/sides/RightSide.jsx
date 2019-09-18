@@ -42,4 +42,4 @@ S.RightSide.propTypes = {
   gridArea: PropTypes.string.isRequired,
 };
 
-export default RightSide;
+export default React.memo(RightSide);

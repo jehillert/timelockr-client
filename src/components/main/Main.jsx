@@ -214,4 +214,4 @@ Main.propTypes = {
   username: PropTypes.string.isRequired,
 };
 
-export default Main;
+export default React.memo(Main);

@@ -9,7 +9,7 @@ import {
   LockedEntryCardMenu,
 } from 'components';
 
-const LockedEntryCard = (props) => {
+function LockedEntryCard(props) {
   const { entry, refresh, wrapper } = props;
   const { deleteCard } = wrapper;
 
@@ -42,7 +42,7 @@ const LockedEntryCard = (props) => {
       </StyledMuiCard>
     </>
   );
-};
+}
 
 LockedEntryCard.propTypes = {
   entry: PropTypes.shape({
@@ -58,4 +58,4 @@ LockedEntryCard.propTypes = {
   wrapper: PropTypes.objectOf(PropTypes.func).isRequired,
 };
 
-export default LockedEntryCard;
+export default React.memo(LockedEntryCard);

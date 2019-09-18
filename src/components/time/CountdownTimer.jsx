@@ -120,4 +120,4 @@ CountdownTimer.propTypes = {
   refresh: PropTypes.func.isRequired,
 };
 
-export default CountdownTimer;
+export default React.memo(CountdownTimer);

@@ -14,3 +14,6 @@ clientRequests:
 1. Your 'PUT' requests I think may be all wrong.
 2. Reread this: https://medium.com/backticks-tildes/restful-api-design-put-vs-patch-4a061aa3ed0b
 3. Either modify PUT or consider PATCH
+
+TIMER
+- the timer start counting from when the time form is pulled up, not from the time the submit button is hit.

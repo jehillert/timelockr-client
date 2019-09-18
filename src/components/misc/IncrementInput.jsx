@@ -74,4 +74,4 @@ IncrementInput.propTypes = {
   units: PropTypes.string.isRequired,
 };
 
-export default withStyles(styles)(IncrementInput);
+export default React.memo(withStyles(styles)(IncrementInput));

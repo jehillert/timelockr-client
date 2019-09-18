@@ -54,4 +54,4 @@ S.LeftSide.propTypes = {
   gridArea: PropTypes.string.isRequired,
 };
 
-export default LeftSide;
+export default React.memo(LeftSide);

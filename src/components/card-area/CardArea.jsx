@@ -111,4 +111,4 @@ CardArea.propTypes = {
   refresh: PropTypes.func.isRequired,
 };
 
-export default CardArea;
+export default React.memo(CardArea);

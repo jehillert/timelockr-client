@@ -88,4 +88,4 @@ ConfirmDialog.propTypes = {
   variant: PropTypes.string,
 };
 
-export default ConfirmDialog;
+export default React.memo(ConfirmDialog);

@@ -71,4 +71,4 @@ CardWrapper.propTypes = {
   render: PropTypes.func.isRequired,
 };
 
-export default CardWrapper;
+export default React.memo(CardWrapper);

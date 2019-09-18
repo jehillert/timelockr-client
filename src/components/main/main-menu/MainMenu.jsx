@@ -150,4 +150,4 @@ MainMenu.propTypes = {
   username: PropTypes.string.isRequired,
 };
 
-export default MainMenu;
+export default React.memo(MainMenu);

@@ -50,4 +50,4 @@ ClipboardPopover.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ClipboardPopover);
+export default React.memo(withStyles(styles)(ClipboardPopover));

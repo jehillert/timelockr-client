@@ -24,7 +24,7 @@ S.IconButton = styled(IconButton)`
   }
 `;
 
-const ReleasedEntryCard = (props) => {
+function ReleasedEntryCard(props) {
   debug('[ReleasedEntryCArd] rendered');
 
   const [anchorEl, updateAnchorEl] = useState(null);
@@ -85,7 +85,8 @@ const ReleasedEntryCard = (props) => {
       </StyledMuiCard>
     </ErrorBoundary>
   );
-};
+}
+
 
 ReleasedEntryCard.propTypes = {
   entry: PropTypes.shape({
@@ -96,4 +97,4 @@ ReleasedEntryCard.propTypes = {
   wrapper: PropTypes.objectOf(PropTypes.func).isRequired,
 };
 
-export default ReleasedEntryCard;
+export default React.memo(ReleasedEntryCard);

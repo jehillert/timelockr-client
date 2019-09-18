@@ -67,4 +67,4 @@ FormButton.propTypes = {
 };
 
 
-export default FormButton;
+export default React.memo(FormButton);

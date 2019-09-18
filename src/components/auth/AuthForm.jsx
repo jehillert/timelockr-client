@@ -61,7 +61,7 @@ S.ProgressBarBox = styled(FormGroup)`
   margin-right: ${props => props.theme.m(-2)};
 `;
 
-class AuthForm extends React.Component {
+class AuthForm extends React.PureComponent {
   constructor(props) {
     debug('[AuthForm] rendered');
     super(props);

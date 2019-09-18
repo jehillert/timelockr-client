@@ -108,4 +108,4 @@ AuthTabs.propTypes = {
   setTitle: PropTypes.func.isRequired,
 };
 
-export default (AuthTabs);
+export default React.memo((AuthTabs));
