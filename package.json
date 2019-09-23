@@ -8,10 +8,10 @@
     "npm": "6.9.0"
   },
   "keywords": [],
-  "author": "",
+  "author": "John Hillert",
   "license": "UNLICENSED",
   "private": true,
-  "homepage": "https://jehillert.github.io/timelockr-client/",
+  "homepage": "https://github.com/jehillert/timelockr-client#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/jehillert/timelockr-client.git"
