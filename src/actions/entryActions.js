@@ -11,12 +11,10 @@ const urlBase = `${hostUrl}/api/db`;
 export const fetchEntries = user => dispatch => axios
   .get(`${urlBase}/entries?username=${user}`)
   .then((results) => {
-    const entries = JSON.parse(results.request.response);
-    console.log('RESULTS RESULTS RESULTS ----------------------------------', entries);
-    return entries;
+    const { entries } = results.data;
+    return dispatch({
+      type: FETCH_ENTRIES,
+      payload: entries,
+    });
   })
-.then(entries => dispatch({
-  type: FETCH_ENTRIES,
-  payload: entries,
-}))
-.catch(err => debug(err));
+  .catch(err => debug(err));
