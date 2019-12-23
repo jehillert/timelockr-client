@@ -1,4 +1,5 @@
-import { FETCH_ENTRIES, ADD_ENTRY } from '../actions/types';
+// import { FETCH_ENTRIES, ADD_ENTRY } from '../actions/types';
+import { FETCH_ENTRIES } from '../actions/types';
 
 const initialState = {
   entries: [],
@@ -11,7 +12,7 @@ export default function (state = initialState, action) {
       console.log('ACTION PAYLOAD ----------------------------------', action.payload);
       return {
         ...state,
-        items: action.payload,
+        entries: action.payload,
       };
     default:
       return state;

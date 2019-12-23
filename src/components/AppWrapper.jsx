@@ -3,18 +3,17 @@
 // TODO - see if res.json() is the better solution for your API requests.
 // TODO - look for opportunities to refactor as double arrow functions
 // TODO - withAppContext.js and contexts.jsx
+// TODO - fix "entries.entries" terminology
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import MomentUtils from '@date-io/moment';
 import PropTypes from 'prop-types';
 import { defaultTheme, GlobalStyle } from 'theme';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import { serverConsoleUrl } from 'config';
+import { serverConsoleUrl, showServerConsole } from 'config';
 import { StylesProvider } from '@material-ui/styles';
 import { ThemeProvider } from 'styled-components';
 import { isDesktop } from 'utilities';
-// import { Provider } from 'react-redux';
-// import store from '../store';
 import openConsole from './AppConsole';
 
 class AppWrapper extends React.Component {
@@ -26,7 +25,7 @@ class AppWrapper extends React.Component {
   }
 
   componentDidMount() {
-    if (isDesktop) {
+    if (isDesktop && showServerConsole) {
       this.setState({
         AppConsole: openConsole(
           serverConsoleUrl,

@@ -9,7 +9,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import {
   addUser,
   ErrorBoundary,
-  // getEntries,
   verifyUser,
 } from 'utilities';
 import { defaultTheme, GlobalStyle } from 'theme';
@@ -33,16 +32,15 @@ class App extends React.Component {
 
   getEntries = () => {
     const { username } = this.state;
+    const { fetchEntries } = this.props;
     // const { fetchEntries } = this.props;
-    return this.props.fetchEntries(username)
-      .then((results) => {
-        const { locked, released } = results.entries;
+    // return this.props.fetchEntries(username)
+    return fetchEntries(username)
+      .then(() => {
+        const { entries } = this.props;
+        const { locked, released } = entries;
         debug('LOCKED:\n%O', locked);
         debug('RELEASED:\n%O', released);
-        return results;
-      })
-      .then((results) => {
-        this.setState((state, props) => ({ entries: results.entries }));
       });
   }
 
@@ -81,12 +79,13 @@ class App extends React.Component {
 
   render() {
     const {
-      entries,
       hasAuth,
       showMain,
       userId,
       username,
     } = this.state;
+
+    const { entries } = this.props;
 
     return (
       <>
@@ -127,8 +126,13 @@ class App extends React.Component {
 
 App.propTypes = {
   fetchEntries: PropTypes.func.isRequired,
+  entries: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
 };
 
+const mapStateToProps = state => ({
+  entries: state.entries.entries,
+});
+
 // DevTools console indicates 'live-reloading' and 'hot module replacement' enabled.
-// export default connect(mapStateToProps, { fetchEntries })(App);
-export default connect(null, { fetchEntries })(App);
+export default connect(mapStateToProps, { fetchEntries })(App);
+// export default connect(null, { fetchEntries })(App);

@@ -8,6 +8,8 @@ export const demoUser = process.env.DEMO_USER;
 export const publicUrl = process.env.PUBLIC_URL;
 export const demoPassword = process.env.DEMO_PASSWORD;
 export const serverConsoleUrl = process.env.SERVER_CONSOLE_URL;
+export const showServerConsole = process.env.SHOW_SERVER_CONSOLE;
+
 
 if (debugConfig.enabled) {
   const config = {
