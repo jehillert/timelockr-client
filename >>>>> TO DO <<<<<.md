@@ -1,3 +1,6 @@
+AuthForm
+Pressing escape in username field causes screen to go blank.
+
 Box.jsx
 1. where is it???
 2. If you deleted it, you need to go excise it out everywhere.
@@ -8,7 +11,7 @@ GlobalStyle.jsx:
 App.jsx:
 1. Are these lines necessary?
   import { serverConsoleUrl } from 'config';
-  import { closeConsole, openConsole } from './AppConsole';
+  import { closeConsole, createConsole } from './AppConsole';
 
 clientRequests:
 1. Your 'PUT' requests I think may be all wrong.

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-// import { hot } from 'react-hot-loader/root';
-import { setConfig } from 'react-hot-loader';
+// Note: Appears that webpack config takes care of hot reloading.
+// No need for import statements to get it to work.
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -14,7 +14,7 @@ import {
 import { defaultTheme, GlobalStyle } from 'theme';
 import './config';
 import * as Debug from 'debug';
-import { fetchEntries } from '../actions/entryActions';
+import { fetchEntries } from 'actions';
 
 const debug = Debug('src:components:app');
 
@@ -24,7 +24,6 @@ class App extends React.Component {
     this.state = {
       userId: 0,
       username: '',
-      // entries: {},
       hasAuth: false,
       showMain: false,
     };
@@ -33,15 +32,7 @@ class App extends React.Component {
   getEntries = () => {
     const { username } = this.state;
     const { fetchEntries } = this.props;
-    // const { fetchEntries } = this.props;
-    // return this.props.fetchEntries(username)
-    return fetchEntries(username)
-      .then(() => {
-        const { entries } = this.props;
-        const { locked, released } = entries;
-        debug('LOCKED:\n%O', locked);
-        debug('RELEASED:\n%O', released);
-      });
+    return fetchEntries(username);
   }
 
   refresh = () => (
@@ -52,7 +43,6 @@ class App extends React.Component {
     this.setState(state => ({
       hasAuth: false,
       showMain: false,
-      // entries: {},
     }))
   )
 
@@ -133,6 +123,4 @@ const mapStateToProps = state => ({
   entries: state.entries.entries,
 });
 
-// DevTools console indicates 'live-reloading' and 'hot module replacement' enabled.
 export default connect(mapStateToProps, { fetchEntries })(App);
-// export default connect(null, { fetchEntries })(App);

@@ -1,5 +1,7 @@
-// import { FETCH_ENTRIES, ADD_ENTRY } from '../actions/types';
-import { FETCH_ENTRIES } from '../actions/types';
+import * as Debug from 'debug';
+import { FETCH_ENTRIES, ADD_ENTRY } from 'types';
+
+const debug = Debug('src:entries-reducer');
 
 const initialState = {
   entries: [],
@@ -9,11 +11,16 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case FETCH_ENTRIES:
-      console.log('ACTION PAYLOAD ----------------------------------', action.payload);
+      debug('ACTION PAYLOAD ----------------------------------', action.payload);
       return {
         ...state,
         entries: action.payload,
       };
+    case ADD_ENTRY:
+      return {
+        ...state,
+        entry: action.payload,
+      }
     default:
       return state;
   }

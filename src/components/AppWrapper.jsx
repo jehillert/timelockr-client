@@ -1,9 +1,4 @@
-// TODO - add new files to aliases
-// TODO - CHANGE 'getEntries' to 'fetchEntries'
-// TODO - see if res.json() is the better solution for your API requests.
 // TODO - look for opportunities to refactor as double arrow functions
-// TODO - withAppContext.js and contexts.jsx
-// TODO - fix "entries.entries" terminology
 // TODO - SEE IF REACT HOT LOADER 'SETCONFIG' IS NECESSARY
 // TODO - see if you can move 'ROUTER' here, WHILE KEEPING ROUTES WHERE THEY ARE
 import React from 'react';
