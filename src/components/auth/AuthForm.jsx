@@ -1,10 +1,4 @@
 /* eslint-disable react/forbid-prop-types */
-//// DESKTOP
-//@media (max-width: ${props => props.theme.bp[1]}) {
-//}
-//// MOBILE
-//@media (min-width: ${props => props.theme.bp[1]}) {
-//}
 import * as Debug from 'debug';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -17,7 +11,7 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import * as EmailValidator from 'email-validator';
 import { FormButton, ProgressBar } from 'components';
-import { demoUser, demoPassword } from 'config';
+import { demoMode, demoUser, demoPassword } from 'config';
 import { withStyles } from '@material-ui/core/styles';
 import Promise from 'bluebird';
 
@@ -65,9 +59,17 @@ class AuthForm extends React.PureComponent {
   constructor(props) {
     debug('[AuthForm] rendered');
     super(props);
+    let usr = '';
+    let pswd = '';
+
+    if (demoMode) {
+      usr = demoUser;
+      pswd = demoPassword;
+    }
+
     this.state = {
-      username: demoUser,
-      password: demoPassword,
+      username: usr,
+      password: pswd,
       notAnEmailAddressError: false,
       loading: false,
       passwordError: false,

@@ -4,42 +4,30 @@
 // TODO - look for opportunities to refactor as double arrow functions
 // TODO - withAppContext.js and contexts.jsx
 // TODO - fix "entries.entries" terminology
+// TODO - SEE IF REACT HOT LOADER 'SETCONFIG' IS NECESSARY
+// TODO - see if you can move 'ROUTER' here, WHILE KEEPING ROUTES WHERE THEY ARE
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import MomentUtils from '@date-io/moment';
 import PropTypes from 'prop-types';
 import { defaultTheme, GlobalStyle } from 'theme';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import { serverConsoleUrl, showServerConsole } from 'config';
+import { serverConsoleUrl } from 'config';
 import { StylesProvider } from '@material-ui/styles';
 import { ThemeProvider } from 'styled-components';
 import { isDesktop } from 'utilities';
-import openConsole from './AppConsole';
+import serverConsole from './AppConsole';
 
 class AppWrapper extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      AppConsole: {},
-    };
-  }
-
   componentDidMount() {
-    if (isDesktop && showServerConsole) {
-      this.setState({
-        AppConsole: openConsole(
-          serverConsoleUrl,
-          'TimeLockrServerDemoPopupWindow',
-          800,
-          400,
-        ),
-      });
+    if (isDesktop && serverConsole.isEnabled) {
+      serverConsole.create(
+        serverConsoleUrl,
+        'TimeLockrServerDemoPopupWindow',
+        800,
+        400,
+      );
     }
-  }
-
-  componentWillUnmount() {
-    const { AppConsole } = this.state;
-    AppConsole.close();
   }
 
   render() {
