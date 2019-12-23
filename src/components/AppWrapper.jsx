@@ -1,3 +1,8 @@
+// TODO - add new files to aliases
+// TODO - CHANGE 'getEntries' to 'fetchEntries'
+// TODO - see if res.json() is the better solution for your API requests.
+// TODO - look for opportunities to refactor as double arrow functions
+// TODO - withAppContext.js and contexts.jsx
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import MomentUtils from '@date-io/moment';
@@ -8,6 +13,8 @@ import { serverConsoleUrl } from 'config';
 import { StylesProvider } from '@material-ui/styles';
 import { ThemeProvider } from 'styled-components';
 import { isDesktop } from 'utilities';
+// import { Provider } from 'react-redux';
+// import store from '../store';
 import openConsole from './AppConsole';
 
 class AppWrapper extends React.Component {

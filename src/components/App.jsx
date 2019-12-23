@@ -1,20 +1,21 @@
 /* eslint-disable no-unused-vars */
-import { hot } from 'react-hot-loader/root';
+// import { hot } from 'react-hot-loader/root';
 import { setConfig } from 'react-hot-loader';
 import * as React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { AppWrapper, AuthModal, Main } from 'components';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import {
   addUser,
   ErrorBoundary,
-  getEntries,
+  // getEntries,
   verifyUser,
 } from 'utilities';
 import { defaultTheme, GlobalStyle } from 'theme';
-import { serverConsoleUrl } from 'config';
-import { closeConsole, openConsole } from './AppConsole';
 import './config';
 import * as Debug from 'debug';
+import { fetchEntries } from '../actions/entryActions';
 
 const debug = Debug('src:components:app');
 
@@ -24,7 +25,7 @@ class App extends React.Component {
     this.state = {
       userId: 0,
       username: '',
-      entries: {},
+      // entries: {},
       hasAuth: false,
       showMain: false,
     };
@@ -32,7 +33,8 @@ class App extends React.Component {
 
   getEntries = () => {
     const { username } = this.state;
-    return getEntries(username)
+    // const { fetchEntries } = this.props;
+    return this.props.fetchEntries(username)
       .then((results) => {
         const { locked, released } = results.entries;
         debug('LOCKED:\n%O', locked);
@@ -44,8 +46,6 @@ class App extends React.Component {
       });
   }
 
-  // TimeLockr Console code is placed in AppWrapper
-
   refresh = () => (
     this.getEntries()
   );
@@ -54,7 +54,7 @@ class App extends React.Component {
     this.setState(state => ({
       hasAuth: false,
       showMain: false,
-      entries: {},
+      // entries: {},
     }))
   )
 
@@ -125,4 +125,10 @@ class App extends React.Component {
   }
 }
 
-export default hot(App);
+App.propTypes = {
+  fetchEntries: PropTypes.func.isRequired,
+};
+
+// DevTools console indicates 'live-reloading' and 'hot module replacement' enabled.
+// export default connect(mapStateToProps, { fetchEntries })(App);
+export default connect(null, { fetchEntries })(App);
