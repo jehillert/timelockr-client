@@ -47,7 +47,7 @@ S.CardArea = styled(Box)`
     padding-right: ${props => props.theme.p(0)};
   }
 
-  padding-bottom: 100vh;   // prevents anchoring cards to bottom of container
+  padding-bottom: 100vh;   /* prevents anchoring cards to bottom of container */
 
 `;
 

@@ -14,7 +14,7 @@ const debug = Debug('src:components:auth-tabs');
 const S = {};
 
 S.Tabs = styled(Tabs)`
-  color: ${props => props.theme.bgColor3};
+  color: ${({ theme }) => theme.bgColor3};
   -webkit-tap-highlight-color: transparent;
 `;
 

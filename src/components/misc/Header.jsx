@@ -17,7 +17,13 @@ S.Header = styled(Box)`
   }
 `;
 
-const Header = ({ children, level, text }) => {
+const Header = (props) => {
+  const {
+    children,
+    level,
+    text,
+  } = props;
+
   return (
     <S.Header
       as={`h${level}`}

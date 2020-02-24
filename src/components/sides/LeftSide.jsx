@@ -7,23 +7,29 @@ const S = {};
 
 S.LeftSide = styled.div`
   z-index: 999;
-  @media (max-width: ${props => props.theme.bp[3]}) {
-      display: none;
+  @media ${device.phone} {
+    display: none;
   }
-  background-color: ${props => props.theme.darkColor};
-  box-shadow: ${props => props.theme.boxShadowRight};
-  color: ${props => props.theme.textColor2};
-  display: flex;
-  grid-area: ${props => props.gridArea};
-  justify-content: flex-end;
-  overflow: visible;
-  padding-right: ${props => props.theme.m()};
-  padding-top: ${props => props.theme.m(2)};
+  @media ${device.tabletSM} {
+    background-color: ${props => props.theme.darkColor};
+    box-shadow: ${props => props.theme.boxShadowRight};
+    color: ${props => props.theme.textColor2};
+    display: flex;
+    grid-area: ${props => props.gridArea};
+    justify-content: flex-end;
+    overflow: visible;
+    padding-right: ${props => props.theme.m()};
+    padding-top: ${props => props.theme.m(2)};
+  }
 `;
 
 S.Title = styled.h2`
-  @media (max-width: ${props => props.theme.bp[1]}) {
+  @media ${device.phone} {
     display: none;
+  }
+  @media ${device.desktopLG} {
+    display: grid;
+    margin-right: ${props => props.theme.p(1)};
   }
 `;
 
