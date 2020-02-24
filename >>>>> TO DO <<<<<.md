@@ -1,3 +1,11 @@
+-------------------------------------------------------
+ NEXT UP
+-------------------------------------------------------
+ React.lazy
+
+-------------------------------------------------------
+ BUGS
+-------------------------------------------------------
 AuthForm
 Pressing escape in username field causes screen to go blank.
 
@@ -19,11 +27,24 @@ clientRequests:
 3. Either modify PUT or consider PATCH
 
 -------------------------------------------------------
- EXPLORE USING DESTRUCTURING IN STYLED COMPONENTS
+ LINTING ISSUES
+-------------------------------------------------------
+ - stylelint is not working. caniuse-lite is outedated (see output screen)
+    https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint
+
+    https://github.com/stylelint/stylelint#getting-started
+
+    https://stylelint.io/user-guide/configure
+
+    https://github.com/postcss/autoprefixer/issues/1184
+
+ - eslint appears to be yacking about something in the
+   out put screen
+
+-------------------------------------------------------
+ [maybe] USE MORE DESTRUCTURING IN STYLED COMPONENTS
 -------------------------------------------------------
 https://github.com/styled-components/styled-components/issues/273
-Maybe consider doing this inside all styled components that refer to the theme:
-  ({ theme }) => theme.myProperty
 
 -------------------------------------------------------
  TIMER
@@ -67,3 +88,25 @@ And also
     ...
   }
 Also consider replacing all of the "abp" code with something similar to "device"
+
+-------------------------------------------------------
+ FIX PICKER ISSUES
+-------------------------------------------------------
+on right monitor it changes format in an undesirable way.
+maybe just need to change media queries, but there seems to
+be something more than that required.
+I want just the calendar, not the decorative area on the left that
+the Month and day takes up two rows.
+e.g.,
+
+  2020
+  Mon,
+  Feb
+  24
+
+looks sloppy.
+
+...actually, the problem is that the decorative area normally on the top
+moves left for some reason.  Even if the window does not change.  What matters
+is that the left is on a bigger monitor.  Still sounds like media queries,
+but the issue is with the monitor size, not the window size.
