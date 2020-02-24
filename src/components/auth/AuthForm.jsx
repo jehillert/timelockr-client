@@ -1,5 +1,5 @@
 /* eslint-disable react/forbid-prop-types */
-import * as Debug from 'debug';
+// import * as Debug from 'debug';
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -16,7 +16,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Promise from 'bluebird';
 
 const styles = {};
-const debug = Debug('src:components:auth-form');
+// const debug = Debug('src:components:auth-form');
 
 const S = {};
 
@@ -56,26 +56,19 @@ S.ProgressBarBox = styled(FormGroup)`
 `;
 
 class AuthForm extends React.PureComponent {
-  constructor(props) {
-    debug('[AuthForm] rendered');
-    super(props);
-    let usr = '';
-    let pswd = '';
+  static propTypes = {
+    handleSubmit: PropTypes.func.isRequired,
+    autocompletePasswordType: PropTypes.string.isRequired,
+  };
 
-    if (demoMode) {
-      usr = demoUser;
-      pswd = demoPassword;
-    }
-
-    this.state = {
-      username: usr,
-      password: pswd,
-      notAnEmailAddressError: false,
-      loading: false,
-      passwordError: false,
-      showPassword: false,
-    };
-  }
+  state = {
+    username: demoMode ? demoUser : '',
+    password: demoMode ? demoPassword : '',
+    notAnEmailAddressError: false,
+    loading: false,
+    passwordError: false,
+    showPassword: false,
+  };
 
   handleFormSubmit = (event) => {
     const { handleSubmit } = this.props;
@@ -186,10 +179,5 @@ class AuthForm extends React.PureComponent {
     );
   }
 }
-
-AuthForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  autocompletePasswordType: PropTypes.string.isRequired,
-};
 
 export default withStyles(styles)(AuthForm);

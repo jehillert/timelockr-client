@@ -38,16 +38,20 @@ S.TimePicker = styled(props => <TimePicker {...props} />)`
 `;
 
 class EntryFormDialog extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      description: '',
-      content: '',
-      open: true,
-      selectedDate: new Date(),
-      selectedTime: new Date(),
-    };
-  }
+  static propTypes = {
+    addEntry: PropTypes.func.isRequired,
+    closeDialog: PropTypes.func.isRequired,
+    refresh: PropTypes.func.isRequired,
+    userId: PropTypes.number.isRequired,
+  };
+
+  state = {
+    description: '',
+    content: '',
+    open: true,
+    selectedDate: new Date(),
+    selectedTime: new Date(),
+  };
 
   handleChange = e => (
     this.setState({ [e.target.id]: e.target.value })
@@ -208,13 +212,6 @@ class EntryFormDialog extends React.PureComponent {
     );
   }
 }
-
-EntryFormDialog.propTypes = {
-  addEntry: PropTypes.func.isRequired,
-  closeDialog: PropTypes.func.isRequired,
-  refresh: PropTypes.func.isRequired,
-  userId: PropTypes.number.isRequired,
-};
 
 // const mapStateToProps = state => ({
 //   entry: state.entries.entry,

@@ -19,15 +19,17 @@ import { fetchEntries } from 'actions';
 const debug = Debug('src:components:app');
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userId: 0,
-      username: '',
-      hasAuth: false,
-      showMain: false,
-    };
-  }
+  static propTypes = {
+    fetchEntries: PropTypes.func.isRequired,
+    entries: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
+  };
+
+  state = {
+    userId: 0,
+    username: '',
+    hasAuth: false,
+    showMain: false,
+  };
 
   getEntries = () => {
     const { username } = this.state;
@@ -113,11 +115,6 @@ class App extends React.Component {
     );
   }
 }
-
-App.propTypes = {
-  fetchEntries: PropTypes.func.isRequired,
-  entries: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
-};
 
 const mapStateToProps = state => ({
   entries: state.entries.entries,
