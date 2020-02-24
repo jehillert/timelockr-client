@@ -1,9 +1,5 @@
-{
+module.exports = {
     "parser": "babel-eslint",
-    "ecmaFeatures": {
-        "classes": true,
-        "jsx": true
-    },
     "env": {
         "browser": true,
         "es6": true,

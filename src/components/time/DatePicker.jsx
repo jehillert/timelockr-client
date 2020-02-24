@@ -55,7 +55,7 @@ function EntryFormDatePicker({ selectedDate, handleDateChange }) {
       </ThemeProvider>
     </>
   );
-};
+}
 
 EntryFormDatePicker.defaultProps = {
   selectedDate: new Date(),

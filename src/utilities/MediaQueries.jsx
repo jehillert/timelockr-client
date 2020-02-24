@@ -17,15 +17,15 @@ export const device = {
 };
 
 export const isDesktop = window.matchMedia(
-  '(hover: hover) and (pointer: fine)'
+  '(hover: hover) and (pointer: fine)',
 ).matches;
 
 export const isPhone = window.matchMedia(
-  '(hover: none) and (pointer: coarse) and (max-width: 31rem)'
+  '(hover: none) and (pointer: coarse) and (max-width: 31rem)',
 ).matches;
 
 export const isMobile = window.matchMedia(
-  '(hover: none) and (pointer: coarse)'
+  '(hover: none) and (pointer: coarse)',
 ).matches;
 
 export const RenderIfMobile = styled.div`
