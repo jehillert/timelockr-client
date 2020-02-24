@@ -39,7 +39,7 @@ if the title is too long, and just one word, that word pushes the menu out of si
  CLEAN UP MEDIA QUERIES
 -------------------------------------------------------
 Finish replacing code like this:
-  @media (max-width: ${props => props.theme.bp[4]}) {
+  @media (max-width: ${({ theme }) => theme.bp[4]}) {
     width: 100vw;
   }
 With code like this:
@@ -48,7 +48,7 @@ With code like this:
   }
   @media ${device.desktopLG} {
     display: grid;
-    margin-right: ${props => props.theme.p(1)};
+    margin-right: ${({ theme }) => theme.p(1)};
   }
 And then delete this from the theme:
   const bp = [

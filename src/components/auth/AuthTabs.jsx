@@ -24,7 +24,7 @@ S.TabList = styled(TabList)`
   text-align: center;
   border: none;
 
-  @media (max-width: ${props => props.theme.abp[1]}) and (hover: none) and (pointer: coarse) {
+  @media (max-width: ${({ theme }) => theme.abp[1]}) and (hover: none) and (pointer: coarse) {
     width: 100vw;
   }
 `;
@@ -38,21 +38,21 @@ S.Tab = styled(Tab)`
   padding: 12px 0px;
   cursor: pointer;
   width: 50%;
-  color: ${props => props.theme.fgColor1};
-  border-radius: ${props => props.theme.tabBorderRadius};
+  color: ${({ theme }) => theme.fgColor1};
+  border-radius: ${({ theme }) => theme.tabBorderRadius};
 
   &.react-tabs__tab--selected {
-    background-color: ${props => props.theme.lightColor};
-    color: ${props => props.theme.fgColor2};
+    background-color: ${({ theme }) => theme.lightColor};
+    color: ${({ theme }) => theme.fgColor2};
   }
 
   :not(.react-tabs__tab--selected) {
-    background-color: ${props => props.theme.bgColor2};
+    background-color: ${({ theme }) => theme.bgColor2};
   }
 
   :not(.react-tabs__tab--selected):hover {
-    background-color: ${props => props.theme.backgroundHoverColor};
-    border-color: ${props => props.theme.backgroundBorderHoverColor};
+    background-color: ${({ theme }) => theme.backgroundHoverColor};
+    border-color: ${({ theme }) => theme.backgroundBorderHoverColor};
   }
 `;
 

@@ -12,14 +12,14 @@ S.RightSide = styled(Box)`
       display: none;
   }
   @media ${device.tabletSM} {
-    background-color: ${props => props.theme.darkColor};
-    box-shadow: ${props => props.theme.boxShadowLeft};
+    background-color: ${({ theme }) => theme.darkColor};
+    box-shadow: ${({ theme }) => theme.boxShadowLeft};
     color: #AEAEAA;
     display: flex;
     grid-area: ${props => props.gridArea};
     overflow: visible;
-    padding: ${props => props.theme.p(2)};
-    padding-top: ${props => props.theme.p(2.8)};
+    padding: ${({ theme }) => theme.p(2)};
+    padding-top: ${({ theme }) => theme.p(2.8)};
   }
 `;
 

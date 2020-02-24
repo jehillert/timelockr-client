@@ -23,36 +23,36 @@ const S = {};
 S.Form = styled.form`
   display: flex;
   flex-direction: column;
-  padding: ${props => props.theme.p(2)}
-           ${props => props.theme.p(2)};
+  padding: ${({ theme }) => theme.p(2)}
+           ${({ theme }) => theme.p(2)};
 `;
 
 S.TextField = styled(TextField)`
-  margin: ${props => props.theme.m(1.2)}
-          ${props => props.theme.m(2)};
-  padding-right: ${props => props.theme.p(0)};
+  margin: ${({ theme }) => theme.m(1.2)}
+          ${({ theme }) => theme.m(2)};
+  padding-right: ${({ theme }) => theme.p(0)};
   .MuiIconButton-root {
-    padding: ${props => props.theme.p(0.75)};
+    padding: ${({ theme }) => theme.p(0.75)};
   }
   .MuiOutlinedInput-root {
-    padding: ${props => props.theme.p(0.75)};
-    padding-right: ${props => props.theme.p(0.70)};
+    padding: ${({ theme }) => theme.p(0.75)};
+    padding-right: ${({ theme }) => theme.p(0.70)};
   }
 `;
 
 S.ButtonBox = styled(FormGroup)`
   align-self: flex-end;
-  margin-top: ${props => props.theme.m(1)};
-  margin-right: ${props => props.theme.p(1)};
+  margin-top: ${({ theme }) => theme.m(1)};
+  margin-right: ${({ theme }) => theme.p(1)};
 `;
 
 S.ProgressBarBox = styled(FormGroup)`
   width: auto;
   height: 4px;
-  margin-top: ${props => props.theme.m(2)};
-  margin-bottom: ${props => props.theme.m(0)};
-  margin-left: ${props => props.theme.m(-2)};
-  margin-right: ${props => props.theme.m(-2)};
+  margin-top: ${({ theme }) => theme.m(2)};
+  margin-bottom: ${({ theme }) => theme.m(0)};
+  margin-left: ${({ theme }) => theme.m(-2)};
+  margin-right: ${({ theme }) => theme.m(-2)};
 `;
 
 class AuthForm extends React.PureComponent {

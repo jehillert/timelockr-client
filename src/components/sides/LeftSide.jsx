@@ -11,15 +11,15 @@ S.LeftSide = styled.div`
     display: none;
   }
   @media ${device.tabletSM} {
-    background-color: ${props => props.theme.darkColor};
-    box-shadow: ${props => props.theme.boxShadowRight};
-    color: ${props => props.theme.textColor2};
+    background-color: ${({ theme }) => theme.darkColor};
+    box-shadow: ${({ theme }) => theme.boxShadowRight};
+    color: ${({ theme }) => theme.textColor2};
     display: flex;
     grid-area: ${props => props.gridArea};
     justify-content: flex-end;
     overflow: visible;
-    padding-right: ${props => props.theme.m()};
-    padding-top: ${props => props.theme.m(2)};
+    padding-right: ${({ theme }) => theme.m()};
+    padding-top: ${({ theme }) => theme.m(2)};
   }
 `;
 
@@ -29,7 +29,7 @@ S.Title = styled.h2`
   }
   @media ${device.desktopLG} {
     display: grid;
-    margin-right: ${props => props.theme.p(1)};
+    margin-right: ${({ theme }) => theme.p(1)};
   }
 `;
 

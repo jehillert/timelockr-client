@@ -19,24 +19,24 @@ const debug = Debug('src:components:app:main');
 const S = {};
 
 S.AppBar = styled.div`
-  background-color: ${props => props.theme.primary};
+  background-color: ${({ theme }) => theme.primary};
   justify-items: flex-end;
   height: 3rem;
-  box-shadow: ${props => props.theme.boxShadow};
+  box-shadow: ${({ theme }) => theme.boxShadow};
   grid-area: ${props => props.gridArea};
   max-width: ${props => props.cardAreaWidth};
 
   /* TOO SMALL FOR MARGINS */
-  @media (max-width: ${props => props.theme.bp[4]}){
+  @media (max-width: ${({ theme }) => theme.bp[4]}){
     width: 100vw;
     margin-right: none;
     margin-left: none;
   }
 
   /* LARGE ENOUGH FOR MARGINS */
-  @media (min-width: ${props => props.theme.bp[3]}) {
-    margin-left: ${props => props.theme.p(3)};
-    margin-right: ${props => props.theme.p(3)};
+  @media (min-width: ${({ theme }) => theme.bp[3]}) {
+    margin-left: ${({ theme }) => theme.p(3)};
+    margin-right: ${({ theme }) => theme.p(3)};
   }
 `;
 
@@ -68,22 +68,22 @@ S.OutsideFabBox = styled.div`
 S.CardArea = styled.div`
   grid-area: ${props => props.gridArea};
   /* TOO SMALL FOR MARGINS */
-  @media (max-width: ${props => props.theme.bp[4]}){
+  @media (max-width: ${({ theme }) => theme.bp[4]}){
     padding-right: none;
     padding-left: none;
   }
   /* LARGE ENOUGH FOR MARGINS */
-  @media (min-width: ${props => props.theme.bp[4]}) {
-    padding-left: ${props => props.theme.p(3)};
-    padding-right: ${props => props.theme.p(3)};
+  @media (min-width: ${({ theme }) => theme.bp[4]}) {
+    padding-left: ${({ theme }) => theme.p(3)};
+    padding-right: ${({ theme }) => theme.p(3)};
   }
 `;
 
 S.OutsideFab = styled(Fab)`
-  background-color: ${props => props.theme.accentColor};
-  color: ${props => props.theme.lightColor};
+  background-color: ${({ theme }) => theme.accentColor};
+  color: ${({ theme }) => theme.lightColor};
   :hover {
-    background-color: ${props => props.theme.hoverColor};
+    background-color: ${({ theme }) => theme.hoverColor};
   }
 `;
 
@@ -91,11 +91,11 @@ S.InsideFab = styled(S.OutsideFab)`
   position: fixed;
   bottom: 50px;
   /* TOO SMALL FOR MARGINS */
-  @media (max-width: ${props => props.theme.bp[4]}){
-    right: ${props => props.theme.m(4)}
+  @media (max-width: ${({ theme }) => theme.bp[4]}){
+    right: ${({ theme }) => theme.m(4)}
   }
   /* LARGE ENOUGH FOR MARGINS */
-  @media (min-width: ${props => props.theme.bp[4]}) {
+  @media (min-width: ${({ theme }) => theme.bp[4]}) {
     left: 50%;
     margin-left: 16.5rem;
   }

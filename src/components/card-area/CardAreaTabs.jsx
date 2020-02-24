@@ -18,7 +18,7 @@ const styles = theme => ({});
 const S = {};
 
 S.VerticallyScrollableArea = styled.div`
-  @media (max-width: ${props => props.theme.bp[4]}) {
+  @media (max-width: ${({ theme }) => theme.bp[4]}) {
     width: 100vw;
   }
   height: 89.9vh;
@@ -30,20 +30,20 @@ S.VerticallyScrollableArea = styled.div`
 `;
 
 S.Tabs = styled(Tabs)`
-  @media (max-width: ${props => props.theme.bp[4]}) {
+  @media (max-width: ${({ theme }) => theme.bp[4]}) {
     width: 100vw;
   }
   background-color: white;
-  box-shadow: ${props => props.theme.boxShadow};
+  box-shadow: ${({ theme }) => theme.boxShadow};
   .MuiTab-wrapper {
-    color: ${props => props.theme.darkColor};
+    color: ${({ theme }) => theme.darkColor};
   }
   .Mui-selected .MuiTab-wrapper {
-    color: ${props => props.theme.primary};
+    color: ${({ theme }) => theme.primary};
   }
   .MuiTabs-indicator {
     width: 100%;
-    background-color: ${props => props.theme.primary};
+    background-color: ${({ theme }) => theme.primary};
   }
   span {
     outline: none;
@@ -51,7 +51,7 @@ S.Tabs = styled(Tabs)`
 `;
 
 S.Tab = styled(Tab)`
-  @media (max-width: ${props => props.theme.bp[4]}) {
+  @media (max-width: ${({ theme }) => theme.bp[4]}) {
     width: 100vw;
   }
 `;

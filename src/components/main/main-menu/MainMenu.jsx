@@ -29,7 +29,7 @@ S.IconButton = styled(IconButton)`
 `;
 
 S.MoreVertIcon = styled(MoreVertIcon)`
-  color: ${props => props.theme.lightColor}
+  color: ${({ theme }) => theme.lightColor}
 `;
 
 const MainMenu = ({ revokeAuth, username }) => {
