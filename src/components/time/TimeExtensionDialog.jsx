@@ -13,7 +13,10 @@ import {
   StyledMuiDialogContent,
   StyledMuiDialogActions,
 } from 'components';
-import { extendReleaseDate, isPhone } from 'utilities';
+import {
+  extendReleaseDate,
+  isPhone,
+} from 'utilities';
 
 const debug = Debug('src:components:time-extension-dialog');
 
@@ -28,6 +31,7 @@ function TimeExtensionDialog(props) {
   debug('[TimeExtensionDialog] rendered');
 
   const [open, setOpen] = useState(true);
+
   const [duration, setDurationValue] = useState({
     months: 0,
     weeks: 0,
@@ -69,6 +73,7 @@ function TimeExtensionDialog(props) {
 
   // set up array of child components
   const timeUnits = Object.keys(duration);
+
   const arrayOfInputs = timeUnits.map(unit => (
     <IncrementInput
       handleChange={getChange}
@@ -77,7 +82,7 @@ function TimeExtensionDialog(props) {
     />
   ));
 
-      // fullScreen={window.matchMedia('(hover: none) and (pointer: coarse)').matches}
+  // fullScreen={window.matchMedia('(hover: none) and (pointer: coarse)').matches}
   return (
     <StyledMuiDialog
       aria-labelledby='extend-dialog-title'

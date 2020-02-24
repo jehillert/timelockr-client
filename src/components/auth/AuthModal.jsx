@@ -10,11 +10,11 @@ const debug = Debug('src:components:auth-modal');
 const S = {};
 
 S.ModalContentContainer = styled.div`
-  //ALL DEVICES
+
   background-color: ${props => props.theme.lightColor};
   box-shadow: ${props => props.theme.boxShadow};
 
-  //DESKTOPS & TABLETS
+  /*DESKTOPS & TABLETS*/
   @media (min-width: ${props => props.theme.abp[1]}) {
     margin: auto;
     margin-top: 4rem;
@@ -26,7 +26,7 @@ S.ModalContentContainer = styled.div`
     width: ${props => props.theme.modalWidth};
   }
 
-  //MOBILE
+  /*MOBILE*/
   @media (max-width: ${props => props.theme.abp[2]}) and (hover: none) and (pointer: coarse) {
     margin: 0;
     width: 100vw;
@@ -35,12 +35,12 @@ S.ModalContentContainer = styled.div`
 `;
 
 S.AuthHeading = styled.div`
-  //ALL DEVICES
+  /*ALL DEVICES*/
   box-shadow: ${props => props.theme.insetBoxShadowBottom};
   padding: ${props => props.theme.p(3)};
   padding-top: ${props => props.theme.p(5)};
 
-  //MOBILE
+  /*MOBILE*/
   @media (max-width: ${props => props.theme.abp[1]}) and (hover: none) and (pointer: coarse) {
     padding-top: ${props => props.theme.p(7)};
     padding-bottom: ${props => props.theme.p(3)};

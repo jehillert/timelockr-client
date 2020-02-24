@@ -14,6 +14,7 @@ import { Box } from 'components';
 // });
 
 const S = {};
+
 S.Box = styled(Box)`
   display: flex;
   flex-flow: nowrap;
