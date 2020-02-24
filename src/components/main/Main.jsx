@@ -106,16 +106,8 @@ S.Middle = styled(Box)`
   width: 44rem;
 `;
 
-function Main(props) {
+function Main({ entries, refresh, revokeAuth, userId, username }) {
   debug('[Main] rendered');
-
-  const {
-    entries,
-    refresh,
-    revokeAuth,
-    userId,
-    username,
-  } = props;
 
   const [dialogShouldRender, setDialogState] = useState(false);
 

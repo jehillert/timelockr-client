@@ -66,14 +66,8 @@ S.TabPanel = styled(TabPanel)`
   }
 `;
 
-const AuthTabs = (props) => {
+  const AuthTabs = ({ handleSignin, handleAddUser, setTitle }) => {
   debug('[AuthTabs] rendered');
-
-  const {
-    handleSignin,
-    handleAddUser,
-    setTitle,
-  } = props;
 
   // Titles left the same for now...
   const [tabIndex, setTab] = useState(0);

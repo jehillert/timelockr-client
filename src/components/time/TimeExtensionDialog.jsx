@@ -27,7 +27,7 @@ S.Form = styled.form`
   flex-wrap: wrap;
 `;
 
-function TimeExtensionDialog(props) {
+function TimeExtensionDialog({ entryId, unmount, refresh, releaseDate }) {
   debug('[TimeExtensionDialog] rendered');
 
   const [open, setOpen] = useState(true);
@@ -39,13 +39,6 @@ function TimeExtensionDialog(props) {
     hours: 0,
     minutes: 0,
   });
-
-  const {
-    entryId,
-    unmount,
-    refresh,
-    releaseDate,
-  } = props;
 
   // get changes in child components
   const getChange = (units, value) => {

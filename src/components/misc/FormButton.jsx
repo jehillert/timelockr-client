@@ -45,8 +45,7 @@ S.Button = styled(Button)`
 `;
     // box-shadow: 0 0 0 0.2rem rgba(0,123,255,.5);
 
-function FormButton(props) {
-  const { children, handleSubmit } = props;
+function FormButton({ children, handleSubmit }) {
   return (
     <S.Button
       onClick={handleSubmit}

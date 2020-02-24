@@ -11,17 +11,8 @@ import { FormButton } from 'components';
 
 const debug = Debug('src:components:confirm-dialog');
 
-function ConfirmDialog(props) {
+function ConfirmDialog({ buttonLabel, confirmDialog, message, open, title, variant }) {
   debug('[ConfirmDialog] rendered');
-
-  const {
-    buttonLabel,
-    confirmDialog,
-    message,
-    open,
-    title,
-    variant,
-   } = props;
 
   let ttl;
   let msg;

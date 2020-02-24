@@ -51,23 +51,13 @@ S.CardArea = styled(Box)`
 
 `;
 
-const CardArea = (props) => {
-  const {
-    id,
-    Card,
-    entries,
-    refresh,
-    title,
-  } = props;
-
+const CardArea = ({ id, Card, entries, refresh, title }) => {
   const hasChildren = !!entries.length;
-
   const [showEntries, updateShowEntries] = useState(false);
 
   useEffect(() => {
     updateShowEntries(true);
   }, []);
-
 
   /*
     To grow columns one at a time instead of left-right-left-right,

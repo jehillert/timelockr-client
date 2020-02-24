@@ -22,8 +22,7 @@ const defaultMaterialTheme = createMuiTheme({
   },
 });
 
-const EntryFormDatePicker = (props) => {
-  const { selectedDate, handleDateChange } = props;
+function EntryFormDatePicker({ selectedDate, handleDateChange }) {
   return (
     <>
       <ThemeProvider theme={defaultMaterialTheme}>

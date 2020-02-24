@@ -57,14 +57,7 @@ S.Tab = styled(Tab)`
 `;
 
 
-function CardAreaTabs(props) {
-  // const windowSize = useWindowSize();
-  const {
-    entries,
-    refresh,
-    theme,
-  } = props;
-
+function CardAreaTabs({ entries, refresh, theme }) {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, v) => setValue(v);

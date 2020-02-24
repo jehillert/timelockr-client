@@ -18,13 +18,7 @@ import {
 } from '@material-ui/pickers';
 
 
-const EntryFormTimePicker = (props) => {
-  const {
-    selectedTime,
-    selectedDate,
-    handleTimeChange,
-  } = props;
-
+const EntryFormTimePicker = ({ selectedTime, selectedDate, handleTimeChange }) => {
   const [helperText, setHelperText] = useState('');
   const [isError, setErrorStatus] = useState(false);
 

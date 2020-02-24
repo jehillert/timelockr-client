@@ -20,8 +20,7 @@ S.RightSide = styled(Box)`
   padding-top: ${props => props.theme.p(2.8)};
 `;
 
-const RightSide = (props) => {
-  const { children, gridArea } = props;
+function RightSide({ children, gridArea }) {
   return (
     <S.RightSide gridArea={gridArea}>
       {children}

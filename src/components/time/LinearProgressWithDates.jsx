@@ -27,9 +27,9 @@ S.LinearProgress = styled(LinearProgress)`
   margin-bottom: .7rem;
 `;
 
-const LinearProgressWithDates = (props) => {
+// ! need to change the default props.  entry is not semantic.  use creationdate and releasedate
+const LinearProgressWithDates = ({ entry }) => {
   // const classes = useStyles();
-  const { entry } = props;
   const { creationDate, releaseDate } = entry;
   // const { creationDate, fraction, releaseDate } = entry;
   const [completed, setCompleted] = React.useState(0);

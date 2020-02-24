@@ -34,18 +34,15 @@ S.CountdownText = styled.div`
   text-anchor: middle;
 `;
 
-function CountdownTimer(props) {
-  const { releaseDate, refresh } = props;
-  // const { creationDate, releaseDate, refresh } = props;
-  // const before = moment(creationDate);
+function CountdownTimer({ releaseDate, refresh }) {
   const now = moment();
+
   const later = moment(releaseDate);
-  // const timeBase = moment.duration(later.diff(before));
 
   const intervalRef = useRef();
 
   const [open, setOpen] = useState(false);
-  // const [fraction, setFraction] = useState(null);
+
   const [timeRemaining, setTimeRemaining] = useState('');
 
   const [duration, setDuration] = useState(moment.duration(later.diff(now)));

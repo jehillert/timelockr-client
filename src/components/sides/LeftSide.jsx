@@ -27,8 +27,7 @@ S.Title = styled.h2`
   }
 `;
 
-const LeftSide = (props) => {
-  const { children, gridArea, title } = props;
+function LeftSide({ children, gridArea, title }) {
   return (
     <S.LeftSide gridArea={gridArea}>
       {title && (
@@ -37,7 +36,7 @@ const LeftSide = (props) => {
       {children}
     </S.LeftSide>
   );
-};
+}
 
 LeftSide.defaultProps = {
   children: null,

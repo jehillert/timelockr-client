@@ -12,10 +12,10 @@ const styles = theme => ({
   },
 });
 
-function ClipboardPopover(props) {
-  const { anchorEl, classes } = props;
+function ClipboardPopover({ anchorEl, classes }) {
   const open = Boolean(anchorEl);
 
+  // ! Maybe intervalStopper should be called inside useEffect and that is causing the bug...
   const intervalStopper = setInterval(() => console.log('Entry copied', 600));
 
   useEffect(() => () => clearInterval(intervalStopper), [intervalStopper]);
