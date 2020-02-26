@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const TerserPlugin = require('terser-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const config = {
   mode: process.env.NODE_ENV,
@@ -29,6 +30,7 @@ const config = {
     minimizer: [new TerserPlugin()],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new Dotenv(),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
   ],
