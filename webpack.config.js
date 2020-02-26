@@ -38,6 +38,7 @@ const config = {
     minimizer: [new TerserPlugin()],
   },
   plugins: [
+    // empty 'dist' before rebuilding
     new CleanWebpackPlugin(),
     new Dotenv(),
     new HtmlWebpackPlugin({
@@ -65,7 +66,9 @@ const config = {
 };
 
 module.exports = (env, argv) => {
+  // DEVELOPMENT
   if (argv.mode === 'development') {
+    // made code referenced in the browser to corresponding source code.
     config.devtool = 'inline-source-map';
     // app.bundle.js loaded from memory, not from a fenerated file.
     config.devServer = {
@@ -73,15 +76,14 @@ module.exports = (env, argv) => {
       // Also needed for generation of sourcemaps
       contentBase: path.resolve(__dirname, 'build'),
       // 'npm start' will additionally open localhost to display app
-      open: true, localhost
+      open: true,
     };
-
     return config;
   }
 
+  // PRODUCTION
   config.mode = 'production';
   config.devtool = 'none';
-
   return config;
 };
 
