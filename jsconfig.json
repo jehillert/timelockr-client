@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonJS",
+    "baseUrl": ".",
+    "paths": {
+      "actions": ["src/actions/index.js"],
+      "components": ["src/components/index.js"],
+      "config": ["config.js"],
+      "store": ["src/store.js"],
+      "theme": ["src/theme/index.js"],
+      "types": ["src/actions/types.js"],
+      "utilities": ["src/utilities/index.js"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist"
+  ]
+}
