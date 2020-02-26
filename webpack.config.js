@@ -1,16 +1,24 @@
-// AWS CONFIGURATION
 const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const TerserPlugin = require('terser-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const config = {
   mode: process.env.NODE_ENV,
-  entry: './src/index.jsx',
+  entry: {
+    // Each key will represent a different bundle.js file
+    // The key will be prepended to '.bundle.js', as specified
+    // in the output section below.
+    app: './src/index.jsx',
+  },
   output: {
+    path: path.resolve(__dirname, 'build'),
     publicPath: '/',
-    filename: 'bundle.js',
+    // '[name] allows multiple bundles to be created
+    // with different names and injected into index.html
+    filename: '[name].bundle.js',
   },
   module: {
     rules: [
@@ -32,12 +40,16 @@ const config = {
   plugins: [
     new CleanWebpackPlugin(),
     new Dotenv(),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: path.resolve(__dirname, 'src/assets/index.html'),
+      title: 'TimeLockr',
+      favicon: path.resolve(__dirname, 'src/assets/favicon.ico'),
+      meta: { viewport: 'minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no' },
+      inject: 'body',
+    }),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
   ],
-  devServer: {
-    contentBase: './build',
-    open: true, // npm start opens localhost
-  },
   resolve: {
     extensions: ['.js', '.jsx', '.css'],
     alias: {
@@ -53,16 +65,22 @@ const config = {
 };
 
 module.exports = (env, argv) => {
-  console.log(argv.mode);
   if (argv.mode === 'development') {
     config.devtool = 'inline-source-map';
-    config.output.path = path.resolve(__dirname, 'dist');
+    // app.bundle.js loaded from memory, not from a fenerated file.
+    config.devServer = {
+      // Needed so HtmlWebpackPlugin can serve static files
+      // Also needed for generation of sourcemaps
+      contentBase: path.resolve(__dirname, 'build'),
+      // 'npm start' will additionally open localhost to display app
+      open: true, localhost
+    };
+
+    return config;
   }
 
-  if (argv.mode === 'production') {
-    config.devtool = 'none';
-    config.output.path = path.resolve(__dirname, 'build');
-  }
+  config.mode = 'production';
+  config.devtool = 'none';
 
   return config;
 };

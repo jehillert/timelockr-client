@@ -1,7 +1,9 @@
 -------------------------------------------------------
  NEXT UP
 -------------------------------------------------------
- React.lazy
+ - React.lazy & webpack code-splitting
+ - pretty sure you can define a component, create a styled version
+   of it after the fact, and then export the styled version.
 
 -------------------------------------------------------
  BUGS

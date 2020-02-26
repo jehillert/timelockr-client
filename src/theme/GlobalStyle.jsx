@@ -37,7 +37,6 @@ const GlobalStyle = createGlobalStyle`
       grid-template-rows: auto 1fr;
     }
 
-    // NO SIDEBARS
     @media (max-width: ${({ theme }) => theme.bp[4]}) {
       grid-template-areas:
         "appBarArea"

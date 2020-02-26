@@ -139,7 +139,7 @@ class AuthForm extends React.PureComponent {
           id='outlined-email-as-username-input'
           label='Email'
           autoComplete='email'
-          autoFocus='true'
+          autoFocus
           error={notAnEmailAddressError}
           onFocus={this.handleFocus}
           name='username'

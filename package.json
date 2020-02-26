@@ -2,7 +2,6 @@
   "name": "timelockr-client",
   "version": "1.0.0",
   "description": "Make stuff inaccessible.",
-  "main": "index.js",
   "engines": {
     "node": "10.15.3",
     "npm": "6.9.0"
@@ -86,6 +85,7 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "eslint_d": "^8.1.0",
     "faker": "^4.1.0",
+    "html-webpack-plugin": "^3.2.0",
     "less-loader": "^5.0.0",
     "nodemon": "^1.19.4",
     "npm-install-webpack-plugin": "^4.0.5",
