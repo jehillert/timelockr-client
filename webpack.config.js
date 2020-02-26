@@ -8,7 +8,6 @@ const config = {
   mode: process.env.NODE_ENV,
   entry: './src/index.jsx',
   output: {
-    path: path.resolve(__dirname, 'build'),
     publicPath: '/',
     filename: 'bundle.js',
   },
@@ -55,10 +54,12 @@ module.exports = (env, argv) => {
   console.log(argv.mode);
   if (argv.mode === 'development') {
     config.devtool = 'inline-source-map';
+    config.output.path = path.resolve(__dirname, 'dist');
   }
 
   if (argv.mode === 'production') {
     config.devtool = 'none';
+    config.output.path = path.resolve(__dirname, 'build');
   }
 
   return config;
