@@ -30,6 +30,7 @@ bookmarks.json
 bower_components
 build/Release
 coverage
+build/
 dist/
 fake-credentials.data
 GenFakeCredsAndData.js
