@@ -73,7 +73,10 @@ module.exports = (env, argv) => {
     // app.bundle.js loaded from memory, not from a fenerated file.
     config.devServer = {
       // Needed so HtmlWebpackPlugin can serve static files
-      // Also needed for generation of sourcemaps
+      // Also needed for generation of sourcemaps.
+      // Note: A relative path would be find here because dev-server is
+      // for the developer's local environment. Also, use publicPath if
+      // 'your page expects to find the bundle files on a different path'
       contentBase: path.resolve(__dirname, 'build'),
       // 'npm start' will additionally open localhost to display app
       open: true,
