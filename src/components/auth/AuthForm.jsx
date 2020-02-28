@@ -13,7 +13,6 @@ import * as EmailValidator from 'email-validator';
 import { FormButton, ProgressBar } from 'components';
 import { demoMode, demoUser, demoPassword } from 'config';
 import { withStyles } from '@material-ui/core/styles';
-import Promise from 'bluebird';
 
 const styles = {};
 // const debug = Debug('src:components:auth-form');
@@ -73,7 +72,6 @@ class AuthForm extends React.PureComponent {
   handleFormSubmit = (event) => {
     const { handleSubmit } = this.props;
     const { username, password } = this.state;
-    const handleSubmitAsync = Promise.promisify(handleSubmit);
 
     if (!EmailValidator.validate(username) || password === '') {
       return this.setState({
@@ -88,7 +86,8 @@ class AuthForm extends React.PureComponent {
   // Hang the ProgressBar:
   // const setTimeoutAsync = Promise.promisify(setTimeout);
   // setTimeoutAsync(() => console.log('waiting'), 2000 ).then(() => {
-    return handleSubmitAsync(username, password)
+    return Promise.resolve()
+      .then(handleSubmit(username, password))
     .then(() => this.setState({
       username: demoUser,
       password: demoPassword,
