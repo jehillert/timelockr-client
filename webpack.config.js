@@ -7,15 +7,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const config = {
   mode: process.env.NODE_ENV,
+
   entry: './src/index.jsx',
-    // Each key will represent a different bundle.js file
-    // The key will be prepended to '.bundle.js', as specified
-    // in the output section below.
   output: {
-    path: path.resolve(__dirname, 'build'),
-    publicPath: '/',
-    // '[name] allows multiple bundles to be created
-    // with different names and injected into index.html
     filename: '[name].bundle.js',
   },
   module: {
@@ -34,17 +28,24 @@ const config = {
   },
   optimization: {
     minimizer: [new TerserPlugin()],
-    // prevents duplication of modules
+    // FUNCTION: reduces bundle size by preventing duplication of modules
+    // EFFECT: Smaller bundle, faster load times.
     splitChunks: {
       chunks: 'all',
     },
   },
   plugins: [
-    // empty 'dist' before rebuilding
+    // CleanWebpackPlugin()
+    // Function: empties 'dist' before rebuilding
     new CleanWebpackPlugin(),
+    // Dotenv()
+    // Function: Wraps dotenv and Webpack.DefinePlugin. As such, it does a text
+    // replace in the resulting bundle for any instances of process.env.
     new Dotenv(),
-    // Create index.html based off of template file
-    // Add script tags and other tags for each bundle.
+    // HtmlWebpackPlugin()
+    // Function: Create index.html from template file, adds a pair of script tags
+    // for each [name].bundle.js, and sets other properties of HTML file according
+    // to other options.
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, 'src/assets/index.html'),
@@ -53,7 +54,11 @@ const config = {
       meta: { viewport: 'minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no' },
       inject: 'body',
     }),
-    new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
+    // ContextReplacementPlugin
+    // Function: ...cannot remember why I added this.
+    new webpack.ContextReplacementPlugin(
+      /moment[/\\]locale$/, /en/,
+    ),
   ],
   resolve: {
     extensions: ['.js', '.jsx', '.css'],
@@ -95,12 +100,12 @@ module.exports = (env, argv) => {
 };
 
 /*
-  NOTES
-    webpack.EnvironmentPlugin not needed because Dotenv plugin is installed.
-  PLUGIN DESCRIPTIONS
-    NpmInstallWebpackPlugin: Automatically instal & save dependencies.
+  MISCELLANOUS
+    - webpack.EnvironmentPlugin not needed because Dotenv plugin is installed.
+    - NpmInstallWebpackPlugin: Automatically instaLl. & save dependencies.
 
-  'analysis' tool
+  ANALYSIS TOOLS
+    analysis (default)
     package.json:
       "build:stats": "webpack --env production --json > stats.json",
     command line:
@@ -108,4 +113,18 @@ module.exports = (env, argv) => {
     navigate web browser to:
       http://webpack.github.io/analyse/
 
+    bundle optimize helper
+      command line:
+        npx webpack --mode production --profile --json > stats.json
+
+  Multiple Entry Points - Object Syntax
+    entry: {
+      index: './src/index.js',
+      page1: './src/page1-module.js',
+      page2: './src/page2-module.js',
+      page3: './src/page3-module.js',
+    },
+    output: {
+      filename: '[name].bundle.js',
+    },
 */
