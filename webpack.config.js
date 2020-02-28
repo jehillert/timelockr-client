@@ -35,6 +35,13 @@ const config = {
     },
   },
   plugins: [
+    // ModuleConcatenationPlugin
+    // Function: 'hoist' or concatenate the scope of all your modules into one closure
+    // and allow for your code to have a faster execution time in the browser
+    // Result: faster execution at runtime
+    // Notes: (1) Automatically disabled when not in production mode
+    //        (2) babel 'modules' option needs to be set to false.
+    new webpack.optimize.ModuleConcatenationPlugin(),
     // CleanWebpackPlugin()
     // Function: empties 'dist' before rebuilding
     new CleanWebpackPlugin(),
