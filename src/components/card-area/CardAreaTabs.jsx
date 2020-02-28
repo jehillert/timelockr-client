@@ -1,4 +1,5 @@
 // import Debug from 'debug';
+// const debug = Debug('src:components:app:card-area-tabs');
 import React, { Suspense, lazy, useState } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -12,10 +13,12 @@ import {
 } from 'components';
 import { ErrorBoundary } from 'utilities';
 
-const CardArea = lazy(() => import('./CardArea'));
-// const debug = Debug('src:components:app:card-area-tabs');
+const CardArea = lazy(
+  () => import(/* webpackChunkName: 'card-area' */ './CardArea'),
+);
 
 const S = {};
+
 const styles = theme => ({});
 
 S.VerticallyScrollableArea = styled.div`
@@ -86,7 +89,7 @@ function CardAreaTabs({ entries, refresh, theme }) {
       >
         <ErrorBoundary>
           <S.VerticallyScrollableArea>
-            <Suspense fallback={<div></div>}>
+            <Suspense fallback={<div />}>
               <CardArea
                 mt={2}
                 id='card-area-released'
@@ -99,7 +102,7 @@ function CardAreaTabs({ entries, refresh, theme }) {
         </ErrorBoundary>
         <ErrorBoundary>
           <S.VerticallyScrollableArea>
-            <Suspense fallback={<div></div>}>
+            <Suspense fallback={<div />}>
               <CardArea
                 id='card-area-locked'
                 Card={LockedEntryCard}

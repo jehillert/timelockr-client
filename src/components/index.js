@@ -4,8 +4,6 @@ export { default as AuthForm } from './auth/AuthForm';
 export { default as AuthModal } from './auth/AuthModal';
 export { default as AuthTabs } from './auth/AuthTabs';
 export { default as Box } from './misc/Box';
-export { default as CardArea } from './card-area/CardArea';
-export { default as CardAreaTabs } from './card-area/CardAreaTabs';
 export { default as CardWrapper } from './cards/CardWrapper';
 export { default as CircularProgress } from './time/CircularProgress';
 export { default as CountdownTimer } from './time/CountdownTimer';
@@ -20,7 +18,6 @@ export { default as LeftSide } from './sides/LeftSide';
 export { default as LinearProgressWithDates } from './time/LinearProgressWithDates';
 export { default as LockedEntryCard } from './cards/LockedEntryCard';
 export { default as LockedEntryCardMenu } from './cards/LockedEntryCardMenu';
-export { default as Main } from './main/Main';
 export { default as MainMenu } from './main/main-menu/MainMenu';
 export { default as ProgressBar } from './auth/ProgressBar';
 export { default as ReleasedEntryCard } from './cards/ReleasedEntryCard';
@@ -41,3 +38,6 @@ export {
   StyledMuiDateFieldContainer,
   StyledMuiDialogActions,
 } from './pre-styled/StyledMuiDialogParts';
+// export { default as CardArea } from './card-area/CardArea';
+// export { default as CardAreaTabs } from './card-area/CardAreaTabs';
+// export { default as Main } from './main/Main';

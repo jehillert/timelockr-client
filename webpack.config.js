@@ -17,7 +17,7 @@ const config = {
   },
   module: {
     rules: [
-      { test: /\.(js|jsx)$/, loader: 'babel-loader', exclude: /node_modules/, options: { rootMode: 'upward' } },
+      { test: /\.(js|jsx)$/, use: 'babel-loader', exclude: /node_modules/ },
       { test: /\.(js|jsx)$/, include: /node_modules/, use: ['react-hot-loader/webpack'] },
       { test: /\.less$/, use: ['style-loader', 'css-loader/locals', 'less-loader'] },
       { test: /\.png$/, use: [{ loader: 'url-loader', options: { mimetype: 'image/png' } }] },
@@ -30,7 +30,9 @@ const config = {
     tls: 'empty',
   },
   optimization: {
-    minimizer: [new TerserPlugin()],
+    minimizer: [
+      new TerserPlugin(),
+    ],
     // FUNCTION: reduces bundle size by preventing duplication of modules
     // EFFECT: Smaller bundle, faster load times.
     splitChunks: {
@@ -110,31 +112,40 @@ module.exports = (env, argv) => {
 };
 
 /*
-  MISCELLANOUS
-    - webpack.EnvironmentPlugin not needed because Dotenv plugin is installed.
-    - NpmInstallWebpackPlugin: Automatically instaLl. & save dependencies.
 
-  ANALYSIS TOOLS
-    analysis (default)
-      package.json:
-        "build:stats": "webpack --env production --json > stats.json",
-      command line:
-        npm run build:stats
-      navigate web browser to:
-        http://webpack.github.io/analyse/
 
-    bundle optimize helper
-      command line:
-        npx webpack --mode production --profile --json > stats.json
+MISCELLANOUS
+  - webpack.EnvironmentPlugin not needed because Dotenv plugin is installed.
+  - NpmInstallWebpackPlugin: Automatically instaLl. & save dependencies.
 
-  Multiple Entry Points - Object Syntax
-    entry: {
-      index: './src/index.js',
-      page1: './src/page1-module.js',
-      page2: './src/page2-module.js',
-      page3: './src/page3-module.js',
-    },
-    output: {
-      filename: '[name].bundle.js',
-    },
+IMPORTANT DISTINCTIONS
+  - prefetching and preloading concerns the TIMING of DOWNLOADING specific chunks
+  - lazy loading is the splitting up of code and LOADING it at specific times
+  (2x check)
+
+ANALYSIS TOOLS
+  analysis (default)
+    package.json:
+      "build:stats": "webpack --env production --json > stats.json",
+    command line:
+      npm run build:stats
+    navigate web browser to:
+      http://webpack.github.io/analyse/
+
+  bundle optimize helper
+    command line:
+      npx webpack --mode production --profile --json > stats.json
+
+Multiple Entry Points - Object Syntax
+  entry: {
+    index: './src/index.js',
+    page1: './src/page1-module.js',
+    page2: './src/page2-module.js',
+    page3: './src/page3-module.js',
+  },
+  output: {
+    filename: '[name].bundle.js',
+  },
+
+  Adding UglifyJS with Terser saves a tiny bit of memory
 */

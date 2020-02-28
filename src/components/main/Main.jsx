@@ -14,7 +14,7 @@ import {
 } from 'components';
 
 const CardAreaTabs = lazy(
-  () => import('../card-area/CardAreaTabs'),
+  () => import(/* webpackChunkName: 'card-area-tabs' */ '../card-area/CardAreaTabs'),
 );
 
 const debug = Debug('src:components:app:main');

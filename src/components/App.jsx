@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-import * as React from 'react';
+import React, { Suspense, lazy } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { AppWrapper, AuthModal, Main } from 'components';
+import { AppWrapper, AuthModal } from 'components';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { addUser, ErrorBoundary, verifyUser } from 'utilities';
 import { defaultTheme, GlobalStyle } from 'theme';
@@ -11,6 +11,14 @@ import * as Debug from 'debug';
 import { fetchEntries } from 'actions';
 
 const debug = Debug('src:components:app');
+
+const Main = React.lazy(
+  () => import(
+    /* webpackChunkName: 'prefeched-main' */
+    /* webpackPrefetch: true */
+    './main/Main'
+  ),
+);
 
 class App extends React.Component {
   static propTypes = {
@@ -83,14 +91,16 @@ class App extends React.Component {
               render={() => (
                 showMain ? (
                   <ErrorBoundary>
-                    <Main
-                      entries={entries}
-                      hasAuth={hasAuth}
-                      refresh={this.refresh}
-                      revokeAuth={this.revokeAuth}
-                      userId={userId}
-                      username={username}
-                    />
+                    <Suspense fallback={<div />}>
+                      <Main
+                        entries={entries}
+                        hasAuth={hasAuth}
+                        refresh={this.refresh}
+                        revokeAuth={this.revokeAuth}
+                        userId={userId}
+                        username={username}
+                      />
+                    </Suspense>
                   </ErrorBoundary>
                 ) : (
                   <ErrorBoundary>
