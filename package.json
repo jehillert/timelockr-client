@@ -18,6 +18,7 @@
   "scripts": {
     "start": "webpack-dev-server --hot --mode development --port 8080 --content-base ./build",
     "build": "webpack",
+    "build:stats": "webpack --env production --json > stats.json",
     "lint:js": "eslint . --ignore-path .eslintignore",
     "lint:css": "stylelint src/common/**/*.css",
     "run-terminal": "cd scripts && ./run-terminal.sh"

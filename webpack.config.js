@@ -7,12 +7,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const config = {
   mode: process.env.NODE_ENV,
-  entry: {
+  entry: './src/index.jsx',
     // Each key will represent a different bundle.js file
     // The key will be prepended to '.bundle.js', as specified
     // in the output section below.
-    app: './src/index.jsx',
-  },
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/',
@@ -36,11 +34,17 @@ const config = {
   },
   optimization: {
     minimizer: [new TerserPlugin()],
+    // prevents duplication of modules
+    splitChunks: {
+      chunks: 'all',
+    },
   },
   plugins: [
     // empty 'dist' before rebuilding
     new CleanWebpackPlugin(),
     new Dotenv(),
+    // Create index.html based off of template file
+    // Add script tags and other tags for each bundle.
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, 'src/assets/index.html'),
@@ -95,4 +99,13 @@ module.exports = (env, argv) => {
     webpack.EnvironmentPlugin not needed because Dotenv plugin is installed.
   PLUGIN DESCRIPTIONS
     NpmInstallWebpackPlugin: Automatically instal & save dependencies.
+
+  'analysis' tool
+    package.json:
+      "build:stats": "webpack --env production --json > stats.json",
+    command line:
+      npm run build:stats
+    navigate web browser to:
+      http://webpack.github.io/analyse/
+
 */

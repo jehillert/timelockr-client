@@ -45,6 +45,7 @@ Notes/
 npm-debug.log*
 pids
 scripts/
+stats.json
 typings/
 yarn-debug.log*
 yarn-error.log*
