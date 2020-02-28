@@ -1,5 +1,5 @@
 // import Debug from 'debug';
-import React, { useState } from 'react';
+import React, { Suspense, lazy, useState } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import SwipeableViews from 'react-swipeable-views';
@@ -7,15 +7,16 @@ import styled from 'styled-components';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import {
-  CardArea,
   LockedEntryCard,
   ReleasedEntryCard,
 } from 'components';
 import { ErrorBoundary } from 'utilities';
 
+const CardArea = lazy(() => import('./CardArea'));
 // const debug = Debug('src:components:app:card-area-tabs');
-const styles = theme => ({});
+
 const S = {};
+const styles = theme => ({});
 
 S.VerticallyScrollableArea = styled.div`
   @media (max-width: ${({ theme }) => theme.bp[4]}) {
@@ -85,23 +86,27 @@ function CardAreaTabs({ entries, refresh, theme }) {
       >
         <ErrorBoundary>
           <S.VerticallyScrollableArea>
-            <CardArea
-              mt={2}
-              id='card-area-released'
-              Card={ReleasedEntryCard}
-              entries={entries.released}
-              refresh={refresh}
-            />
+            <Suspense fallback={<div></div>}>
+              <CardArea
+                mt={2}
+                id='card-area-released'
+                Card={ReleasedEntryCard}
+                entries={entries.released}
+                refresh={refresh}
+              />
+            </Suspense>
           </S.VerticallyScrollableArea>
         </ErrorBoundary>
         <ErrorBoundary>
           <S.VerticallyScrollableArea>
-            <CardArea
-              id='card-area-locked'
-              Card={LockedEntryCard}
-              entries={entries.locked}
-              refresh={refresh}
-            />
+            <Suspense fallback={<div></div>}>
+              <CardArea
+                id='card-area-locked'
+                Card={LockedEntryCard}
+                entries={entries.locked}
+                refresh={refresh}
+              />
+            </Suspense>
           </S.VerticallyScrollableArea>
         </ErrorBoundary>
       </SwipeableViews>

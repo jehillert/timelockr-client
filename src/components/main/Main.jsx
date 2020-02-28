@@ -1,5 +1,5 @@
 import * as Debug from 'debug';
-import React, { useState } from 'react';
+import React, { Suspense, lazy, useState } from 'react';
 import PropTypes from 'prop-types';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
@@ -8,11 +8,14 @@ import { device } from 'utilities';
 import {
   EntryFormDialog,
   Box,
-  CardAreaTabs,
   LeftSide,
   MainMenu,
   RightSide,
 } from 'components';
+
+const CardAreaTabs = lazy(
+  () => import('../card-area/CardAreaTabs'),
+);
 
 const debug = Debug('src:components:app:main');
 
@@ -163,11 +166,13 @@ function Main({ entries, refresh, revokeAuth, userId, username }) {
             </S.AppBarContainer>
           </S.AppBar>
           <S.CardArea gridArea='cardArea'>
-            <CardAreaTabs
-              id='card-area-tabs'
-              entries={entries}
-              refresh={refresh}
-            />
+            <Suspense fallback={<div>Loading...</div>}>
+              <CardAreaTabs
+                id='card-area-tabs'
+                entries={entries}
+                refresh={refresh}
+              />
+            </Suspense>
             <S.InsideFabBox>
               {InsideFab}
             </S.InsideFabBox>

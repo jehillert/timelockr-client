@@ -11,6 +11,9 @@ const config = {
   entry: './src/index.jsx',
   output: {
     filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
+    publicPath: '/',
+    path: path.resolve(__dirname, 'build'),
   },
   module: {
     rules: [
@@ -113,12 +116,12 @@ module.exports = (env, argv) => {
 
   ANALYSIS TOOLS
     analysis (default)
-    package.json:
-      "build:stats": "webpack --env production --json > stats.json",
-    command line:
-      npm run build:stats
-    navigate web browser to:
-      http://webpack.github.io/analyse/
+      package.json:
+        "build:stats": "webpack --env production --json > stats.json",
+      command line:
+        npm run build:stats
+      navigate web browser to:
+        http://webpack.github.io/analyse/
 
     bundle optimize helper
       command line:

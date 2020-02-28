@@ -1,16 +1,10 @@
 /* eslint-disable no-unused-vars */
-// Note: Appears that webpack config takes care of hot reloading.
-// No need for import statements to get it to work.
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { AppWrapper, AuthModal, Main } from 'components';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import {
-  addUser,
-  ErrorBoundary,
-  verifyUser,
-} from 'utilities';
+import { addUser, ErrorBoundary, verifyUser } from 'utilities';
 import { defaultTheme, GlobalStyle } from 'theme';
 import './config';
 import * as Debug from 'debug';

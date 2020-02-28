@@ -88,13 +88,13 @@ class AuthForm extends React.PureComponent {
   // setTimeoutAsync(() => console.log('waiting'), 2000 ).then(() => {
     return Promise.resolve()
       .then(handleSubmit(username, password))
-    .then(() => this.setState({
-      username: demoUser,
-      password: demoPassword,
-      notAnEmailAddressError: false,
-      passwordError: false,
-      showPassword: false,
-    }));
+      .then(() => this.setState({
+        username: demoUser,
+        password: demoPassword,
+        notAnEmailAddressError: false,
+        passwordError: false,
+        showPassword: false,
+      }));
   // });
   }
 
