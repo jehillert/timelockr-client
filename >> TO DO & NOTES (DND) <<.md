@@ -161,6 +161,20 @@ Multiple Entry Points - Object Syntax
 
   Adding UglifyJS with Terser saves a tiny bit of memory
 
+
+------------------------------------------------------------------------
+PUBLIC PATH IN MY ASS
+------------------------------------------------------------------------
+The publicPath specifies the public URL address of the output files when referenced in a
+browser. For loaders that embed <script> or <link> tags or reference assets like images,
+publicPath is used as the href or url() to the file when it's different than their location
+on disk (as specified by path). This can be helpful when you want to host some or all output
+files on a different domain or on a CDN.
+
+ ∙∙∙ The Webpack Dev Server also uses this to determine the path where the output ∙∙∙
+ ∙∙∙ files are expected to be served from. As with path you can use the [hash]    ∙∙∙
+ ∙∙∙ substitution for a better caching profile.                                   ∙∙∙
+
 ------------------------------------------------------------------------
 ANNOTATED CONFIG FILE --- KEEP UPDATED
 ------------------------------------------------------------------------

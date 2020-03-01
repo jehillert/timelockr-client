@@ -7,7 +7,10 @@ module.exports = merge(common, {
   mode: 'development',
   output: {
     filename: '[name].bundle.js',
+    sourceMapFilename: '[name].map',
     chunkFilename: '[name].bundle.js',
+    path: path.resolve(__dirname, '../build'),
+    publicPath: '/',
   },
   devtool: 'inline-source-map',
   devServer: {
@@ -26,5 +29,9 @@ module.exports = merge(common, {
     new webpack.ContextReplacementPlugin(
       /moment[/\\]locale$/, /en-gb/,
     ),
+    new webpack.SourceMapDevToolPlugin({
+      filename: '[name].js.map',
+      exclude: ['vendor.js'],
+    }),
   ],
 });
