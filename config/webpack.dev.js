@@ -14,6 +14,7 @@ module.exports = merge(common, {
   },
   devtool: 'inline-source-map',
   devServer: {
+    clientLogLevel: 'debug',
     contentBase: path.resolve(__dirname, '../build'),
     open: true,
   },

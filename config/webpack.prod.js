@@ -11,7 +11,6 @@ module.exports = merge(common, {
     filename: '[name].bundle.js',
     chunkFilename: '[name].bundle.js',
     path: path.resolve(__dirname, '../build'),
-    publicPath: '/',
   },
   optimization: {
     minimizer: [

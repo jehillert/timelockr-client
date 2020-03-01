@@ -542,3 +542,15 @@ Built at: 03/01/2020 6:03:55 AM
   vendors~card-area-tabs.bundle.js   43.6 KiB
             vendors~main.bundle.js    717 KiB
 vendors~main.bundle.js.LICENSE.txt   2.76 KiB
+
+
+Built at: 03/01/2020 10:00:33 AM
+             5.bundle.js   43.6 KiB
+card-area-tabs.bundle.js   4.39 KiB
+     card-area.bundle.js   3.22 KiB
+prefeched-main.bundle.js   9.93 KiB
+             favicon.ico   66.1 KiB
+              index.html  346 bytes
+          main.bundle.js    136 KiB
+             4.bundle.js    710 KiB
+ 4.bundle.js.LICENSE.txt   2.61 KiB
