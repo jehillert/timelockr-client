@@ -7,12 +7,10 @@ module.exports = merge(common, {
   mode: 'development',
   output: {
     filename: '[name].bundle.js',
-    sourceMapFilename: '[name].map',
     chunkFilename: '[name].bundle.js',
     path: path.resolve(__dirname, '../build'),
     publicPath: '/',
   },
-  devtool: 'inline-source-map',
   devServer: {
     clientLogLevel: 'debug',
     contentBase: path.resolve(__dirname, '../build'),
@@ -34,5 +32,18 @@ module.exports = merge(common, {
       filename: '[name].js.map',
       exclude: ['vendor.js'],
     }),
+    new webpack.SourceMapDevToolPlugin({
+      filename: 'sourcemaps/[file].map',
+      publicPath: 'http://localhost:8080/',
+      fileContext: 'public',
+    }),
   ],
 });
+/*
+new webpack.SourceMapDevToolPlugin({
+  filename: 'sourcemaps/[file].map',
+  publicPath: 'https://example.com/project/',
+  fileContext: 'public'
+});
+https://example.com/project/sourcemaps/bundle-[hash].js.map
+*/
