@@ -71,7 +71,7 @@ console.log('percentage:', percentage);
       </div>
     </svg>
   );
-};
+}
 
 CircularProgress.defaultProps = {
   sqSize: 200,

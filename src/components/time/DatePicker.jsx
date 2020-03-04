@@ -56,7 +56,7 @@ const EntryFormDatePicker = (props) => {
       </ThemeProvider>
     </>
   );
-};
+}
 
 EntryFormDatePicker.defaultProps = {
   selectedDate: new Date(),

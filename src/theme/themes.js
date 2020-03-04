@@ -1,11 +1,11 @@
 const bp = [
   null,
-  '66rem',  // DESKTOP    -->  1056px -->  Hides 'TimeLockr'
-  '51rem',  // TABLET_LG  -->  816px  -->  Relocates (+) button
-  '44rem',  // TABLET_SM  -->  736px  -->  Hides side panels
-  '44rem',  // TABLET_SM  -->  704px  -->  Main, AppBar, TabBar, CardAreaTabs, and CardArea --> width becomes 100%
-  '31rem',  // PHONE      -->  656px
-  '0rem',   // 6
+  '66rem', // DESKTOP    -->  1056px -->  Hides 'TimeLockr'
+  '51rem', // TABLET_LG  -->  816px  -->  Relocates (+) button
+  '44rem', // TABLET_SM  -->  736px  -->  Hides side panels
+  '44rem', // TABLET_SM  -->  704px  -->  Main, AppBar, TabBar, CardAreaTabs, and CardArea --> width becomes 100%
+  '31rem', // PHONE      -->  656px
+  '0rem', // 6
 ];
 
 const abp = [
@@ -16,17 +16,17 @@ const abp = [
 
 const gap = (factor = 1) => {
   const padding = 0.5 * factor;
-  return `${padding}rem`
+  return `${padding}rem`;
 };
 
 const m = (factor = 1) => {
   const margin = 0.5 * factor;
-  return `${margin}rem`
+  return `${margin}rem`;
 };
 
 const p = (factor = 1) => {
   const padding = 0.5 * factor;
-  return `${padding}rem`
+  return `${padding}rem`;
 };
 
 const defaultTheme = {

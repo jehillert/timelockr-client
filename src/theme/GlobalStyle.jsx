@@ -23,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
   #primary-container {
-    // SIDEBARS
+    /* SIDEBARS */
     display: grid;
     grid-column-gap: 0;
     width: 100vw;
