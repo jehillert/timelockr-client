@@ -4,7 +4,6 @@ import * as Debug from 'debug';
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Grow from '@material-ui/core/Grow';
-import { Box } from 'components';
 
 const debug = Debug('src:components:card-wrapper');
 
