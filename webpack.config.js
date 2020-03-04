@@ -40,11 +40,11 @@ const config = {
   resolve: {
     extensions: ['.js', '.jsx', '.css'],
     alias: {
-      components: path.resolve(__dirname, 'src/indexes/components.jsx'),
+      components: path.resolve(__dirname, 'src/components/index.js'),
       config: path.resolve(__dirname, 'config.js'),
-      contexts: path.resolve(__dirname, 'src/indexes/contexts.jsx'),
-      theme: path.resolve(__dirname, 'src/indexes/theme.jsx'),
-      utilities: path.resolve(__dirname, 'src/indexes/utilities.jsx'),
+      contexts: path.resolve(__dirname, 'src/contexts/index.js'),
+      theme: path.resolve(__dirname, 'src/theme/index.js'),
+      utilities: path.resolve(__dirname, 'src/utilities/index.js'),
     },
   },
 };
@@ -68,5 +68,3 @@ module.exports = (env, argv) => {
   PLUGIN DESCRIPTIONS
     NpmInstallWebpackPlugin: Automatically instal & save dependencies.
 */
-
-
