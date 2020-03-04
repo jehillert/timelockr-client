@@ -32,7 +32,8 @@ export const createEntry = entry => axios.post(`${urlBase}/entries`, {
 export const getEntries = user => axios
   .get(`${urlBase}/entries?username=${user}`)
   .then((results) => {
-    const entries = JSON.parse(results.request.response);
+    const { entries } = results.data;
+    // const entries = JSON.parse(results.request.response);
     return entries;
   })
   .catch(err => debug(err));

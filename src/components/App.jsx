@@ -34,13 +34,13 @@ class App extends React.Component {
     const { username } = this.state;
     return getEntries(username)
       .then((results) => {
-        const { locked, released } = results.entries;
+        const { locked, released } = results;
         debug('LOCKED:\n%O', locked);
         debug('RELEASED:\n%O', released);
         return results;
       })
       .then((results) => {
-        this.setState((state, props) => ({ entries: results.entries }));
+        this.setState((state, props) => ({ entries: results }));
       });
   }
 
