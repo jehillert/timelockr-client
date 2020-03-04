@@ -33,7 +33,10 @@ const config = {
     new Dotenv(),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
   ],
-  devServer: { contentBase: './build' },
+  devServer: {
+    contentBase: './build',
+    open: true, // npm start opens localhost
+  },
   resolve: {
     extensions: ['.js', '.jsx', '.css'],
     alias: {
