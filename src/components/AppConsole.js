@@ -1,4 +1,8 @@
-const openConsole = (url, windowName, height = 800, width = 415) => {
+import { showConsole } from 'config';
+
+const serverConsole = {};
+
+function createConsole(url, windowName, height = 800, width = 415) {
   // const leftPosition = (screen.width) ? 0.75 * (screen.width - width) : 0;
   // const topPosition = (screen.height) ? 0.75 * (screen.height - height) : 0;
   const leftPosition = 0;
@@ -23,6 +27,13 @@ const openConsole = (url, windowName, height = 800, width = 415) => {
   };
 
   return popupWindow;
-};
+}
 
-export default openConsole;
+serverConsole.isEnabled = false;
+
+if (showConsole === true) {
+  serverConsole.isEnabled = true;
+  serverConsole.create = createConsole;
+}
+
+export default serverConsole;
