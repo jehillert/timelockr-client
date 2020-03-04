@@ -21,14 +21,13 @@
     "build": "webpack",
     "lint:js": "eslint . --ignore-path .eslintignore",
     "lint:css": "stylelint src/common/**/*.css",
-    "run-terminal": "cd scripts && ./run-terminal.sh"
+    "run-terminal": "cd scripts && ./run-terminal.sh",
+    "test": "jest"
   },
   "dependencies": {
     "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.6",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/polyfill": "^7.8.3",
-    "@babel/preset-env": "^7.8.6",
     "@babel/preset-react": "^7.8.3",
     "@date-io/date-fns": "^1.3.13",
     "@date-io/moment": "^1.3.13",
@@ -69,7 +68,10 @@
     "babel-core": "7.0.0-bridge.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.6",
+    "@babel/preset-env": "^7.8.6",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^25.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
@@ -82,10 +84,12 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "eslint_d": "^8.1.0",
     "faker": "^4.1.0",
+    "jest": "^25.1.0",
     "less-loader": "^5.0.0",
     "nodemon": "^1.19.4",
     "npm-install-webpack-plugin": "^4.0.5",
     "postcss": "^7.0.27",
+    "react-test-renderer": "^16.13.0",
     "rimraf": "^2.7.1",
     "style-loader": "^0.23.1",
     "stylelint": "^10.1.0",
