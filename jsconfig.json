@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonJS",
+    "baseUrl": ".",
+    "jsx": "preserve",
+    "paths": {
+      "actions": ["src/actions/index.js"],
+      "components": ["src/components/index.js"],
+      "store": ["src/store.js"],
+      "theme": ["src/theme/index.js"],
+      "types": ["src/actions/types.js"],
+      "utilities": ["src/utilities/index.js"]
+    }
+  },
+  "include": ["src/**/*"]
+}
