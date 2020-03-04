@@ -5,17 +5,18 @@ import PropTypes from 'prop-types';
 import Modal from '@material-ui/core/Modal';
 import styled from 'styled-components';
 import { AuthTabs } from 'components';
+import Typography from '@material-ui/core/Typography';
 
 const debug = Debug('src:components:auth-modal');
 const S = {};
 
 S.ModalContentContainer = styled.div`
-  //ALL DEVICES
-  background-color: ${props => props.theme.lightColor};
-  box-shadow: ${props => props.theme.boxShadow};
+  background-color: ${({ theme }) => theme.lightColor};
+  box-shadow: ${({ theme }) => theme.boxShadow};
+  outline: 0;
 
-  //DESKTOPS & TABLETS
-  @media (min-width: ${props => props.theme.abp[1]}) {
+  /*DESKTOPS & TABLETS*/
+  @media (min-width: ${({ theme }) => theme.abp[1]}) {
     margin: auto;
     margin-top: 4rem;
     width: ${props => props.theme.modalWidth};
@@ -100,7 +101,9 @@ class AuthModal extends React.PureComponent {
       >
         <S.ModalContentContainer>
           <S.AuthHeading>
-            <h1>{title}</h1>
+            <Typography variant='h3' gutterBottom>
+              {title}
+            </Typography>
           </S.AuthHeading>
           <AuthTabs
             handleSignin={handleSignin}

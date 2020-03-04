@@ -116,6 +116,10 @@ class AuthForm extends React.PureComponent {
     return this.setState({ [prop]: event.target.value });
   };
 
+  handleFocus = (event) => {
+    if (demoMode) event.target.select();
+  };
+
   handleClickShowPassword = () => (
     this.setState(state => ({ showPassword: !state.showPassword }))
   );
@@ -140,7 +144,9 @@ class AuthForm extends React.PureComponent {
           id='outlined-email-as-username-input'
           label='Email'
           autoComplete='email'
+          autoFocus='true'
           error={notAnEmailAddressError}
+          onFocus={this.handleFocus}
           name='username'
           onChange={this.handleChange('username')}
           type='username'
