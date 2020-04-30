@@ -48,7 +48,7 @@
     "debug": "^4.1.1",
     "dotenv-webpack": "^1.7.0",
     "email-validator": "^2.0.4",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "less": "^3.11.1",
     "moment": "^2.24.0",
     "moment-duration-format": "^2.3.2",
