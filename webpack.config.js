@@ -1,14 +1,14 @@
 // AWS CONFIGURATION
-const path = require('path');
-const webpack = require('webpack');
-const Dotenv = require('dotenv-webpack');
-const TerserPlugin = require('terser-webpack-plugin');
+import { resolve as _resolve } from 'path';
+import { ContextReplacementPlugin } from 'webpack';
+import Dotenv from 'dotenv-webpack';
+import TerserPlugin from 'terser-webpack-plugin';
 
 const config = {
   mode: process.env.NODE_ENV,
   entry: './src/index.jsx',
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: _resolve(__dirname, 'build'),
     publicPath: '/',
     filename: 'bundle.js',
   },
@@ -31,7 +31,7 @@ const config = {
   },
   plugins: [
     new Dotenv(),
-    new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
+    new ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
   ],
   devServer: {
     contentBase: './build',
@@ -40,16 +40,16 @@ const config = {
   resolve: {
     extensions: ['.js', '.jsx', '.css'],
     alias: {
-      components: path.resolve(__dirname, 'src/components/index.js'),
-      config: path.resolve(__dirname, 'config.js'),
-      contexts: path.resolve(__dirname, 'src/contexts/index.js'),
-      theme: path.resolve(__dirname, 'src/theme/index.js'),
-      utilities: path.resolve(__dirname, 'src/utilities/index.js'),
+      components: _resolve(__dirname, 'src/components/index.js'),
+      config: _resolve(__dirname, 'config.js'),
+      contexts: _resolve(__dirname, 'src/contexts/index.js'),
+      theme: _resolve(__dirname, 'src/theme/index.js'),
+      utilities: _resolve(__dirname, 'src/utilities/index.js'),
     },
   },
 };
 
-module.exports = (env, argv) => {
+export default (env, argv) => {
   console.log(argv.mode);
   if (argv.mode === 'development') {
     config.devtool = 'inline-source-map';
