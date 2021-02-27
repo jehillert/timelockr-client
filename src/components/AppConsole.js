@@ -20,7 +20,7 @@ function createConsole(url, windowName, height = 800, width = 415) {
     directories=no,
     status=no`;
 
-  const popupWindow = window.open(url, windowName, options);
+  const popupWindow = window.open(url, windowName, options).focus();
 
   window.onbeforeunload = function closeWithParent() {
     popupWindow.close();

@@ -3,7 +3,7 @@ import Debug from 'debug';
 const debugConfig = Debug('src:config');
 
 export const demoMode = true;
-export const showConsole = false;
+export const showConsole = true;
 
 export const debug = process.env.DEBUG;
 export const nodeEnv = process.env.NODE_ENV;
