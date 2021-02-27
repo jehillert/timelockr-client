@@ -1,15 +1,5 @@
-'SET_LOGIN_STATE'
-'GET_LOGIN_STATE'
+import * as Debug from 'debug';
 
-const userReducer = (state, action) => {
-  switch (action.type) {
-    case 'SET_LOGIN_STATE':
+const debug = Debug('src:auth-reducer');
 
-    case 'GET_LOGIN_STATE':
-
-    default:
-      return state;
- }
-}
-
-export default userReducer;
+debug('Empry for now...');

@@ -1,50 +1,43 @@
 /* eslint-disable no-unused-vars */
-import { hot } from 'react-hot-loader/root';
-import { setConfig } from 'react-hot-loader';
-import * as React from 'react';
-import { AppWrapper, AuthModal, Main } from 'components';
+import React, { Suspense, lazy } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { AppWrapper, AuthModal } from 'components';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import {
-  addUser,
-  ErrorBoundary,
-  getEntries,
-  verifyUser,
-} from 'utilities';
+import { addUser, ErrorBoundary, verifyUser } from 'utilities';
 import { defaultTheme, GlobalStyle } from 'theme';
-import { serverConsoleUrl } from 'config';
-import { closeConsole, openConsole } from './AppConsole';
 import './config';
 import * as Debug from 'debug';
+import { fetchEntries } from 'actions';
 
 const debug = Debug('src:components:app');
 
+const Main = React.lazy(
+  () => import(
+    /* webpackChunkName: 'prefeched-main' */
+    /* webpackPrefetch: true */
+    './main/Main'
+  ),
+);
+
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userId: 0,
-      username: '',
-      entries: {},
-      hasAuth: false,
-      showMain: false,
-    };
-  }
+  static propTypes = {
+    fetchEntries: PropTypes.func.isRequired,
+    entries: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
+  };
+
+  state = {
+    userId: 0,
+    username: '',
+    hasAuth: false,
+    showMain: false,
+  };
 
   getEntries = () => {
     const { username } = this.state;
-    return getEntries(username)
-      .then((results) => {
-        const { locked, released } = results;
-        debug('LOCKED:\n%O', locked);
-        debug('RELEASED:\n%O', released);
-        return results;
-      })
-      .then((results) => {
-        this.setState((state, props) => ({ entries: results }));
-      });
+    const { fetchEntries } = this.props;
+    return fetchEntries(username);
   }
-
-  // TimeLockr Console code is placed in AppWrapper
 
   refresh = () => (
     this.getEntries()
@@ -54,7 +47,6 @@ class App extends React.Component {
     this.setState(state => ({
       hasAuth: false,
       showMain: false,
-      entries: {},
     }))
   )
 
@@ -81,12 +73,13 @@ class App extends React.Component {
 
   render() {
     const {
-      entries,
       hasAuth,
       showMain,
       userId,
       username,
     } = this.state;
+
+    const { entries } = this.props;
 
     return (
       <>
@@ -98,14 +91,16 @@ class App extends React.Component {
               render={() => (
                 showMain ? (
                   <ErrorBoundary>
-                    <Main
-                      entries={entries}
-                      hasAuth={hasAuth}
-                      refresh={this.refresh}
-                      revokeAuth={this.revokeAuth}
-                      userId={userId}
-                      username={username}
-                    />
+                    <Suspense fallback={<div />}>
+                      <Main
+                        entries={entries}
+                        hasAuth={hasAuth}
+                        refresh={this.refresh}
+                        revokeAuth={this.revokeAuth}
+                        userId={userId}
+                        username={username}
+                      />
+                    </Suspense>
                   </ErrorBoundary>
                 ) : (
                   <ErrorBoundary>
@@ -125,4 +120,8 @@ class App extends React.Component {
   }
 }
 
-export default hot(App);
+const mapStateToProps = state => ({
+  entries: state.entries.entries,
+});
+
+export default connect(mapStateToProps, { fetchEntries })(App);

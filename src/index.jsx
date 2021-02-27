@@ -1,9 +1,9 @@
-// import '@babel/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { App } from 'components';
 import { debug, nodeEnv } from 'config';
-import { isMobile } from 'utilities';
+import store from 'store';
 import * as serviceWorker from './serviceWorker';
 
 // DEBUG ENTRY POINT
@@ -11,7 +11,11 @@ if (nodeEnv !== 'production') {
   localStorage.setItem('debug', `${debug}`);
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
-
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('app'),
+);
 
 serviceWorker.unregister();

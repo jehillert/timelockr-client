@@ -28,15 +28,8 @@ S.IconButton = styled(IconButton)`
   }
 `;
 
-function LockedEntryCardMenu(props) {
+function LockedEntryCardMenu({ deleteCard, entryId, releaseDate, refresh }) {
   debug('[LockedEntryCardMenu]rendered');
-
-  const {
-    deleteCard,
-    entryId,
-    releaseDate,
-    refresh,
-  } = props;
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);

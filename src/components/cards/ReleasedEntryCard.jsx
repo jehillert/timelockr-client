@@ -24,11 +24,10 @@ S.IconButton = styled(IconButton)`
   }
 `;
 
-function ReleasedEntryCard(props) {
+function ReleasedEntryCard({ entry, wrapper }) {
   debug('[ReleasedEntryCArd] rendered');
 
   const [anchorEl, updateAnchorEl] = useState(null);
-  const { entry, wrapper } = props;
   const { content, description } = entry;
   const { entryId } = entry;
   const { deleteCard } = wrapper;

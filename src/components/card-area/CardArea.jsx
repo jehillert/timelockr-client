@@ -17,24 +17,24 @@ S.CardArea = styled(Box)`
   display: flex;
   align-self: stretch;
   margin: auto;
-  max-width: ${props => props.theme.cardAreaWidth};
+  max-width: ${({ theme }) => theme.cardAreaWidth};
 
   @media ${device.phone} {
     flex-direction: column;
     align-items: center;
     flex-wrap: nowrap;
     margin-top: 0;
-    padding: ${props => props.theme.p(2)};
+    padding: ${({ theme }) => theme.p(2)};
   }
 
   @media ${device.tabletSM} {
-    margin-top: ${props => props.theme.m(2)};
+    margin-top: ${({ theme }) => theme.m(2)};
     display: grid;
-    grid-template-columns: repeat(auto-fill, calc(50% - ${props => props.theme.gap(1.5)}));
+    grid-template-columns: repeat(auto-fill, calc(50% - ${({ theme }) => theme.gap(1.5)}));
     justify-content: center;
     align-items: flex-start;
     align-self: stretch;
-    grid-gap: ${props => props.theme.gap(2.5)};
+    grid-gap: ${({ theme }) => theme.gap(2.5)};
   }
 
   @media ${device.tabletLG} {
@@ -43,31 +43,21 @@ S.CardArea = styled(Box)`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: left;
-    padding-left: ${props => props.theme.p(0)};
-    padding-right: ${props => props.theme.p(0)};
+    padding-left: ${({ theme }) => theme.p(0)};
+    padding-right: ${({ theme }) => theme.p(0)};
   }
 
-  padding-bottom: 100vh;   // prevents anchoring cards to bottom of container
+  padding-bottom: 100vh;   /* prevents anchoring cards to bottom of container */
 
 `;
 
-const CardArea = (props) => {
-  const {
-    id,
-    Card,
-    entries,
-    refresh,
-    title,
-  } = props;
-
+const CardArea = ({ id, Card, entries, refresh, title }) => {
   const hasChildren = !!entries.length;
-
   const [showEntries, updateShowEntries] = useState(false);
 
   useEffect(() => {
     updateShowEntries(true);
   }, []);
-
 
   /*
     To grow columns one at a time instead of left-right-left-right,

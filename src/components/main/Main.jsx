@@ -1,5 +1,5 @@
 import * as Debug from 'debug';
-import React, { useState } from 'react';
+import React, { Suspense, lazy, useState } from 'react';
 import PropTypes from 'prop-types';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
@@ -8,35 +8,38 @@ import { device } from 'utilities';
 import {
   EntryFormDialog,
   Box,
-  CardAreaTabs,
   LeftSide,
   MainMenu,
   RightSide,
 } from 'components';
+
+const CardAreaTabs = lazy(
+  () => import(/* webpackChunkName: 'card-area-tabs' */ '../card-area/CardAreaTabs'),
+);
 
 const debug = Debug('src:components:app:main');
 
 const S = {};
 
 S.AppBar = styled.div`
-  background-color: ${props => props.theme.primary};
+  background-color: ${({ theme }) => theme.primary};
   justify-items: flex-end;
   height: 3rem;
-  box-shadow: ${props => props.theme.boxShadow};
+  box-shadow: ${({ theme }) => theme.boxShadow};
   grid-area: ${props => props.gridArea};
   max-width: ${props => props.cardAreaWidth};
 
-  //TOO SMALL FOR MARGINS
-  @media (max-width: ${props => props.theme.bp[4]}){
+  /* TOO SMALL FOR MARGINS */
+  @media (max-width: ${({ theme }) => theme.bp[4]}){
     width: 100vw;
     margin-right: none;
     margin-left: none;
   }
 
-  //LARGE ENOUGH FOR MARGINS
-  @media (min-width: ${props => props.theme.bp[3]}) {
-    margin-left: ${props => props.theme.p(3)};
-    margin-right: ${props => props.theme.p(3)};
+  /* LARGE ENOUGH FOR MARGINS */
+  @media (min-width: ${({ theme }) => theme.bp[3]}) {
+    margin-left: ${({ theme }) => theme.p(3)};
+    margin-right: ${({ theme }) => theme.p(3)};
   }
 `;
 
@@ -67,35 +70,35 @@ S.OutsideFabBox = styled.div`
 
 S.CardArea = styled.div`
   grid-area: ${props => props.gridArea};
-  //TOO SMALL FOR MARGINS
-  @media (max-width: ${props => props.theme.bp[4]}){
+  /* TOO SMALL FOR MARGINS */
+  @media (max-width: ${({ theme }) => theme.bp[4]}){
     padding-right: none;
     padding-left: none;
   }
-  //LARGE ENOUGH FOR MARGINS
-  @media (min-width: ${props => props.theme.bp[4]}) {
-    padding-left: ${props => props.theme.p(3)};
-    padding-right: ${props => props.theme.p(3)};
+  /* LARGE ENOUGH FOR MARGINS */
+  @media (min-width: ${({ theme }) => theme.bp[4]}) {
+    padding-left: ${({ theme }) => theme.p(3)};
+    padding-right: ${({ theme }) => theme.p(3)};
   }
 `;
 
 S.OutsideFab = styled(Fab)`
-  background-color: ${props => props.theme.accentColor};
-  color: ${props => props.theme.lightColor};
+  background-color: ${({ theme }) => theme.accentColor};
+  color: ${({ theme }) => theme.lightColor};
   :hover {
-    background-color: ${props => props.theme.hoverColor};
+    background-color: ${({ theme }) => theme.hoverColor};
   }
 `;
 
 S.InsideFab = styled(S.OutsideFab)`
   position: fixed;
   bottom: 50px;
-  //TOO SMALL FOR MARGINS
-  @media (max-width: ${props => props.theme.bp[4]}){
-    right: ${props => props.theme.m(4)}
+  /* TOO SMALL FOR MARGINS */
+  @media (max-width: ${({ theme }) => theme.bp[4]}){
+    right: ${({ theme }) => theme.m(4)}
   }
-  //LARGE ENOUGH FOR MARGINS
-  @media (min-width: ${props => props.theme.bp[4]}) {
+  /* LARGE ENOUGH FOR MARGINS */
+  @media (min-width: ${({ theme }) => theme.bp[4]}) {
     left: 50%;
     margin-left: 16.5rem;
   }
@@ -106,16 +109,8 @@ S.Middle = styled(Box)`
   width: 44rem;
 `;
 
-function Main(props) {
+function Main({ entries, refresh, revokeAuth, userId, username }) {
   debug('[Main] rendered');
-
-  const {
-    entries,
-    refresh,
-    revokeAuth,
-    userId,
-    username,
-  } = props;
 
   const [dialogShouldRender, setDialogState] = useState(false);
 
@@ -171,11 +166,13 @@ function Main(props) {
             </S.AppBarContainer>
           </S.AppBar>
           <S.CardArea gridArea='cardArea'>
-            <CardAreaTabs
-              id='card-area-tabs'
-              entries={entries}
-              refresh={refresh}
-            />
+            <Suspense fallback={<div>Loading...</div>}>
+              <CardAreaTabs
+                id='card-area-tabs'
+                entries={entries}
+                refresh={refresh}
+              />
+            </Suspense>
             <S.InsideFabBox>
               {InsideFab}
             </S.InsideFabBox>

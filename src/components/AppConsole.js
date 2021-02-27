@@ -12,7 +12,7 @@ function createConsole(url, windowName, height = 800, width = 415) {
     height=${height},
     width=${width}, left=${leftPosition},
     top=${topPosition},
-    resizable=no,
+          resizable=no,
     scrollbars=no,
     toolbar=yes,
     menubar=no,

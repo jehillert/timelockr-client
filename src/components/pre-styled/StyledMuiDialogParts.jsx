@@ -9,21 +9,21 @@ import { Box } from 'components';
 const StyledMuiDialog = styled(Dialog)`
   display: flex;
   justify-content: center;
-  border-radius: ${props => props.theme.dialogRadius};
+  border-radius: ${({ theme }) => theme.dialogRadius};
 `;
 
 const StyledMuiDialogTitle = styled(DialogTitle)`
-  font-size: ${props => props.theme.fontSizeDialogTitle};
-  padding-top: ${props => props.theme.p(3)};
-  padding-bottom: ${props => props.theme.p(3)};
-  color: ${props => props.theme.fgColor1};
-  background: ${props => props.theme.primary};
+  font-size: ${({ theme }) => theme.fontSizeDialogTitle};
+  padding-top: ${({ theme }) => theme.p(3)};
+  padding-bottom: ${({ theme }) => theme.p(3)};
+  color: ${({ theme }) => theme.fgColor1};
+  background: ${({ theme }) => theme.primary};
 `;
 
 const StyledMuiDialogContent = styled(DialogContent)`
-  padding: ${props => props.theme.p(3)};
-  padding-top: ${props => props.theme.p(3)};
-  padding-bottom: ${props => props.theme.p(3)};
+  padding: ${({ theme }) => theme.p(3)};
+  padding-top: ${({ theme }) => theme.p(3)};
+  padding-bottom: ${({ theme }) => theme.p(3)};
 `;
 
 const StyledMuiTextFieldContainer = styled(Box)`
@@ -33,24 +33,24 @@ const StyledMuiTextFieldContainer = styled(Box)`
 `;
 
 const StyledMuiTextField = styled(TextField)`
-  margin: ${props => props.theme.m(0.5)};
+  margin: ${({ theme }) => theme.m(0.5)};
 `;
 
 const StyledMuiDateFieldContainer = styled(Box)`
   display: flex;
   flex: nowrap;
-  padding-top: ${props => props.theme.p(3)};
+  padding-top: ${({ theme }) => theme.p(3)};
   justify-content: center;
   * {
-    margin: ${props => props.theme.m(0.5)};
+    margin: ${({ theme }) => theme.m(0.5)};
   }
 `;
 
 const StyledMuiDialogActions = styled(DialogActions)`
-  padding: ${props => props.theme.p(3)};
-  padding-top: ${props => props.theme.p(2)};
-  padding-bottom: ${props => props.theme.p(2)};
-  background: ${props => props.theme.primary};
+  padding: ${({ theme }) => theme.p(3)};
+  padding-top: ${({ theme }) => theme.p(2)};
+  padding-bottom: ${({ theme }) => theme.p(2)};
+  background: ${({ theme }) => theme.primary};
 `;
 
 export {

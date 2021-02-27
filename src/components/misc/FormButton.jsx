@@ -13,9 +13,9 @@ S.Button = styled(Button)`
   padding: 6px 12px;
   border: 1px solid;
   line-height: 1.5;
-  color: ${props => props.theme.fgColor1};
-  background-color: ${props => props.theme.bgColor2};
-  border-color: ${props => props.theme.borderColor2};
+  color: ${({ theme }) => theme.fgColor1};
+  background-color: ${({ theme }) => theme.bgColor2};
+  border-color: ${({ theme }) => theme.borderColor2};
 
   font-family: [
     '-apple-system',
@@ -31,10 +31,10 @@ S.Button = styled(Button)`
   ];
 
   :hover {
-    background-color: ${props => props.theme.hoverColor};
-    border-color: ${props => props.theme.hoverColor};
-    color: ${props => props.theme.hoverFontColor};
-    box-shadow: ${props => props.theme.boxShadow};
+    background-color: ${({ theme }) => theme.hoverColor};
+    border-color: ${({ theme }) => theme.hoverColor};
+    color: ${({ theme }) => theme.hoverFontColor};
+    box-shadow: ${({ theme }) => theme.boxShadow};
   }
 
   active: {
@@ -45,8 +45,7 @@ S.Button = styled(Button)`
 `;
     // box-shadow: 0 0 0 0.2rem rgba(0,123,255,.5);
 
-function FormButton(props) {
-  const { children, handleSubmit } = props;
+function FormButton({ children, handleSubmit }) {
   return (
     <S.Button
       onClick={handleSubmit}

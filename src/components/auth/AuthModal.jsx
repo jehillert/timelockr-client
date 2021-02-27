@@ -19,16 +19,16 @@ S.ModalContentContainer = styled.div`
   @media (min-width: ${({ theme }) => theme.abp[1]}) {
     margin: auto;
     margin-top: 4rem;
-    width: ${props => props.theme.modalWidth};
+    width: ${({ theme }) => theme.modalWidth};
   }
-  @media (max-width: ${props => props.theme.abp[1]}) {
+  @media (max-width: ${({ theme }) => theme.abp[1]}) {
     margin: auto;
     margin-top: 4rem;
-    width: ${props => props.theme.modalWidth};
+    width: ${({ theme }) => theme.modalWidth};
   }
 
-  //MOBILE
-  @media (max-width: ${props => props.theme.abp[2]}) and (hover: none) and (pointer: coarse) {
+  /*MOBILE*/
+  @media (max-width: ${({ theme }) => theme.abp[2]}) and (hover: none) and (pointer: coarse) {
     margin: 0;
     width: 100vw;
     height: 100vh;
@@ -36,15 +36,15 @@ S.ModalContentContainer = styled.div`
 `;
 
 S.AuthHeading = styled.div`
-  //ALL DEVICES
-  box-shadow: ${props => props.theme.insetBoxShadowBottom};
-  padding: ${props => props.theme.p(3)};
-  padding-top: ${props => props.theme.p(5)};
+  /*ALL DEVICES*/
+  box-shadow: ${({ theme }) => theme.insetBoxShadowBottom};
+  padding: ${({ theme }) => theme.p(3)};
+  padding-top: ${({ theme }) => theme.p(5)};
 
-  //MOBILE
-  @media (max-width: ${props => props.theme.abp[1]}) and (hover: none) and (pointer: coarse) {
-    padding-top: ${props => props.theme.p(7)};
-    padding-bottom: ${props => props.theme.p(3)};
+  /*MOBILE*/
+  @media (max-width: ${({ theme }) => theme.abp[1]}) and (hover: none) and (pointer: coarse) {
+    padding-top: ${({ theme }) => theme.p(7)};
+    padding-bottom: ${({ theme }) => theme.p(3)};
   }
 `;
 

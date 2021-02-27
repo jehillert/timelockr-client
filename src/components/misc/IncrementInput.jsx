@@ -19,26 +19,16 @@ const styles = theme => ({
   },
 });
 
-function IncrementInput(props) {
+function IncrementInput({ classes, handleChange, min, max, units }) {
   const [value, updateValue] = useState(0);
-  const {
-    classes,
-    handleChange,
-    min,
-    max,
-    units,
-  } = props;
 
-  const inputProps = {
-    min,
-  };
+  const inputProps = { min };
 
   if (max) {
     inputProps.max = max;
   }
 
   useEffect(() => handleChange(units, value), [value]);
-  // useEffect(() => props.handleChange(props.units, value), [props, value]);
 
   return (
     <TextField

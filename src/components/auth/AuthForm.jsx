@@ -1,5 +1,5 @@
 /* eslint-disable react/forbid-prop-types */
-import * as Debug from 'debug';
+// import * as Debug from 'debug';
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -13,74 +13,65 @@ import * as EmailValidator from 'email-validator';
 import { FormButton, ProgressBar } from 'components';
 import { demoMode, demoUser, demoPassword } from 'config';
 import { withStyles } from '@material-ui/core/styles';
-import Promise from 'bluebird';
 
 const styles = {};
-const debug = Debug('src:components:auth-form');
+// const debug = Debug('src:components:auth-form');
 
 const S = {};
 
 S.Form = styled.form`
   display: flex;
   flex-direction: column;
-  padding: ${props => props.theme.p(2)}
-           ${props => props.theme.p(2)};
+  padding: ${({ theme }) => theme.p(2)}
+           ${({ theme }) => theme.p(2)};
 `;
 
 S.TextField = styled(TextField)`
-  margin: ${props => props.theme.m(1.2)}
-          ${props => props.theme.m(2)};
-  padding-right: ${props => props.theme.p(0)};
+  margin: ${({ theme }) => theme.m(1.2)}
+          ${({ theme }) => theme.m(2)};
+  padding-right: ${({ theme }) => theme.p(0)};
   .MuiIconButton-root {
-    padding: ${props => props.theme.p(0.75)};
+    padding: ${({ theme }) => theme.p(0.75)};
   }
   .MuiOutlinedInput-root {
-    padding: ${props => props.theme.p(0.75)};
-    padding-right: ${props => props.theme.p(0.70)};
+    padding: ${({ theme }) => theme.p(0.75)};
+    padding-right: ${({ theme }) => theme.p(0.70)};
   }
 `;
 
 S.ButtonBox = styled(FormGroup)`
   align-self: flex-end;
-  margin-top: ${props => props.theme.m(1)};
-  margin-right: ${props => props.theme.p(1)};
+  margin-top: ${({ theme }) => theme.m(1)};
+  margin-right: ${({ theme }) => theme.p(1)};
 `;
 
 S.ProgressBarBox = styled(FormGroup)`
   width: auto;
   height: 4px;
-  margin-top: ${props => props.theme.m(2)};
-  margin-bottom: ${props => props.theme.m(0)};
-  margin-left: ${props => props.theme.m(-2)};
-  margin-right: ${props => props.theme.m(-2)};
+  margin-top: ${({ theme }) => theme.m(2)};
+  margin-bottom: ${({ theme }) => theme.m(0)};
+  margin-left: ${({ theme }) => theme.m(-2)};
+  margin-right: ${({ theme }) => theme.m(-2)};
 `;
 
 class AuthForm extends React.PureComponent {
-  constructor(props) {
-    debug('[AuthForm] rendered');
-    super(props);
-    let usr = '';
-    let pswd = '';
+  static propTypes = {
+    handleSubmit: PropTypes.func.isRequired,
+    autocompletePasswordType: PropTypes.string.isRequired,
+  };
 
-    if (demoMode) {
-      usr = demoUser;
-      pswd = demoPassword;
-    }
-
-    this.state = {
-      username: usr,
-      password: pswd,
-      notAnEmailAddressError: false,
-      loading: false,
-      passwordError: false,
-      showPassword: false,
-    };
-  }
+  state = {
+    username: demoMode ? demoUser : '',
+    password: demoMode ? demoPassword : '',
+    notAnEmailAddressError: false,
+    loading: false,
+    passwordError: false,
+    showPassword: false,
+  };
 
   handleFormSubmit = (event) => {
     const { handleSubmit } = this.props;
     const { username, password } = this.state;
-    const handleSubmitAsync = Promise.promisify(handleSubmit);
 
     if (!EmailValidator.validate(username) || password === '') {
       return this.setState({
@@ -95,14 +86,15 @@ class AuthForm extends React.PureComponent {
   // Hang the ProgressBar:
   // const setTimeoutAsync = Promise.promisify(setTimeout);
   // setTimeoutAsync(() => console.log('waiting'), 2000 ).then(() => {
-    return handleSubmitAsync(username, password)
-    .then(() => this.setState({
-      username: demoUser,
-      password: demoPassword,
-      notAnEmailAddressError: false,
-      passwordError: false,
-      showPassword: false,
-    }));
+    return Promise.resolve()
+      .then(handleSubmit(username, password))
+      .then(() => this.setState({
+        username: demoUser,
+        password: demoPassword,
+        notAnEmailAddressError: false,
+        passwordError: false,
+        showPassword: false,
+      }));
   // });
   }
 
@@ -146,7 +138,7 @@ class AuthForm extends React.PureComponent {
           id='outlined-email-as-username-input'
           label='Email'
           autoComplete='email'
-          autoFocus='true'
+          autoFocus
           error={notAnEmailAddressError}
           onFocus={this.handleFocus}
           name='username'
@@ -192,10 +184,5 @@ class AuthForm extends React.PureComponent {
     );
   }
 }
-
-AuthForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  autocompletePasswordType: PropTypes.string.isRequired,
-};
 
 export default withStyles(styles)(AuthForm);

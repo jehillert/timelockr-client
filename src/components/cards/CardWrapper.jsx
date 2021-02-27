@@ -7,19 +7,10 @@ import Grow from '@material-ui/core/Grow';
 
 const debug = Debug('src:components:card-wrapper');
 
-function CardWrapper(props) {
+function CardWrapper({ animationDuration, delayBetween, index, refresh, render }) {
   debug('[CardWrapper] rendered');
 
-  const {
-    animationDuration,
-    delayBetween,
-    index,
-    refresh,
-    render,
-  } = props;
-
   const showDelay = index * delayBetween;
-
   const [shouldRenderCard, setCardRenderState] = useState(true);
   const [show, setShowState] = useState(false);
 

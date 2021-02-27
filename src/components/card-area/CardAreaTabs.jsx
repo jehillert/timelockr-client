@@ -1,5 +1,6 @@
 // import Debug from 'debug';
-import React, { useState } from 'react';
+// const debug = Debug('src:components:app:card-area-tabs');
+import React, { Suspense, lazy, useState } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import SwipeableViews from 'react-swipeable-views';
@@ -7,18 +8,21 @@ import styled from 'styled-components';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import {
-  CardArea,
   LockedEntryCard,
   ReleasedEntryCard,
 } from 'components';
 import { ErrorBoundary } from 'utilities';
 
-// const debug = Debug('src:components:app:card-area-tabs');
-const styles = theme => ({});
+const CardArea = lazy(
+  () => import(/* webpackChunkName: 'card-area' */ './CardArea'),
+);
+
 const S = {};
 
+const styles = theme => ({});
+
 S.VerticallyScrollableArea = styled.div`
-  @media (max-width: ${props => props.theme.bp[4]}) {
+  @media (max-width: ${({ theme }) => theme.bp[4]}) {
     width: 100vw;
   }
   height: 89.9vh;
@@ -30,20 +34,20 @@ S.VerticallyScrollableArea = styled.div`
 `;
 
 S.Tabs = styled(Tabs)`
-  @media (max-width: ${props => props.theme.bp[4]}) {
+  @media (max-width: ${({ theme }) => theme.bp[4]}) {
     width: 100vw;
   }
   background-color: white;
-  box-shadow: ${props => props.theme.boxShadow};
+  box-shadow: ${({ theme }) => theme.boxShadow};
   .MuiTab-wrapper {
-    color: ${props => props.theme.darkColor};
+    color: ${({ theme }) => theme.darkColor};
   }
   .Mui-selected .MuiTab-wrapper {
-    color: ${props => props.theme.primary};
+    color: ${({ theme }) => theme.primary};
   }
   .MuiTabs-indicator {
     width: 100%;
-    background-color: ${props => props.theme.primary};
+    background-color: ${({ theme }) => theme.primary};
   }
   span {
     outline: none;
@@ -51,20 +55,13 @@ S.Tabs = styled(Tabs)`
 `;
 
 S.Tab = styled(Tab)`
-  @media (max-width: ${props => props.theme.bp[4]}) {
+  @media (max-width: ${({ theme }) => theme.bp[4]}) {
     width: 100vw;
   }
 `;
 
 
-function CardAreaTabs(props) {
-  // const windowSize = useWindowSize();
-  const {
-    entries,
-    refresh,
-    theme,
-  } = props;
-
+function CardAreaTabs({ entries, refresh, theme }) {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, v) => setValue(v);
@@ -92,23 +89,27 @@ function CardAreaTabs(props) {
       >
         <ErrorBoundary>
           <S.VerticallyScrollableArea>
-            <CardArea
-              mt={2}
-              id='card-area-released'
-              Card={ReleasedEntryCard}
-              entries={entries.released}
-              refresh={refresh}
-            />
+            <Suspense fallback={<div />}>
+              <CardArea
+                mt={2}
+                id='card-area-released'
+                Card={ReleasedEntryCard}
+                entries={entries.released}
+                refresh={refresh}
+              />
+            </Suspense>
           </S.VerticallyScrollableArea>
         </ErrorBoundary>
         <ErrorBoundary>
           <S.VerticallyScrollableArea>
-            <CardArea
-              id='card-area-locked'
-              Card={LockedEntryCard}
-              entries={entries.locked}
-              refresh={refresh}
-            />
+            <Suspense fallback={<div />}>
+              <CardArea
+                id='card-area-locked'
+                Card={LockedEntryCard}
+                entries={entries.locked}
+                refresh={refresh}
+              />
+            </Suspense>
           </S.VerticallyScrollableArea>
         </ErrorBoundary>
       </SwipeableViews>

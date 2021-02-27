@@ -24,10 +24,9 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function ProgressBar(props) {
+function ProgressBar({ loading }) {
   debug('[Progress-Bar] rendered');
 
-  const { loading } = props;
   const classes = useStyles();
 
   return (

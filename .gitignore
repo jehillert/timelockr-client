@@ -30,6 +30,7 @@ bookmarks.json
 bower_components
 build/Release
 coverage
+build/
 dist/
 fake-credentials.data
 GenFakeCredsAndData.js
@@ -44,6 +45,7 @@ Notes/
 npm-debug.log*
 pids
 scripts/
+stats.json
 typings/
 yarn-debug.log*
 yarn-error.log*

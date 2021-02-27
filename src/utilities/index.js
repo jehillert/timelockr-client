@@ -7,7 +7,7 @@ export {
   logout,
   verifyUser,
   deleteUser,
-} from '../utilities/ClientRequests';
+} from './ClientRequests';
 export {
   device,
   RenderIfMobile,
@@ -15,6 +15,6 @@ export {
   isDesktop,
   isMobile,
   isPhone,
-} from '../utilities/MediaQueries';
-export { default as usePrevious } from '../utilities/CustomHooks';
-export { default as ErrorBoundary } from '../utilities/ErrorBoundary';
+} from './MediaQueries';
+export { default as usePrevious } from './CustomHooks';
+export { default as ErrorBoundary } from './ErrorBoundary';

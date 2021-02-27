@@ -29,13 +29,12 @@ S.IconButton = styled(IconButton)`
 `;
 
 S.MoreVertIcon = styled(MoreVertIcon)`
-  color: ${props => props.theme.lightColor}
+  color: ${({ theme }) => theme.lightColor}
 `;
 
-const MainMenu = (props) => {
+const MainMenu = ({ revokeAuth, username }) => {
   debug('[MainMenu] rendered');
 
-  const { revokeAuth, username } = props;
   const [anchorEl, setAnchorEl] = useState(null);
   const [selected, setSelected] = useState('');
   const [isDisabled, setDisabled] = useState(false);

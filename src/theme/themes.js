@@ -30,10 +30,10 @@ const p = (factor = 1) => {
 };
 
 const defaultTheme = {
-//BREAK POINTS
-  bp, //main app
-  abp, //auth modal
-//COLORS
+// BREAK POINTS
+  bp, // main app
+  abp, // auth modal
+// COLORS
   accentColor: '#B81205',
   lightColor: 'white',
   darkColor: '#222324',
@@ -54,27 +54,27 @@ const defaultTheme = {
   textColor1: 'white',
   textColor2: '#9D9D9D',
 
-//DIMENSIONS - Cards, Modals, Dialogs
+// DIMENSIONS - Cards, Modals, Dialogs
   cardWidth: '19rem',
   cardAreaWidth: '41rem',
   dialogWidth: '26rem',
   modalWidth: '27.5rem',
 
-//FONT SIZE
+// FONT SIZE
   fontSizeDialogTitle: '2rem',
 
-//RADIUS
+// RADIUS
   cardRadius: '0rem',
   backgroundBorderRadius: '0rem',
   dialogRadius: '0rem',
   tabBorderRadius: '0rem',
 
-//SPACING
+// SPACING
   gap,
   m,
   p,
 
-//SHADOW
+// SHADOW
   insetBoxShadowBottom: 'inset 0 -10px 10px -10px grey;',
   boxShadow: '0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)',
   boxShadowTop: '0px -3px 4px -1px rgba(0, 0, 0, 0.2), 0px -5px 5px 0px rgba(0, 0, 0, 0.14), 0px -1px 10px 0px rgba(0, 0, 0, 0.12);',

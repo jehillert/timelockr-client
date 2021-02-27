@@ -1,10 +1,14 @@
+// TODO - create defaultState variable to handle duplicate
 import * as Debug from 'debug';
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import {
-  createEntry,
+  addEntry,
+} from 'actions';
+import {
   ErrorBoundary,
   isPhone,
 } from 'utilities';
@@ -34,16 +38,20 @@ S.TimePicker = styled(props => <TimePicker {...props} />)`
 `;
 
 class EntryFormDialog extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      description: '',
-      content: '',
-      open: true,
-      selectedDate: new Date(),
-      selectedTime: new Date(),
-    };
-  }
+  static propTypes = {
+    addEntry: PropTypes.func.isRequired,
+    closeDialog: PropTypes.func.isRequired,
+    refresh: PropTypes.func.isRequired,
+    userId: PropTypes.number.isRequired,
+  };
+
+  state = {
+    description: '',
+    content: '',
+    open: true,
+    selectedDate: new Date(),
+    selectedTime: new Date(),
+  };
 
   handleChange = e => (
     this.setState({ [e.target.id]: e.target.value })
@@ -70,6 +78,7 @@ class EntryFormDialog extends React.PureComponent {
     event.preventDefault();
 
     const {
+      addEntry,
       refresh,
       userId,
     } = this.props;
@@ -109,9 +118,12 @@ class EntryFormDialog extends React.PureComponent {
       content,
     };
 
-    return createEntry(newEntry)
+    addEntry(newEntry)
       .then(() => refresh())
       .then(this.handleClose);
+    // return createEntry(newEntry)
+    //   .then(() => refresh())
+    //   .then(this.handleClose);
   }
 
   handleTimeChange = time => this.setState({ selectedTime: time });
@@ -201,10 +213,9 @@ class EntryFormDialog extends React.PureComponent {
   }
 }
 
-EntryFormDialog.propTypes = {
-  closeDialog: PropTypes.func.isRequired,
-  refresh: PropTypes.func.isRequired,
-  userId: PropTypes.number.isRequired,
-};
+// const mapStateToProps = state => ({
+//   entry: state.entries.entry,
+// });
 
-export default EntryFormDialog;
+// export default connect(mapStateToProps, { addEntry })(EntryFormDialog);
+export default connect(null, { addEntry })(EntryFormDialog);

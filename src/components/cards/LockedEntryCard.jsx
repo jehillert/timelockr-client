@@ -9,8 +9,7 @@ import {
   LockedEntryCardMenu,
 } from 'components';
 
-function LockedEntryCard(props) {
-  const { entry, refresh, wrapper } = props;
+function LockedEntryCard({ entry, refresh, wrapper }) {
   const { deleteCard } = wrapper;
 
   const Timer = (

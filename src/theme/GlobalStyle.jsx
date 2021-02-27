@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
     width: 100vw;
     height: 100vh;
 
-    @media (min-width: ${props => props.theme.bp[4]}) {
+    @media (min-width: ${({ theme }) => theme.bp[4]}) {
       grid-template-areas:
         "leftSide appBarArea   rightSide"
         "leftSide cardArea rightSide";
@@ -37,8 +37,7 @@ const GlobalStyle = createGlobalStyle`
       grid-template-rows: auto 1fr;
     }
 
-    // NO SIDEBARS
-    @media (max-width: ${props => props.theme.bp[4]}) {
+    @media (max-width: ${({ theme }) => theme.bp[4]}) {
       grid-template-areas:
         "appBarArea"
         "cardArea";
