@@ -17,7 +17,7 @@
   },
   "scripts": {
     "build": "webpack --config ./config/webpack.prod.js --mode production",
-    "build:stats": "webpack --config ./config/webpack.config.js --mode production --json > ./build/stats.json",
+    "build:stats": "webpack --config ./config/webpack.prod.js --mode production --json > ./build/stats.json",
     "update:install": "npm install",
     "update:outdated": "npm outdated",
     "lint:js": "eslint . --ignore-path .eslintignore",
