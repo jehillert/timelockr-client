@@ -15,11 +15,6 @@ module.exports = {
             { test: /\.png$/, use: [{ loader: 'url-loader', options: { mimetype: 'image/png' } }] },
         ],
     },
-    node: {
-        fs: 'empty',
-        net: 'empty',
-        tls: 'empty',
-    },
     optimization: {
         splitChunks: {
             chunks: 'all',

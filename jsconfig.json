@@ -1,17 +1,17 @@
 {
-  "compilerOptions": {
-    "target": "es6",
-    "module": "commonJS",
-    "jsx": "preserve",
-    "baseUrl": "./src",
-    "paths": {
-      "actions": ["actions/index"],
-      "components": ["components/index"],
-      "store": ["store"],
-      "theme": ["theme/index"],
-      "types": ["actions/types"],
-      "utilities": ["utilities/index"]
-    }
-  },
-  "include": ["src/**/*"]
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonJS",
+        "jsx": "preserve",
+        "baseUrl": "./src",
+        "paths": {
+            "actions": ["actions/index"],
+            "components": ["components/index"],
+            "store": ["store"],
+            "theme": ["theme/index"],
+            "types": ["actions/types"],
+            "utilities": ["utilities/index"]
+        }
+    },
+    "include": ["src/**/*"]
 }

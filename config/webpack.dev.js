@@ -1,9 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
-const merge = require('webpack-merge');
-const common = require('./webpack.common.js');
+const { merge } = require('webpack-merge');
+const Common = require('./webpack.common.js');
 
-module.exports = merge(common, {
+module.exports = merge(Common, {
   mode: 'development',
   output: {
     filename: '[name].bundle.js',
@@ -15,9 +15,6 @@ module.exports = merge(common, {
     clientLogLevel: 'debug',
     contentBase: path.resolve(__dirname, '../build'),
     open: true,
-  },
-  node: {
-    console: true,
   },
   optimization: {
     splitChunks: {
