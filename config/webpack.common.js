@@ -6,7 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // npm_lifecycle_event
 
 module.exports = {
-    entry: './src/index.jsx',
+    entry: '../src/index.jsx',
     module: {
         rules: [
             { test: /\.(js|jsx)$/, use: 'babel-loader', exclude: /node_modules/ },
