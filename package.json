@@ -4,8 +4,8 @@
   "description": "Make stuff inaccessible.",
   "main": "index.js",
   "engines": {
-    "node": "10.15.3",
-    "npm": "6.9.0"
+    "node": "15.5.0",
+    "npm": "7.5.4"
   },
   "keywords": [],
   "author": "John Hillert",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@babel/cli": "^7.8.4",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/polyfill": "^7.8.3",
     "@babel/preset-react": "^7.8.3",
     "@date-io/date-fns": "^1.3.13",
@@ -37,8 +37,8 @@
     "@material-ui/styles": "^4.9.0",
     "@material-ui/system": "^4.9.3",
     "ajv": "^6.12.0",
-    "aws-amplify": "^1.3.3",
-    "axios": "^0.19.2",
+    "aws-amplify": "^3.3.21",
+    "axios": "^0.21.1",
     "babel-loader": "^8.0.6",
     "babel-plugin-styled-components": "^1.10.7",
     "bluebird": "^3.7.2",
@@ -65,7 +65,8 @@
     "styled-components": "^4.4.1"
   },
   "resolutions": {
-    "babel-core": "7.0.0-bridge.0"
+    "babel-core": "7.0.0-bridge.0",
+    "@babel/preset-env": "7.5.5"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
@@ -76,13 +77,13 @@
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
     "eslint": "^5.16.0",
+    "eslint_d": "^8.1.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-import-resolver-webpack": "^0.11.1",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-hooks": "^1.7.0",
-    "eslint_d": "^8.1.0",
     "faker": "^4.1.0",
     "jest": "^25.1.0",
     "less-loader": "^5.0.0",
@@ -92,7 +93,7 @@
     "react-test-renderer": "^16.13.0",
     "rimraf": "^2.7.1",
     "style-loader": "^0.23.1",
-    "stylelint": "^10.1.0",
+    "stylelint": "^13.11.0",
     "stylelint-config-recommended": "^2.2.0",
     "stylelint-config-standard": "^18.3.0",
     "stylelint-config-styled-components": "^0.1.1",
