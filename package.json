@@ -16,8 +16,8 @@
     "url": "https://github.com/jehillert/timelockr-client.git"
   },
   "scripts": {
-    "build": "webpack --config ./config/webpack.prod.js --env production -p",
-    "build:stats": "webpack --config ./config/webpack.config.js --env production -p --json > ./build/stats.json",
+    "build": "webpack --config ./config/webpack.prod.js --mode production",
+    "build:stats": "webpack --config ./config/webpack.config.js --mode production --json > ./build/stats.json",
     "update:install": "npm install",
     "update:outdated": "npm outdated",
     "lint:js": "eslint . --ignore-path .eslintignore",
