@@ -7,7 +7,7 @@ import { device } from 'utilities';
 
 const StyledMuiCard = styled(Card)`
   &.styled-mui-card {
-    word-break: break-all;
+    word-break: break-word;
     z-index: 1;
     box-shadow: ${({ theme }) => theme.boxShadow};
     border-radius: ${({ theme }) => theme.cardRadius};
