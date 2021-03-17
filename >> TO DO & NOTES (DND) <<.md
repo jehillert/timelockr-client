@@ -305,15 +305,22 @@ Browser support is different.
 ------------------------------------------------------------------------
  Multiple Entry Points
 ------------------------------------------------------------------------
-  • Single-page applications...?... might be able to split your authorization page into one bundle, and the rest of your app into another bundle.
-  • Multi-page applications that reuse a lot of code/modules between entry points can greatly benefit from these techniques, as the number of entry points increases.
-   •• Gives optimization.splitChunks chance to create bundles of shared application code between each page.
+  • Single-page applications...?... might be able to split your
+    authorization page into one bundle, and the rest of your app into
+    another bundle.
+
+  • Multi-page applications that reuse a lot of code/modules between
+    entry points can greatly benefit from these techniques, as the
+    number of entry points increases.
+
+    •• Gives optimization.splitChunks chance to create bundles of shared
+       application code between each page.
+
   • dependOn entry option (don't use, better options)
 
 ------------------------------------------------------------------------
  MISCELANEOUS
 ------------------------------------------------------------------------
-React.lazy (1+)
 Webpack Merge (Try this again. good for "Scalable webpack configurations")
 
 ------------------------------------------------------------------------
@@ -321,9 +328,9 @@ Webpack Merge (Try this again. good for "Scalable webpack configurations")
 ------------------------------------------------------------------------
 
 
-———————————————————————————————————————————————————————————————————————————————
+—————————————————————————————————————————————————————————————————————————
  OPTIMIZATION GAINS
-———————————————————————————————————————————————————————————————————————————————
+—————————————————————————————————————————————————————————————————————————
   Built at: 02/28/2020 12:39:00 PM
            favicon.ico   66.1 KiB
             index.html  416 bytes
