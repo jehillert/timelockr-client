@@ -3,8 +3,6 @@ const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-// npm_lifecycle_event
-
 module.exports = {
     entry: {
         app: [path.resolve(__dirname, '../src/index.jsx')],
