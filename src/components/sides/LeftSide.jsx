@@ -18,7 +18,7 @@ S.LeftSide = styled.div`
     grid-area: ${props => props.gridArea};
     justify-content: flex-end;
     overflow: visible;
-    padding-right: ${({ theme }) => theme.m()};
+    padding-right: ${({ theme }) => theme.m(3)};
     padding-top: ${({ theme }) => theme.m(2)};
   }
 `;
@@ -36,9 +36,7 @@ S.Title = styled.h2`
 function LeftSide({ children, gridArea, title }) {
   return (
     <S.LeftSide gridArea={gridArea}>
-      {title && (
-        <S.Title>{title}</S.Title>
-      )}
+      {title && <S.Title>{title}</S.Title>}
       {children}
     </S.LeftSide>
   );

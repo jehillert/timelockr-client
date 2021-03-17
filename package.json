@@ -23,7 +23,7 @@
     "lint:js": "eslint . --ignore-path .eslintignore",
     "lint:css": "stylelint src/common/**/*.css",
     "run-terminal": "cd scripts && ./run-terminal.sh",
-    "start": "webpack serve --config ./webpack.dev.js --hot --mode development --port 8080",
+    "start": "webpack serve --config ./config/webpack.dev.js --hot --mode development --port 8080",
     "stats": "webpack-bundle-analyzer ./stats.json"
   },
   "dependencies": {

@@ -26,7 +26,7 @@ module.exports = merge(Common, {
       /moment[/\\]locale$/, /en-gb/,
     ),
     new webpack.SourceMapDevToolPlugin({
-      filename: '[name].js.map',
+      filename: '[file].js.map',
       exclude: ['vendor.js'],
     }),
     new webpack.SourceMapDevToolPlugin({
