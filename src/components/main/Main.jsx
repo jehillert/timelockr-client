@@ -5,17 +5,9 @@ import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import styled from 'styled-components';
 import { device } from 'utilities';
-import {
-  EntryFormDialog,
-  Box,
-  LeftSide,
-  MainMenu,
-  RightSide,
-} from 'components';
+import { EntryFormDialog, Box, LeftSide, MainMenu, RightSide } from 'components';
 
-const CardAreaTabs = lazy(
-  () => import(/* webpackChunkName: 'card-area-tabs' */ '../card-area/CardAreaTabs'),
-);
+const CardAreaTabs = lazy(() => import(/* webpackChunkName: 'card-area-tabs' */ '../card-area/CardAreaTabs'));
 
 const debug = Debug('src:components:app:main');
 
@@ -30,7 +22,7 @@ S.AppBar = styled.div`
   max-width: ${props => props.cardAreaWidth};
 
   /* TOO SMALL FOR MARGINS */
-  @media (max-width: ${({ theme }) => theme.bp[4]}){
+  @media (max-width: ${({ theme }) => theme.bp[4]}) {
     width: 100vw;
     margin-right: none;
     margin-left: none;
@@ -53,7 +45,7 @@ S.AppBarContainer = styled.div`
 S.CardArea = styled.div`
   grid-area: ${props => props.gridArea};
   /* TOO SMALL FOR MARGINS */
-  @media (max-width: ${({ theme }) => theme.bp[4]}){
+  @media (max-width: ${({ theme }) => theme.bp[4]}) {
     padding-right: none;
     padding-left: none;
   }
@@ -94,8 +86,8 @@ S.InsideFab = styled(S.OutsideFab)`
   position: fixed;
   bottom: 50px;
   /* TOO SMALL FOR MARGINS */
-  @media (max-width: ${({ theme }) => theme.bp[4]}){
-    right: ${({ theme }) => theme.m(4)}
+  @media (max-width: ${({ theme }) => theme.bp[4]}) {
+    right: ${({ theme }) => theme.m(4)};
   }
   /* LARGE ENOUGH FOR MARGINS */
   @media (min-width: ${({ theme }) => theme.bp[4]}) {
@@ -121,22 +113,13 @@ function Main({ entries, refresh, revokeAuth, userId, username }) {
   const closeDialog = () => setDialogState(false);
 
   const OutsideFab = (
-    <S.OutsideFab
-      aria-label='Add'
-      size='medium'
-      onClick={handleClick}
-    >
+    <S.OutsideFab aria-label="Add" size="medium" onClick={handleClick}>
       <AddIcon />
     </S.OutsideFab>
   );
 
   const InsideFab = (
-    <S.InsideFab
-      aria-label='Add'
-      color='secondary'
-      size='medium'
-      onClick={handleClick}
-    >
+    <S.InsideFab aria-label="Add" color="secondary" size="medium" onClick={handleClick}>
       <AddIcon />
     </S.InsideFab>
   );
@@ -147,41 +130,25 @@ function Main({ entries, refresh, revokeAuth, userId, username }) {
   return (
     <>
       {dialogShouldRender && (
-        <EntryFormDialog
-          closeDialog={closeDialog}
-          refresh={refresh}
-          userId={userId}
-          username={username}
-        />
+        <EntryFormDialog closeDialog={closeDialog} refresh={refresh} userId={userId} username={username} />
       )}
-      <Box id='primary-container'>
-        <LeftSide gridArea='leftSide' title='TimeLockr' />
+      <Box id="primary-container">
+        <LeftSide gridArea="leftSide" title="TimeLockr" />
         <S.Middle>
-          <S.AppBar gridArea='appBarArea'>
+          <S.AppBar gridArea="appBarArea">
             <S.AppBarContainer>
-              <MainMenu
-                revokeAuth={revokeAuth}
-                username={username}
-              />
+              <MainMenu revokeAuth={revokeAuth} username={username} />
             </S.AppBarContainer>
           </S.AppBar>
-          <S.CardArea gridArea='cardArea'>
+          <S.CardArea gridArea="cardArea">
             <Suspense fallback={<div>Loading...</div>}>
-              <CardAreaTabs
-                id='card-area-tabs'
-                entries={entries}
-                refresh={refresh}
-              />
+              <CardAreaTabs id="card-area-tabs" entries={entries} refresh={refresh} />
             </Suspense>
-            <S.InsideFabBox>
-              {InsideFab}
-            </S.InsideFabBox>
+            <S.InsideFabBox>{InsideFab}</S.InsideFabBox>
           </S.CardArea>
         </S.Middle>
-        <RightSide gridArea='rightSide'>
-          <S.OutsideFabBox>
-            {OutsideFab}
-          </S.OutsideFabBox>
+        <RightSide gridArea="rightSide">
+          <S.OutsideFabBox>{OutsideFab}</S.OutsideFabBox>
         </RightSide>
       </Box>
     </>

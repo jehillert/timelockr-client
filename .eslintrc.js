@@ -36,6 +36,8 @@ module.exports = {
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
       "react/jsx-quotes": 0,
-      "template-curly-spacing": "off"
+      "template-curly-spacing": "off",
+      "import/no-unresolved": "off",
+      "import/extensions": { "js": "never", "jsx": "never" }
     }
 }
