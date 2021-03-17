@@ -28,6 +28,7 @@ module.exports = {
             filename: 'index.html',
             inject: 'body',
             favicon: path.resolve(__dirname, '../src/assets/favicon.ico'),
+            chunksSortMode: 'auto',
             template: path.resolve(__dirname, '../src/assets/index.html'),
             meta: { viewport: 'minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no' },
         }),
