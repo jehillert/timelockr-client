@@ -55,7 +55,7 @@ const defaultTheme = {
   textColor2: '#9D9D9D',
 
 // DIMENSIONS - Cards, Modals, Dialogs
-  cardWidth: '19rem',
+  cardWidth: '18rem',
   cardAreaWidth: '41rem',
   dialogWidth: '26rem',
   modalWidth: '27.5rem',

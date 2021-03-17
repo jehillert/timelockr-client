@@ -50,6 +50,20 @@ S.AppBarContainer = styled.div`
   padding: 0 0.25rem 0 1rem;
 `;
 
+S.CardArea = styled.div`
+  grid-area: ${props => props.gridArea};
+  /* TOO SMALL FOR MARGINS */
+  @media (max-width: ${({ theme }) => theme.bp[4]}){
+    padding-right: none;
+    padding-left: none;
+  }
+  /* LARGE ENOUGH FOR MARGINS */
+  @media (min-width: ${({ theme }) => theme.bp[4]}) {
+    padding-left: ${({ theme }) => theme.p(3)};
+    padding-right: ${({ theme }) => theme.p(3)};
+  }
+`;
+
 S.InsideFabBox = styled.div`
   @media ${device.phone} {
     display: flex;
@@ -65,20 +79,6 @@ S.OutsideFabBox = styled.div`
   }
   @media ${device.desktopSM} {
     display: flex;
-  }
-`;
-
-S.CardArea = styled.div`
-  grid-area: ${props => props.gridArea};
-  /* TOO SMALL FOR MARGINS */
-  @media (max-width: ${({ theme }) => theme.bp[4]}){
-    padding-right: none;
-    padding-left: none;
-  }
-  /* LARGE ENOUGH FOR MARGINS */
-  @media (min-width: ${({ theme }) => theme.bp[4]}) {
-    padding-left: ${({ theme }) => theme.p(3)};
-    padding-right: ${({ theme }) => theme.p(3)};
   }
 `;
 
