@@ -8,9 +8,6 @@
 -------------------------------------------------------
  BUGS
 -------------------------------------------------------
-AuthForm
-Pressing escape in username field causes screen to go blank.
-
 Box.jsx
 1. where is it???
 2. If you deleted it, you need to go excise it out everywhere.
@@ -29,34 +26,9 @@ clientRequests:
 3. Either modify PUT or consider PATCH
 
 -------------------------------------------------------
- LINTING ISSUES
--------------------------------------------------------
- - stylelint is not working. caniuse-lite is outedated (see output screen)
-    https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint
-
-    https://github.com/stylelint/stylelint#getting-started
-
-    https://stylelint.io/user-guide/configure
-
-    https://github.com/postcss/autoprefixer/issues/1184
-
- - eslint appears to be yacking about something in the
-   out put screen
-
--------------------------------------------------------
- [maybe] USE MORE DESTRUCTURING IN STYLED COMPONENTS
--------------------------------------------------------
-https://github.com/styled-components/styled-components/issues/273
-
--------------------------------------------------------
  TIMER
 -------------------------------------------------------
-the timer start counting from when the time form is pulled up, not from the time the submit button is hit.
-
--------------------------------------------------------
- LOCKED ENTRY CARDS
--------------------------------------------------------
-if the title is too long, and just one word, that word pushes the menu out of sight and out of the card
+the timer starts counting from when the time form is pulled up, not from the time the submit button is hit.
 
 -------------------------------------------------------
  CLEAN UP MEDIA QUERIES
@@ -90,29 +62,6 @@ And also
     ...
   }
 Also consider replacing all of the "abp" code with something similar to "device"
-
--------------------------------------------------------
- FIX PICKER ISSUES
--------------------------------------------------------
-on right monitor it changes format in an undesirable way.
-maybe just need to change media queries, but there seems to
-be something more than that required.
-I want just the calendar, not the decorative area on the left that
-the Month and day takes up two rows.
-e.g.,
-
-  2020
-  Mon,
-  Feb
-  24
-
-looks sloppy.
-
-...actually, the problem is that the decorative area normally on the top
-moves left for some reason.  Even if the window does not change.  What matters
-is that the left is on a bigger monitor.  Still sounds like media queries,
-but the issue is with the monitor size, not the window size.
-
 
 /*
 PER WEBPACK DOCUMENTATION:
@@ -161,9 +110,8 @@ Multiple Entry Points - Object Syntax
 
   Adding UglifyJS with Terser saves a tiny bit of memory
 
-
 ------------------------------------------------------------------------
-PUBLIC PATH IN MY ASS
+PUBLIC PATH
 ------------------------------------------------------------------------
 The publicPath specifies the public URL address of the output files when referenced in a
 browser. For loaders that embed <script> or <link> tags or reference assets like images,

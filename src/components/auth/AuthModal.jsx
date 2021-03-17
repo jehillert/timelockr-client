@@ -98,6 +98,7 @@ class AuthModal extends React.PureComponent {
         disableBackdropClick
         open={open}
         onClose={this.handleClose}
+        disableEscapeKeyDown
       >
         <S.ModalContentContainer>
           <S.AuthHeading>
