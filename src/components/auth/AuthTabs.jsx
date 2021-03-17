@@ -24,7 +24,7 @@ S.TabList = styled(TabList)`
   text-align: center;
   border: none;
 
-  @media (max-width: ${({ theme }) => theme.abp[1]}) and (hover: none) and (pointer: coarse) {
+  @media ((hover: none) and (pointer: coarse)) {
     width: 100vw;
   }
 `;
