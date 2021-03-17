@@ -20,7 +20,6 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-size: 16px;
   }
-}
 
   #primary-container {
     /* SIDEBARS */

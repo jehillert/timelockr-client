@@ -8,10 +8,6 @@
 -------------------------------------------------------
  BUGS
 -------------------------------------------------------
-Box.jsx
-1. where is it???
-2. If you deleted it, you need to go excise it out everywhere.
-
 GlobalStyle.jsx:
 1. unmatched bracket in GlobalStyle.jsx
 
