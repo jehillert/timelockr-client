@@ -11,6 +11,8 @@
   "license": "UNLICENSED",
   "private": true,
   "homepage": "https://github.com/jehillert/timelockr-client#readme",
+  "main": "index.js",
+  "module": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/jehillert/timelockr-client.git"
