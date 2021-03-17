@@ -7,6 +7,7 @@ import { device } from 'utilities';
 
 const StyledMuiCard = styled(Card)`
   &.styled-mui-card {
+    word-break: break-all;
     z-index: 1;
     box-shadow: ${({ theme }) => theme.boxShadow};
     border-radius: ${({ theme }) => theme.cardRadius};
@@ -40,7 +41,6 @@ const StyledMuiCardContent = styled(CardContent)`
 const StyledMuiCardHeader = styled(({ ...other }) => (
   <CardHeader classes={{ action: 'action' }} {...other} />
 ))`
-  word-break: break-all;
   background-color: ${({ theme }) => theme.bgColor1};
   span {
     color: ${({ theme }) => theme.fgColor1};
