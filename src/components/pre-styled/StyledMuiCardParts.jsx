@@ -40,6 +40,7 @@ const StyledMuiCardContent = styled(CardContent)`
 const StyledMuiCardHeader = styled(({ ...other }) => (
   <CardHeader classes={{ action: 'action' }} {...other} />
 ))`
+  word-break: break-all;
   background-color: ${({ theme }) => theme.bgColor1};
   span {
     color: ${({ theme }) => theme.fgColor1};
