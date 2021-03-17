@@ -1,16 +1,6 @@
 -------------------------------------------------------
- NEXT UP
--------------------------------------------------------
- - React.lazy & webpack code-splitting
- - pretty sure you can define a component, create a styled version
-   of it after the fact, and then export the styled version.
-
--------------------------------------------------------
  BUGS
 -------------------------------------------------------
-GlobalStyle.jsx:
-1. unmatched bracket in GlobalStyle.jsx
-
 App.jsx:
 1. Are these lines necessary?
   import { serverConsoleUrl } from 'config';
@@ -24,7 +14,8 @@ clientRequests:
 -------------------------------------------------------
  TIMER
 -------------------------------------------------------
-the timer starts counting from when the time form is pulled up, not from the time the submit button is hit.
+the timer starts counting from when the time form is
+pulled up, not from the time the submit button is hit.
 
 -------------------------------------------------------
  CLEAN UP MEDIA QUERIES
