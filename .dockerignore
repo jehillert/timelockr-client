@@ -1,0 +1,21 @@
+#Ignoring git and cache folders
+.git
+.cache
+
+# dependencies
+node_modules
+
+# build folders
+dist
+build
+
+# docker files
+.dockerignore
+docker-compose.yml
+Dockerfile
+Dockerfile.prod
+Dockerfile.dev
+
+# omit personal notes
+*.md
+!README.md

@@ -12,6 +12,9 @@ module.exports = merge(Common, {
     publicPath: '/',
   },
   devServer: {
+    // Docker requirement. See https://pythonspeed.com/articles/docker-connection-refused/ for explanation.
+    // See https://webpack.js.org/configuration/dev-server/#devserverhost for instructions re specifying host.
+    host: '0.0.0.0',
     clientLogLevel: 'debug',
     contentBase: path.resolve(__dirname, '../build'),
     open: true,
