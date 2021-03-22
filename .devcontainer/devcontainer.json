@@ -86,18 +86,16 @@
 		"rsbondi.highlight-words",
 		"ryuta46.multi-command",
 		"Shan.code-settings-sync",
-		"sketchbuch.vsc-workspace-sidebar",
 		"StephDavidson.MandarinDuck",
 		"stkb.rewrap",
 		"takkaO.open-window-tab-context",
 		"tombonnike.vscode-status-bar-format-toggle",
 		"tomoki1207.selectline-statusbar",
-		"tomsaunders-code.workspace-explorer",
 		"usernamehw.run-commands-view",
 		"vincaslt.highlight-matching-tag",
 		"VisualStudioExptTeam.vscodeintellicode",
 		"yzhang.markdown-all-in-one"
-	]
+	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
