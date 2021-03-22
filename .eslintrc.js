@@ -38,6 +38,15 @@ module.exports = {
       "react/jsx-quotes": 0,
       "template-curly-spacing": "off",
       "import/no-unresolved": "off",
-      "import/extensions": { "js": "never", "jsx": "never" }
+      "import/extensions": [
+        "error",
+        "always",
+        {
+          "ts": "never",
+          "tsx": "never",
+          "js": "never",
+          "jsx": "never"
+        }
+      ],
     }
 }

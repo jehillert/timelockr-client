@@ -1,9 +1,7 @@
-# pull official base image
 FROM node:15.10.0
-# set working directory
 WORKDIR /usr/src/app
 # add `/app/node_modules/.bin` to $PATH
-# ENV PATH /app/node_modules/.bin:$PATH
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
 # install dependencies
 COPY package.json ./
 # COPY package-lock.json ./

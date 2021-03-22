@@ -8,6 +8,14 @@
 
 These instructions detail how to install, run and view TimeLockr-Client locally without installing the backend, TimeLockr-Server, which requires having Postgress installed and can be somewhat time-consuming to setup.  The environment variables in *.env.example* divert client API calls to a version of the back-end hosted on Heroku.
 
+**Prerequisites, Recommended Editor & Recommended Extensions**
+
+Although the app can be run without it, the method outlined herein requires your local machine to have Docker installed on your local machine.
+
+It is recommended to use Microsoft VS Code to view and manage this application. It is further recommended to install the following VS Code extensions, as they may be useful if you have difficulty with installation.
+- Docker (Microsoft)
+- Remote - Containers (Microsoft)
+
 **To install**, open a terminal and type:
   ```console
   foo@bar:~$ git clone https://github.com/jehillert/timelockr-client.git
